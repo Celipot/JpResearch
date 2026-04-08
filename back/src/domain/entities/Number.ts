@@ -11,6 +11,13 @@ const THOUSANDS_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
   8: { standardHiragana: 'はっせん', standardRomaji: 'hassen' },
 };
 
+const MAN_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
+  1: { standardHiragana: 'いちまん', standardRomaji: 'ichiman' },
+  3: { standardHiragana: 'さんまん', standardRomaji: 'sanman' },
+  6: { standardHiragana: 'ろくまん', standardRomaji: 'rokuman' },
+  8: { standardHiragana: 'はちまん', standardRomaji: 'hachiman' },
+};
+
 const HUNDREDS_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
   1: { standardHiragana: 'ひゃく', standardRomaji: 'hyaku' },
   3: { standardHiragana: 'さんびゃく', standardRomaji: 'sanbyaku' },
@@ -63,19 +70,32 @@ export class Number {
   }
 
   private buildAllPronunciationsCombinations(number: number): Pronunciation[] {
-    const thousandsCount = Math.floor(number / 1000);
-    const remainderAfterThousands = number % 1000;
+    if (number >= 1000000) {
+      return this.buildLargeNumberCombinations(number);
+    }
+
+    const manCount = Math.floor(number / 10000);
+    const remainderAfterMan = number % 10000;
+    const thousandsCount = Math.floor(remainderAfterMan / 1000);
+    const remainderAfterThousands = remainderAfterMan % 1000;
     const hundredsCount = Math.floor(remainderAfterThousands / 100);
     const remainderAfterHundreds = remainderAfterThousands % 100;
     const tensCount = Math.floor(remainderAfterHundreds / 10);
     const unitsCount = remainderAfterHundreds % 10;
 
+    const manVariants = this.getManVariants(manCount);
     const thousandsVariants = this.getThousandsVariants(thousandsCount);
     const hundredsVariants = this.getHundredsVariants(hundredsCount);
     const tensVariants = this.getTensVariants(tensCount);
     const unitsVariants = this.getUnitsVariants(unitsCount);
 
-    const allDigitVariants = [thousandsVariants, hundredsVariants, tensVariants, unitsVariants];
+    const allDigitVariants = [
+      manVariants,
+      thousandsVariants,
+      hundredsVariants,
+      tensVariants,
+      unitsVariants,
+    ];
     const combinations = cartesianProduct(allDigitVariants);
 
     return combinations.map((variants) => {
@@ -84,6 +104,210 @@ export class Number {
       const isStandard = variants.every((v) => v.isStandard);
       return { hiragana, romaji, isStandard };
     });
+  }
+
+  private buildLargeNumberCombinations(number: number): Pronunciation[] {
+    if (number >= 10000000) {
+      return this.buildSenmanCombinations(number);
+    }
+
+    const hyakumanCount = Math.floor(number / 1000000);
+    const remainder = number % 1000000;
+
+    const hyakumanVariants: { hiragana: string; romaji: string; isStandard: boolean }[] = [];
+
+    if (hyakumanCount === 0) {
+      hyakumanVariants.push({ hiragana: '', romaji: '', isStandard: true });
+    } else if (hyakumanCount === 1) {
+      hyakumanVariants.push({ hiragana: 'ひゃくまん', romaji: 'hyakuman', isStandard: true });
+    } else {
+      const digitVariants = getDigitVariants(hyakumanCount);
+      for (const v of digitVariants) {
+        hyakumanVariants.push({
+          hiragana: v.hiragana + 'ひゃくまん',
+          romaji: v.romaji + 'hyakuman',
+          isStandard: v.isStandard,
+        });
+      }
+    }
+
+    const manCount = Math.floor(remainder / 10000);
+    const remainderAfterMan = remainder % 10000;
+    const thousandsCount = Math.floor(remainderAfterMan / 1000);
+    const remainderAfterThousands = remainderAfterMan % 1000;
+    const hundredsCount = Math.floor(remainderAfterThousands / 100);
+    const remainderAfterHundreds = remainderAfterThousands % 100;
+    const tensCount = Math.floor(remainderAfterHundreds / 10);
+    const unitsCount = remainderAfterHundreds % 10;
+
+    const manVariants = this.getManVariants(manCount);
+    const thousandsVariants = this.getThousandsVariants(thousandsCount);
+    const hundredsVariants = this.getHundredsVariants(hundredsCount);
+    const tensVariants = this.getTensVariants(tensCount);
+    const unitsVariants = this.getUnitsVariants(unitsCount);
+
+    const allDigitVariants = [
+      manVariants,
+      thousandsVariants,
+      hundredsVariants,
+      tensVariants,
+      unitsVariants,
+    ];
+    const remainderCombinations = cartesianProduct(allDigitVariants).map((variants) => {
+      const hiragana = variants.map((v) => v.hiragana).join('');
+      const romaji = variants.map((v) => v.romaji).join('');
+      const isStandard = variants.every((v) => v.isStandard);
+      return { hiragana, romaji, isStandard };
+    });
+
+    const combinations: Pronunciation[] = [];
+    for (const hyakuman of hyakumanVariants) {
+      for (const remainder of remainderCombinations) {
+        combinations.push({
+          hiragana: hyakuman.hiragana + remainder.hiragana,
+          romaji: hyakuman.romaji + remainder.romaji,
+          isStandard: hyakuman.isStandard && remainder.isStandard,
+        });
+      }
+    }
+
+    return combinations;
+  }
+
+  private buildSenmanCombinations(number: number): Pronunciation[] {
+    const senmanCount = Math.floor(number / 10000000);
+    const remainder = number % 10000000;
+
+    const senmanVariants: { hiragana: string; romaji: string; isStandard: boolean }[] = [];
+
+    if (senmanCount === 0) {
+      senmanVariants.push({ hiragana: '', romaji: '', isStandard: true });
+    } else if (senmanCount === 1) {
+      senmanVariants.push({ hiragana: 'いっせんまん', romaji: 'issenman', isStandard: true });
+    } else if (senmanCount === 8) {
+      senmanVariants.push({ hiragana: 'はっせんまん', romaji: 'hassenman', isStandard: true });
+    } else {
+      const digitVariants = getDigitVariants(senmanCount);
+      for (const v of digitVariants) {
+        senmanVariants.push({
+          hiragana: v.hiragana + 'せん',
+          romaji: v.romaji + 'sen',
+          isStandard: v.isStandard,
+        });
+      }
+    }
+
+    const hyakumanCount = Math.floor(remainder / 1000000);
+    const remainderAfterHyakuman = remainder % 1000000;
+
+    const hyakumanVariants: { hiragana: string; romaji: string; isStandard: boolean }[] = [];
+
+    if (hyakumanCount === 0) {
+      hyakumanVariants.push({ hiragana: '', romaji: '', isStandard: true });
+    } else if (hyakumanCount === 1) {
+      hyakumanVariants.push({ hiragana: 'ひゃくまん', romaji: 'hyakuman', isStandard: true });
+    } else {
+      const digitVariants = getDigitVariants(hyakumanCount);
+      for (const v of digitVariants) {
+        hyakumanVariants.push({
+          hiragana: v.hiragana + 'ひゃくまん',
+          romaji: v.romaji + 'hyakuman',
+          isStandard: v.isStandard,
+        });
+      }
+    }
+
+    const manCount = Math.floor(remainderAfterHyakuman / 10000);
+    const remainderAfterMan = remainderAfterHyakuman % 10000;
+    const thousandsCount = Math.floor(remainderAfterMan / 1000);
+    const remainderAfterThousands = remainderAfterMan % 1000;
+    const hundredsCount = Math.floor(remainderAfterThousands / 100);
+    const remainderAfterHundreds = remainderAfterThousands % 100;
+    const tensCount = Math.floor(remainderAfterHundreds / 10);
+    const unitsCount = remainderAfterHundreds % 10;
+
+    const manVariants = this.getManVariants(manCount);
+    const thousandsVariants = this.getThousandsVariants(thousandsCount);
+    const hundredsVariants = this.getHundredsVariants(hundredsCount);
+    const tensVariants = this.getTensVariants(tensCount);
+    const unitsVariants = this.getUnitsVariants(unitsCount);
+
+    const allDigitVariants = [
+      manVariants,
+      thousandsVariants,
+      hundredsVariants,
+      tensVariants,
+      unitsVariants,
+    ];
+    const lastCombinations = cartesianProduct(allDigitVariants).map((variants) => {
+      const hiragana = variants.map((v) => v.hiragana).join('');
+      const romaji = variants.map((v) => v.romaji).join('');
+      const isStandard = variants.every((v) => v.isStandard);
+      return { hiragana, romaji, isStandard };
+    });
+
+    const combinations: Pronunciation[] = [];
+    for (const senman of senmanVariants) {
+      for (const hyakuman of hyakumanVariants) {
+        for (const last of lastCombinations) {
+          combinations.push({
+            hiragana: senman.hiragana + hyakuman.hiragana + last.hiragana,
+            romaji: senman.romaji + hyakuman.romaji + last.romaji,
+            isStandard: senman.isStandard && hyakuman.isStandard && last.isStandard,
+          });
+        }
+      }
+    }
+
+    return combinations;
+  }
+
+  private getManVariants(
+    count: number
+  ): { hiragana: string; romaji: string; isStandard: boolean }[] {
+    if (count === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
+    }
+
+    if (count >= 10) {
+      const tensCount = Math.floor(count / 10);
+      const unitsCount = count % 10;
+      const tensVariants = this.getTensVariants(tensCount);
+      const unitsVariants =
+        unitsCount === 0
+          ? [{ hiragana: '', romaji: '', isStandard: true }]
+          : getDigitVariants(unitsCount);
+
+      const combinations: { hiragana: string; romaji: string; isStandard: boolean }[] = [];
+      for (const tens of tensVariants) {
+        for (const units of unitsVariants) {
+          combinations.push({
+            hiragana: tens.hiragana + units.hiragana + 'まん',
+            romaji: tens.romaji + units.romaji + 'man',
+            isStandard: tens.isStandard && units.isStandard,
+          });
+        }
+      }
+      return combinations;
+    }
+
+    const isIrregular = MAN_PRONUNCIATIONS[count] !== undefined;
+    if (isIrregular) {
+      return [
+        {
+          hiragana: MAN_PRONUNCIATIONS[count].standardHiragana,
+          romaji: MAN_PRONUNCIATIONS[count].standardRomaji,
+          isStandard: true,
+        },
+      ];
+    }
+
+    const digitVariants = getDigitVariants(count);
+    return digitVariants.map((v) => ({
+      hiragana: v.hiragana + 'まん',
+      romaji: v.romaji + 'man',
+      isStandard: v.isStandard,
+    }));
   }
 
   private getThousandsVariants(

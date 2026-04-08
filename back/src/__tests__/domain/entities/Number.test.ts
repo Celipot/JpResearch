@@ -183,6 +183,104 @@ describe('Number', () => {
     });
   });
 
+  describe('numbers above 10000 (man)', () => {
+    it('given 10000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 10000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('いちまん');
+      expect(number.romaji).toBe('ichiman');
+    });
+
+    it('given 100000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 100000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('じゅうまん');
+      expect(number.romaji).toBe('jūman');
+    });
+
+    it('given 11000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 11000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('いちまんせん');
+      expect(number.romaji).toBe('ichimansen');
+    });
+
+    it('given 99999, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 99999;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('きゅうまんきゅうせんきゅうひゃくきゅうじゅうきゅう');
+      expect(number.romaji).toBe('kyūmankyūsenkyūhyakukyūjūkyū');
+    });
+
+    it('given 1000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 1000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('ひゃくまん');
+      expect(number.romaji).toBe('hyakuman');
+    });
+
+    it('given 10000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 10000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('いっせんまん');
+      expect(number.romaji).toBe('issenman');
+    });
+
+    it('given 80000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 80000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('はっせんまん');
+      expect(number.romaji).toBe('hassenman');
+    });
+
+    it('given 99000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 99000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('きゅうせんきゅうひゃくまん');
+      expect(number.romaji).toBe('kyūsenkyūhyakuman');
+    });
+  });
+
   describe('allPronunciations', () => {
     it('given a number without alternative digits, then returns only one pronunciation', () => {
       // Given

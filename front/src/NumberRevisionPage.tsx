@@ -24,7 +24,7 @@ export default function NumberRevisionPage() {
   const [spokenHiragana, setSpokenHiragana] = useState<string | null>(null);
   const [showPronunciation, setShowPronunciation] = useState(false);
   const [minValue, setMinValue] = useState(1);
-  const [maxValue, setMaxValue] = useState(10000);
+  const [maxValue, setMaxValue] = useState(99999999);
 
   const speak = useCallback((text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
@@ -127,10 +127,10 @@ export default function NumberRevisionPage() {
           <input
             type="number"
             min="1"
-            max="10000"
+            max="99999999"
             value={minValue}
             onChange={(e) => {
-              const newMin = Math.max(1, Math.min(10000, parseInt(e.target.value, 10) || 1));
+              const newMin = Math.max(1, Math.min(99999999, parseInt(e.target.value, 10) || 1));
               setMinValue(newMin);
               if (newMin > maxValue) {
                 setMaxValue(newMin);
@@ -142,10 +142,13 @@ export default function NumberRevisionPage() {
           <input
             type="number"
             min="1"
-            max="10000"
+            max="99999999"
             value={maxValue}
             onChange={(e) => {
-              const newMax = Math.max(1, Math.min(10000, parseInt(e.target.value, 10) || 10000));
+              const newMax = Math.max(
+                1,
+                Math.min(99999999, parseInt(e.target.value, 10) || 99999999)
+              );
               setMaxValue(newMax);
               if (newMax < minValue) {
                 setMinValue(newMax);

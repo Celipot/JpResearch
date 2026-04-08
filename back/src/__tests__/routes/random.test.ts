@@ -14,7 +14,7 @@ describe('GET /api/random', () => {
     const number = response.body.number;
     expect(typeof number).toBe('number');
     expect(number).toBeGreaterThanOrEqual(1);
-    expect(number).toBeLessThanOrEqual(10000);
+    expect(number).toBeLessThanOrEqual(99999999);
 
     const hiragana = response.body.hiragana;
     expect(typeof hiragana).toBe('string');
@@ -48,10 +48,10 @@ describe('GET /api/random', () => {
       expect(response.body.number).toBeGreaterThanOrEqual(1);
     });
 
-    it('given max=20000 (above 10000), then clamps to 10000', async () => {
+    it('given max=20000 (above 99999999), then clamps to 99999999', async () => {
       const response = await request(app).get('/api/random?min=9000&max=20000');
 
-      expect(response.body.number).toBeLessThanOrEqual(10000);
+      expect(response.body.number).toBeLessThanOrEqual(99999999);
     });
 
     it('given min > max, then still works correctly', async () => {

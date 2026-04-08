@@ -40,6 +40,36 @@ describe('NumberRevisionPage', () => {
     expect(screen.getByRole('button', { name: /Français → Japonais/i })).toBeInTheDocument();
   });
 
+  it('displays range selector inputs', () => {
+    // Given
+    render(
+      <MemoryRouter>
+        <NumberRevisionPage />
+      </MemoryRouter>
+    );
+
+    // Then
+    const inputs = screen.getAllByRole('spinbutton');
+    expect(inputs).toHaveLength(2);
+    expect(inputs[0]).toHaveAttribute('min', '1');
+    expect(inputs[0]).toHaveAttribute('max', '99999999');
+    expect(inputs[1]).toHaveAttribute('min', '1');
+    expect(inputs[1]).toHaveAttribute('max', '99999999');
+  });
+
+  it('default max value is 99999999', () => {
+    // Given
+    render(
+      <MemoryRouter>
+        <NumberRevisionPage />
+      </MemoryRouter>
+    );
+
+    // Then
+    const inputs = screen.getAllByRole('spinbutton');
+    expect(inputs[1]).toHaveValue(99999999);
+  });
+
   it('jp-to-fr mode shows audio controls by default', async () => {
     // Given
     global.fetch = vi.fn(() =>

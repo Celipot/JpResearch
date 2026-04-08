@@ -9,12 +9,12 @@ describe('generateRandomNumber', () => {
     expect(result).toBeInstanceOf(Number);
   });
 
-  it('given no params, then each result is between 1 and 10000', () => {
+  it('given no params, then each result is between 1 and 99999999', () => {
     for (let i = 0; i < 100; i++) {
       const result = generateRandomNumber();
 
       expect(result.value).toBeGreaterThanOrEqual(1);
-      expect(result.value).toBeLessThanOrEqual(10000);
+      expect(result.value).toBeLessThanOrEqual(99999999);
     }
   });
 
