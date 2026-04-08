@@ -5,7 +5,7 @@ export const generateRandomNumber = (min: number = 1, max: number = 99999999): N
     [min, max] = [max, min];
   }
   min = Math.max(1, min);
-  max = Math.min(99999999, max);
+  max = Math.min(999999999, max);
   const random = Math.floor(Math.random() * (max - min + 1)) + min;
   return new Number(random);
 };

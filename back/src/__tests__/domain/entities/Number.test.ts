@@ -281,6 +281,58 @@ describe('Number', () => {
     });
   });
 
+  describe('numbers above 100 million (oku)', () => {
+    it('given 100000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 100000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('いちおく');
+      expect(number.romaji).toBe('ichioku');
+    });
+
+    it('given 1000000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 1000000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('じゅうおく');
+      expect(number.romaji).toBe('jūoku');
+    });
+
+    it('given 110000000, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 110000000;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe('いちおくせんまん');
+      expect(number.romaji).toBe('ichiokusenman');
+    });
+
+    it('given 999999999, then returns correct hiragana and romaji', () => {
+      // Given
+      const value = 999999999;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.hiragana).toBe(
+        'きゅうおくきゅうせんきゅうひゃくきゅうじゅうきゅうまんきゅうせんきゅうひゃくきゅうじゅうきゅう'
+      );
+      expect(number.romaji).toBe('kyūokukyūsenkyūhyakukyūjūkyūmankyūsenkyūhyakukyūjūkyū');
+    });
+  });
+
   describe('allPronunciations', () => {
     it('given a number without alternative digits, then returns only one pronunciation', () => {
       // Given
