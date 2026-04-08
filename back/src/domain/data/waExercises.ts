@@ -1,0 +1,22 @@
+import { Exercise, ExerciseType } from '../entities/Exercise';
+import { GrammarRule } from '../entities/GrammarRule';
+import data from './waExercises.json';
+
+const rule = new GrammarRule(
+  data.rule.id,
+  data.rule.particle,
+  data.rule.name,
+  data.rule.description
+);
+
+export const waExercises: Exercise[] = data.exercises.map(
+  (e) =>
+    new Exercise({
+      type: e.type as ExerciseType,
+      rule,
+      question: e.question,
+      correctAnswers: e.correctAnswers,
+      options: 'options' in e ? (e.options as string[]) : undefined,
+      explanation: e.explanation,
+    })
+);

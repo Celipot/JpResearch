@@ -482,3 +482,62 @@ button:disabled {
   outline: none;
   border-color: #007bff;
 }
+
+.grammar-rule-label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.exercise-question {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+  letter-spacing: 0.05em;
+}
+
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.option-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: #007bff;
+  background: #f0f7ff;
+}
+
+.option-btn.selected {
+  border-color: #007bff;
+  background: #e0efff;
+}
+
+.option-btn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.explanation {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #333;
+}

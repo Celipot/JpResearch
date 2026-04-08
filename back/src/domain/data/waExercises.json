@@ -1,0 +1,626 @@
+{
+  "rule": {
+    "id": "wa",
+    "particle": "は",
+    "name": "Topic",
+    "description": "Marque le sujet du discours (topic). Indique ce dont on parle."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたし___がくせいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたし (moi) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "これ___ほんです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : これ (ceci) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "やまださん___せんせいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : やまださん est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんご___むずかしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : にほんご (le japonais) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あした___にちようびです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : あした (demain) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このえいが___おもしろいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このえいが (ce film) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___かわいいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : ねこ (le chat) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このりんご___あまいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このりんご (cette pomme) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あのひと___だれですか。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : あのひと (cette personne) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "えいご___むずかしくないです。",
+      "correctAnswers": ["は"],
+      "explanation": "は de contraste : l'anglais (par opposition à autre chose) n'est pas difficile."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "きょう___にちようびです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : きょう (aujourd'hui) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほん___きれいなくにです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : にほん (le Japon) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このほん___おもしろいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このほん (ce livre) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "さくら___きれいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : さくら (les cerisiers) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このへや___ひろいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このへや (cette chambre) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのいえ___ちいさいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのいえ (ma maison) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このコーヒー___おいしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このコーヒー (ce café) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんのたべもの___おいしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : にほんのたべもの (la cuisine japonaise) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このしけん___むずかしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このしけん (cet examen) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのせんせい___しんせつです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのせんせい (mon professeur) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このまち___しずかです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このまち (cette ville) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あのやま___たかいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : あのやま (cette montagne) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "とうきょう___にぎやかです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : とうきょう (Tokyo) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このくすり___にがいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このくすり (ce médicament) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのちち___いしゃです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのちち (mon père) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このくるま___あたらしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このくるま (cette voiture) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんのふゆ___さむいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : にほんのふゆ (l'hiver japonais) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのがっこう___ちかいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのがっこう (mon école) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このパン___やわらかいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このパン (ce pain) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "はる___あたたかいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : はる (le printemps) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのともだち___やさしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのともだち (mon ami) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あのレストラン___ゆうめいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : あのレストラン (ce restaurant) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "このまんが___たのしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : このまんが (ce manga) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたしのねこ___しろいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : わたしのねこ (mon chat) est ce dont on parle."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんごのじゅぎょう___たのしいです。",
+      "correctAnswers": ["は"],
+      "explanation": "は marque le topic : にほんごのじゅぎょう (le cours de japonais) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたし___まいにちべんきょうします。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたし (moi) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "やまださん___いしゃです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : やまださん est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "すずきさん___かいしゃいんです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : すずきさん est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このおちゃ___あたたかいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このおちゃ (ce thé) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのいもうと___がくせいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのいもうと (ma petite sœur) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このくだもの___あまいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このくだもの (ce fruit) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あのみせ___やすいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : あのみせ (ce magasin) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このえき___ちかいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このえき (cette gare) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのかばん___あたらしいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのかばん (mon sac) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あのこうえん___きれいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : あのこうえん (ce parc) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このテスト___かんたんです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このテスト (ce test) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "やまださん___にほんじんです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : やまださん est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このまち___にぎやかです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このまち (cette ville) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのへや___せまいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのへや (ma chambre) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "にほんのふゆ___さむいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : にほんのふゆ (l'hiver japonais) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このパン___おいしいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このパン (ce pain) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのちち___いしゃです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのちち (mon père) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あのえいが___こわいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : あのえいが (ce film) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このくすり___にがいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このくすり (ce médicament) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "えいごのほん___むずかしいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : えいごのほん (ce livre d'anglais) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このくるま___あかいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このくるま (cette voiture) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "すずきさんのいえ___おおきいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : すずきさんのいえ (la maison de Suzuki) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このまんが___おもしろいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このまんが (ce manga) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あのこうちゃ___あたたかいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : あのこうちゃ (ce thé noir) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このりょうり___からいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このりょうり (ce plat) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのあに___かいしゃいんです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのあに (mon grand frère) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このじしょ___べんりです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このじしょ (ce dictionnaire) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あのこ___げんきです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : あのこ (cet enfant) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "にほんのなつ___あついです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : にほんのなつ (l'été japonais) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このとけい___たかいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : このとけい (cette montre) est ce dont on parle."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたしのははおや___やさしいです。",
+      "correctAnswers": ["は"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "は marque le topic : わたしのははおや (ma mère) est ce dont on parle."
+    },
+    {
+      "type": "translation",
+      "question": "Je suis étudiant.",
+      "correctAnswers": ["わたしはがくせいです", "watashi wa gakusei desu"],
+      "explanation": "わたし + は (topic) + がくせいです."
+    },
+    {
+      "type": "translation",
+      "question": "C'est un livre.",
+      "correctAnswers": ["これはほんです", "kore wa hon desu"],
+      "explanation": "これ + は (topic) + ほんです."
+    },
+    {
+      "type": "translation",
+      "question": "Demain, c'est dimanche.",
+      "correctAnswers": ["あしたはにちようびです", "ashita wa nichiyobi desu"],
+      "explanation": "あした + は (topic) + にちようびです."
+    },
+    {
+      "type": "translation",
+      "question": "Le japonais est difficile.",
+      "correctAnswers": ["にほんごはむずかしいです", "nihongo wa muzukashii desu"],
+      "explanation": "にほんご + は (topic) + むずかしいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce chat est mignon.",
+      "correctAnswers": ["このねこはかわいいです", "kono neko wa kawaii desu"],
+      "explanation": "このねこ + は (topic) + かわいいです."
+    },
+    {
+      "type": "translation",
+      "question": "M. Tanaka est professeur.",
+      "correctAnswers": ["たなかさんはせんせいです", "tanaka san wa sensei desu"],
+      "explanation": "たなかさん + は (topic) + せんせいです."
+    },
+    {
+      "type": "translation",
+      "question": "Cette pomme est sucrée.",
+      "correctAnswers": ["このりんごはあまいです", "kono ringo wa amai desu"],
+      "explanation": "このりんご + は (topic) + あまいです."
+    },
+    {
+      "type": "translation",
+      "question": "Je suis japonais.",
+      "correctAnswers": ["わたしはにほんじんです", "watashi wa nihonjin desu"],
+      "explanation": "わたし + は (topic) + にほんじんです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce film est intéressant.",
+      "correctAnswers": ["このえいがはおもしろいです", "kono eiga wa omoshiroi desu"],
+      "explanation": "このえいが + は (topic) + おもしろいです."
+    },
+    {
+      "type": "translation",
+      "question": "Aujourd'hui c'est lundi.",
+      "correctAnswers": ["きょうはげつようびです", "kyou wa getsuyoubi desu"],
+      "explanation": "きょう + は (topic) + げつようびです."
+    },
+    {
+      "type": "translation",
+      "question": "Mon ami est étudiant.",
+      "correctAnswers": ["わたしのともだちはがくせいです", "watashi no tomodachi wa gakusei desu"],
+      "explanation": "わたしのともだち + は (topic) + がくせいです."
+    },
+    {
+      "type": "translation",
+      "question": "Cette chambre est grande.",
+      "correctAnswers": ["このへやはひろいです", "kono heya wa hiroi desu"],
+      "explanation": "このへや + は (topic) + ひろいです."
+    },
+    {
+      "type": "translation",
+      "question": "Mon père est médecin.",
+      "correctAnswers": ["わたしのちちはいしゃです", "watashi no chichi wa isha desu"],
+      "explanation": "わたしのちち + は (topic) + いしゃです."
+    },
+    {
+      "type": "translation",
+      "question": "Cet examen est difficile.",
+      "correctAnswers": ["このしけんはむずかしいです", "kono shiken wa muzukashii desu"],
+      "explanation": "このしけん + は (topic) + むずかしいです."
+    },
+    {
+      "type": "translation",
+      "question": "Tokyo est animé.",
+      "correctAnswers": ["とうきょうはにぎやかです", "toukyou wa nigiyaka desu"],
+      "explanation": "とうきょう + は (topic) + にぎやかです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce pain est délicieux.",
+      "correctAnswers": ["このパンはおいしいです", "kono pan wa oishii desu"],
+      "explanation": "このパン + は (topic) + おいしいです."
+    },
+    {
+      "type": "translation",
+      "question": "Le cours de japonais est amusant.",
+      "correctAnswers": [
+        "にほんごのじゅぎょうはたのしいです",
+        "nihongo no jugyou wa tanoshii desu"
+      ],
+      "explanation": "にほんごのじゅぎょう + は (topic) + たのしいです."
+    },
+    {
+      "type": "translation",
+      "question": "Mon école est proche.",
+      "correctAnswers": ["わたしのがっこうはちかいです", "watashi no gakkou wa chikai desu"],
+      "explanation": "わたしのがっこう + は (topic) + ちかいです."
+    },
+    {
+      "type": "translation",
+      "question": "L'hiver japonais est froid.",
+      "correctAnswers": ["にほんのふゆはさむいです", "nihon no fuyu wa samui desu"],
+      "explanation": "にほんのふゆ + は (topic) + さむいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce médicament est amer.",
+      "correctAnswers": ["このくすりはにがいです", "kono kusuri wa nigai desu"],
+      "explanation": "このくすり + は (topic) + にがいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce restaurant est célèbre.",
+      "correctAnswers": ["あのレストランはゆうめいです", "ano resutoran wa yuumei desu"],
+      "explanation": "あのレストラン + は (topic) + ゆうめいです."
+    },
+    {
+      "type": "translation",
+      "question": "Mon chat est blanc.",
+      "correctAnswers": ["わたしのねこはしろいです", "watashi no neko wa shiroi desu"],
+      "explanation": "わたしのねこ + は (topic) + しろいです."
+    },
+    {
+      "type": "translation",
+      "question": "Cette voiture est neuve.",
+      "correctAnswers": ["このくるまはあたらしいです", "kono kuruma wa atarashii desu"],
+      "explanation": "このくるま + は (topic) + あたらしいです."
+    },
+    {
+      "type": "translation",
+      "question": "Le printemps est beau.",
+      "correctAnswers": ["はるはきれいです", "haru wa kirei desu"],
+      "explanation": "はる + は (topic) + きれいです."
+    },
+    {
+      "type": "translation",
+      "question": "Mme Suzuki est gentille.",
+      "correctAnswers": ["すずきさんはしんせつです", "suzuki san wa shinsetsu desu"],
+      "explanation": "すずきさん + は (topic) + しんせつです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce dictionnaire est pratique.",
+      "correctAnswers": ["このじしょはべんりです", "kono jisho wa benri desu"],
+      "explanation": "このじしょ + は (topic) + べんりです."
+    },
+    {
+      "type": "translation",
+      "question": "L'été japonais est chaud.",
+      "correctAnswers": ["にほんのなつはあついです", "nihon no natsu wa atsui desu"],
+      "explanation": "にほんのなつ + は (topic) + あついです."
+    },
+    {
+      "type": "translation",
+      "question": "Cette montre est chère.",
+      "correctAnswers": ["このとけいはたかいです", "kono tokei wa takai desu"],
+      "explanation": "このとけい + は (topic) + たかいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce plat est épicé.",
+      "correctAnswers": ["このりょうりはからいです", "kono ryouri wa karai desu"],
+      "explanation": "このりょうり + は (topic) + からいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ma chambre est petite.",
+      "correctAnswers": ["わたしのへやはせまいです", "watashi no heya wa semai desu"],
+      "explanation": "わたしのへや + は (topic) + せまいです."
+    },
+    {
+      "type": "translation",
+      "question": "Ce manga est amusant.",
+      "correctAnswers": ["このまんがはたのしいです", "kono manga wa tanoshii desu"],
+      "explanation": "このまんが + は (topic) + たのしいです."
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "rule": {
+    "id": "wo",
+    "particle": "を",
+    "name": "Objet direct",
+    "description": "Marque l'objet de l'action (ce que l'on fait)."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "みず___のみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : みず (de l'eau) est ce que l'on boit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ほん___よみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : ほん (un livre) est ce que l'on lit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "えいが___みます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : えいが (un film) est ce que l'on regarde."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "パン___たべます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : パン (du pain) est ce que l'on mange."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "おんがく___ききます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : おんがく (de la musique) est ce que l'on écoute."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "にほんご___べんきょうします。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : にほんご (le japonais) est ce que l'on étudie."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "てがみ___かきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : てがみ (une lettre) est ce que l'on écrit."
+    },
+    {
+      "type": "translation",
+      "question": "Je mange du riz.",
+      "correctAnswers": ["ごはんをたべます", "gohan wo tabemasu"],
+      "explanation": "ごはん + を (objet direct) + たべます."
+    },
+    {
+      "type": "translation",
+      "question": "J'écoute de la musique.",
+      "correctAnswers": ["おんがくをききます", "ongaku wo kikimasu"],
+      "explanation": "おんがく + を (objet direct) + ききます."
+    },
+    {
+      "type": "translation",
+      "question": "Il regarde la télévision.",
+      "correctAnswers": ["テレビをみます", "terebi wo mimasu"],
+      "explanation": "テレビ + を (objet direct) + みます."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "たべもの___たべます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : たべもの (la nourriture) est ce que l'on mange."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "コーヒー___のみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : コーヒー (du café) est ce que l'on boit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ぎゅうにゅう___のみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : ぎゅうにゅう (du lait) est ce que l'on boit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "じぎょうしゃ___よみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : じぎょうしゃ (un magazine) est ce que l'on lit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "しんぶん___よみます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : しんぶん (un journal) est ce que l'on lit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "うどん___たべます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : うどん (des nouilles udon) est ce que l'on mange."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "すし___たべます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : すし (des sushis) est ce que l'on mange."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "やきとり___たべます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : やきとり (des brochettes grillées) est ce que l'on mange."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "りょうり___つくります。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : りょうり (un plat) est ce que l'on prépare."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "しゃしん___とります。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : しゃしん (une photo) est ce que l'on prend."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "せんせい___みます。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : せんせい (un professeur) est ce que l'on voit/rencontre."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ともだち___さがします。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : ともだち (un ami) est ce que l'on cherche."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "くるま___うんてんします。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : くるま (une voiture) est ce que l'on conduit."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "じてんしゃ___のります。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : じてんしゃ (un vélo) est ce que l'on utilise."
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "れんしゅう___します。",
+      "correctAnswers": ["を"],
+      "explanation": "を marque l'objet direct : れんしゅう (l'entraînement) est ce que l'on fait."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "りんご___たべます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : りんご (une pomme) est ce que l'on mange."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "でんしゃ___のります。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : でんしゃ (un train) est ce que l'on prend."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "しょうがっこう___でます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : しょうがっこう (l'école primaire) est ce que l'on quitte."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "へや___でます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : へや (la chambre) est ce que l'on quitte."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "しごと___します。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : しごと (le travail) est ce que l'on fait."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あるきます___さんぽをします。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : さんぽ (la promenade) est ce que l'on fait."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "がっこう___いきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : ちから (la force/effort) est ce qu'on utilise pour aller à l'école."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "へや___そうじします。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : へや (la chambre) est ce que l'on nettoie."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "せんたく___します。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : せんたく (la lessive) est ce que l'on fait."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "しゅくだい___します。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : しゅくだい (les devoirs) est ce que l'on fait."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "みずのみ___のみます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : みず (l'eau) est ce que l'on boit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あめ___たべます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : あめ (des bonbons) est ce que l'on mange."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ケーキ___たべます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : ケーキ (un gâteau) est ce que l'on mange."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "たまご___やきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : たまご (un œuf) est ce que l'on cuit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "さかな___やきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : さかな (un poisson) est ce que l'on cuit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "にく___やきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : にく (de la viande) est ce que l'on cuit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "やさい___きります。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : やさい (un légume) est ce que l'on coupe."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "おおきい___ことばをいいます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : ことば (des mots) est ce qu'on dit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あるき___みちをいきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : みち (le chemin) est ce qu'on suit."
+    },
+    {
+      "type": "multiple-choice",
+      "question": "うんどうかい___みにいきます。",
+      "correctAnswers": ["を"],
+      "options": ["は", "が", "を", "に", "で"],
+      "explanation": "を marque l'objet direct : うんどうかい (le festival des sports) est ce qu'on va voir."
+    },
+    {
+      "type": "translation",
+      "question": "Je lis un livre.",
+      "correctAnswers": ["ほんをよみます", "hon wo yomimasu"],
+      "explanation": "ほん + を (objet direct) + よみます."
+    },
+    {
+      "type": "translation",
+      "question": "Elle regarde un film.",
+      "correctAnswers": ["えいがをみます", "eiga wo mimasu"],
+      "explanation": "えいが + を (objet direct) + みます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu écris une lettre.",
+      "correctAnswers": ["てがみをかきます", "tegami wo kakimasu"],
+      "explanation": "てがみ + を (objet direct) + かきます."
+    },
+    {
+      "type": "translation",
+      "question": "Je fais les devoirs.",
+      "correctAnswers": ["しゅくだいをします", "shukudai wo shimasu"],
+      "explanation": "しゅくだい + を (objet direct) + します."
+    },
+    {
+      "type": "translation",
+      "question": "Tu nettoies la chambre.",
+      "correctAnswers": ["へやをそうじします", "heya wo soji shimasu"],
+      "explanation": "へや + を (objet direct) + そうじします."
+    },
+    {
+      "type": "translation",
+      "question": "Il boit de l'eau.",
+      "correctAnswers": ["みずをのみます", "mizu wo nomimasu"],
+      "explanation": "みず + を (objet direct) + のみます."
+    },
+    {
+      "type": "translation",
+      "question": "Elle mange du pain.",
+      "correctAnswers": ["パンをたべます", "pan wo tabemasu"],
+      "explanation": "パン + を (objet direct) + たべます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu prends une photo.",
+      "correctAnswers": ["しゃしんをとります", "shashin wo torimasu"],
+      "explanation": "しゃしん + を (objet direct) + とります."
+    },
+    {
+      "type": "translation",
+      "question": "Je prépare un plat.",
+      "correctAnswers": ["りょうりをつくります", "ryouri wo tsukurimasu"],
+      "explanation": "りょうり + を (objet direct) + つくります."
+    },
+    {
+      "type": "translation",
+      "question": "Il écoute de la musique.",
+      "correctAnswers": ["おんがくをききます", "ongaku wo kikimasu"],
+      "explanation": "おんがく + を (objet direct) + ききます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu étudies le japonais.",
+      "correctAnswers": ["にほんごをべんきょうします", "nihongo wo benkyou shimasu"],
+      "explanation": "にほんご + を (objet direct) + べんきょうします."
+    },
+    {
+      "type": "translation",
+      "question": "Je prends un train.",
+      "correctAnswers": ["でんしゃをのります", "densha wo norimasu"],
+      "explanation": "でんしゃ + を (objet direct) + のります."
+    },
+    {
+      "type": "translation",
+      "question": "Elle quitte la maison.",
+      "correctAnswers": ["いえをでます", "ie wo demasu"],
+      "explanation": "いえ + を (objet direct) + でます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu conduis une voiture.",
+      "correctAnswers": ["くるまをうんてんします", "kuruma wo unten shimasu"],
+      "explanation": "くるま + を (objet direct) + うんてんします."
+    },
+    {
+      "type": "translation",
+      "question": "Il regarde le ciel.",
+      "correctAnswers": ["そらをみます", "sora wo mimasu"],
+      "explanation": "そら + を (objet direct) + みます."
+    },
+    {
+      "type": "translation",
+      "question": "Je fais une promenade.",
+      "correctAnswers": ["さんぽをします", "sanpo wo shimasu"],
+      "explanation": "さんぽ + を (objet direct) + します."
+    },
+    {
+      "type": "translation",
+      "question": "Tu coupes un oignon.",
+      "correctAnswers": ["たまねぎをきります", "tamanegi wo kirimasu"],
+      "explanation": "たまねぎ + を (objet direct) + きります."
+    },
+    {
+      "type": "translation",
+      "question": "Elle peint un tableau.",
+      "correctAnswers": ["えをかきます", "e wo kakimasu"],
+      "explanation": "え + を (objet direct) + かきます."
+    },
+    {
+      "type": "translation",
+      "question": "Je chante une chanson.",
+      "correctAnswers": ["うたをうたいます", "uta wo utaimasu"],
+      "explanation": "うた + を (objet direct) + うたいます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu danses une danse.",
+      "correctAnswers": ["ダンスをおどります", "dansu wo odorimasu"],
+      "explanation": "ダンス + を (objet direct) + おどります."
+    },
+    {
+      "type": "translation",
+      "question": "Il recherche un travail.",
+      "correctAnswers": ["しごとをさがします", "shigoto wo sagashimasu"],
+      "explanation": "しごと + を (objet direct) + さがします."
+    },
+    {
+      "type": "translation",
+      "question": "Elle utilise une fourchette.",
+      "correctAnswers": ["フォークをつかいます", "foku wo tsukaaimasu"],
+      "explanation": "フォーク + を (objet direct) + つかいます."
+    },
+    {
+      "type": "translation",
+      "question": "Je monte un escalier.",
+      "correctAnswers": ["かいだんをのぼります", "kaidan wo noborimasu"],
+      "explanation": "かいだん + を (objet direct) + のぼります."
+    },
+    {
+      "type": "translation",
+      "question": "Tu attrapes une balle.",
+      "correctAnswers": ["ボールをとります", "booru wo torimasu"],
+      "explanation": "ボール + を (objet direct) + とります."
+    },
+    {
+      "type": "translation",
+      "question": "Il ouvre une porte.",
+      "correctAnswers": ["ドアをあけます", "doa wo akemasu"],
+      "explanation": "ドア + を (objet direct) + あけます."
+    },
+    {
+      "type": "translation",
+      "question": "Elle ferme une fenêtre.",
+      "correctAnswers": ["まどをしめます", "mado wo shimemasu"],
+      "explanation": "まど + を (objet direct) + しめます."
+    },
+    {
+      "type": "translation",
+      "question": "Je rappelle un ami.",
+      "correctAnswers": ["ともだちをよびます", "tomodachi wo yobimasu"],
+      "explanation": "ともだち + を (objet direct) + よびます."
+    },
+    {
+      "type": "translation",
+      "question": "Tu aimes la couleur blanche.",
+      "correctAnswers": ["しろいろをすきです", "shiro iro wo sukidesu"],
+      "explanation": "色 + を (objet direct) : on utilise を même pour les objets d'affection."
+    }
+  ]
+}
