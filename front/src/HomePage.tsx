@@ -5,13 +5,16 @@ export default function HomePage() {
     <div className="container">
       <h1>Bienvenue</h1>
       <div className="summary">
-        <h2>Sommaire</h2>
+        <h2>Synopsis</h2>
         <ul>
           <li>
             <Link to="/revision">Révision de nombres</Link>
           </li>
           <li>
             <Link to="/hour">Révision d&apos;heures</Link>
+          </li>
+          <li>
+            <Link to="/date">Révision de dates</Link>
           </li>
         </ul>
       </div>

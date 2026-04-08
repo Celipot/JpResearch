@@ -89,7 +89,7 @@ describe('HourRevisionPage', () => {
 
     // Then
     await waitFor(() => {
-      expect(screen.getByText('4h04')).toBeInTheDocument();
+      expect(screen.getByText('4時04分')).toBeInTheDocument();
     });
     expect(screen.getByLabelText(/Écrivez en hiragana ou romaji/i)).toBeInTheDocument();
   });
@@ -173,7 +173,7 @@ describe('HourRevisionPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle heure/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('12h30')).toBeInTheDocument();
+      expect(screen.getByText('12時30分')).toBeInTheDocument();
     });
 
     // When
@@ -204,7 +204,7 @@ describe('HourRevisionPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle heure/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('12h30')).toBeInTheDocument();
+      expect(screen.getByText('12時30分')).toBeInTheDocument();
     });
 
     // When
@@ -235,7 +235,7 @@ describe('HourRevisionPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle heure/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('12h30')).toBeInTheDocument();
+      expect(screen.getByText('12時30分')).toBeInTheDocument();
     });
 
     // When
@@ -266,7 +266,7 @@ describe('HourRevisionPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle heure/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('12h30')).toBeInTheDocument();
+      expect(screen.getByText('12時30分')).toBeInTheDocument();
     });
 
     // When
@@ -297,7 +297,7 @@ describe('HourRevisionPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle heure/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('4h04')).toBeInTheDocument();
+      expect(screen.getByText('4時04分')).toBeInTheDocument();
     });
 
     // When

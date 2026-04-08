@@ -6,19 +6,51 @@ interface Pronunciation {
   isStandard: boolean;
 }
 
-interface HourResult {
-  hour: number;
-  minute: number;
+interface RandomResult {
+  year: number;
+  month: number;
+  day: number;
   hiragana: string;
   romaji: string;
+  japaneseFormat: string;
   allPronunciations: Pronunciation[];
 }
 
 type Mode = 'jp-to-fr' | 'fr-to-jp';
 
-export default function HourRevisionPage() {
+const MONTHS = [
+  'janvier',
+  'février',
+  'mars',
+  'avril',
+  'mai',
+  'juin',
+  'juillet',
+  'août',
+  'septembre',
+  'octobre',
+  'novembre',
+  'décembre',
+];
+
+const MONTHS_SHORT = [
+  'jan',
+  'fév',
+  'mars',
+  'avr',
+  'mai',
+  'juin',
+  'juil',
+  'août',
+  'sept',
+  'oct',
+  'nov',
+  'déc',
+];
+
+export default function DateRevisionPage() {
   const [mode, setMode] = useState<Mode>('jp-to-fr');
-  const [result, setResult] = useState<HourResult | null>(null);
+  const [result, setResult] = useState<RandomResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
@@ -33,14 +65,14 @@ export default function HourRevisionPage() {
     speechSynthesis.speak(utterance);
   }, []);
 
-  const fetchHour = async () => {
+  const fetchDate = async () => {
     setLoading(true);
     setFeedback(null);
     setUserAnswer('');
     setSpokenHiragana(null);
     setShowPronunciation(false);
     try {
-      const res = await fetch('/api/random-hour');
+      const res = await fetch('/api/random-date');
       const data = await res.json();
       setResult(data);
 
@@ -72,10 +104,6 @@ export default function HourRevisionPage() {
       .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
   };
 
-  const formatTime = (hour: number, minute: number): string => {
-    return `${hour}時${minute < 10 ? '0' : ''}${minute}分`;
-  };
-
   const checkAnswer = () => {
     if (!result || !userAnswer.trim()) return;
 
@@ -87,10 +115,22 @@ export default function HourRevisionPage() {
       ]);
       setFeedback(validAnswers.includes(normalizedUserAnswer) ? 'correct' : 'incorrect');
     } else {
-      const userTime = userAnswer.trim().toLowerCase().replace(/\s+/g, '');
-      const kanjiFormat = formatTime(result.hour, result.minute).toLowerCase();
-      const hFormat = `${result.hour}h${result.minute < 10 ? '0' : ''}${result.minute}`;
-      setFeedback(userTime === kanjiFormat || userTime === hFormat ? 'correct' : 'incorrect');
+      const answer = userAnswer.trim().toLowerCase();
+      const day = result.day;
+      const month = result.month;
+      const year = result.year;
+
+      const validFormats = [
+        `${day} ${MONTHS[month - 1]} ${year}`,
+        `${day} ${MONTHS_SHORT[month - 1]} ${year}`,
+        `${day}/${month}/${year}`,
+        `${day}-${month}-${year}`,
+        `${day}.${month}.${year}`,
+        `${day} ${MONTHS[month - 1]}`,
+        `${day} ${MONTHS_SHORT[month - 1]}`,
+      ];
+
+      setFeedback(validFormats.some((f) => answer === f.toLowerCase()) ? 'correct' : 'incorrect');
     }
   };
 
@@ -101,7 +141,7 @@ export default function HourRevisionPage() {
 
   return (
     <div className="container">
-      <h1>Révision d&apos;heures</h1>
+      <h1>Révision de Dates</h1>
 
       <div className="mode-selector">
         <button
@@ -126,8 +166,8 @@ export default function HourRevisionPage() {
         </button>
       </div>
 
-      <button onClick={fetchHour} disabled={loading}>
-        {loading ? 'Chargement...' : 'Nouvelle heure'}
+      <button onClick={fetchDate} disabled={loading}>
+        {loading ? 'Chargement...' : 'Nouvelle date'}
       </button>
 
       {result !== null && (
@@ -140,7 +180,7 @@ export default function HourRevisionPage() {
                 </button>
               </div>
               <div className="answer-section">
-                <label htmlFor="answer">Quelle heure est-ce ? (format: XhYY)</label>
+                <label htmlFor="answer">Quelle date est-ce ? (ex: 16 février 2024)</label>
                 <input
                   id="answer"
                   type="text"
@@ -154,7 +194,7 @@ export default function HourRevisionPage() {
                       checkAnswer();
                     }
                   }}
-                  placeholder="Ex: 12h30"
+                  placeholder="Ex: 16 février 2024"
                 />
                 <button className="check-btn" onClick={checkAnswer} disabled={!userAnswer.trim()}>
                   Vérifier
@@ -163,7 +203,7 @@ export default function HourRevisionPage() {
             </>
           ) : (
             <>
-              <p className="number">{formatTime(result.hour, result.minute)}</p>
+              <p className="number">{result.japaneseFormat}</p>
               <div className="answer-section">
                 <label htmlFor="answer">Écrivez en hiragana ou romaji :</label>
                 <input
@@ -179,7 +219,7 @@ export default function HourRevisionPage() {
                       checkAnswer();
                     }
                   }}
-                  placeholder="Ex: じゅうにじさんじゅっぷん / juunijisanjuppun"
+                  placeholder="Ex: にせんにじゅうよんねんろくがつつはつか"
                 />
                 <button className="check-btn" onClick={checkAnswer} disabled={!userAnswer.trim()}>
                   Vérifier
@@ -192,7 +232,10 @@ export default function HourRevisionPage() {
             <div className="feedback correct">
               ✓ Correct !
               {mode === 'jp-to-fr' && (
-                <> C&apos;était bien {formatTime(result.hour, result.minute)}.</>
+                <>
+                  {' '}
+                  C'était bien {result.day} {MONTHS[result.month - 1]} {result.year}.
+                </>
               )}
             </div>
           )}
@@ -201,7 +244,10 @@ export default function HourRevisionPage() {
             <div className="feedback incorrect">
               ✗ Incorrect.
               {mode === 'jp-to-fr' ? (
-                <> La réponse était {formatTime(result.hour, result.minute)}.</>
+                <>
+                  {' '}
+                  La réponse était {result.day} {MONTHS[result.month - 1]} {result.year}.
+                </>
               ) : (
                 <> La réponse était : {getCorrectAnswers()}.</>
               )}

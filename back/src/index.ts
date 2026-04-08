@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { getRandom } from './controllers/randomController';
 import { getRandomHour } from './controllers/hourController';
+import { getRandomDate } from './controllers/dateController';
 
 const app = express();
 export default app;
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.get('/api/random', getRandom);
 app.get('/api/random-hour', getRandomHour);
+app.get('/api/random-date', getRandomDate);
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
