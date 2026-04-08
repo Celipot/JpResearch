@@ -16,15 +16,32 @@ export const DIGIT_PRONUNCIATIONS: PronunciationVariant[] = [
   { standardHiragana: 'いち', standardRomaji: 'ichi' },
   { standardHiragana: 'に', standardRomaji: 'ni' },
   { standardHiragana: 'さん', standardRomaji: 'san' },
-  { standardHiragana: 'よん', standardRomaji: 'yon', alternativeHiragana: 'し', alternativeRomaji: 'shi' },
+  {
+    standardHiragana: 'よん',
+    standardRomaji: 'yon',
+    alternativeHiragana: 'し',
+    alternativeRomaji: 'shi',
+  },
   { standardHiragana: 'ご', standardRomaji: 'go' },
   { standardHiragana: 'ろく', standardRomaji: 'roku' },
-  { standardHiragana: 'なな', standardRomaji: 'nana', alternativeHiragana: 'しち', alternativeRomaji: 'shichi' },
+  {
+    standardHiragana: 'なな',
+    standardRomaji: 'nana',
+    alternativeHiragana: 'しち',
+    alternativeRomaji: 'shichi',
+  },
   { standardHiragana: 'はち', standardRomaji: 'hachi' },
-  { standardHiragana: 'きゅう', standardRomaji: 'kyū', alternativeHiragana: 'く', alternativeRomaji: 'ku' },
+  {
+    standardHiragana: 'きゅう',
+    standardRomaji: 'kyū',
+    alternativeHiragana: 'く',
+    alternativeRomaji: 'ku',
+  },
 ];
 
-export function getDigitVariants(digit: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+export function getDigitVariants(
+  digit: number
+): { hiragana: string; romaji: string; isStandard: boolean }[] {
   const variant = DIGIT_PRONUNCIATIONS[digit];
   if (!variant) return [];
 
@@ -45,13 +62,16 @@ export function getDigitVariants(digit: number): { hiragana: string; romaji: str
 
 export function cartesianProduct<T>(arrays: T[][]): T[][] {
   if (arrays.length === 0) return [[]];
-  return arrays.reduce<T[][]>((acc, arr) => {
-    const result: T[][] = [];
-    for (const a of acc) {
-      for (const b of arr) {
-        result.push([...a, b]);
+  return arrays.reduce<T[][]>(
+    (acc, arr) => {
+      const result: T[][] = [];
+      for (const a of acc) {
+        for (const b of arr) {
+          result.push([...a, b]);
+        }
       }
-    }
-    return result;
-  }, [[]]);
+      return result;
+    },
+    [[]]
+  );
 }

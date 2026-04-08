@@ -10,22 +10,52 @@ const HOUR_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
   1: { standardHiragana: 'いちじ', standardRomaji: 'ichiji' },
   2: { standardHiragana: 'にじ', standardRomaji: 'niji' },
   3: { standardHiragana: 'さんじ', standardRomaji: 'sanji' },
-  4: { standardHiragana: 'よじ', standardRomaji: 'yoji', alternativeHiragana: 'しじ', alternativeRomaji: 'shiji' },
+  4: {
+    standardHiragana: 'よじ',
+    standardRomaji: 'yoji',
+    alternativeHiragana: 'しじ',
+    alternativeRomaji: 'shiji',
+  },
   5: { standardHiragana: 'ごじ', standardRomaji: 'goji' },
   6: { standardHiragana: 'ろくじ', standardRomaji: 'rokuji' },
-  7: { standardHiragana: 'しちじ', standardRomaji: 'shichiji', alternativeHiragana: 'ななじ', alternativeRomaji: 'nanaji' },
+  7: {
+    standardHiragana: 'しちじ',
+    standardRomaji: 'shichiji',
+    alternativeHiragana: 'ななじ',
+    alternativeRomaji: 'nanaji',
+  },
   8: { standardHiragana: 'はちじ', standardRomaji: 'hachiji' },
-  9: { standardHiragana: 'きゅうじ', standardRomaji: 'kyūji', alternativeHiragana: 'くじ', alternativeRomaji: 'kuji' },
+  9: {
+    standardHiragana: 'きゅうじ',
+    standardRomaji: 'kyūji',
+    alternativeHiragana: 'くじ',
+    alternativeRomaji: 'kuji',
+  },
   10: { standardHiragana: 'じゅうじ', standardRomaji: 'jūji' },
   11: { standardHiragana: 'じゅういちじ', standardRomaji: 'jūichiji' },
   12: { standardHiragana: 'じゅうにじ', standardRomaji: 'jūniji' },
   13: { standardHiragana: 'じゅうさんじ', standardRomaji: 'jūsanji' },
-  14: { standardHiragana: 'じゅうよじ', standardRomaji: 'jūyoji', alternativeHiragana: 'じゅうしじ', alternativeRomaji: 'jūshiji' },
+  14: {
+    standardHiragana: 'じゅうよじ',
+    standardRomaji: 'jūyoji',
+    alternativeHiragana: 'じゅうしじ',
+    alternativeRomaji: 'jūshiji',
+  },
   15: { standardHiragana: 'じゅうごじ', standardRomaji: 'jūgoji' },
   16: { standardHiragana: 'じゅうろくじ', standardRomaji: 'jūrokuji' },
-  17: { standardHiragana: 'じゅうしちじ', standardRomaji: 'jūshichiji', alternativeHiragana: 'じゅうななじ', alternativeRomaji: 'jūnanaji' },
+  17: {
+    standardHiragana: 'じゅうしちじ',
+    standardRomaji: 'jūshichiji',
+    alternativeHiragana: 'じゅうななじ',
+    alternativeRomaji: 'jūnanaji',
+  },
   18: { standardHiragana: 'じゅうはちじ', standardRomaji: 'jūhachiji' },
-  19: { standardHiragana: 'じゅうきゅうじ', standardRomaji: 'jūkyūji', alternativeHiragana: 'じゅうくじ', alternativeRomaji: 'jūkuji' },
+  19: {
+    standardHiragana: 'じゅうきゅうじ',
+    standardRomaji: 'jūkyūji',
+    alternativeHiragana: 'じゅうくじ',
+    alternativeRomaji: 'jūkuji',
+  },
   20: { standardHiragana: 'にじゅうじ', standardRomaji: 'nijūji' },
   21: { standardHiragana: 'にじゅういちじ', standardRomaji: 'nijūichiji' },
   22: { standardHiragana: 'にじゅうにじ', standardRomaji: 'nijūniji' },
@@ -37,12 +67,27 @@ const MINUTE_SINGLE_DIGIT: PronunciationVariant[] = [
   { standardHiragana: 'いっぷん', standardRomaji: 'ippun' },
   { standardHiragana: 'にふん', standardRomaji: 'nifun' },
   { standardHiragana: 'さんぷん', standardRomaji: 'sanpun' },
-  { standardHiragana: 'よんぷん', standardRomaji: 'yonpun', alternativeHiragana: 'しぷん', alternativeRomaji: 'shipun' },
+  {
+    standardHiragana: 'よんぷん',
+    standardRomaji: 'yonpun',
+    alternativeHiragana: 'しぷん',
+    alternativeRomaji: 'shipun',
+  },
   { standardHiragana: 'ごふん', standardRomaji: 'gofun' },
   { standardHiragana: 'ろっぷん', standardRomaji: 'roppun' },
-  { standardHiragana: 'ななふん', standardRomaji: 'nanafun', alternativeHiragana: 'しちふん', alternativeRomaji: 'shichifun' },
+  {
+    standardHiragana: 'ななふん',
+    standardRomaji: 'nanafun',
+    alternativeHiragana: 'しちふん',
+    alternativeRomaji: 'shichifun',
+  },
   { standardHiragana: 'はっぷん', standardRomaji: 'happun' },
-  { standardHiragana: 'きゅうふん', standardRomaji: 'kyūfun', alternativeHiragana: 'くふん', alternativeRomaji: 'kufun' },
+  {
+    standardHiragana: 'きゅうふん',
+    standardRomaji: 'kyūfun',
+    alternativeHiragana: 'くふん',
+    alternativeRomaji: 'kufun',
+  },
 ];
 
 const MINUTE_TEN_PREFIX: PronunciationVariant[] = [
@@ -87,9 +132,12 @@ export class Hour {
     return new Hour(randomHour, randomMinute);
   }
 
-  private buildAllPronunciations(hour: number, minute: number): { hiragana: string; romaji: string; all: Pronunciation[] } {
+  private buildAllPronunciations(
+    hour: number,
+    minute: number
+  ): { hiragana: string; romaji: string; all: Pronunciation[] } {
     const allCombinations = this.buildAllPronunciationsCombinations(hour, minute);
-    const standardPronunciation = allCombinations.find(p => p.isStandard) || allCombinations[0];
+    const standardPronunciation = allCombinations.find((p) => p.isStandard) || allCombinations[0];
 
     return {
       hiragana: standardPronunciation.hiragana,
@@ -105,10 +153,10 @@ export class Hour {
     const allVariants = [hourVariants, minuteVariants];
     const combinations = cartesianProduct(allVariants);
 
-    return combinations.map(variants => {
-      const hiragana = variants.map(v => v.hiragana).join('');
-      const romaji = variants.map(v => v.romaji).join('');
-      const isStandard = variants.every(v => v.isStandard);
+    return combinations.map((variants) => {
+      const hiragana = variants.map((v) => v.hiragana).join('');
+      const romaji = variants.map((v) => v.romaji).join('');
+      const isStandard = variants.every((v) => v.isStandard);
       return { hiragana, romaji, isStandard };
     });
   }
@@ -116,7 +164,11 @@ export class Hour {
   private getHourVariants(hour: number): PronunciationPart[] {
     const hourVariant = HOUR_PRONUNCIATIONS[hour];
     const variants: PronunciationPart[] = [
-      { hiragana: hourVariant.standardHiragana, romaji: hourVariant.standardRomaji, isStandard: true },
+      {
+        hiragana: hourVariant.standardHiragana,
+        romaji: hourVariant.standardRomaji,
+        isStandard: true,
+      },
     ];
     if (hourVariant.alternativeHiragana && hourVariant.alternativeRomaji) {
       variants.push({
@@ -134,7 +186,13 @@ export class Hour {
     }
 
     if (minute === 10) {
-      return [{ hiragana: MINUTE_TENS_SUFFIX.standardHiragana, romaji: MINUTE_TENS_SUFFIX.standardRomaji, isStandard: true }];
+      return [
+        {
+          hiragana: MINUTE_TENS_SUFFIX.standardHiragana,
+          romaji: MINUTE_TENS_SUFFIX.standardRomaji,
+          isStandard: true,
+        },
+      ];
     }
 
     const tensDigit = Math.floor(minute / 10);
@@ -142,7 +200,7 @@ export class Hour {
 
     if (unitDigit === 0) {
       const digitVariants = this.getDigitVariants(tensDigit);
-      return digitVariants.map(v => ({
+      return digitVariants.map((v) => ({
         hiragana: v.hiragana + MINUTE_TENS_SUFFIX.standardHiragana,
         romaji: v.romaji + MINUTE_TENS_SUFFIX.standardRomaji,
         isStandard: v.isStandard,

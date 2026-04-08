@@ -23,9 +23,7 @@ const mockSimpleNumberResponse = {
   number: 10,
   hiragana: 'じゅう',
   romaji: 'jū',
-  allPronunciations: [
-    { hiragana: 'じゅう', romaji: 'jū', isStandard: true },
-  ],
+  allPronunciations: [{ hiragana: 'じゅう', romaji: 'jū', isStandard: true }],
 };
 
 describe('NumberRevisionPage', () => {

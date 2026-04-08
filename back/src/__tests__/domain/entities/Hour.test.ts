@@ -153,7 +153,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(2);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よじ');
       expect(hiraganas).toContain('しじ');
     });
@@ -167,7 +167,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(2);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('しちじ');
       expect(hiraganas).toContain('ななじ');
     });
@@ -181,7 +181,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(2);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('きゅうじ');
       expect(hiraganas).toContain('くじ');
     });
@@ -195,7 +195,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よじよんぷん');
       expect(hiraganas).toContain('よじしぷん');
       expect(hiraganas).toContain('しじよんぷん');
@@ -211,7 +211,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('しちじななふん');
       expect(hiraganas).toContain('しちじしちふん');
       expect(hiraganas).toContain('ななじななふん');
@@ -227,7 +227,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('きゅうじきゅうふん');
       expect(hiraganas).toContain('きゅうじくふん');
       expect(hiraganas).toContain('くじきゅうふん');
@@ -243,7 +243,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よじよんじゅっぷん');
       expect(hiraganas).toContain('よじしじゅっぷん');
       expect(hiraganas).toContain('しじよんじゅっぷん');
@@ -259,7 +259,7 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      const hiraganas = pronunciations.map(p => p.hiragana);
+      const hiraganas = pronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よじよんじゅうよんぷん');
       expect(hiraganas).toContain('しじよんじゅうしぷん');
     });
@@ -273,8 +273,8 @@ describe('Hour', () => {
 
       // Then
       expect(pronunciations).toHaveLength(4);
-      expect(pronunciations.filter(p => p.isStandard)).toHaveLength(1);
-      expect(pronunciations.filter(p => !p.isStandard)).toHaveLength(3);
+      expect(pronunciations.filter((p) => p.isStandard)).toHaveLength(1);
+      expect(pronunciations.filter((p) => !p.isStandard)).toHaveLength(3);
     });
   });
 });

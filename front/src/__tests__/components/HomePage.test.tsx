@@ -37,7 +37,10 @@ describe('HomePage', () => {
     );
 
     // Then
-    expect(screen.getByRole('link', { name: /Révision de nombres/i })).toHaveAttribute('href', '/revision');
+    expect(screen.getByRole('link', { name: /Révision de nombres/i })).toHaveAttribute(
+      'href',
+      '/revision'
+    );
   });
 
   it('shows a link to the hour revision page', () => {
@@ -49,6 +52,9 @@ describe('HomePage', () => {
     );
 
     // Then
-    expect(screen.getByRole('link', { name: /Révision d'heures/i })).toHaveAttribute('href', '/hour');
+    expect(screen.getByRole('link', { name: /Révision d'heures/i })).toHaveAttribute(
+      'href',
+      '/hour'
+    );
   });
 });

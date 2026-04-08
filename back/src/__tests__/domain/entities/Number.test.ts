@@ -209,8 +209,8 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(2);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
-      const romajis = number.allPronunciations.map(p => p.romaji);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
+      const romajis = number.allPronunciations.map((p) => p.romaji);
       expect(hiraganas).toContain('よん');
       expect(hiraganas).toContain('し');
       expect(romajis).toContain('yon');
@@ -226,8 +226,8 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(2);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
-      const romajis = number.allPronunciations.map(p => p.romaji);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
+      const romajis = number.allPronunciations.map((p) => p.romaji);
       expect(hiraganas).toContain('なな');
       expect(hiraganas).toContain('しち');
       expect(romajis).toContain('nana');
@@ -243,8 +243,8 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(2);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
-      const romajis = number.allPronunciations.map(p => p.romaji);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
+      const romajis = number.allPronunciations.map((p) => p.romaji);
       expect(hiraganas).toContain('きゅう');
       expect(hiraganas).toContain('く');
       expect(romajis).toContain('kyū');
@@ -260,7 +260,7 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(4);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よんじゅうよん');
       expect(hiraganas).toContain('よんじゅうし');
       expect(hiraganas).toContain('しじゅうよん');
@@ -276,7 +276,7 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(4);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よんじゅうなな');
       expect(hiraganas).toContain('よんじゅうしち');
       expect(hiraganas).toContain('しじゅうなな');
@@ -292,7 +292,7 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(8);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('よんひゃくななじゅうよん');
       expect(hiraganas).toContain('よんひゃくななじゅうし');
       expect(hiraganas).toContain('しひゃくななじゅうよん');
@@ -308,7 +308,7 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(16);
-      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const hiraganas = number.allPronunciations.map((p) => p.hiragana);
       expect(hiraganas).toContain('きゅうせんきゅうひゃくきゅうじゅうきゅう');
       expect(hiraganas).toContain('きゅうせんきゅうひゃくきゅうじゅうく');
       expect(hiraganas).toContain('くせんくひゃくくじゅうきゅう');
@@ -324,8 +324,8 @@ describe('Number', () => {
 
       // Then
       expect(number.allPronunciations).toHaveLength(4);
-      expect(number.allPronunciations.filter(p => p.isStandard)).toHaveLength(1);
-      expect(number.allPronunciations.filter(p => !p.isStandard)).toHaveLength(3);
+      expect(number.allPronunciations.filter((p) => p.isStandard)).toHaveLength(1);
+      expect(number.allPronunciations.filter((p) => !p.isStandard)).toHaveLength(3);
     });
   });
 });

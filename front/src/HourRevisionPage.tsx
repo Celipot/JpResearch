@@ -64,7 +64,12 @@ export default function HourRevisionPage() {
   };
 
   const normalizeRomaji = (str: string): string => {
-    return str.toLowerCase().replace(/\s+/g, '').replace(/ou+/g, 'o').replace(/ū/g, 'uu').replace(/u+/g, (m) => m.length >= 2 ? 'uu' : m);
+    return str
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/ou+/g, 'o')
+      .replace(/ū/g, 'uu')
+      .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
   };
 
   const formatTime = (hour: number, minute: number): string => {
@@ -185,22 +190,29 @@ export default function HourRevisionPage() {
           {feedback === 'correct' && (
             <div className="feedback correct">
               ✓ Correct !
-              {mode === 'jp-to-fr' && <> C&apos;était bien {formatTime(result.hour, result.minute)}.</>}
+              {mode === 'jp-to-fr' && (
+                <> C&apos;était bien {formatTime(result.hour, result.minute)}.</>
+              )}
             </div>
           )}
 
           {feedback === 'incorrect' && (
             <div className="feedback incorrect">
               ✗ Incorrect.
-              {mode === 'jp-to-fr'
-                ? <> La réponse était {formatTime(result.hour, result.minute)}.</>
-                : <> La réponse était : {getCorrectAnswers()}.</>}
+              {mode === 'jp-to-fr' ? (
+                <> La réponse était {formatTime(result.hour, result.minute)}.</>
+              ) : (
+                <> La réponse était : {getCorrectAnswers()}.</>
+              )}
             </div>
           )}
 
           {feedback !== null && (
             <>
-              <button className="toggle-btn" onClick={() => setShowPronunciation(!showPronunciation)}>
+              <button
+                className="toggle-btn"
+                onClick={() => setShowPronunciation(!showPronunciation)}
+              >
                 {showPronunciation ? 'Cacher les prononciations' : 'Afficher les prononciations'}
               </button>
 
@@ -220,7 +232,10 @@ export default function HourRevisionPage() {
                   ))}
                   <span className="tooltip-wrapper">
                     <span className="tooltip-icon">?</span>
-                    <span className="tooltip-text">Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres de votre PC (Paramètres → Heure et langue → Japonais).</span>
+                    <span className="tooltip-text">
+                      Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres
+                      de votre PC (Paramètres → Heure et langue → Japonais).
+                    </span>
                   </span>
                 </div>
               )}

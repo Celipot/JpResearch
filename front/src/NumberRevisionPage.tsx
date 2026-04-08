@@ -63,7 +63,12 @@ export default function NumberRevisionPage() {
   };
 
   const normalizeRomaji = (str: string): string => {
-    return str.toLowerCase().replace(/\s+/g, '').replace(/ou+/g, 'o').replace(/ū/g, 'uu').replace(/u+/g, (m) => m.length >= 2 ? 'uu' : m);
+    return str
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/ou+/g, 'o')
+      .replace(/ū/g, 'uu')
+      .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
   };
 
   const checkAnswer = () => {
@@ -178,23 +183,27 @@ export default function NumberRevisionPage() {
 
           {feedback === 'correct' && (
             <div className="feedback correct">
-              ✓ Correct !
-              {mode === 'jp-to-fr' && <> C'était bien {result.number}.</>}
+              ✓ Correct !{mode === 'jp-to-fr' && <> C'était bien {result.number}.</>}
             </div>
           )}
 
           {feedback === 'incorrect' && (
             <div className="feedback incorrect">
               ✗ Incorrect.
-              {mode === 'jp-to-fr'
-                ? <> La réponse était {result.number}.</>
-                : <> La réponse était : {getCorrectAnswers()}.</>}
+              {mode === 'jp-to-fr' ? (
+                <> La réponse était {result.number}.</>
+              ) : (
+                <> La réponse était : {getCorrectAnswers()}.</>
+              )}
             </div>
           )}
 
           {feedback !== null && (
             <>
-              <button className="toggle-btn" onClick={() => setShowPronunciation(!showPronunciation)}>
+              <button
+                className="toggle-btn"
+                onClick={() => setShowPronunciation(!showPronunciation)}
+              >
                 {showPronunciation ? 'Cacher les prononciations' : 'Afficher les prononciations'}
               </button>
 
@@ -214,7 +223,10 @@ export default function NumberRevisionPage() {
                   ))}
                   <span className="tooltip-wrapper">
                     <span className="tooltip-icon">?</span>
-                    <span className="tooltip-text">Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres de votre PC (Paramètres → Heure et langue → Japonais).</span>
+                    <span className="tooltip-text">
+                      Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres
+                      de votre PC (Paramètres → Heure et langue → Japonais).
+                    </span>
                   </span>
                 </div>
               )}
