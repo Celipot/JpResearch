@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import { getRandom } from './controllers/randomController';
 import { getRandomHour } from './controllers/hourController';
