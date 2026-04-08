@@ -1,9 +1,16 @@
 import { useState } from 'react';
 
-interface RandomResult {
-  nombre: number;
+interface Pronunciation {
   hiragana: string;
   romaji: string;
+  isStandard: boolean;
+}
+
+interface RandomResult {
+  number: number;
+  hiragana: string;
+  romaji: string;
+  allPronunciations: Pronunciation[];
 }
 
 export default function RandomNumberPage() {
@@ -25,9 +32,8 @@ export default function RandomNumberPage() {
     }
   };
 
-  const speak = () => {
-    if (!result) return;
-    const utterance = new SpeechSynthesisUtterance(result.hiragana);
+  const speak = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.8;
     utterance.lang = 'ja-JP';
     speechSynthesis.cancel();
@@ -42,7 +48,7 @@ export default function RandomNumberPage() {
       </button>
       {result !== null && (
         <div className="result">
-          <p className="number">{result.nombre}</p>
+          <p className="number">{result.number}</p>
           <button
             className="toggle-btn"
             onClick={() => setShowPronunciation(!showPronunciation)}
@@ -51,11 +57,18 @@ export default function RandomNumberPage() {
           </button>
           {showPronunciation && (
             <div className="pronunciation">
-              <p className="hiragana">{result.hiragana}</p>
-              <p className="romaji">{result.romaji}</p>
-              <button className="speak-btn" onClick={speak}>
-                Écouter la prononciation
-              </button>
+              {result.allPronunciations.map((p) => (
+                <div key={p.hiragana} className="pronunciation-card">
+                  <span className={p.isStandard ? 'badge-standard' : 'badge-alt'}>
+                    {p.isStandard ? 'Standard' : 'Alternative'}
+                  </span>
+                  <p className="hiragana">{p.hiragana}</p>
+                  <p className="romaji">{p.romaji}</p>
+                  <button className="speak-btn" onClick={() => speak(p.hiragana)}>
+                    Écouter
+                  </button>
+                </div>
+              ))}
               <span className="tooltip-wrapper">
                 <span className="tooltip-icon">?</span>
                 <span className="tooltip-text">Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres de votre PC (Paramètres → Heure et langue → Japonais).</span>

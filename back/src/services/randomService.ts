@@ -1,6 +1,6 @@
-import { Nombre } from '../domain/entities/Nombre';
+import { Number } from '../domain/entities/Number';
 
-export const generateRandomNumber = (): Nombre => {
+export const generateRandomNumber = (): Number => {
   const random = Math.floor(Math.random() * 10000) + 1;
-  return new Nombre(random);
+  return new Number(random);
 };

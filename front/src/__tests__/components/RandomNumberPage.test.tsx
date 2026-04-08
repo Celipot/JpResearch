@@ -23,7 +23,7 @@ describe('RandomNumberPage', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({ nombre: 42, hiragana: 'よんじゅうに', romaji: 'yonjūni' }),
+        json: () => Promise.resolve({ number: 42, hiragana: 'よんじゅうに', romaji: 'yonjūni', allPronunciations: [{ hiragana: 'よんじゅうに', romaji: 'yonjūni', isStandard: true }] }),
       })
     ) as unknown as typeof fetch;
 
@@ -44,7 +44,7 @@ describe('RandomNumberPage', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({ nombre: 42, hiragana: 'よんじゅうに', romaji: 'yonjūni' }),
+        json: () => Promise.resolve({ number: 42, hiragana: 'よんじゅうに', romaji: 'yonjūni', allPronunciations: [{ hiragana: 'よんじゅうに', romaji: 'yonjūni', isStandard: true }, { hiragana: 'しじゅうに', romaji: 'shijūni', isStandard: false }] }),
       })
     ) as unknown as typeof fetch;
 

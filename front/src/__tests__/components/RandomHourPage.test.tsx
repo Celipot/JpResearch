@@ -23,7 +23,7 @@ describe('RandomHourPage', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({ hour: 12, minute: 30, hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun' }),
+        json: () => Promise.resolve({ hour: 12, minute: 30, hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun', allPronunciations: [{ hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun', isStandard: true }] }),
       })
     ) as unknown as typeof fetch;
 
@@ -44,7 +44,7 @@ describe('RandomHourPage', () => {
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({ hour: 12, minute: 30, hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun' }),
+        json: () => Promise.resolve({ hour: 12, minute: 30, hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun', allPronunciations: [{ hiragana: 'じゅうにじさんじゅっぷん', romaji: 'jūnijisanjuppun', isStandard: true }] }),
       })
     ) as unknown as typeof fetch;
 

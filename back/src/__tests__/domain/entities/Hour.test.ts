@@ -95,6 +95,15 @@ describe('Hour', () => {
       expect(hour.romaji).toBe('sanjigofun');
     });
 
+    it('given 1h46, then returns correct hiragana and romaji', () => {
+      // Given
+      const hour = new Hour(1, 46);
+
+      // Then
+      expect(hour.hiragana).toBe('いちじよんじゅうろっぷん');
+      expect(hour.romaji).toBe('ichijiyonjūroppun');
+    });
+
     it('given a call to factoryRandom, then returns valid hiragana', () => {
       for (let i = 0; i < 50; i++) {
         // When

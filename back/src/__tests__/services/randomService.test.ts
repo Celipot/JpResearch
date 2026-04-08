@@ -1,14 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import { generateRandomNumber } from '../../services/randomService';
-import { Nombre } from '../../domain/entities/Nombre';
+import { Number } from '../../domain/entities/Number';
 
 describe('generateRandomNumber', () => {
-  it('given a call to generateRandomNumber, then returns a Nombre instance', () => {
+  it('given a call to generateRandomNumber, then returns a Number instance', () => {
     // When
     const result = generateRandomNumber();
 
     // Then
-    expect(result).toBeInstanceOf(Nombre);
+    expect(result).toBeInstanceOf(Number);
   });
 
   it('given multiple calls, then each result is between 1 and 10000', () => {
@@ -17,8 +17,8 @@ describe('generateRandomNumber', () => {
       const result = generateRandomNumber();
 
       // Then
-      expect(result.valeur).toBeGreaterThanOrEqual(1);
-      expect(result.valeur).toBeLessThanOrEqual(10000);
+      expect(result.value).toBeGreaterThanOrEqual(1);
+      expect(result.value).toBeLessThanOrEqual(10000);
     }
   });
 
@@ -39,7 +39,7 @@ describe('generateRandomNumber', () => {
 
     // When
     for (let i = 0; i < 50; i++) {
-      results.add(generateRandomNumber().valeur);
+      results.add(generateRandomNumber().value);
     }
 
     // Then

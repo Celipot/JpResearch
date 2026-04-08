@@ -200,3 +200,110 @@ button:disabled {
   color: #0056b3;
   text-decoration: underline;
 }
+
+.alternatives {
+  margin-top: 1.5rem;
+  text-align: left;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.alternatives h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.alternative-group {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.alternative-group:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.alt-digit {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.alternative-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.alternative-item .standard {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.alternative-item .alt {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.speak-btn-small {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+  transition: transform 0.2s;
+}
+
+.speak-btn-small:hover {
+  transform: scale(1.2);
+  background: none;
+}
+
+.pronunciation-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.badge-standard,
+.badge-alt {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.badge-standard {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-alt {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.pronunciation-card .hiragana {
+  font-size: 1.75rem;
+  color: #007bff;
+  margin-bottom: 0.25rem;
+}
+
+.pronunciation-card .romaji {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
