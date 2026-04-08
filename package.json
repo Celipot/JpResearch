@@ -1,0 +1,39 @@
+{
+  "name": "japanese-learner",
+  "private": true,
+  "scripts": {
+    "lint": "npm run lint:back && npm run lint:front",
+    "lint:fix": "npm run lint:back:fix && npm run lint:front:fix",
+    "lint:back": "npm --prefix back run lint",
+    "lint:front": "npm --prefix front run lint",
+    "lint:back:fix": "npm --prefix back run lint:fix",
+    "lint:front:fix": "npm --prefix front run lint:fix",
+    "format": "npm run format:back && npm run format:front",
+    "format:check": "npm run format:back:check && npm run format:front:check",
+    "format:back": "npm --prefix back run format",
+    "format:front": "npm --prefix front run format",
+    "format:back:check": "npm --prefix back run format:check",
+    "format:front:check": "npm --prefix front run format:check",
+    "test": "npm run test:back && npm run test:front",
+    "test:back": "npm --prefix back run test",
+    "test:front": "npm --prefix front run test",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3"
+  },
+  "lint-staged": {
+    "back/src/**/*.{ts,js}": [
+      "npm run lint:back:fix",
+      "npm run format:back"
+    ],
+    "front/src/**/*.{ts,tsx}": [
+      "npm run lint:front:fix",
+      "npm run format:front"
+    ],
+    "*.{json,css}": [
+      "npm run format"
+    ]
+  }
+}
