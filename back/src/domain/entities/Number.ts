@@ -1,10 +1,8 @@
 import {
   Pronunciation,
   PronunciationVariant,
-  selectVariant,
-  DIGIT_PRONUNCIATIONS,
-  ALTERNATIVE_DIGITS,
-  buildAllPronunciations,
+  getDigitVariants,
+  cartesianProduct,
 } from '../shared/pronunciation';
 
 const THOUSANDS_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
@@ -50,23 +48,17 @@ export class Number {
   }
 
   private buildAllPronunciations(number: number): { hiragana: string; romaji: string; all: Pronunciation[] } {
-    const standardPronunciation = this.buildPronunciation(number, false);
-    const alternativePronunciation = this.containsAlternativeDigit(number)
-      ? this.buildPronunciation(number, true)
-      : null;
+    const allCombinations = this.buildAllPronunciationsCombinations(number);
+    const standardPronunciation = allCombinations.find(p => p.isStandard) || allCombinations[0];
 
     return {
       hiragana: standardPronunciation.hiragana,
       romaji: standardPronunciation.romaji,
-      all: buildAllPronunciations(standardPronunciation, alternativePronunciation),
+      all: allCombinations,
     };
   }
 
-  private containsAlternativeDigit(number: number): boolean {
-    return number.toString().split('').some(digit => ALTERNATIVE_DIGITS.includes(digit));
-  }
-
-  private buildPronunciation(number: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
+  private buildAllPronunciationsCombinations(number: number): Pronunciation[] {
     const thousandsCount = Math.floor(number / 1000);
     const remainderAfterThousands = number % 1000;
     const hundredsCount = Math.floor(remainderAfterThousands / 100);
@@ -74,74 +66,80 @@ export class Number {
     const tensCount = Math.floor(remainderAfterHundreds / 10);
     const unitsCount = remainderAfterHundreds % 10;
 
-    const thousandsPart = this.buildThousandsPart(thousandsCount, isUsingAlternative);
-    const hundredsPart = this.buildHundredsPart(hundredsCount, isUsingAlternative);
-    const tensPart = this.buildTensPart(tensCount, isUsingAlternative);
-    const unitsPart = this.buildUnitsPart(unitsCount, isUsingAlternative);
+    const thousandsVariants = this.getThousandsVariants(thousandsCount);
+    const hundredsVariants = this.getHundredsVariants(hundredsCount);
+    const tensVariants = this.getTensVariants(tensCount);
+    const unitsVariants = this.getUnitsVariants(unitsCount);
 
-    return {
-      hiragana: thousandsPart.hiragana + hundredsPart.hiragana + tensPart.hiragana + unitsPart.hiragana,
-      romaji: thousandsPart.romaji + hundredsPart.romaji + tensPart.romaji + unitsPart.romaji,
-    };
+    const allDigitVariants = [thousandsVariants, hundredsVariants, tensVariants, unitsVariants];
+    const combinations = cartesianProduct(allDigitVariants);
+
+    return combinations.map(variants => {
+      const hiragana = variants.map(v => v.hiragana).join('');
+      const romaji = variants.map(v => v.romaji).join('');
+      const isStandard = variants.every(v => v.isStandard);
+      return { hiragana, romaji, isStandard };
+    });
   }
 
-  private buildThousandsPart(thousandsCount: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    if (thousandsCount === 0) {
-      return { hiragana: '', romaji: '' };
+  private getThousandsVariants(count: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+    if (count === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
     }
 
-    const isIrregularPronunciation = THOUSANDS_PRONUNCIATIONS[thousandsCount] !== undefined;
-    if (isIrregularPronunciation) {
-      const irregularPronunciation = THOUSANDS_PRONUNCIATIONS[thousandsCount];
-      return { hiragana: irregularPronunciation.standardHiragana, romaji: irregularPronunciation.standardRomaji };
+    const isIrregular = THOUSANDS_PRONUNCIATIONS[count] !== undefined;
+    if (isIrregular) {
+      return [{ hiragana: THOUSANDS_PRONUNCIATIONS[count].standardHiragana, romaji: THOUSANDS_PRONUNCIATIONS[count].standardRomaji, isStandard: true }];
     }
 
-    const digitPronunciation = selectVariant(DIGIT_PRONUNCIATIONS[thousandsCount], isUsingAlternative);
-    return {
-      hiragana: digitPronunciation.hiragana + THOUSANDS_SUFFIX.standardHiragana,
-      romaji: digitPronunciation.romaji + THOUSANDS_SUFFIX.standardRomaji,
-    };
+    const digitVariants = getDigitVariants(count);
+    return digitVariants.map(v => ({
+      hiragana: v.hiragana + THOUSANDS_SUFFIX.standardHiragana,
+      romaji: v.romaji + THOUSANDS_SUFFIX.standardRomaji,
+      isStandard: v.isStandard,
+    }));
   }
 
-  private buildHundredsPart(hundredsCount: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    if (hundredsCount === 0) {
-      return { hiragana: '', romaji: '' };
+  private getHundredsVariants(count: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+    if (count === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
     }
 
-    const isIrregularPronunciation = HUNDREDS_PRONUNCIATIONS[hundredsCount] !== undefined;
-    if (isIrregularPronunciation) {
-      const irregularPronunciation = HUNDREDS_PRONUNCIATIONS[hundredsCount];
-      return { hiragana: irregularPronunciation.standardHiragana, romaji: irregularPronunciation.standardRomaji };
+    const isIrregular = HUNDREDS_PRONUNCIATIONS[count] !== undefined;
+    if (isIrregular) {
+      return [{ hiragana: HUNDREDS_PRONUNCIATIONS[count].standardHiragana, romaji: HUNDREDS_PRONUNCIATIONS[count].standardRomaji, isStandard: true }];
     }
 
-    const digitPronunciation = selectVariant(DIGIT_PRONUNCIATIONS[hundredsCount], isUsingAlternative);
-    return {
-      hiragana: digitPronunciation.hiragana + HUNDREDS_SUFFIX.standardHiragana,
-      romaji: digitPronunciation.romaji + HUNDREDS_SUFFIX.standardRomaji,
-    };
+    const digitVariants = getDigitVariants(count);
+    return digitVariants.map(v => ({
+      hiragana: v.hiragana + HUNDREDS_SUFFIX.standardHiragana,
+      romaji: v.romaji + HUNDREDS_SUFFIX.standardRomaji,
+      isStandard: v.isStandard,
+    }));
   }
 
-  private buildTensPart(tensCount: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    if (tensCount === 0) {
-      return { hiragana: '', romaji: '' };
+  private getTensVariants(count: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+    if (count === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
     }
 
-    if (tensCount === 1) {
-      return { hiragana: TENS_SUFFIX.standardHiragana, romaji: TENS_SUFFIX.standardRomaji };
+    if (count === 1) {
+      return [{ hiragana: TENS_SUFFIX.standardHiragana, romaji: TENS_SUFFIX.standardRomaji, isStandard: true }];
     }
 
-    const digitPronunciation = selectVariant(DIGIT_PRONUNCIATIONS[tensCount], isUsingAlternative);
-    return {
-      hiragana: digitPronunciation.hiragana + TENS_SUFFIX.standardHiragana,
-      romaji: digitPronunciation.romaji + TENS_SUFFIX.standardRomaji,
-    };
+    const digitVariants = getDigitVariants(count);
+    return digitVariants.map(v => ({
+      hiragana: v.hiragana + TENS_SUFFIX.standardHiragana,
+      romaji: v.romaji + TENS_SUFFIX.standardRomaji,
+      isStandard: v.isStandard,
+    }));
   }
 
-  private buildUnitsPart(unitsCount: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    if (unitsCount === 0) {
-      return { hiragana: '', romaji: '' };
+  private getUnitsVariants(count: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+    if (count === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
     }
 
-    return selectVariant(DIGIT_PRONUNCIATIONS[unitsCount], isUsingAlternative);
+    return getDigitVariants(count);
   }
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateRandomNumber } from '../../services/randomService';
+import { generateRandomNumber } from '../../services/numberService';
 import { Number } from '../../domain/entities/Number';
 
 describe('generateRandomNumber', () => {
@@ -33,7 +33,7 @@ describe('generateRandomNumber', () => {
     }
   });
 
-  it('given 50 calls, then produces different numbers', () => {
+  it('given 50 calls, then produces different values', () => {
     // Given
     const results = new Set<number>();
 

@@ -126,4 +126,155 @@ describe('Hour', () => {
       }
     });
   });
+
+  describe('allPronunciations', () => {
+    it('given an hour without alternative digits, then returns only one pronunciation', () => {
+      // Given
+      const hour = new Hour(5, 30);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(1);
+      expect(pronunciations[0]).toEqual({
+        hiragana: 'ごじさんじゅっぷん',
+        romaji: 'gojisanjuppun',
+        isStandard: true,
+      });
+    });
+
+    it('given 4h00, then returns all pronunciations (よじ and しじ)', () => {
+      // Given
+      const hour = new Hour(4, 0);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(2);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よじ');
+      expect(hiraganas).toContain('しじ');
+    });
+
+    it('given 7h00, then returns all pronunciations (しちじ and ななじ)', () => {
+      // Given
+      const hour = new Hour(7, 0);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(2);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('しちじ');
+      expect(hiraganas).toContain('ななじ');
+    });
+
+    it('given 9h00, then returns all pronunciations (きゅうじ and くじ)', () => {
+      // Given
+      const hour = new Hour(9, 0);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(2);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('きゅうじ');
+      expect(hiraganas).toContain('くじ');
+    });
+
+    it('given 4h04, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const hour = new Hour(4, 4);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よじよんぷん');
+      expect(hiraganas).toContain('よじしぷん');
+      expect(hiraganas).toContain('しじよんぷん');
+      expect(hiraganas).toContain('しじしぷん');
+    });
+
+    it('given 7h07, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const hour = new Hour(7, 7);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('しちじななふん');
+      expect(hiraganas).toContain('しちじしちふん');
+      expect(hiraganas).toContain('ななじななふん');
+      expect(hiraganas).toContain('ななじしちふん');
+    });
+
+    it('given 9h09, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const hour = new Hour(9, 9);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('きゅうじきゅうふん');
+      expect(hiraganas).toContain('きゅうじくふん');
+      expect(hiraganas).toContain('くじきゅうふん');
+      expect(hiraganas).toContain('くじくふん');
+    });
+
+    it('given 4h40, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const hour = new Hour(4, 40);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よじよんじゅっぷん');
+      expect(hiraganas).toContain('よじしじゅっぷん');
+      expect(hiraganas).toContain('しじよんじゅっぷん');
+      expect(hiraganas).toContain('しじしじゅっぷん');
+    });
+
+    it('given 4h44, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const hour = new Hour(4, 44);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      const hiraganas = pronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よじよんじゅうよんぷん');
+      expect(hiraganas).toContain('しじよんじゅうしぷん');
+    });
+
+    it('given an hour with alternative digits, then each pronunciation has correct isStandard flag', () => {
+      // Given
+      const hour = new Hour(4, 4);
+
+      // When
+      const pronunciations = hour.allPronunciations;
+
+      // Then
+      expect(pronunciations).toHaveLength(4);
+      expect(pronunciations.filter(p => p.isStandard)).toHaveLength(1);
+      expect(pronunciations.filter(p => !p.isStandard)).toHaveLength(3);
+    });
+  });
 });

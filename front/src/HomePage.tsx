@@ -8,10 +8,10 @@ export default function HomePage() {
         <h2>Sommaire</h2>
         <ul>
           <li>
-            <Link to="/random">Générateur de nombre aléatoire</Link>
+            <Link to="/revision">Révision de nombres</Link>
           </li>
           <li>
-            <Link to="/hour">Générateur d'heure aléatoire</Link>
+            <Link to="/hour">Révision d&apos;heures</Link>
           </li>
         </ul>
       </div>

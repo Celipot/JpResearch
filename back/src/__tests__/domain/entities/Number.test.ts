@@ -182,4 +182,150 @@ describe('Number', () => {
       expect(number.romaji).toBe('kyūsenkyūhyakukyūjūkyū');
     });
   });
+
+  describe('allPronunciations', () => {
+    it('given a number without alternative digits, then returns only one pronunciation', () => {
+      // Given
+      const value = 5;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(1);
+      expect(number.allPronunciations[0]).toEqual({
+        hiragana: 'ご',
+        romaji: 'go',
+        isStandard: true,
+      });
+    });
+
+    it('given 4, then returns all pronunciations (よん and し)', () => {
+      // Given
+      const value = 4;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(2);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const romajis = number.allPronunciations.map(p => p.romaji);
+      expect(hiraganas).toContain('よん');
+      expect(hiraganas).toContain('し');
+      expect(romajis).toContain('yon');
+      expect(romajis).toContain('shi');
+    });
+
+    it('given 7, then returns all pronunciations (なな and しち)', () => {
+      // Given
+      const value = 7;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(2);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const romajis = number.allPronunciations.map(p => p.romaji);
+      expect(hiraganas).toContain('なな');
+      expect(hiraganas).toContain('しち');
+      expect(romajis).toContain('nana');
+      expect(romajis).toContain('shichi');
+    });
+
+    it('given 9, then returns all pronunciations (きゅう and く)', () => {
+      // Given
+      const value = 9;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(2);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      const romajis = number.allPronunciations.map(p => p.romaji);
+      expect(hiraganas).toContain('きゅう');
+      expect(hiraganas).toContain('く');
+      expect(romajis).toContain('kyū');
+      expect(romajis).toContain('ku');
+    });
+
+    it('given 44, then returns all combinations (4×4=4 pronunciations)', () => {
+      // Given
+      const value = 44;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(4);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よんじゅうよん');
+      expect(hiraganas).toContain('よんじゅうし');
+      expect(hiraganas).toContain('しじゅうよん');
+      expect(hiraganas).toContain('しじゅうし');
+    });
+
+    it('given 47, then returns all combinations (2×2=4 pronunciations)', () => {
+      // Given
+      const value = 47;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(4);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よんじゅうなな');
+      expect(hiraganas).toContain('よんじゅうしち');
+      expect(hiraganas).toContain('しじゅうなな');
+      expect(hiraganas).toContain('しじゅうしち');
+    });
+
+    it('given 474, then returns all combinations (2×2×2=8 pronunciations)', () => {
+      // Given
+      const value = 474;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(8);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('よんひゃくななじゅうよん');
+      expect(hiraganas).toContain('よんひゃくななじゅうし');
+      expect(hiraganas).toContain('しひゃくななじゅうよん');
+      expect(hiraganas).toContain('しひゃくしちじゅうし');
+    });
+
+    it('given 9999, then returns all combinations (2^4=16 pronunciations)', () => {
+      // Given
+      const value = 9999;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(16);
+      const hiraganas = number.allPronunciations.map(p => p.hiragana);
+      expect(hiraganas).toContain('きゅうせんきゅうひゃくきゅうじゅうきゅう');
+      expect(hiraganas).toContain('きゅうせんきゅうひゃくきゅうじゅうく');
+      expect(hiraganas).toContain('くせんくひゃくくじゅうきゅう');
+      expect(hiraganas).toContain('くせんくひゃくくじゅうく');
+    });
+
+    it('given a number with alternative digits, then each pronunciation has correct isStandard flag', () => {
+      // Given
+      const value = 44;
+
+      // When
+      const number = new Number(value);
+
+      // Then
+      expect(number.allPronunciations).toHaveLength(4);
+      expect(number.allPronunciations.filter(p => p.isStandard)).toHaveLength(1);
+      expect(number.allPronunciations.filter(p => !p.isStandard)).toHaveLength(3);
+    });
+  });
 });

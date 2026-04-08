@@ -4,43 +4,51 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from '../../HomePage';
 
 describe('HomePage', () => {
-  it('given a render, then displays the welcome title', () => {
+  it('displays the welcome title', () => {
+    // Given
     render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>
     );
 
+    // Then
     expect(screen.getByRole('heading', { name: /Bienvenue/i })).toBeInTheDocument();
   });
 
-  it('given a render, then displays the summary section', () => {
+  it('displays the summary section', () => {
+    // Given
     render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>
     );
 
+    // Then
     expect(screen.getByRole('heading', { name: /Sommaire/i })).toBeInTheDocument();
   });
 
-  it('given a render, then shows a link to the random number generator', () => {
+  it('shows a link to the number revision page', () => {
+    // Given
     render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('link', { name: /Générateur de nombre aléatoire/i })).toHaveAttribute('href', '/random');
+    // Then
+    expect(screen.getByRole('link', { name: /Révision de nombres/i })).toHaveAttribute('href', '/revision');
   });
 
-  it('given a render, then shows a link to the random hour generator', () => {
+  it('shows a link to the hour revision page', () => {
+    // Given
     render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('link', { name: /Générateur d'heure aléatoire/i })).toHaveAttribute('href', '/hour');
+    // Then
+    expect(screen.getByRole('link', { name: /Révision d'heures/i })).toHaveAttribute('href', '/hour');
   });
 });

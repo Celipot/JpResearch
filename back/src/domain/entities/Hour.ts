@@ -1,10 +1,8 @@
 import {
   Pronunciation,
   PronunciationVariant,
-  selectVariant,
   DIGIT_PRONUNCIATIONS,
-  ALTERNATIVE_DIGITS,
-  buildAllPronunciations,
+  cartesianProduct,
 } from '../shared/pronunciation';
 
 const HOUR_PRONUNCIATIONS: Record<number, PronunciationVariant> = {
@@ -61,6 +59,12 @@ const MINUTE_TENS_SUFFIX: PronunciationVariant = {
   standardRomaji: 'juppun',
 };
 
+interface PronunciationPart {
+  hiragana: string;
+  romaji: string;
+  isStandard: boolean;
+}
+
 export class Hour {
   readonly hour: number;
   readonly minute: number;
@@ -84,65 +88,122 @@ export class Hour {
   }
 
   private buildAllPronunciations(hour: number, minute: number): { hiragana: string; romaji: string; all: Pronunciation[] } {
-    const standardPronunciation = this.buildPronunciation(hour, minute, false);
-    const alternativePronunciation = this.containsAlternativeDigit(hour, minute)
-      ? this.buildPronunciation(hour, minute, true)
-      : null;
+    const allCombinations = this.buildAllPronunciationsCombinations(hour, minute);
+    const standardPronunciation = allCombinations.find(p => p.isStandard) || allCombinations[0];
 
     return {
       hiragana: standardPronunciation.hiragana,
       romaji: standardPronunciation.romaji,
-      all: buildAllPronunciations(standardPronunciation, alternativePronunciation),
+      all: allCombinations,
     };
   }
 
-  private containsAlternativeDigit(hour: number, minute: number): boolean {
-    const hourDigits = hour.toString();
-    const minuteDigits = minute.toString().padStart(2, '0');
-    return [...hourDigits, ...minuteDigits].some(digit => ALTERNATIVE_DIGITS.includes(digit));
+  private buildAllPronunciationsCombinations(hour: number, minute: number): Pronunciation[] {
+    const hourVariants = this.getHourVariants(hour);
+    const minuteVariants = this.getMinuteVariants(minute);
+
+    const allVariants = [hourVariants, minuteVariants];
+    const combinations = cartesianProduct(allVariants);
+
+    return combinations.map(variants => {
+      const hiragana = variants.map(v => v.hiragana).join('');
+      const romaji = variants.map(v => v.romaji).join('');
+      const isStandard = variants.every(v => v.isStandard);
+      return { hiragana, romaji, isStandard };
+    });
   }
 
-  private buildPronunciation(hour: number, minute: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    const hourPronunciation = selectVariant(HOUR_PRONUNCIATIONS[hour], isUsingAlternative);
-
-    if (minute === 0) {
-      return hourPronunciation;
+  private getHourVariants(hour: number): PronunciationPart[] {
+    const hourVariant = HOUR_PRONUNCIATIONS[hour];
+    const variants: PronunciationPart[] = [
+      { hiragana: hourVariant.standardHiragana, romaji: hourVariant.standardRomaji, isStandard: true },
+    ];
+    if (hourVariant.alternativeHiragana && hourVariant.alternativeRomaji) {
+      variants.push({
+        hiragana: hourVariant.alternativeHiragana,
+        romaji: hourVariant.alternativeRomaji,
+        isStandard: false,
+      });
     }
-
-    const minutePronunciation = this.buildMinutePronunciation(minute, isUsingAlternative);
-
-    return {
-      hiragana: hourPronunciation.hiragana + minutePronunciation.hiragana,
-      romaji: hourPronunciation.romaji + minutePronunciation.romaji,
-    };
+    return variants;
   }
 
-  private buildMinutePronunciation(minute: number, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-    if (minute <= 9) {
-      return selectVariant(MINUTE_SINGLE_DIGIT[minute], isUsingAlternative);
+  private getMinuteVariants(minute: number): PronunciationPart[] {
+    if (minute === 0) {
+      return [{ hiragana: '', romaji: '', isStandard: true }];
     }
 
     if (minute === 10) {
-      return { hiragana: MINUTE_TENS_SUFFIX.standardHiragana, romaji: MINUTE_TENS_SUFFIX.standardRomaji };
+      return [{ hiragana: MINUTE_TENS_SUFFIX.standardHiragana, romaji: MINUTE_TENS_SUFFIX.standardRomaji, isStandard: true }];
     }
 
     const tensDigit = Math.floor(minute / 10);
     const unitDigit = minute % 10;
 
     if (unitDigit === 0) {
-      const digitPronunciation = selectVariant(DIGIT_PRONUNCIATIONS[tensDigit], isUsingAlternative);
-      return {
-        hiragana: digitPronunciation.hiragana + MINUTE_TENS_SUFFIX.standardHiragana,
-        romaji: digitPronunciation.romaji + MINUTE_TENS_SUFFIX.standardRomaji,
-      };
+      const digitVariants = this.getDigitVariants(tensDigit);
+      return digitVariants.map(v => ({
+        hiragana: v.hiragana + MINUTE_TENS_SUFFIX.standardHiragana,
+        romaji: v.romaji + MINUTE_TENS_SUFFIX.standardRomaji,
+        isStandard: v.isStandard,
+      }));
     }
 
-    const tensPronunciation = selectVariant(MINUTE_TEN_PREFIX[tensDigit], isUsingAlternative);
-    const unitPronunciation = selectVariant(MINUTE_SINGLE_DIGIT[unitDigit], isUsingAlternative);
+    const tensVariants = this.getMinuteTensPrefixVariants(tensDigit);
+    const unitVariants = this.getMinuteSingleDigitVariants(unitDigit);
 
-    return {
-      hiragana: tensPronunciation.hiragana + unitPronunciation.hiragana,
-      romaji: tensPronunciation.romaji + unitPronunciation.romaji,
-    };
+    const tensProduct = cartesianProduct([tensVariants, unitVariants]);
+    return tensProduct.map(([t, u]) => ({
+      hiragana: t.hiragana + u.hiragana,
+      romaji: t.romaji + u.romaji,
+      isStandard: t.isStandard && u.isStandard,
+    }));
+  }
+
+  private getDigitVariants(digit: number): PronunciationPart[] {
+    const variant = DIGIT_PRONUNCIATIONS[digit];
+    if (!variant) return [{ hiragana: '', romaji: '', isStandard: true }];
+
+    const variants: PronunciationPart[] = [
+      { hiragana: variant.standardHiragana, romaji: variant.standardRomaji, isStandard: true },
+    ];
+    if (variant.alternativeHiragana && variant.alternativeRomaji) {
+      variants.push({
+        hiragana: variant.alternativeHiragana,
+        romaji: variant.alternativeRomaji,
+        isStandard: false,
+      });
+    }
+    return variants;
+  }
+
+  private getMinuteTensPrefixVariants(tensDigit: number): PronunciationPart[] {
+    const variant = MINUTE_TEN_PREFIX[tensDigit];
+    const variants: PronunciationPart[] = [
+      { hiragana: variant.standardHiragana, romaji: variant.standardRomaji, isStandard: true },
+    ];
+    if (variant.alternativeHiragana && variant.alternativeRomaji) {
+      variants.push({
+        hiragana: variant.alternativeHiragana,
+        romaji: variant.alternativeRomaji,
+        isStandard: false,
+      });
+    }
+    return variants;
+  }
+
+  private getMinuteSingleDigitVariants(digit: number): PronunciationPart[] {
+    const variant = MINUTE_SINGLE_DIGIT[digit];
+    const variants: PronunciationPart[] = [
+      { hiragana: variant.standardHiragana, romaji: variant.standardRomaji, isStandard: true },
+    ];
+    if (variant.alternativeHiragana && variant.alternativeRomaji) {
+      variants.push({
+        hiragana: variant.alternativeHiragana,
+        romaji: variant.alternativeRomaji,
+        isStandard: false,
+      });
+    }
+    return variants;
   }
 }

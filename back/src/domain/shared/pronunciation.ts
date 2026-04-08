@@ -11,13 +11,6 @@ export interface PronunciationVariant {
   alternativeRomaji?: string;
 }
 
-export function selectVariant(variant: PronunciationVariant, isUsingAlternative: boolean): { hiragana: string; romaji: string } {
-  if (isUsingAlternative && variant.alternativeHiragana) {
-    return { hiragana: variant.alternativeHiragana, romaji: variant.alternativeRomaji! };
-  }
-  return { hiragana: variant.standardHiragana, romaji: variant.standardRomaji };
-}
-
 export const DIGIT_PRONUNCIATIONS: PronunciationVariant[] = [
   { standardHiragana: '', standardRomaji: '' },
   { standardHiragana: 'いち', standardRomaji: 'ichi' },
@@ -31,23 +24,34 @@ export const DIGIT_PRONUNCIATIONS: PronunciationVariant[] = [
   { standardHiragana: 'きゅう', standardRomaji: 'kyū', alternativeHiragana: 'く', alternativeRomaji: 'ku' },
 ];
 
-export const ALTERNATIVE_DIGITS = ['4', '7', '9'];
+export function getDigitVariants(digit: number): { hiragana: string; romaji: string; isStandard: boolean }[] {
+  const variant = DIGIT_PRONUNCIATIONS[digit];
+  if (!variant) return [];
 
-export function buildAllPronunciations(
-  standardPronunciation: { hiragana: string; romaji: string },
-  alternativePronunciation: { hiragana: string; romaji: string } | null,
-): Pronunciation[] {
-  const all: Pronunciation[] = [
-    { hiragana: standardPronunciation.hiragana, romaji: standardPronunciation.romaji, isStandard: true },
+  const variants: { hiragana: string; romaji: string; isStandard: boolean }[] = [
+    { hiragana: variant.standardHiragana, romaji: variant.standardRomaji, isStandard: true },
   ];
 
-  if (alternativePronunciation && alternativePronunciation.hiragana !== standardPronunciation.hiragana) {
-    all.push({
-      hiragana: alternativePronunciation.hiragana,
-      romaji: alternativePronunciation.romaji,
+  if (variant.alternativeHiragana && variant.alternativeRomaji) {
+    variants.push({
+      hiragana: variant.alternativeHiragana,
+      romaji: variant.alternativeRomaji,
       isStandard: false,
     });
   }
 
-  return all;
+  return variants;
+}
+
+export function cartesianProduct<T>(arrays: T[][]): T[][] {
+  if (arrays.length === 0) return [[]];
+  return arrays.reduce<T[][]>((acc, arr) => {
+    const result: T[][] = [];
+    for (const a of acc) {
+      for (const b of arr) {
+        result.push([...a, b]);
+      }
+    }
+    return result;
+  }, [[]]);
 }
