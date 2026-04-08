@@ -23,6 +23,8 @@ export default function NumberRevisionPage() {
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
   const [spokenHiragana, setSpokenHiragana] = useState<string | null>(null);
   const [showPronunciation, setShowPronunciation] = useState(false);
+  const [minValue, setMinValue] = useState(1);
+  const [maxValue, setMaxValue] = useState(10000);
 
   const speak = useCallback((text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
@@ -39,7 +41,7 @@ export default function NumberRevisionPage() {
     setSpokenHiragana(null);
     setShowPronunciation(false);
     try {
-      const res = await fetch('/api/random');
+      const res = await fetch(`/api/random?min=${minValue}&max=${maxValue}`);
       const data = await res.json();
       setResult(data);
 
@@ -117,6 +119,41 @@ export default function NumberRevisionPage() {
         >
           🇫🇷 → 🇯🇵 Français → Japonais
         </button>
+      </div>
+
+      <div className="range-selector">
+        <label>Plage: </label>
+        <div className="range-inputs">
+          <input
+            type="number"
+            min="1"
+            max="10000"
+            value={minValue}
+            onChange={(e) => {
+              const newMin = Math.max(1, Math.min(10000, parseInt(e.target.value, 10) || 1));
+              setMinValue(newMin);
+              if (newMin > maxValue) {
+                setMaxValue(newMin);
+              }
+            }}
+            placeholder="Min"
+          />
+          <span> - </span>
+          <input
+            type="number"
+            min="1"
+            max="10000"
+            value={maxValue}
+            onChange={(e) => {
+              const newMax = Math.max(1, Math.min(10000, parseInt(e.target.value, 10) || 10000));
+              setMaxValue(newMax);
+              if (newMax < minValue) {
+                setMinValue(newMax);
+              }
+            }}
+            placeholder="Max"
+          />
+        </div>
       </div>
 
       <button onClick={fetchNumber} disabled={loading}>

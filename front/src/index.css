@@ -451,3 +451,34 @@ button:disabled {
   color: #1a1a1a;
   margin: 1.5rem 0;
 }
+
+.range-selector {
+  margin: 1rem 0;
+}
+
+.range-selector label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.range-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.range-inputs input {
+  width: 100px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.range-inputs input:focus {
+  outline: none;
+  border-color: #007bff;
+}

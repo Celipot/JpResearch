@@ -1,6 +1,11 @@
 import { Number } from '../domain/entities/Number';
 
-export const generateRandomNumber = (): Number => {
-  const random = Math.floor(Math.random() * 10000) + 1;
+export const generateRandomNumber = (min: number = 1, max: number = 10000): Number => {
+  if (min > max) {
+    [min, max] = [max, min];
+  }
+  min = Math.max(1, min);
+  max = Math.min(10000, max);
+  const random = Math.floor(Math.random() * (max - min + 1)) + min;
   return new Number(random);
 };
