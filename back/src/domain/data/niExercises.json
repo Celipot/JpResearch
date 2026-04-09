@@ -1,0 +1,284 @@
+{
+  "rule": {
+    "id": "ni",
+    "particle": "に",
+    "name": "Direction, heure, lieu d'existence",
+    "description": "Marque la direction, le temps, le lieu d'existence ou la destination."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "がっこう___いきます。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque la destination : on va À l'école.",
+      "vocabulary": [
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "いく", "reading": "iku", "meaning": "aller" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "机___ほんがあります。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque le lieu : il y a un livre SUR la table.",
+      "vocabulary": [
+        { "word": "机", "reading": "tsukue", "meaning": "table (non-standard but N5)" },
+        { "word": "ほん", "reading": "hon", "meaning": "livre" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "9じ___がっこうにいきます。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque l'heure : on va à l'école À 9h.",
+      "vocabulary": [
+        { "word": "じ", "reading": "ji", "meaning": "heure" },
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "こうえん___べんきょうします。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque le lieu d'action : on étudie AU parc.",
+      "vocabulary": [
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
+        { "word": "べんきょう", "reading": "benkyou", "meaning": "étude" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほん___たびにいきます。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque la destination : on voyage AU Japon.",
+      "vocabulary": [
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
+        { "word": "たび", "reading": "tabi", "meaning": "voyage" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "みなみぶ___いぬがいます。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque le lieu d'existence : il y a un chien DANS le jardin.",
+      "vocabulary": [
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "います", "reading": "imasu", "meaning": "il y a (être)" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "げつようび___かいぎがあります。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque le jour : il y a une réunion LE lundi.",
+      "vocabulary": [{ "word": "げつようび", "reading": "getsuyobi", "meaning": "lundi" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "みなみぶ___ともだちがいます。",
+      "correctAnswers": ["に"],
+      "explanation": "に marque le lieu d'existence : j'ai un ami DANS mon quartier.",
+      "vocabulary": [{ "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "えき___つきました。",
+      "correctAnswers": ["に"],
+      "options": ["に", "で", "から", "へ"],
+      "explanation": "に marque la destination/arrivée : on est arrivé À la gare.",
+      "vocabulary": [
+        { "word": "えき", "reading": "eki", "meaning": "gare" },
+        { "word": "つく", "reading": "tsuku", "meaning": "arriver" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "こうえん___あそびます。",
+      "correctAnswers": ["に"],
+      "options": ["に", "で", "から", "を"],
+      "explanation": "に marque le lieu : on joue AU parc.",
+      "vocabulary": [
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
+        { "word": "あそぶ", "reading": "asobu", "meaning": "jouer" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "たべもの___すきです。",
+      "correctAnswers": ["に"],
+      "options": ["に", "で", "が", "を"],
+      "explanation": "に marque le bénéficiaire : j'aime la nourriture.",
+      "vocabulary": [
+        { "word": "たべもの", "reading": "tabemono", "meaning": "aliment" },
+        { "word": "すき", "reading": "suki", "meaning": "aimé" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "さんがつ___はるになります。",
+      "correctAnswers": ["に"],
+      "options": ["に", "で", "から", "まで"],
+      "explanation": "に marque le moment : le printemps arrive EN mars.",
+      "vocabulary": [
+        { "word": "さんがつ", "reading": "sangatsu", "meaning": "mars" },
+        { "word": "はる", "reading": "haru", "meaning": "printemps" },
+        { "word": "なる", "reading": "naru", "meaning": "devenir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "せんせい___しつもんします。",
+      "correctAnswers": ["に"],
+      "options": ["に", "で", "から", "へ"],
+      "explanation": "に marque le destinataire : on pose une question AU professeur.",
+      "vocabulary": [
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
+        { "word": "しつもん", "reading": "shitsumon", "meaning": "question" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ねこ___ごはんをやります。",
+      "correctAnswers": ["に"],
+      "options": ["に", "を", "で", "から"],
+      "explanation": "に marque le destinataire : on donne à manger AU chat.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "ごはん", "reading": "gohan", "meaning": "riz/repas" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à l'école.",
+      "correctAnswers": ["がっこうにいきます。", "gakkou ni ikimasu"],
+      "explanation": "がっこう (école) + に (destination) + いく (aller) + ます.",
+      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un livre sur la table.",
+      "correctAnswers": ["机にほんがあります。", "tsukue ni hon ga arimasu"],
+      "explanation": "机 (table) + に (lieu) + ほん (livre) + があります (il y a).",
+      "vocabulary": [{ "word": "ほん", "reading": "hon", "meaning": "livre" }]
+    },
+    {
+      "type": "translation",
+      "question": "Le cours commence à 9h.",
+      "correctAnswers": ["じゅぎょうは9じにはじまります。", "jugyou wa kuji ni hajimarimasu"],
+      "explanation": "じゅぎょう (cours) + は + 9じ (9h) + に + はじまる (commencer).",
+      "vocabulary": [{ "word": "じゅぎょう", "reading": "jugyou", "meaning": "cours" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je joue au parc.",
+      "correctAnswers": ["こうえんであそびます。", "kouen de asobimasu"],
+      "explanation": "こうえん (parc) + で (lieu d'action) + あそぶ (jouer).",
+      "vocabulary": [{ "word": "こうえん", "reading": "kouen", "meaning": "parc" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais au Japon en mai.",
+      "correctAnswers": ["5がつにほんにいきます。", "gogatsu nihon ni ikimasu"],
+      "explanation": "5つき (mai) + に + にほん (Japon) + に + いく.",
+      "vocabulary": [
+        { "word": "ごがつ", "reading": "gogatsu", "meaning": "mai" },
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a une réunion lundi.",
+      "correctAnswers": ["げつようびにかいぎがあります。", "getsuyobi ni kaigi ga arimasu"],
+      "explanation": "げつようび (lundi) + に + かいぎ (réunion) + あります.",
+      "vocabulary": [{ "word": "げつようび", "reading": "getsuyobi", "meaning": "lundi" }]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un chat à la maison.",
+      "correctAnswers": ["いえにねこがいます。", "ie ni neko ga imasu"],
+      "explanation": "いえ (maison) + に + ねこ (chat) + がいます.",
+      "vocabulary": [
+        { "word": "いえ", "reading": "ie", "meaning": "maison" },
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je donne à manger au chien.",
+      "correctAnswers": ["いぬにごはんをやります。", "inu ni gohan wo yarimasu"],
+      "explanation": "いぬ (chien) + に + ごはん (nourriture) + を + やる (donner).",
+      "vocabulary": [{ "word": "いぬ", "reading": "inu", "meaning": "chien" }]
+    },
+    {
+      "type": "translation",
+      "question": "わたしはとうきょうにすんでいます。",
+      "correctAnswers": ["J'habite à Tokyo.", "Je vis à Tokyo."],
+      "explanation": "わたし (je) + は + とうきょう (Tokyo) + に (lieu) + 住む (habiter) + ています.",
+      "vocabulary": [{ "word": "わたし", "reading": "watashi", "meaning": "je" }]
+    },
+    {
+      "type": "translation",
+      "question": "えきについきました。",
+      "correctAnswers": ["Je suis arrivé à la gare.", "On est arrivé à la gare."],
+      "explanation": "えき (gare) + に + つく (arriver) + ました.",
+      "vocabulary": [{ "word": "えき", "reading": "eki", "meaning": "gare" }]
+    },
+    {
+      "type": "translation",
+      "question": "あさをこのはなにみずをやります。",
+      "correctAnswers": ["Le matin, j'arrose cette fleur.", "Chaque matin, j'arrose cette fleur."],
+      "explanation": "あさ (matin) + を + この (ce) + はな (fleur) + に + みず (eau) + を + やる.",
+      "vocabulary": [
+        { "word": "あさ", "reading": "asa", "meaning": "matin" },
+        { "word": "はな", "reading": "hana", "meaning": "fleur" },
+        { "word": "みず", "reading": "mizu", "meaning": "eau" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "しんぶんをよみながら、コーヒーをのみます。",
+      "correctAnswers": [
+        "Je lis le journal en buvant du café.",
+        "Je lis le journal et je bois du café."
+      ],
+      "explanation": "しんぶん (journal) + を + よむ (lire) + ながら + コーヒー (café) + を + のむ (boire).",
+      "vocabulary": [
+        { "word": "しんぶん", "reading": "shinbun", "meaning": "journal" },
+        { "word": "コーヒー", "reading": "koohii", "meaning": "café" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ねこ___います。",
+      "correctAnswers": ["に"],
+      "options": ["に", "を", "で", "が"],
+      "explanation": "に marque le lieu d'existence : il y a un chat.",
+      "vocabulary": [{ "word": "ねこ", "reading": "neko", "meaning": "chat" }]
+    },
+    {
+      "type": "translation",
+      "question": "J'arrive à l'école à 8h.",
+      "correctAnswers": ["8じにがっこうについきました。", "hachiji ni gakkou ni tsukimashita"],
+      "explanation": "8じ (8h) + に + がっこう (école) + に + つく (arriver).",
+      "vocabulary": [
+        { "word": "じ", "reading": "ji", "meaning": "heure" },
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je pars à l'université en avril.",
+      "correctAnswers": ["4がつにだいがくへいきます。", "shigatsu ni daigaku he ikimasu"],
+      "explanation": "4つき (avril) + に + だいがく (université) + へ + いく.",
+      "vocabulary": [{ "word": "だいがく", "reading": "daigaku", "meaning": "université" }]
+    },
+    {
+      "type": "translation",
+      "question": "Tu habites à Tokyo?",
+      "correctAnswers": ["とうきょうにすんでいますか。", "toukyou ni sunde imasu ka"],
+      "explanation": "とうきょう + に + 住む (habiter).",
+      "vocabulary": [{ "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" }]
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "rule": {
+    "id": "he",
+    "particle": "へ",
+    "name": "Direction",
+    "description": "Marque la direction du mouvement (vers)."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "がっこう___いきます。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on va vers l'école.",
+      "vocabulary": [
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "いく", "reading": "iku", "meaning": "aller" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほん___たびにいきます。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on voyage vers le Japon.",
+      "vocabulary": [
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
+        { "word": "たび", "reading": "tabi", "meaning": "voyage" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "とうきょう___でんしゃでいきました。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on est allé à Tokyo en train.",
+      "vocabulary": [
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" },
+        { "word": "でんしゃ", "reading": "densha", "meaning": "train" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "びょういん___かんじゃがきました。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : les patients sont venus à l'hôpital.",
+      "vocabulary": [{ "word": "びょういん", "reading": "byouin", "meaning": "hôpital" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "えき___むかいます。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on se dirige vers la gare.",
+      "vocabulary": [
+        { "word": "えき", "reading": "eki", "meaning": "gare" },
+        { "word": "むかう", "reading": "mukau", "meaning": "se diriger vers" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かいしゃ___まいにちいきます。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on va à l'entreprise chaque jour.",
+      "vocabulary": [
+        { "word": "かいしゃ", "reading": "kaisha", "meaning": "entreprise" },
+        { "word": "まいにち", "reading": "mainichi", "meaning": "chaque jour" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "だいがく___しんがくします。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on va à l'université.",
+      "vocabulary": [{ "word": "だいがく", "reading": "daigaku", "meaning": "université" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "うみ___いきました。",
+      "correctAnswers": ["へ"],
+      "explanation": "へ marque la direction : on est allé à la mer.",
+      "vocabulary": [{ "word": "うみ", "reading": "umi", "meaning": "mer" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "としょかん___いきましたか。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "で", "から"],
+      "explanation": "へ marque la direction : tu es allé à la bibliothèque?",
+      "vocabulary": [{ "word": "としょかん", "reading": "toshokan", "meaning": "bibliothèque" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "こうえん___いきました。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "で", "から"],
+      "explanation": "へ marque la direction : on est allé au parc.",
+      "vocabulary": [{ "word": "こうえん", "reading": "kouen", "meaning": "parc" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "えき___いく ひとがいます。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "を", "で"],
+      "explanation": "へ marque la direction : il y a des gens qui vont à la gare.",
+      "vocabulary": [{ "word": "えき", "reading": "eki", "meaning": "gare" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "がっこう___はしって いきます。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "で", "から"],
+      "explanation": "へ marque la direction : on court vers l'école.",
+      "vocabulary": [
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "はしる", "reading": "hashiru", "meaning": "courir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ともだち___あいに いきます。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "を", "で"],
+      "explanation": "へ marque la direction : on va voir son ami.",
+      "vocabulary": [{ "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à l'école.",
+      "correctAnswers": ["がっこうへいきます。", "gakkou he ikimasu"],
+      "explanation": "がっこう + へ + いく.",
+      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais en voyage au Japon.",
+      "correctAnswers": ["にほんへたびにいきます。", "nihon he tabi ni ikimasu"],
+      "explanation": "にほん + へ + たび + に + いく.",
+      "vocabulary": [
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
+        { "word": "たび", "reading": "tabi", "meaning": "voyage" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je suis allé à Tokyo en train.",
+      "correctAnswers": ["とうきょうへでんしゃでいきました。", "toukyou he densha de ikimashita"],
+      "explanation": "とうきょう + へ + でんしゃ (train) + で.",
+      "vocabulary": [
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" },
+        { "word": "でんしゃ", "reading": "densha", "meaning": "train" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à l'entreprise chaque jour.",
+      "correctAnswers": ["かいしゃへまいにちいきます。", "kaisha he mainichi ikimasu"],
+      "explanation": "かいしゃ + へ + まいにち + いく.",
+      "vocabulary": [{ "word": "かいしゃ", "reading": "kaisha", "meaning": "entreprise" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à l'université.",
+      "correctAnswers": ["だいがくへしんがくします。", "daigaku he shingaku shimasu"],
+      "explanation": "だいがく + へ + しんがく.",
+      "vocabulary": [{ "word": "だいがく", "reading": "daigaku", "meaning": "université" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je suis allé à la mer.",
+      "correctAnswers": ["うみへいきました。", "umi he ikimashita"],
+      "explanation": "うみ (mer) + へ + いく.",
+      "vocabulary": [{ "word": "うみ", "reading": "umi", "meaning": "mer" }]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des gens qui vont à la gare.",
+      "correctAnswers": ["えきへいくひとがいます。", "eki he iku hito ga imasu"],
+      "explanation": "えき + へ + いく + ひと (personne) + が + います.",
+      "vocabulary": [
+        { "word": "えき", "reading": "eki", "meaning": "gare" },
+        { "word": "ひと", "reading": "hito", "meaning": "personne" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "りょうりがっこう___いきたいです。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "で", "から"],
+      "explanation": "へ marque la direction : je veux aller à l'école de cuisine.",
+      "vocabulary": [
+        { "word": "りょうりがっこう", "reading": "ryourigakkou", "meaning": "école de cuisine" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ぎゅう___むかいます。",
+      "correctAnswers": ["へ"],
+      "options": ["へ", "に", "を", "で"],
+      "explanation": "へ marque la direction : on se dirige vers la vache.",
+      "vocabulary": [
+        { "word": "ぎゅう", "reading": "gyuu", "meaning": "vache" },
+        { "word": "むかう", "reading": "mukau", "meaning": "se diriger vers" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à la bibliothèque.",
+      "correctAnswers": ["としょかんへいきます。", "toshokan he ikimasu"],
+      "explanation": "としょかん + へ + いく.",
+      "vocabulary": [{ "word": "としょかん", "reading": "toshokan", "meaning": "bibliothèque" }]
+    },
+    {
+      "type": "translation",
+      "question": "On voyagea à la montagne.",
+      "correctAnswers": ["やまへたびにいきました。", "yama he tabi ni ikimashita"],
+      "explanation": "やま (montagne) + へ + たび.",
+      "vocabulary": [{ "word": "やま", "reading": "yama", "meaning": "montagne" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je rentre à la maison.",
+      "correctAnswers": ["いえへかえります。", "ie he kaerimasu"],
+      "explanation": "いえ + へ + かえる (rentrer).",
+      "vocabulary": [{ "word": "いえ", "reading": "ie", "meaning": "maison" }]
+    },
+    {
+      "type": "translation",
+      "question": "On court à l'école.",
+      "correctAnswers": ["がっこうへはしっていきます。", "gakkou he hashitte ikimasu"],
+      "explanation": "がっこう + へ + はしる (courir).",
+      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je me tourne vers mon ami.",
+      "correctAnswers": ["ともだちへふりかえります。", "tomodachi he furikaerimasu"],
+      "explanation": "ともだち + へ + ふりかえる (se tourner).",
+      "vocabulary": [{ "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais à la rivière ce week-end.",
+      "correctAnswers": ["かわへしゅうまつにいきます。", "kawa he shuumatsu ni ikimasu"],
+      "explanation": "かわ (rivière) + へ + しゅうまつ (week-end).",
+      "vocabulary": [{ "word": "かわ", "reading": "kawa", "meaning": "rivière" }]
+    },
+    {
+      "type": "translation",
+      "question": "Tu vas à la montagne demain.",
+      "correctAnswers": ["あしたやまへいきます。", "ashita yama he ikimasu"],
+      "explanation": "あした (demain) + やま (montagne) + へ + いく.",
+      "vocabulary": [
+        { "word": "あした", "reading": "ashita", "meaning": "demain" },
+        { "word": "やま", "reading": "yama", "meaning": "montagne" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il court vers le parc.",
+      "correctAnswers": ["かれはこうえんへはしってきます。", "kare wa kouen he hashitte kimasu"],
+      "explanation": "かれ (il) + は + こうえん (parc) + へ + はしる (courir).",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" }
+      ]
+    }
+  ]
+}

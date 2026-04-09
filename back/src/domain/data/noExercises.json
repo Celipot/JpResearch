@@ -1,0 +1,305 @@
+{
+  "rule": {
+    "id": "no",
+    "particle": "の",
+    "name": "Possession, nominalisation",
+    "description": "Marque la possession ou relie deux noms."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたし___ともだちがきました。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : mon ami est venu.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あに___しごとはいそがしいです。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : le travail de mon frère est occupé.",
+      "vocabulary": [
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
+        { "word": "しごと", "reading": "shigoto", "meaning": "travail" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "がっこう___せんせいはやさしいです。",
+      "correctAnswers": ["の"],
+      "explanation": "の relie : le professeur de l'école est gentil.",
+      "vocabulary": [
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かれ___なまえはたろうです。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : son nom est Taro.",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "なまえ", "reading": "namae", "meaning": "nom" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほん___しゅとはとうきょうです。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : la capitale du Japon est Tokyo.",
+      "vocabulary": [
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "いえ___とびらがあおいです。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : la porte de la maison est bleue.",
+      "vocabulary": [
+        { "word": "いえ", "reading": "ie", "meaning": "maison" },
+        { "word": "ほん", "reading": "hon", "meaning": "livre" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あね___ともだちもきました。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : l'ami de ma sœur est venu aussi.",
+      "vocabulary": [
+        { "word": "あね", "reading": "ane", "meaning": "grande sœur" },
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "むすめ___くるまがあたらしいです。",
+      "correctAnswers": ["の"],
+      "explanation": "の marque la possession : la voiture de ma fille est nouvelle.",
+      "vocabulary": [
+        { "word": "むすめ", "reading": "musume", "meaning": "fille" },
+        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "おとうと___なまえはなんですか。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "を", "に"],
+      "explanation": "の marque la possession : comment s'appelle mon petit frère?",
+      "vocabulary": [{ "word": "おとうと", "reading": "otouto", "meaning": "petit frère" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたし___がっこうはとうきょうにあります。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "に", "で"],
+      "explanation": "の marque la possession : mon école est à Tokyo.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "かのじょ___りょうしんはにほんじんです。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "を", "に"],
+      "explanation": "の marque la possession : les parents de ma copine sont japonais.",
+      "vocabulary": [{ "word": "かのじょ", "reading": "kanojo", "meaning": "copine" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "このぺん___ねだんはたかいです。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "を", "で"],
+      "explanation": "の marque la possession : le prix de ce stylo est élevé.",
+      "vocabulary": [{ "word": "ぺん", "reading": "pen", "meaning": "stylo" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "とうきょう___てんきはどうですか。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "に", "で"],
+      "explanation": "の marque : comment est la météo de Tokyo?",
+      "vocabulary": [
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" },
+        { "word": "てんき", "reading": "tenki", "meaning": "météo" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたし___すきなたべものはすしです。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "を", "に"],
+      "explanation": "の marque la possession : mon aliment préféré est les sushis.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "すし", "reading": "sushi", "meaning": "sushi" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Mon ami est venu.",
+      "correctAnswers": ["わたしのともだちがきました。", "watashi no tomodachi ga kimashita"],
+      "explanation": "わたし + の + ともだち + が + くる.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le travail de mon frère est occupé.",
+      "correctAnswers": ["あにのしごとはいそがしいです。", "ani no shigoto wa isogashii desu"],
+      "explanation": "あに + の + しごと + は.",
+      "vocabulary": [
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
+        { "word": "しごと", "reading": "shigoto", "meaning": "travail" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le professeur de l'école est gentil.",
+      "correctAnswers": ["がっこうのせんせいはやさしいです。", "gakkou no sensei wa yasashii desu"],
+      "explanation": "がっこう + の + せんせい + は.",
+      "vocabulary": [
+        { "word": "がっこう", "reading": "gakkou", "meaning": "école" },
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Son nom est Taro.",
+      "correctAnswers": ["かれのなまえはたろうです。", "kare no namae wa tarou desu"],
+      "explanation": "かれ + の + なまえ.",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "なまえ", "reading": "namae", "meaning": "nom" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "La capitale du Japon est Tokyo.",
+      "correctAnswers": ["にほんのしゅとはとうきょうです。", "nihon no shuto wa toukyou desu"],
+      "explanation": "にほん + の + しゅと.",
+      "vocabulary": [
+        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
+        { "word": "とうきょう", "reading": "toukyou", "meaning": "Tokyo" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "これは私のです。",
+      "correctAnswers": ["This is mine.", "This is my thing."],
+      "explanation": "これ (ceci) + は + わたし + の + です.",
+      "vocabulary": [
+        { "word": "これ", "reading": "kore", "meaning": "ceci" },
+        { "word": "わたし", "reading": "watashi", "meaning": "je" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "うみ___あおいろです。",
+      "correctAnswers": ["の"],
+      "options": ["の", "が", "を", "に"],
+      "explanation": "の marque la possession : la couleur de la mer est bleue.",
+      "vocabulary": [
+        { "word": "うみ", "reading": "umi", "meaning": "mer" },
+        { "word": "あおいろ", "reading": "aouiro", "meaning": "bleu" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "La couleur du ciel est bleue.",
+      "correctAnswers": ["そらのいろはあおいです。", "sora no iro wa aoi desu"],
+      "explanation": "そら (ciel) + の + いろ (couleur) + は + あおい.",
+      "vocabulary": [
+        { "word": "そら", "reading": "sora", "meaning": "ciel" },
+        { "word": "いろ", "reading": "iro", "meaning": "couleur" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "La porte de la maison est fermée.",
+      "correctAnswers": ["いえのとびらがしまっています。", "ie no tobira ga shimatte imasu"],
+      "explanation": "いえ + の + とびら (porte).",
+      "vocabulary": [{ "word": "いえ", "reading": "ie", "meaning": "maison" }]
+    },
+    {
+      "type": "translation",
+      "question": "Le nom de la fille est Yuki.",
+      "correctAnswers": ["むすめのなまえはゆきです。", "musume no namae wa Yuki desu"],
+      "explanation": "むすめ + の + なまえ.",
+      "vocabulary": [
+        { "word": "むすめ", "reading": "musume", "meaning": "fille" },
+        { "word": "なまえ", "reading": "namae", "meaning": "nom" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le livre de mon ami est intéressant.",
+      "correctAnswers": ["ともだちのほんはおもしろいです。", "tomodachi no hon wa omoshiroi desu"],
+      "explanation": "ともだち + の + ほん.",
+      "vocabulary": [
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" },
+        { "word": "ほん", "reading": "hon", "meaning": "livre" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le crayon du professeur est rouge.",
+      "correctAnswers": ["せんせいのえんぴつはあかいです。", "sensei no enpitsu wa akai desu"],
+      "explanation": "せんせい + の + えんぴつ (crayon).",
+      "vocabulary": [
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
+        { "word": "えんぴつ", "reading": "enpitsu", "meaning": "crayon" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le mari de ma tante est docteur.",
+      "correctAnswers": ["おばさんのおっとはいしゃです。", "obasan no otto wa isha desu"],
+      "explanation": "おばさん (tante) + の + おっと (mari).",
+      "vocabulary": [
+        { "word": "おばさん", "reading": "obasan", "meaning": "tante" },
+        { "word": "おっと", "reading": "otto", "meaning": "mari" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "C'est le chat de mon petit frère.",
+      "correctAnswers": ["おとうとのねこです。", "otouto no neko desu"],
+      "explanation": "おとうと + の + ねこ.",
+      "vocabulary": [
+        { "word": "おとうと", "reading": "otouto", "meaning": "petit frère" },
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le prix de ce morceau de gâteau est 500 yens.",
+      "correctAnswers": ["このケーキのねだんは500えんです。", "kono keeki no nedan wa 500 en desu"],
+      "explanation": "この + ケーキ (gâteau) + の + ねだん (prix).",
+      "vocabulary": [{ "word": "ねだん", "reading": "nedan", "meaning": "prix" }]
+    },
+    {
+      "type": "translation",
+      "question": "La couleur préférée de ma mère est le rouge.",
+      "correctAnswers": [
+        "おかあさんのすきなおいろはあかいです。",
+        "okaasan no suki na iro wa akai desu"
+      ],
+      "explanation": "おかあさん (mère) + の + すきな + いろ (couleur).",
+      "vocabulary": [
+        { "word": "おかあさん", "reading": "okaasan", "meaning": "mère (honorifique)" }
+      ]
+    }
+  ]
+}

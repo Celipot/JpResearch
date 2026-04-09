@@ -314,7 +314,7 @@
     {
       "type": "translation",
       "question": "Il y a une fleur rouge dans le jardin.",
-      "correctAnswers": ["その赤い花は綺麗です。", "sono akai hana wa kirei desu"],
+      "correctAnswers": ["そのあかいはなはきれいです。", "sono akai hana wa kirei desu"],
       "explanation": "その (ce/cette) + あかい (rouge) + はな (fleur) + は (topic) + きれい (beau) + です.",
       "vocabulary": [
         { "word": "その", "reading": "sono", "meaning": "ce / cette" },

@@ -419,22 +419,29 @@ button:disabled {
   margin-bottom: 1.5rem;
 }
 
-.rule-selector {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+.rule-selector-section {
   margin-bottom: 2rem;
 }
 
+.rule-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .mode-btn {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.8rem;
   background: #e9ecef;
   color: #495057;
   border: 2px solid #dee2e6;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 3rem;
 }
 
-.mode-btn:hover {
+.mode-btn:hover:not(:disabled) {
   background: #dee2e6;
 }
 
@@ -444,8 +451,36 @@ button:disabled {
   border-color: #007bff;
 }
 
-.mode-btn.active:hover {
+.mode-btn.active:hover:not(:disabled) {
   background: #0056b3;
+}
+
+.rule-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: #6c757d;
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.action-btn:hover:not(:disabled) {
+  background: #545b62;
+}
+
+.fetch-btn {
+  background: #28a745;
+  margin-top: 1rem;
+}
+
+.fetch-btn:hover:not(:disabled) {
+  background: #218838;
 }
 
 .revision-section {

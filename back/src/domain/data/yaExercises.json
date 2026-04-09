@@ -1,0 +1,361 @@
+{
+  "rule": {
+    "id": "ya",
+    "particle": "や",
+    "name": "Et (non exhaustif)",
+    "description": "Marque une énumération non exhaustive (et autres)."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___いぬや さかながいます。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : il y a des chats, des chiens, des poissons et autres animaux.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "さかな", "reading": "sakana", "meaning": "poisson" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "りんご___みかんやバナナをたべます。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : on mange des pommes, des mandarines, des bananes et d'autres fruits.",
+      "vocabulary": [
+        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
+        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" },
+        { "word": "バナナ", "reading": "banana", "meaning": "banane" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "えいご___フランスごや スペインごをべんきょうします。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : on étudie l'anglais, le français, l'espagnol et d'autres langues.",
+      "vocabulary": [{ "word": "えいご", "reading": "eigo", "meaning": "anglais" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "しゃつ___ズボンやスカートをかっています。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : j'ai des chemises, des pantalons, des jupes et autres vêtements.",
+      "vocabulary": [
+        { "word": "シャツ", "reading": "shatsu", "meaning": "chemise" },
+        { "word": "ズボン", "reading": "zubon", "meaning": "pantalon" },
+        { "word": "スカート", "reading": "sukato", "meaning": "jupe" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "せんせい___がくせいや りょうこうしゃがいます。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : il y a des professeurs, des étudiants, des touristes et d'autres personnes.",
+      "vocabulary": [
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
+        { "word": "がくせい", "reading": "gakusei", "meaning": "étudiant" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "こうえん___すいえいじょうや びょういんなど いろいろなしせつがあります。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : il y a des parcs, des piscines, des hôpitaux et d'autres installations.",
+      "vocabulary": [
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
+        { "word": "しせつ", "reading": "shisetsu", "meaning": "installation" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___うさぎやねずみなどを とらえます。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : les chats attrapent des lapins, des souris et autres petits animaux.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "うさぎ", "reading": "usagi", "meaning": "lapin" },
+        { "word": "ねずみ", "reading": "nezumi", "meaning": "souris" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ぱん___うどんやそばなど いろいろなたべものがあります。",
+      "correctAnswers": ["や"],
+      "explanation": "や marque l'énumération non exhaustive : il y a du pain, des nouilles udon, du sarrasin et d'autres aliments.",
+      "vocabulary": [
+        { "word": "パン", "reading": "pan", "meaning": "pain" },
+        { "word": "うどん", "reading": "udon", "meaning": "udon" },
+        { "word": "そば", "reading": "soba", "meaning": "sarrasin" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ねこ___いぬなど いろいろな どうぶつがいます。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "の", "で"],
+      "explanation": "や marque l'énumération non exhaustive : il y a des chats, des chiens et d'autres animaux.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "どうぶつ", "reading": "doubutsu", "meaning": "animal" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "りんご___みかんなど すきなあしゅがたくさんあります。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "の", "で"],
+      "explanation": "や marque l'énumération non exhaustive : j'ai beaucoup de fruits préférés comme les pommes et les mandarines.",
+      "vocabulary": [
+        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
+        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "えいご___スペインごなど いろいろな ことばを べんきょうしています。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "を", "で"],
+      "explanation": "や marque l'énumération non exhaustive : j'étudie l'anglais, l'espagnol et d'autres langues.",
+      "vocabulary": [
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
+        { "word": "ことば", "reading": "kotoba", "meaning": "langue" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ごはん___うどんや そばなど いろいろな ものをたべます。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "の", "で"],
+      "explanation": "や marque l'énumération non exhaustive : on mange du riz, des nouilles udon, du sarrasin et d'autres choses.",
+      "vocabulary": [
+        { "word": "ごはん", "reading": "gohan", "meaning": "riz/repas" },
+        { "word": "うどん", "reading": "udon", "meaning": "udon" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "さくら___うめや ももなど いろいろな はながさきます。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "が", "で"],
+      "explanation": "や marque l'énumération non exhaustive : les cerisiers, les abricotiers, les pêchers et d'autres fleurs fleurissent.",
+      "vocabulary": [
+        { "word": "さくら", "reading": "sakura", "meaning": "cerisier" },
+        { "word": "はな", "reading": "hana", "meaning": "fleur" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des chats, des chiens et d'autres animaux.",
+      "correctAnswers": [
+        "ねこやいぬなどいろいろなどうぶつがいます。",
+        "neko ya inu nado iroiro na doubutsu ga imasu"
+      ],
+      "explanation": "ねこ + や + いぬ.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "On mange des pommes, des mandarines et d'autres fruits.",
+      "correctAnswers": [
+        "りんごやみかんなどおいしいくだもをたべます。",
+        "ringo ya mikan nado oishii kudamono wo tabemasu"
+      ],
+      "explanation": "りんご + や + みかん.",
+      "vocabulary": [
+        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
+        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'étudie l'anglais, le français et d'autres langues.",
+      "correctAnswers": [
+        "えいごやフランスごなどいろいろなことばをべんきょうしています。",
+        "eigo ya furanssugo nado iroiro na kotoba wo benkyou shite imasu"
+      ],
+      "explanation": "えいご + や + ことば.",
+      "vocabulary": [
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
+        { "word": "ことば", "reading": "kotoba", "meaning": "langue" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai des chemises, des pantalons et d'autres vêtements.",
+      "correctAnswers": [
+        "シャツやズボンなどいろいろなふくをかっています。",
+        "shatsu ya zubon nado iroiro na fuku wo katte imasu"
+      ],
+      "explanation": "シャツ + や + ズボン.",
+      "vocabulary": [
+        { "word": "シャツ", "reading": "shatsu", "meaning": "chemise" },
+        { "word": "ズボン", "reading": "zubon", "meaning": "pantalon" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des parcs, des piscines et d'autres installations.",
+      "correctAnswers": [
+        "こうえんやすいえいじょうなどいろいろなしせつがあります。",
+        "kouen ya suieijou nado iroiro na shisetsu ga arimasu"
+      ],
+      "explanation": "こうえん + や + しせつ.",
+      "vocabulary": [
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
+        { "word": "しせつ", "reading": "shisetsu", "meaning": "installation" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Les chats attrapent des lapins, des souris et d'autres petits animaux.",
+      "correctAnswers": [
+        "ねこはうさぎやねずみなどをとらえます。",
+        "neko wa usagi ya nezumi nado wo toraemasu"
+      ],
+      "explanation": "うさぎ + や + ねずみ.",
+      "vocabulary": [
+        { "word": "うさぎ", "reading": "usagi", "meaning": "lapin" },
+        { "word": "ねずみ", "reading": "nezumi", "meaning": "souris" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "めがね___すいえいめがねなど いろいろな せいひんがあります。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "の", "で"],
+      "explanation": "や marque l'énumération non exhaustive : il y a des lunettes, des lunettes de natation et d'autres produits.",
+      "vocabulary": [{ "word": "メガネ", "reading": "megane", "meaning": "lunettes" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ねこや いぬなど いろいろな どうぶつをかっています。",
+      "correctAnswers": ["や"],
+      "options": ["や", "と", "を", "で"],
+      "explanation": "や marque l'énumération non exhaustive : j'ai des chats, des chiens et d'autres animaux.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'aime les fleurs comme les cerisiers et les tournesols.",
+      "correctAnswers": [
+        "さくらやひまわりなどのはながすきです。",
+        "sakura ya himawari nado no hana ga suki desu"
+      ],
+      "explanation": "さくら + や + はな.",
+      "vocabulary": [
+        { "word": "さくら", "reading": "sakura", "meaning": "cerisier" },
+        { "word": "はな", "reading": "hana", "meaning": "fleur" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je mange des aliments comme le riz, les nouilles et du pain.",
+      "correctAnswers": [
+        "ごはんやめん、パンなどをたべます。",
+        "gohan ya men, pan nado wo tabemasu"
+      ],
+      "explanation": "ごはん + や + めん (nouilles).",
+      "vocabulary": [
+        { "word": "ごはん", "reading": "gohan", "meaning": "riz" },
+        { "word": "パン", "reading": "pan", "meaning": "pain" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "On aime les couleurs comme le bleu, le rouge et le vert.",
+      "correctAnswers": [
+        "あおやあかや みどりなどのいろがすきです。",
+        "ao ya aka ya midori nado no iro ga suki desu"
+      ],
+      "explanation": "あお (bleu) + や + あか (rouge).",
+      "vocabulary": [
+        { "word": "あお", "reading": "ao", "meaning": "bleu" },
+        { "word": "あか", "reading": "aka", "meaning": "rouge" },
+        { "word": "みどり", "reading": "midori", "meaning": "vert" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Les insectes comme les papillons et les cigales volent.",
+      "correctAnswers": ["ちょうちょやせみなどがとびます。", "choucho ya semi nado ga tobimasu"],
+      "explanation": "ちょうちょ + や + せみ.",
+      "vocabulary": [
+        { "word": "ちょうちょ", "reading": "choucho", "meaning": "papillon" },
+        { "word": "せみ", "reading": "semi", "meaning": "cigale" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "On a des hobbies comme la natation et le tennis.",
+      "correctAnswers": [
+        "すいえいやてにすなどのしゅみがあります。",
+        "suiei ya tenisu nado no shumi ga arimasu"
+      ],
+      "explanation": "すいえい + や + しゅみ.",
+      "vocabulary": [
+        { "word": "すいえい", "reading": "suiei", "meaning": "natation" },
+        { "word": "しゅみ", "reading": "shumi", "meaning": "hobby" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je vois des animaux comme les chevaux, les vaches et les cochons.",
+      "correctAnswers": [
+        "うまや うしや ぶたなどのどうぶつをみます。",
+        "uma ya ushi ya buta nado no doubutsu wo mimasu"
+      ],
+      "explanation": "うま + や + うし.",
+      "vocabulary": [
+        { "word": "うま", "reading": "uma", "meaning": "cheval" },
+        { "word": "うし", "reading": "ushi", "meaning": "vache" },
+        { "word": "ぶた", "reading": "buta", "meaning": "cochon" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des vêtements comme des robes, des jupes et des pantalons.",
+      "correctAnswers": [
+        "ドレスやスカートや ズボンなどのふくがあります。",
+        "doresu ya suka to ya zubon nado no fuku ga arimasu"
+      ],
+      "explanation": "ドレス + や + スカート.",
+      "vocabulary": [
+        { "word": "ドレス", "reading": "doresu", "meaning": "robe" },
+        { "word": "スカート", "reading": "sukato", "meaning": "jupe" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "On aime les boissons comme le thé et le café.",
+      "correctAnswers": [
+        "ちゃやコーヒーなどののみものがすきです。",
+        "cha ya koohii nado no nomimono ga suki desu"
+      ],
+      "explanation": "ちゃ (thé) + や + コーヒー (café).",
+      "vocabulary": [
+        { "word": "ちゃ", "reading": "cha", "meaning": "thé" },
+        { "word": "コーヒー", "reading": "koohii", "meaning": "café" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des arbres comme les cerisiers et les érables.",
+      "correctAnswers": [
+        "さくらやもみじなどのきがあります。",
+        "sakura ya momiji nado no ki ga arimasu"
+      ],
+      "explanation": "さくら (cerisier) + や + き (arbre).",
+      "vocabulary": [
+        { "word": "さくら", "reading": "sakura", "meaning": "cerisier" },
+        { "word": "き", "reading": "ki", "meaning": "arbre" }
+      ]
+    }
+  ]
+}

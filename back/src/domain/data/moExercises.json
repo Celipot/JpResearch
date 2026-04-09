@@ -1,0 +1,260 @@
+{
+  "rule": {
+    "id": "mo",
+    "particle": "も",
+    "name": "Aussi, également",
+    "description": "Marque l'inclusion, l'addition (aussi, également)."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたし___きました。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : moi aussi je suis venu.",
+      "vocabulary": [{ "word": "わたし", "reading": "watashi", "meaning": "je" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あに___べんきょうしています。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : le grand frère aussi étudie.",
+      "vocabulary": [{ "word": "あに", "reading": "ani", "meaning": "grand frère" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かのじょ___すきです。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : j'aime aussi ma copine.",
+      "vocabulary": [{ "word": "かのじょ", "reading": "kanojo", "meaning": "copine" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___います。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : il y a aussi un chat.",
+      "vocabulary": [{ "word": "ねこ", "reading": "neko", "meaning": "chat" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんご___はなせます。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : je peux aussi parler le japonais.",
+      "vocabulary": [{ "word": "にほんご", "reading": "nihongo", "meaning": "japonais" }]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かれ___しっています。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : lui aussi le sait.",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "しる", "reading": "shiru", "meaning": "savoir" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あさ___はやいです。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : le matin aussi c'est tôt.",
+      "vocabulary": [
+        { "word": "あさ", "reading": "asa", "meaning": "matin" },
+        { "word": "はやい", "reading": "hayai", "meaning": "tôt" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "いぬ___すきです。",
+      "correctAnswers": ["も"],
+      "explanation": "も marque l'inclusion : j'aime aussi les chiens.",
+      "vocabulary": [{ "word": "いぬ", "reading": "inu", "meaning": "chien" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたし___おなじです。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : moi aussi c'est pareil.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "おなじ", "reading": "onaji", "meaning": "identique" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "きのう___あめでした。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : hier aussi il pleuvait.",
+      "vocabulary": [
+        { "word": "きのう", "reading": "kinou", "meaning": "hier" },
+        { "word": "あめ", "reading": "ame", "meaning": "pluie" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "さかな___すきです。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : j'aime aussi le poisson.",
+      "vocabulary": [{ "word": "さかな", "reading": "sakana", "meaning": "poisson" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "あね___がくせいです。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : ma sœur aussi est étudiante.",
+      "vocabulary": [
+        { "word": "あね", "reading": "ane", "meaning": "grande sœur" },
+        { "word": "がくせい", "reading": "gakusei", "meaning": "étudiant" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ねこ___かわいいです。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : le chat aussi est mignon.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "かわいい", "reading": "kawaii", "meaning": "mignon" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Moi aussi je suis venu.",
+      "correctAnswers": ["わたしもきました。", "watashi mo kimashita"],
+      "explanation": "わたし (je) + も (aussi) + くる.",
+      "vocabulary": [{ "word": "わたし", "reading": "watashi", "meaning": "je" }]
+    },
+    {
+      "type": "translation",
+      "question": "Le grand frère aussi étudie.",
+      "correctAnswers": ["あにもべんきょうしています。", "ani mo benkyou shite imasu"],
+      "explanation": "あに (grand frère) + も + べんきょう.",
+      "vocabulary": [{ "word": "あに", "reading": "ani", "meaning": "grand frère" }]
+    },
+    {
+      "type": "translation",
+      "question": "J'aime aussi ma copine.",
+      "correctAnswers": ["かのじょもすきです。", "kanojo mo suki desu"],
+      "explanation": "かのじょ (copine) + も + すき.",
+      "vocabulary": [{ "word": "かのじょ", "reading": "kanojo", "meaning": "copine" }]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a aussi un chat.",
+      "correctAnswers": ["ねこもいます。", "neko mo imasu"],
+      "explanation": "ねこ (chat) + も + います.",
+      "vocabulary": [{ "word": "ねこ", "reading": "neko", "meaning": "chat" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je peux aussi parler le japonais.",
+      "correctAnswers": ["にほんごもはなせます。", "nihongo mo hanasemasu"],
+      "explanation": "にほんご (japonais) + も + はなす.",
+      "vocabulary": [{ "word": "にほんご", "reading": "nihongo", "meaning": "japonais" }]
+    },
+    {
+      "type": "translation",
+      "question": "Lui aussi le sait.",
+      "correctAnswers": ["かれもしっています。", "kare mo shitte imasu"],
+      "explanation": "かれ (il) + も + しる.",
+      "vocabulary": [{ "word": "かれ", "reading": "kare", "meaning": "il" }]
+    },
+    {
+      "type": "translation",
+      "question": "わたしはがくせいです。あにもがくせいです。",
+      "correctAnswers": [
+        "Je suis étudiant. Mon grand frère est aussi étudiant.",
+        "Je suis étudiant et mon grand frère aussi."
+      ],
+      "explanation": "わたし + は + がくせい。あに + も + がくせい。",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "すし___べんとうもおいしいです。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : le bento aussi est délicieux.",
+      "vocabulary": [
+        { "word": "すし", "reading": "sushi", "meaning": "sushi" },
+        { "word": "べんとう", "reading": "bentou", "meaning": "boîte lunch" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "えいご___フランスごもべんきょうしています。",
+      "correctAnswers": ["も"],
+      "options": ["も", "が", "を", "に"],
+      "explanation": "も marque l'inclusion : j'étudie aussi le français.",
+      "vocabulary": [{ "word": "えいご", "reading": "eigo", "meaning": "anglais" }]
+    },
+    {
+      "type": "translation",
+      "question": "Moi aussi je suis occupé.",
+      "correctAnswers": ["わたしもいそがしいです。", "watashi mo isogashii desu"],
+      "explanation": "わたし + も + いそがしい.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "いそがしい", "reading": "isogashii", "meaning": "occupé" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je suis aussi heureux.",
+      "correctAnswers": ["わたしもうれしいです。", "watashi mo ureshii desu"],
+      "explanation": "わたし + も + うれしい.",
+      "vocabulary": [{ "word": "うれしい", "reading": "ureshii", "meaning": "heureux" }]
+    },
+    {
+      "type": "translation",
+      "question": "Les fleurs aussi sont belles.",
+      "correctAnswers": ["はなもきれいです。", "hana mo kirei desu"],
+      "explanation": "はな (fleur) + も + きれい.",
+      "vocabulary": [
+        { "word": "はな", "reading": "hana", "meaning": "fleur" },
+        { "word": "きれい", "reading": "kirei", "meaning": "beau" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'aime aussi la musique.",
+      "correctAnswers": ["おんがくもすきです。", "ongaku mo suki desu"],
+      "explanation": "おんがく (musique) + も + すき.",
+      "vocabulary": [{ "word": "おんがく", "reading": "ongaku", "meaning": "musique" }]
+    },
+    {
+      "type": "translation",
+      "question": "Ma sœur aime aussi les animaux.",
+      "correctAnswers": ["あねもどうぶつがすきです。", "ane mo doubutsu ga suki desu"],
+      "explanation": "あね + も + どうぶつ.",
+      "vocabulary": [{ "word": "あね", "reading": "ane", "meaning": "grande sœur" }]
+    },
+    {
+      "type": "translation",
+      "question": "L'hiver aussi est froid.",
+      "correctAnswers": ["ふゆもさむいです。", "fuyu mo samui desu"],
+      "explanation": "ふゆ (hiver) + も + さむい.",
+      "vocabulary": [{ "word": "さむい", "reading": "samui", "meaning": "froid" }]
+    },
+    {
+      "type": "translation",
+      "question": "Je veux aussi une pomme.",
+      "correctAnswers": ["りんごもほしいです。", "ringo mo hoshii desu"],
+      "explanation": "りんご (pomme) + も + ほしい.",
+      "vocabulary": [{ "word": "りんご", "reading": "ringo", "meaning": "pomme" }]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai aussi une sœur.",
+      "correctAnswers": ["あねもいます。", "ane mo imasu"],
+      "explanation": "あね (grande sœur) + も + います.",
+      "vocabulary": [{ "word": "あね", "reading": "ane", "meaning": "grande sœur" }]
+    }
+  ]
+}

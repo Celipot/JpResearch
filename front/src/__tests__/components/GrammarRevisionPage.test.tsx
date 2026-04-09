@@ -143,6 +143,44 @@ describe('GrammarRevisionPage', () => {
       expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
     });
 
+    it('shows correct feedback when the answer is romaji wa instead of は', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankExercise);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => screen.getByRole('textbox'));
+
+      // When
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'wa' } });
+      fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
+
+      // Then
+      expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
+    });
+
+    it('shows correct feedback when the answer is alternate romaji ha instead of は', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankExercise);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => screen.getByRole('textbox'));
+
+      // When
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'ha' } });
+      fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
+
+      // Then
+      expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
+    });
+
     it('shows incorrect feedback when the answer is wrong', async () => {
       // Given
       mockFetch(mockFillInTheBlankExercise);
@@ -338,6 +376,27 @@ describe('GrammarRevisionPage', () => {
       expect(await screen.findByText(/✗ Incorrect/i)).toBeInTheDocument();
     });
 
+    it('shows correct feedback when the romaji answer is correct (watashi wa gakusei desu)', async () => {
+      // Given
+      mockFetch(mockTranslationExercise);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => screen.getByRole('textbox'));
+
+      // When
+      fireEvent.change(screen.getByRole('textbox'), {
+        target: { value: 'watashi wa gakusei desu' },
+      });
+      fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
+
+      // Then
+      expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
+    });
+
     it('accepts double vowel (oo) when the correct answer uses a macron (ō)', async () => {
       // Given — correct answer stored with macron ō
       mockFetch({
@@ -393,6 +452,17 @@ describe('GrammarRevisionPage', () => {
       { particle: 'は', ruleId: 'wa' },
       { particle: 'を', ruleId: 'wo' },
       { particle: 'が', ruleId: 'ga' },
+      { particle: 'に', ruleId: 'ni' },
+      { particle: 'で', ruleId: 'de' },
+      { particle: 'から', ruleId: 'kara' },
+      { particle: 'まで', ruleId: 'made' },
+      { particle: 'も', ruleId: 'mo' },
+      { particle: 'の', ruleId: 'no' },
+      { particle: 'へ', ruleId: 'he' },
+      { particle: 'と', ruleId: 'to' },
+      { particle: 'や', ruleId: 'ya' },
+      { particle: 'より', ruleId: 'yori' },
+      { particle: 'だけ', ruleId: 'dake' },
     ];
 
     it('displays buttons for all supported rules', () => {
@@ -500,7 +570,7 @@ describe('GrammarRevisionPage', () => {
         // Then
         await waitFor(() => {
           const call = (global.fetch as any).mock.calls[0][0];
-          expect(call).toMatch(/rule=(wa|wo|ga)/);
+          expect(call).toMatch(/rule=(wa|wo|ga|ni|de|kara|made|mo|no|he|to|ya|yori|dake)/);
         });
       });
 

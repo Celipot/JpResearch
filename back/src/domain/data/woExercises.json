@@ -283,12 +283,12 @@
     },
     {
       "type": "multiple-choice",
-      "question": "ペン___さがしています。",
+      "question": "ぺん___さがしています。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "が", "で"],
-      "explanation": "を marque l'objet direct : ペン (stylo) est ce qu'on cherche.",
+      "explanation": "を marque l'objet direct : ぺん (stylo) est ce qu'on cherche.",
       "vocabulary": [
-        { "word": "ペン", "reading": "pen", "meaning": "stylo" },
+        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
         { "word": "さがす", "reading": "sagasu", "meaning": "chercher" }
       ]
     },

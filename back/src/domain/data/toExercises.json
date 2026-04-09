@@ -1,0 +1,324 @@
+{
+  "rule": {
+    "id": "to",
+    "particle": "と",
+    "name": "Et, avec (exhaustif)",
+    "description": "Marque l'énumération exhaustive ou l'accompagnement."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___いぬがいます。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'énumération : il y a un chat ET un chien.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ともだち___えいがをみました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on a regardé le film avec un ami.",
+      "vocabulary": [
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" },
+        { "word": "えいが", "reading": "eiga", "meaning": "film" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あに___こうえんにいきました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on est allé au parc avec mon frère.",
+      "vocabulary": [
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "にほんご___えいごをべんきょうします。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'énumération : on étudie le japonais ET l'anglais.",
+      "vocabulary": [
+        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais" },
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かぞく___いっしょにしょくじしました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on a mangé avec la famille.",
+      "vocabulary": [
+        { "word": "かぞく", "reading": "kazoku", "meaning": "famille" },
+        { "word": "いっしょ", "reading": "issho", "meaning": "ensemble" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "せんせい___そうだんしました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on a consulté avec le professeur.",
+      "vocabulary": [
+        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
+        { "word": "そうだん", "reading": "soudan", "meaning": "consultation" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あね___いっしょにかいものにいきました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on est allé faire les courses avec ma sœur.",
+      "vocabulary": [
+        { "word": "あね", "reading": "ane", "meaning": "grande sœur" },
+        { "word": "かいもの", "reading": "kaimono", "meaning": "courses" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かれ___けっこんしました。",
+      "correctAnswers": ["と"],
+      "explanation": "と marque l'accompagnement : on s'est marié avec lui.",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "けっこん", "reading": "kekkon", "meaning": "mariage" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "はは___スーパーにいきました。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "で", "に"],
+      "explanation": "と marque l'accompagnement : on est allé au supermarché avec maman.",
+      "vocabulary": [{ "word": "はは", "reading": "haha", "meaning": "mère" }]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "いぬ___ねこがすきです。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "を", "に"],
+      "explanation": "と marque l'énumération : j'aime les chiens ET les chats.",
+      "vocabulary": [
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "しごと___しゅみのバランスがたいせつです。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "で", "から"],
+      "explanation": "と marque la relation : l'équilibre entre le travail ET les loisirs.",
+      "vocabulary": [
+        { "word": "しごと", "reading": "shigoto", "meaning": "travail" },
+        { "word": "しゅみ", "reading": "shumi", "meaning": "loisir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "りんご___みかんはおいしいです。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "で", "から"],
+      "explanation": "と marque l'énumération : les pommes ET les mandarines sont délicieuses.",
+      "vocabulary": [
+        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
+        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "コーヒー___こうちゃどちらがすきですか。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "を", "で"],
+      "explanation": "と marque le choix : tu préfères le café ou le thé?",
+      "vocabulary": [
+        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
+        { "word": "こうちゃ", "reading": "koucha", "meaning": "thé noir" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un chat et un chien.",
+      "correctAnswers": ["ねこといぬがいます。", "neko to inu ga imasu"],
+      "explanation": "ねこ (chat) + と + いぬ (chien) + が + います.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai regardé le film avec un ami.",
+      "correctAnswers": ["ともだちとえいがをみました。", "tomodachi to eiga wo mimashita"],
+      "explanation": "ともだち (ami) + と + えいが (film).",
+      "vocabulary": [
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" },
+        { "word": "えいが", "reading": "eiga", "meaning": "film" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "On est allé au parc avec mon frère.",
+      "correctAnswers": ["あにとこうえんにいきました。", "ani to kouen ni ikimashita"],
+      "explanation": "あに (grand frère) + と + こうえん (parc).",
+      "vocabulary": [
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
+        { "word": "こうえん", "reading": "kouen", "meaning": "parc" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je étudie le japonais et l'anglais.",
+      "correctAnswers": [
+        "にほんごとえいごをべんきょうします。",
+        "nihongo to eigo wo benkyou shimasu"
+      ],
+      "explanation": "にほんご + と + えいご.",
+      "vocabulary": [
+        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais" },
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai mangé avec ma famille.",
+      "correctAnswers": [
+        "かぞくといっしょにしょくじしました。",
+        "kazoku to issho ni shokuji shimashita"
+      ],
+      "explanation": "かぞく + と + いっしょ.",
+      "vocabulary": [{ "word": "かぞく", "reading": "kazoku", "meaning": "famille" }]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai consulté avec le professeur.",
+      "correctAnswers": ["せんせいとそうだんしました。", "sensei to soudan shimashita"],
+      "explanation": "せんせい (professeur) + と + そうだん.",
+      "vocabulary": [{ "word": "せんせい", "reading": "sensei", "meaning": "professeur" }]
+    },
+    {
+      "type": "translation",
+      "question": "わたしはちちとはは と あに と いもうとがいます。",
+      "correctAnswers": [
+        "J'ai un père, une mère, un grand frère et une petite sœur.",
+        "Ma famille comprend un père, une mère, un grand frère et une petite sœur."
+      ],
+      "explanation": "わたし + は + ちち (père) + と + はは (mère) + と + あに + と + いもうと.",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "ちち", "reading": "chichi", "meaning": "père" },
+        { "word": "はは", "reading": "haha", "meaning": "mère" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ぎゅうにゅう___りょうりをします。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "で", "から"],
+      "explanation": "と marque l'énumération : on cuisine avec du lait.",
+      "vocabulary": [
+        { "word": "ぎゅうにゅう", "reading": "gyuunyuu", "meaning": "lait" },
+        { "word": "りょうり", "reading": "ryouri", "meaning": "cuisine" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "さかな___にくもおいしいです。",
+      "correctAnswers": ["と"],
+      "options": ["と", "の", "を", "で"],
+      "explanation": "と marque l'énumération : le poisson ET la viande sont délicieux.",
+      "vocabulary": [
+        { "word": "さかな", "reading": "sakana", "meaning": "poisson" },
+        { "word": "にく", "reading": "niku", "meaning": "viande" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "J'ai joué au football avec mon meilleur ami.",
+      "correctAnswers": [
+        "さいこうのともだちとフットボールをしました。",
+        "saikou no tomodachi to futtoboru wo shimashita"
+      ],
+      "explanation": "さいこう (meilleur) + の + ともだち + と + フットボール.",
+      "vocabulary": [{ "word": "ともだち", "reading": "tomodachi", "meaning": "ami" }]
+    },
+    {
+      "type": "translation",
+      "question": "Le sel et le sucre sont importants.",
+      "correctAnswers": ["しおとさとうはたいせつです。", "shio to satou wa taisetsu desu"],
+      "explanation": "しお + と + さとう.",
+      "vocabulary": [
+        { "word": "しお", "reading": "shio", "meaning": "sel" },
+        { "word": "さとう", "reading": "satou", "meaning": "sucre" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je suis allé voir le film avec ma petite sœur.",
+      "correctAnswers": ["いもうととえいがをみました。", "imouto to eiga wo mimashita"],
+      "explanation": "いもうと + と + えいが.",
+      "vocabulary": [
+        { "word": "いもうと", "reading": "imouto", "meaning": "petite sœur" },
+        { "word": "えいが", "reading": "eiga", "meaning": "film" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le café et le thé sont tous les deux bons.",
+      "correctAnswers": [
+        "コーヒーとちゃはどちらもいいです。",
+        "koohii to cha wa dochira mo ii desu"
+      ],
+      "explanation": "コーヒー + と + ちゃ (thé).",
+      "vocabulary": [
+        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
+        { "word": "ちゃ", "reading": "cha", "meaning": "thé" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je fais de la natation avec mon frère.",
+      "correctAnswers": ["あにとすいえいをします。", "ani to suiei wo shimasu"],
+      "explanation": "あに + と + すいえい (natation).",
+      "vocabulary": [
+        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
+        { "word": "すいえい", "reading": "suiei", "meaning": "natation" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Les pommes et les oranges sont savoureuses.",
+      "correctAnswers": ["りんごとみかんはおいしいです。", "ringo to mikan wa oishii desu"],
+      "explanation": "りんご (pomme) + と + みかん (mandarine).",
+      "vocabulary": [
+        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
+        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je vais au cinéma avec ma meilleure amie.",
+      "correctAnswers": [
+        "さいこうのともだちとえいがへいきます。",
+        "saikou no tomodachi to eiga he ikimasu"
+      ],
+      "explanation": "さいこう (meilleur) + の + ともだち (amie) + と + えいが (film) + へ + いく.",
+      "vocabulary": [{ "word": "ともだち", "reading": "tomodachi", "meaning": "ami(e)" }]
+    },
+    {
+      "type": "translation",
+      "question": "Le père et la mère travaillent ensemble.",
+      "correctAnswers": [
+        "ちちとはははいっしょにはたらきます。",
+        "chichi to haha wa issho ni hatarakimasu"
+      ],
+      "explanation": "ちち (père) + と + はは (mère) + は + いっしょ (ensemble).",
+      "vocabulary": [
+        { "word": "ちち", "reading": "chichi", "meaning": "père" },
+        { "word": "はは", "reading": "haha", "meaning": "mère" }
+      ]
+    }
+  ]
+}

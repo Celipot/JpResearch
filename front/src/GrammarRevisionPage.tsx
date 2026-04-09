@@ -29,6 +29,18 @@ const romajiToHiragana: Record<string, string> = {
   wo: 'を',
   o: 'を',
   ga: 'が',
+  ni: 'に',
+  de: 'で',
+  kara: 'から',
+  made: 'まで',
+  mo: 'も',
+  no: 'の',
+  he: 'へ',
+  e: 'へ',
+  to: 'と',
+  ya: 'や',
+  yori: 'より',
+  dake: 'だけ',
 };
 
 const convertRomajiToHiragana = (str: string): string => {
@@ -47,9 +59,20 @@ const normalize = (str: string): string =>
     .replace(/ō/g, 'oo');
 
 const RULES = [
-  { id: 'wa', particle: 'は' },
-  { id: 'wo', particle: 'を' },
-  { id: 'ga', particle: 'が' },
+  { id: 'wa', particle: 'は', name: 'wa (topic)' },
+  { id: 'wo', particle: 'を', name: 'wo (objet)' },
+  { id: 'ga', particle: 'が', name: 'ga (sujet)' },
+  { id: 'ni', particle: 'に', name: 'ni (destination)' },
+  { id: 'de', particle: 'で', name: 'de (lieu/moyen)' },
+  { id: 'kara', particle: 'から', name: 'kara (origine)' },
+  { id: 'made', particle: 'まで', name: "made (jusqu'à)" },
+  { id: 'mo', particle: 'も', name: 'mo (aussi)' },
+  { id: 'no', particle: 'の', name: 'no (possession)' },
+  { id: 'he', particle: 'へ', name: 'he (direction)' },
+  { id: 'to', particle: 'と', name: 'to (et)' },
+  { id: 'ya', particle: 'や', name: 'ya (et non-exhaustif)' },
+  { id: 'yori', particle: 'より', name: 'yori (comparaison)' },
+  { id: 'dake', particle: 'だけ', name: 'dake (seulement)' },
 ];
 
 export default function GrammarRevisionPage() {
@@ -110,23 +133,53 @@ export default function GrammarRevisionPage() {
     <div className="container">
       <h1>Révision de grammaire</h1>
 
-      <div className="rule-selector">
-        {RULES.map((rule) => (
+      <div className="rule-selector-section">
+        <div className="rule-selector">
+          {RULES.map((rule) => (
+            <button
+              key={rule.id}
+              className={selectedRules.has(rule.id) ? 'mode-btn active' : 'mode-btn'}
+              title={rule.name}
+              onClick={() => {
+                toggleRule(rule.id);
+                setExercise(null);
+                setFeedback(null);
+              }}
+            >
+              {rule.particle}
+            </button>
+          ))}
+        </div>
+
+        <div className="rule-actions">
           <button
-            key={rule.id}
-            className={selectedRules.has(rule.id) ? 'mode-btn active' : 'mode-btn'}
+            className="action-btn"
             onClick={() => {
-              toggleRule(rule.id);
+              setSelectedRules(new Set(RULES.map((r) => r.id)));
               setExercise(null);
               setFeedback(null);
             }}
           >
-            {rule.particle}
+            Tout sélectionner
           </button>
-        ))}
+          <button
+            className="action-btn"
+            onClick={() => {
+              setSelectedRules(new Set([RULES[0].id]));
+              setExercise(null);
+              setFeedback(null);
+            }}
+          >
+            Réinitialiser
+          </button>
+        </div>
       </div>
 
-      <button onClick={fetchExercise} disabled={loading}>
+      <button
+        className="fetch-btn"
+        onClick={fetchExercise}
+        disabled={loading || selectedRules.size === 0}
+      >
         {loading ? 'Chargement...' : 'Nouvel exercice'}
       </button>
 
@@ -234,14 +287,16 @@ function FillInTheBlankExercise({
     <div className="exercise-section">
       <p className="exercise-question">{question}</p>
       <div className="answer-section">
-        <label htmlFor="fill-answer">Complétez avec la bonne particule :</label>
+        <label htmlFor="fill-answer">
+          Complétez avec la bonne particule (hiragana ou romaji) :
+        </label>
         <input
           id="fill-answer"
           type="text"
           value={userAnswer}
           onChange={(e) => onAnswerChange(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && onSubmit()}
-          placeholder="Particule..."
+          placeholder="Ex: は ou wa"
           disabled={feedback !== null}
         />
         <button

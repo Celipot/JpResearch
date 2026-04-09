@@ -266,7 +266,7 @@
     {
       "type": "translation",
       "question": "Il y a une fleur rouge.",
-      "correctAnswers": ["赤い花があります。", "akai hana ga arimasu"],
+      "correctAnswers": ["あかいはながあります。", "akai hana ga arimasu"],
       "explanation": "あかい (rouge) + はな (fleur) + が (sujet) + あります (il y a).",
       "vocabulary": [
         { "word": "あかい", "reading": "akai", "meaning": "rouge" },
