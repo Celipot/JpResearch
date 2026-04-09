@@ -209,7 +209,6 @@ Chaque fichier contient 30 exercices structurés :
 ## 📖 Documentation supplémentaire
 
 - [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) - Guide complet Railway
-- [jlpt-n5-vocabulary.md](./doc/jlpt-n5-vocabulary.md) - Vocabulaire JLPT N5 (source des exercices)
 
 ## 🛠️ Scripts utiles
 

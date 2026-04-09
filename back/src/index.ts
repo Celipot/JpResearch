@@ -6,7 +6,6 @@ import { dirname } from 'path';
 import { getRandom } from './controllers/randomController';
 import { getRandomHour } from './controllers/hourController';
 import { getRandomDate } from './controllers/dateController';
-import { getRandomExercise_ } from './controllers/exerciseController';
 
 const app = express();
 export default app;
@@ -22,7 +21,6 @@ app.use(express.json());
 app.get('/api/random', getRandom);
 app.get('/api/random-hour', getRandomHour);
 app.get('/api/random-date', getRandomDate);
-app.get('/api/exercises/random', getRandomExercise_);
 
 // Serve static frontend files
 const frontendDistPath = path.join(__dirname, '../../front/dist');
