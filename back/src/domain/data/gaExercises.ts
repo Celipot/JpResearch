@@ -1,6 +1,6 @@
 import { Exercise, ExerciseType, VocabularyEntry } from '../entities/Exercise';
 import { GrammarRule } from '../entities/GrammarRule';
-import data from './waExercises.json';
+import data from './gaExercises.json';
 
 const rule = new GrammarRule(
   data.rule.id,
@@ -9,7 +9,7 @@ const rule = new GrammarRule(
   data.rule.description
 );
 
-export const waExercises: Exercise[] = data.exercises.map(
+export const gaExercises: Exercise[] = data.exercises.map(
   (e) =>
     new Exercise({
       type: e.type as ExerciseType,

@@ -4,68 +4,93 @@ import { Exercise } from '../../domain/entities/Exercise';
 import { IExerciseRepository } from '../../domain/repositories/IExerciseRepository';
 import { GrammarRule } from '../../domain/entities/GrammarRule';
 
-const waRule = new GrammarRule('wa', 'は', 'Topic', 'Marque le sujet du discours');
-
-const stubExercises: Exercise[] = [
-  new Exercise({
-    type: 'fill-in-the-blank',
-    rule: waRule,
-    question: 'わたし___がくせいです。',
-    correctAnswers: ['は'],
-    explanation: 'は marque le topic.',
-  }),
-  new Exercise({
-    type: 'multiple-choice',
-    rule: waRule,
-    question: 'これ___ほんです。',
-    correctAnswers: ['は'],
-    options: ['は', 'が', 'を', 'に', 'で'],
-    explanation: 'は marque le topic.',
-  }),
-];
-
-const stubRepository: IExerciseRepository = {
-  findByRule: (ruleId: string) => (ruleId === 'wa' ? stubExercises : []),
+type RuleTestData = {
+  ruleId: string;
+  rule: GrammarRule;
+  exercises: Exercise[];
 };
 
+const createTestData = (ruleId: string, particle: string): RuleTestData => {
+  const rule = new GrammarRule(ruleId, particle, `Test ${ruleId}`, `Description ${ruleId}`);
+  return {
+    ruleId,
+    rule,
+    exercises: [
+      new Exercise({
+        type: 'fill-in-the-blank',
+        rule,
+        question: 'Test question 1',
+        correctAnswers: [particle],
+        explanation: 'Test explanation 1',
+      }),
+      new Exercise({
+        type: 'multiple-choice',
+        rule,
+        question: 'Test question 2',
+        correctAnswers: [particle],
+        options: [particle, 'が', 'を', 'に', 'で'],
+        explanation: 'Test explanation 2',
+      }),
+    ],
+  };
+};
+
+const createStubRepository = (testDataMap: Map<string, RuleTestData>): IExerciseRepository => ({
+  findByRule: (ruleId: string) => testDataMap.get(ruleId)?.exercises ?? [],
+});
+
 describe('getRandomExercise', () => {
-  it('given rule "wa", then returns an Exercise instance', () => {
-    // When
-    const exercise = getRandomExercise('wa', stubRepository);
+  const testCases = [
+    createTestData('wa', 'は'),
+    createTestData('wo', 'を'),
+    createTestData('ga', 'が'),
+  ];
 
-    // Then
-    expect(exercise).toBeInstanceOf(Exercise);
-  });
+  testCases.forEach(({ ruleId, rule, exercises }) => {
+    const testDataMap = new Map([[ruleId, { ruleId, rule, exercises }]]);
+    const repository = createStubRepository(testDataMap);
 
-  it('given rule "wa", then the exercise rule particle is は', () => {
-    // When
-    const exercise = getRandomExercise('wa', stubRepository);
+    describe(`rule="${ruleId}"`, () => {
+      it('then returns an Exercise instance', () => {
+        // When
+        const exercise = getRandomExercise(ruleId, repository);
 
-    // Then
-    expect(exercise.rule.particle).toBe('は');
-  });
+        // Then
+        expect(exercise).toBeInstanceOf(Exercise);
+      });
 
-  it('given rule "wa", then returns one of the available exercises', () => {
-    // When / Then
-    for (let i = 0; i < 20; i++) {
-      const exercise = getRandomExercise('wa', stubRepository);
-      expect(stubExercises).toContain(exercise);
-    }
-  });
+      it(`then exercise rule particle is ${rule.particle}`, () => {
+        // When
+        const exercise = getRandomExercise(ruleId, repository);
 
-  it('given multiple calls, then can return different exercises', () => {
-    // When
-    const questions = new Set<string>();
-    for (let i = 0; i < 50; i++) {
-      questions.add(getRandomExercise('wa', stubRepository).question);
-    }
+        // Then
+        expect(exercise.rule.particle).toBe(rule.particle);
+      });
 
-    // Then
-    expect(questions.size).toBeGreaterThan(1);
+      it('then returns one of the available exercises', () => {
+        // When / Then
+        for (let i = 0; i < 20; i++) {
+          const exercise = getRandomExercise(ruleId, repository);
+          expect(exercises).toContain(exercise);
+        }
+      });
+
+      it('then multiple calls can return different exercises', () => {
+        // When
+        const questions = new Set<string>();
+        for (let i = 0; i < 50; i++) {
+          questions.add(getRandomExercise(ruleId, repository).question);
+        }
+
+        // Then
+        expect(questions.size).toBeGreaterThan(1);
+      });
+    });
   });
 
   it('given an unknown rule, then throws an error', () => {
     // When / Then
-    expect(() => getRandomExercise('unknown', stubRepository)).toThrow();
+    const emptyRepository = createStubRepository(new Map());
+    expect(() => getRandomExercise('unknown', emptyRepository)).toThrow();
   });
 });

@@ -419,6 +419,13 @@ button:disabled {
   margin-bottom: 1.5rem;
 }
 
+.rule-selector {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .mode-btn {
   padding: 0.75rem 1rem;
   background: #e9ecef;
@@ -539,5 +546,61 @@ button:disabled {
   border-left: 4px solid #007bff;
   border-radius: 4px;
   font-size: 0.95rem;
+  color: #333;
+}
+
+.vocabulary-toggle {
+  margin-top: 1rem;
+  background: #fff8e1;
+  color: #856404;
+  border: 2px solid #ffc107;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.vocabulary-toggle:hover:not(:disabled) {
+  background: #ffeeba;
+}
+
+.vocabulary-toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.vocabulary-list {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.vocabulary-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.2rem 0;
+}
+
+.vocabulary-word {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  min-width: 5rem;
+}
+
+.vocabulary-detail {
+  font-size: 0.9rem;
+}
+
+.vocabulary-reading {
+  font-style: italic;
+  color: #666;
+}
+
+.vocabulary-meaning {
   color: #333;
 }

@@ -14,6 +14,7 @@ const mockFillInTheBlankExercise = {
   correctAnswers: ['は'],
   options: null,
   explanation: 'は marque le topic : わたし est ce dont on parle.',
+  vocabulary: null,
 };
 
 const mockMultipleChoiceExercise = {
@@ -23,6 +24,7 @@ const mockMultipleChoiceExercise = {
   correctAnswers: ['は'],
   options: ['は', 'が', 'を', 'に', 'で'],
   explanation: 'は marque le topic.',
+  vocabulary: null,
 };
 
 const mockTranslationExercise = {
@@ -32,6 +34,7 @@ const mockTranslationExercise = {
   correctAnswers: ['わたしはがくせいです', 'watashi wa gakusei desu'],
   options: null,
   explanation: 'わたし + は + がくせいです.',
+  vocabulary: null,
 };
 
 const mockTranslationWithMacronExercise = {
@@ -41,6 +44,16 @@ const mockTranslationWithMacronExercise = {
   correctAnswers: ['おいしいですね', 'oishii desu ne'],
   options: null,
   explanation: "おいしい (délicieux) + ですね (n'est-ce pas ?).",
+  vocabulary: null,
+};
+
+const mockFillInTheBlankWithVocabulary = {
+  ...mockFillInTheBlankExercise,
+  vocabulary: [
+    { word: 'わたし', reading: 'watashi', meaning: 'je / moi' },
+    { word: 'がくせい', reading: 'gakusei', meaning: 'étudiant(e)' },
+    { word: 'です', reading: 'desu', meaning: 'être (forme polie)' },
+  ],
 };
 
 const mockFetch = (response: object) => {
@@ -371,7 +384,18 @@ describe('GrammarRevisionPage', () => {
   });
 
   describe('rule selector', () => {
-    it('displays buttons for は and を', () => {
+    type RuleButtonTestCase = {
+      particle: string;
+      ruleId: string;
+    };
+
+    const RULE_BUTTONS: RuleButtonTestCase[] = [
+      { particle: 'は', ruleId: 'wa' },
+      { particle: 'を', ruleId: 'wo' },
+      { particle: 'が', ruleId: 'ga' },
+    ];
+
+    it('displays buttons for all supported rules', () => {
       // Given
       render(
         <MemoryRouter>
@@ -380,8 +404,9 @@ describe('GrammarRevisionPage', () => {
       );
 
       // Then
-      expect(screen.getByRole('button', { name: 'は' })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'を' })).toBeInTheDocument();
+      RULE_BUTTONS.forEach(({ particle }) => {
+        expect(screen.getByRole('button', { name: particle })).toBeInTheDocument();
+      });
     });
 
     it('は is selected by default', () => {
@@ -395,43 +420,32 @@ describe('GrammarRevisionPage', () => {
       // Then
       expect(screen.getByRole('button', { name: 'は' })).toHaveClass('active');
       expect(screen.getByRole('button', { name: 'を' })).not.toHaveClass('active');
+      expect(screen.getByRole('button', { name: 'が' })).not.toHaveClass('active');
     });
 
-    it('given rule を is selected, then fetch uses rule=wo', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankExercise);
-      vi.spyOn(Math, 'random').mockReturnValue(0.6);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
+    describe('single rule selection', () => {
+      RULE_BUTTONS.forEach(({ particle, ruleId }) => {
+        it(`given rule ${particle} is selected, then fetch uses rule=${ruleId}`, async () => {
+          // Given
+          mockFetch(mockFillInTheBlankExercise);
+          vi.spyOn(Math, 'random').mockReturnValue(0.6);
+          render(
+            <MemoryRouter>
+              <GrammarRevisionPage />
+            </MemoryRouter>
+          );
 
-      // When
-      fireEvent.click(screen.getByRole('button', { name: 'を' }));
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+          // When
+          if (particle !== 'は') {
+            fireEvent.click(screen.getByRole('button', { name: particle }));
+          }
+          fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
 
-      // Then
-      await waitFor(() => {
-        expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining('rule=wo'));
-      });
-    });
-
-    it('given rule は is selected, then fetch uses rule=wa', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankExercise);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-
-      // Then
-      await waitFor(() => {
-        expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining('rule=wa'));
+          // Then
+          await waitFor(() => {
+            expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining(`rule=${ruleId}`));
+          });
+        });
       });
     });
 
@@ -446,10 +460,12 @@ describe('GrammarRevisionPage', () => {
 
         // When
         fireEvent.click(screen.getByRole('button', { name: 'を' }));
+        fireEvent.click(screen.getByRole('button', { name: 'が' }));
 
         // Then
         expect(screen.getByRole('button', { name: 'は' })).toHaveClass('active');
         expect(screen.getByRole('button', { name: 'を' })).toHaveClass('active');
+        expect(screen.getByRole('button', { name: 'が' })).toHaveClass('active');
       });
 
       it('allows deselecting a rule', () => {
@@ -467,7 +483,7 @@ describe('GrammarRevisionPage', () => {
         expect(screen.getByRole('button', { name: 'は' })).not.toHaveClass('active');
       });
 
-      it('given both は and を are selected, fetch should use one of them', async () => {
+      it('given multiple rules are selected, fetch should use one of them', async () => {
         // Given
         mockFetch(mockFillInTheBlankExercise);
         render(
@@ -478,12 +494,13 @@ describe('GrammarRevisionPage', () => {
 
         // When
         fireEvent.click(screen.getByRole('button', { name: 'を' }));
+        fireEvent.click(screen.getByRole('button', { name: 'が' }));
         fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
 
         // Then
         await waitFor(() => {
           const call = (global.fetch as any).mock.calls[0][0];
-          expect(call).toMatch(/rule=(wa|wo)/);
+          expect(call).toMatch(/rule=(wa|wo|ga)/);
         });
       });
 
@@ -524,6 +541,138 @@ describe('GrammarRevisionPage', () => {
 
         // Then
         expect(screen.queryByText(/わたし___がくせいです。/)).not.toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('vocabulary', () => {
+    it('given exercise with vocabulary, then vocabulary toggle button is visible', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankWithVocabulary);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+
+      // Then
+      await waitFor(() => {
+        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
+      });
+    });
+
+    it('given vocabulary toggle button not yet clicked, then vocabulary is hidden', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankWithVocabulary);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+
+      // Then
+      await waitFor(() => {
+        expect(screen.queryByText('watashi')).not.toBeInTheDocument();
+      });
+    });
+
+    it('given vocabulary toggle button is clicked, then vocabulary entries are visible', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankWithVocabulary);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => {
+        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
+      });
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
+
+      // Then
+      expect(await screen.findByText('watashi')).toBeInTheDocument();
+      expect(screen.getByText('je / moi')).toBeInTheDocument();
+      expect(screen.getByText('gakusei')).toBeInTheDocument();
+      expect(screen.getByText('étudiant(e)')).toBeInTheDocument();
+    });
+
+    it('given vocabulary is open and toggle is clicked again, then vocabulary is hidden', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankWithVocabulary);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => {
+        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
+      });
+      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
+      await waitFor(() => {
+        expect(screen.getByText('watashi')).toBeInTheDocument();
+      });
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Masquer le vocabulaire/i }));
+
+      // Then
+      expect(screen.queryByText('watashi')).not.toBeInTheDocument();
+    });
+
+    it('given a new exercise is fetched, then vocabulary is hidden again', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankWithVocabulary);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => {
+        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
+      });
+      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
+      await waitFor(() => {
+        expect(screen.getByText('watashi')).toBeInTheDocument();
+      });
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      await waitFor(() => {
+        fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+      });
+
+      // Then
+      expect(screen.queryByText('watashi')).not.toBeInTheDocument();
+    });
+
+    it('given exercise without vocabulary, then no toggle button is rendered', async () => {
+      // Given
+      mockFetch(mockFillInTheBlankExercise);
+      render(
+        <MemoryRouter>
+          <GrammarRevisionPage />
+        </MemoryRouter>
+      );
+
+      // When
+      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
+
+      // Then
+      await waitFor(() => {
+        expect(
+          screen.queryByRole('button', { name: /Voir le vocabulaire/i })
+        ).not.toBeInTheDocument();
       });
     });
   });

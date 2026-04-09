@@ -2,6 +2,12 @@ import { GrammarRule } from './GrammarRule';
 
 export type ExerciseType = 'fill-in-the-blank' | 'multiple-choice' | 'translation';
 
+export interface VocabularyEntry {
+  word: string;
+  reading: string;
+  meaning: string;
+}
+
 interface ExerciseParams {
   type: ExerciseType;
   rule: GrammarRule;
@@ -9,6 +15,7 @@ interface ExerciseParams {
   correctAnswers: string[];
   options?: string[];
   explanation: string;
+  vocabulary?: VocabularyEntry[];
 }
 
 export class Exercise {
@@ -18,6 +25,7 @@ export class Exercise {
   readonly correctAnswers: string[];
   readonly options?: string[];
   readonly explanation: string;
+  readonly vocabulary?: VocabularyEntry[];
 
   constructor(params: ExerciseParams) {
     this.type = params.type;
@@ -26,5 +34,6 @@ export class Exercise {
     this.correctAnswers = params.correctAnswers;
     this.options = params.options;
     this.explanation = params.explanation;
+    this.vocabulary = params.vocabulary;
   }
 }

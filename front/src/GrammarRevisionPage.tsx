@@ -7,6 +7,12 @@ interface GrammarRule {
   description: string;
 }
 
+interface VocabularyEntry {
+  word: string;
+  reading: string;
+  meaning: string;
+}
+
 interface ExerciseResult {
   type: 'fill-in-the-blank' | 'multiple-choice' | 'translation';
   rule: GrammarRule;
@@ -14,7 +20,21 @@ interface ExerciseResult {
   correctAnswers: string[];
   options: string[] | null;
   explanation: string;
+  vocabulary: VocabularyEntry[] | null;
 }
+
+const romajiToHiragana: Record<string, string> = {
+  wa: 'は',
+  ha: 'は',
+  wo: 'を',
+  o: 'を',
+  ga: 'が',
+};
+
+const convertRomajiToHiragana = (str: string): string => {
+  const lower = str.toLowerCase().trim();
+  return romajiToHiragana[lower] || lower;
+};
 
 const normalize = (str: string): string =>
   str
@@ -29,6 +49,7 @@ const normalize = (str: string): string =>
 const RULES = [
   { id: 'wa', particle: 'は' },
   { id: 'wo', particle: 'を' },
+  { id: 'ga', particle: 'が' },
 ];
 
 export default function GrammarRevisionPage() {
@@ -37,6 +58,7 @@ export default function GrammarRevisionPage() {
   const [loading, setLoading] = useState(false);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
+  const [showVocabulary, setShowVocabulary] = useState(false);
 
   const toggleRule = (ruleId: string) => {
     const newSelected = new Set(selectedRules);
@@ -53,6 +75,7 @@ export default function GrammarRevisionPage() {
     setLoading(true);
     setFeedback(null);
     setUserAnswer('');
+    setShowVocabulary(false);
     try {
       const rulesArray = Array.from(selectedRules);
       const rule = rulesArray[Math.floor(Math.random() * rulesArray.length)];
@@ -68,7 +91,10 @@ export default function GrammarRevisionPage() {
 
   const checkAnswer = (answer: string) => {
     if (!exercise) return;
-    const normalizedAnswer = normalize(answer);
+    const trimmedAnswer = answer.trim().toLowerCase();
+    const romajiConverted = convertRomajiToHiragana(trimmedAnswer);
+    const normalizedAnswer = normalize(romajiConverted);
+
     const isCorrect = exercise.correctAnswers.some(
       (correct) => normalize(correct) === normalizedAnswer
     );
@@ -106,10 +132,6 @@ export default function GrammarRevisionPage() {
 
       {exercise && (
         <div className="revision-section">
-          <p className="grammar-rule-label">
-            Particule : <strong>{exercise.rule.particle}</strong> — {exercise.rule.name}
-          </p>
-
           {exercise.type === 'fill-in-the-blank' && (
             <FillInTheBlankExercise
               question={exercise.question}
@@ -155,8 +177,40 @@ export default function GrammarRevisionPage() {
           )}
 
           {feedback !== null && <div className="explanation">{exercise.explanation}</div>}
+
+          {exercise.vocabulary && exercise.vocabulary.length > 0 && (
+            <>
+              <button className="vocabulary-toggle" onClick={() => setShowVocabulary((v) => !v)}>
+                {showVocabulary ? 'Masquer le vocabulaire' : 'Voir le vocabulaire'}
+              </button>
+              {showVocabulary && <VocabularyList entries={exercise.vocabulary} />}
+            </>
+          )}
         </div>
       )}
+    </div>
+  );
+}
+
+interface VocabularyListProps {
+  entries: VocabularyEntry[];
+}
+
+function VocabularyList({ entries }: VocabularyListProps) {
+  return (
+    <div className="vocabulary-list">
+      <dl>
+        {entries.map((entry) => (
+          <div key={entry.word} className="vocabulary-entry">
+            <dt className="vocabulary-word">{entry.word}</dt>
+            <dd className="vocabulary-detail">
+              <span className="vocabulary-reading">{entry.reading}</span>
+              {' — '}
+              <span className="vocabulary-meaning">{entry.meaning}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }

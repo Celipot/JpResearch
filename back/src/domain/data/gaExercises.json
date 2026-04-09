@@ -1,0 +1,331 @@
+{
+  "rule": {
+    "id": "ga",
+    "particle": "が",
+    "name": "Sujet de l'action",
+    "description": "Marque le sujet de l'action ou l'agent (ce qui fait quelque chose)."
+  },
+  "exercises": [
+    {
+      "type": "fill-in-the-blank",
+      "question": "ねこ___います。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : un chat existe / il y a un chat.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "います", "reading": "imasu", "meaning": "être / exister (animé)" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "さかな___います。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : il y a un poisson (existence animée).",
+      "vocabulary": [
+        { "word": "さかな", "reading": "sakana", "meaning": "poisson" },
+        { "word": "います", "reading": "imasu", "meaning": "être / exister (animé)" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "あめ___ふります。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : la pluie tombe (phénomène naturel).",
+      "vocabulary": [
+        { "word": "あめ", "reading": "ame", "meaning": "pluie" },
+        { "word": "ふる", "reading": "furu", "meaning": "tomber (pluie/neige)" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "さくら___さきます。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : les fleurs de cerisier fleurissent (phénomène naturel).",
+      "vocabulary": [
+        { "word": "さくら", "reading": "sakura", "meaning": "cerisier / fleur de cerisier" },
+        { "word": "さく", "reading": "saku", "meaning": "fleurir / s'épanouir" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かれ___ほしいです。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet du désir : c'est un chat qu'il veut.",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "ほしい", "reading": "hoshii", "meaning": "vouloir / désirer" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "わたし___えいご___できます。",
+      "correctAnswers": ["は", "が"],
+      "explanation": "は (topic : moi) + が (sujet de la capacité : l'anglais).",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je / moi" },
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais (langue)" },
+        { "word": "できます", "reading": "dekimasu", "meaning": "pouvoir / être capable" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "ゆき___あります。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : il y a de la neige (existence inanimée).",
+      "vocabulary": [
+        { "word": "ゆき", "reading": "yuki", "meaning": "neige" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a / être (inanimé)" }
+      ]
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "かぜ___ふきます。",
+      "correctAnswers": ["が"],
+      "explanation": "が marque le sujet : le vent souffle (phénomène naturel).",
+      "vocabulary": [
+        { "word": "かぜ", "reading": "kaze", "meaning": "vent" },
+        { "word": "ふく", "reading": "fuku", "meaning": "souffler (vent)" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "いぬ___います。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "は", "に"],
+      "explanation": "が marque le sujet : il y a un chien (existence).",
+      "vocabulary": [
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "います", "reading": "imasu", "meaning": "être / exister (animé)" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "はな___さきました。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "に", "で"],
+      "explanation": "が marque le sujet : la fleur a fleuri (action naturelle).",
+      "vocabulary": [
+        { "word": "はな", "reading": "hana", "meaning": "fleur" },
+        { "word": "さく", "reading": "saku", "meaning": "fleurir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "かれ___たいです。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "は", "に"],
+      "explanation": "が marque le sujet du désir : c'est lui qui veut (desire).",
+      "vocabulary": [
+        { "word": "かれ", "reading": "kare", "meaning": "il" },
+        { "word": "たい", "reading": "tai", "meaning": "vouloir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "ほん___あります。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "に", "で"],
+      "explanation": "が marque le sujet : il y a un livre (existence inanimée).",
+      "vocabulary": [
+        { "word": "ほん", "reading": "hon", "meaning": "livre" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "わたし___えいご___できます。",
+      "correctAnswers": ["は", "が"],
+      "options": [
+        ["は", "が"],
+        ["を", "が"],
+        ["が", "を"],
+        ["に", "が"]
+      ],
+      "explanation": "は marque le topic (moi), が marque le sujet de la capacité (anglais).",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je / moi" },
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
+        { "word": "できます", "reading": "dekimasu", "meaning": "pouvoir" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un chat.",
+      "correctAnswers": ["ねこがいます。", "neko ga imasu"],
+      "explanation": "ねこ (chat) + が (sujet) + います (existe).",
+      "vocabulary": [
+        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
+        { "word": "います", "reading": "imasu", "meaning": "être / exister (animé)" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un chien.",
+      "correctAnswers": ["いぬがいます。", "inu ga imasu"],
+      "explanation": "いぬ (chien) + が (sujet) + います.",
+      "vocabulary": [
+        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
+        { "word": "います", "reading": "imasu", "meaning": "être" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "La pluie tombe.",
+      "correctAnswers": ["あめがふります。", "ame ga furimasu"],
+      "explanation": "あめ (pluie) + が (sujet) + ふる (tomber).",
+      "vocabulary": [
+        { "word": "あめ", "reading": "ame", "meaning": "pluie" },
+        { "word": "ふる", "reading": "furu", "meaning": "tomber" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Les fleurs fleurissent.",
+      "correctAnswers": ["はながさきます。", "hana ga sakimasu"],
+      "explanation": "はな (fleur) + が (sujet) + さく (fleurir).",
+      "vocabulary": [
+        { "word": "はな", "reading": "hana", "meaning": "fleur" },
+        { "word": "さく", "reading": "saku", "meaning": "fleurir" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a de la neige.",
+      "correctAnswers": ["ゆきがあります。", "yuki ga arimasu"],
+      "explanation": "ゆき (neige) + が (sujet) + あります (il y a).",
+      "vocabulary": [
+        { "word": "ゆき", "reading": "yuki", "meaning": "neige" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le vent souffle.",
+      "correctAnswers": ["かぜがふきます。", "kaze ga fukimasu"],
+      "explanation": "かぜ (vent) + が (sujet) + ふく (souffler).",
+      "vocabulary": [
+        { "word": "かぜ", "reading": "kaze", "meaning": "vent" },
+        { "word": "ふく", "reading": "fuku", "meaning": "souffler" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je peux parler anglais.",
+      "correctAnswers": ["わたしはえいごができます。", "watashi wa eigo ga dekimasu"],
+      "explanation": "わたし (je) + は (topic) + えいご (anglais) + が (sujet de capacité) + できます (pouvoir).",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
+        { "word": "できます", "reading": "dekimasu", "meaning": "pouvoir" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Je veux un livre.",
+      "correctAnswers": ["わたしはほんがほしいです。", "watashi wa hon ga hoshii desu"],
+      "explanation": "わたし (je) + は (topic) + ほん (livre) + が (objet du désir) + ほしい (vouloir).",
+      "vocabulary": [
+        { "word": "わたし", "reading": "watashi", "meaning": "je" },
+        { "word": "ほん", "reading": "hon", "meaning": "livre" },
+        { "word": "ほしい", "reading": "hoshii", "meaning": "vouloir" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a un livre sur la table.",
+      "correctAnswers": ["机の上にほんがあります。", "tsukue no ue ni hon ga arimasu"],
+      "explanation": "ほん (livre) + が (sujet) + あります (il y a).",
+      "vocabulary": [
+        { "word": "ほん", "reading": "hon", "meaning": "livre" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" },
+        { "word": "机", "reading": "tsukue", "meaning": "table" },
+        { "word": "上", "reading": "ue", "meaning": "dessus" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Elle veut manger du riz.",
+      "correctAnswers": ["かのじょはごはんがたべたいです。", "kanojo wa gohan ga tabetai desu"],
+      "explanation": "かのじょ (elle) + は (topic) + ごはん (riz) + が (objet du désir) + たべたい (vouloir manger).",
+      "vocabulary": [
+        { "word": "かのじょ", "reading": "kanojo", "meaning": "elle" },
+        { "word": "ごはん", "reading": "gohan", "meaning": "riz" },
+        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Mon ami peut jouer au football.",
+      "correctAnswers": ["ともだちはサッカーができます。", "tomodachi wa sakkaa ga dekimasu"],
+      "explanation": "ともだち (ami) + は (topic) + サッカー (football) + が (sujet de capacité) + できます (pouvoir).",
+      "vocabulary": [
+        { "word": "ともだち", "reading": "tomodachi", "meaning": "ami" },
+        { "word": "サッカー", "reading": "sakkaa", "meaning": "football" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a une fleur rouge.",
+      "correctAnswers": ["赤い花があります。", "akai hana ga arimasu"],
+      "explanation": "あかい (rouge) + はな (fleur) + が (sujet) + あります (il y a).",
+      "vocabulary": [
+        { "word": "あかい", "reading": "akai", "meaning": "rouge" },
+        { "word": "はな", "reading": "hana", "meaning": "fleur" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Le tonnerre gronde.",
+      "correctAnswers": ["かみなりがなります。", "kaminari ga narimasu"],
+      "explanation": "かみなり (tonnerre) + が (sujet) + なる (retentir/gronder).",
+      "vocabulary": [
+        { "word": "かみなり", "reading": "kaminari", "meaning": "tonnerre" },
+        { "word": "なる", "reading": "naru", "meaning": "devenir / retentir" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "まり___あります。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "は", "に"],
+      "explanation": "が marque le sujet : il y a un ballon.",
+      "vocabulary": [
+        { "word": "まり", "reading": "mari", "meaning": "ballon" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "question": "そら___あおいです。",
+      "correctAnswers": ["が"],
+      "options": ["が", "を", "は", "に"],
+      "explanation": "が marque le sujet : le ciel est bleu (simple observation du phénomène).",
+      "vocabulary": [
+        { "word": "そら", "reading": "sora", "meaning": "ciel" },
+        { "word": "あおい", "reading": "aoi", "meaning": "bleu" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "Il y a des étoiles.",
+      "correctAnswers": ["ほしがあります。", "hoshi ga arimasu"],
+      "explanation": "ほし (étoile) + が (sujet) + あります (il y a).",
+      "vocabulary": [
+        { "word": "ほし", "reading": "hoshi", "meaning": "étoile" },
+        { "word": "あります", "reading": "arimasu", "meaning": "il y a" }
+      ]
+    },
+    {
+      "type": "translation",
+      "question": "La neige tombe maintenant.",
+      "correctAnswers": ["ゆきがふっています。", "yuki ga futte imasu"],
+      "explanation": "ゆき (neige) + が (sujet) + ふる (tomber) + ています (en cours).",
+      "vocabulary": [
+        { "word": "ゆき", "reading": "yuki", "meaning": "neige" },
+        { "word": "ふる", "reading": "furu", "meaning": "tomber" },
+        { "word": "いる", "reading": "iru", "meaning": "être / exister" }
+      ]
+    }
+  ]
+}
