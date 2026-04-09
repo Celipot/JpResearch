@@ -7,7 +7,6 @@ type ExerciseData = {
   question: string;
   correctAnswers: string[];
   explanation: string;
-  vocabulary: Array<{ word: string; reading: string; meaning: string }>;
   options?: string[];
 };
 
@@ -26,7 +25,6 @@ export const dakeExercises = data.exercises.map(
       question: exercise.question,
       correctAnswers: exercise.correctAnswers,
       explanation: exercise.explanation,
-      vocabulary: exercise.vocabulary,
       options: exercise.options,
     })
 );

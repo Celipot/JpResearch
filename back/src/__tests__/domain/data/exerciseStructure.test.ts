@@ -36,20 +36,6 @@ const validateExerciseStructure = (data: ExerciseData, particleId: string) => {
       expect(count).toBe(15);
     });
 
-    it('should have valid vocabulary for each exercise', () => {
-      data.exercises.forEach((exercise, _index) => {
-        expect(exercise.vocabulary).toBeDefined();
-        expect(Array.isArray(exercise.vocabulary)).toBe(true);
-        expect(exercise.vocabulary.length).toBeGreaterThan(0);
-
-        exercise.vocabulary.forEach((vocab) => {
-          expect(vocab.word).toBeTruthy();
-          expect(vocab.reading).toBeTruthy();
-          expect(vocab.meaning).toBeTruthy();
-        });
-      });
-    });
-
     it('should have correct answers for each exercise', () => {
       data.exercises.forEach((exercise, _index) => {
         expect(exercise.correctAnswers).toBeDefined();

@@ -10,129 +10,83 @@
       "type": "fill-in-the-blank",
       "question": "えいご___なでしょう。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : c'est plus facile que l'anglais.",
-      "vocabulary": [{ "word": "えいご", "reading": "eigo", "meaning": "anglais" }]
+      "explanation": "より indique le point de comparaison : c'est plus facile que l'anglais."
     },
     {
       "type": "fill-in-the-blank",
       "question": "きょう___あしたのほうがあたたかいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : demain est plus chaud qu'aujourd'hui.",
-      "vocabulary": [
-        { "word": "きょう", "reading": "kyou", "meaning": "aujourd'hui" },
-        { "word": "あした", "reading": "ashita", "meaning": "demain" },
-        { "word": "あたたかい", "reading": "atatakai", "meaning": "chaud" }
-      ]
+      "explanation": "より indique le point de comparaison : demain est plus chaud qu'aujourd'hui."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あくまたろう___こうたろうのほうがセンスがいいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : Kotaro a plus de talent que Tamao.",
-      "vocabulary": []
+      "explanation": "より indique le point de comparaison : Kotaro a plus de talent que Tamao."
     },
     {
       "type": "fill-in-the-blank",
       "question": "みず___おちゃのほうがすきです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : j'aime le thé plus que l'eau.",
-      "vocabulary": [
-        { "word": "みず", "reading": "mizu", "meaning": "eau" },
-        { "word": "おちゃ", "reading": "ocha", "meaning": "thé" }
-      ]
+      "explanation": "より indique le point de comparaison : j'aime le thé plus que l'eau."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ねこ___いぬのほうがかわいいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : les chiens sont plus mignons que les chats.",
-      "vocabulary": [
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
-        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
-        { "word": "かわいい", "reading": "kawaii", "meaning": "mignon" }
-      ]
+      "explanation": "より indique le point de comparaison : les chiens sont plus mignons que les chats."
     },
     {
       "type": "fill-in-the-blank",
       "question": "りんご___みかんのほうがあまいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : les mandarines sont plus douces que les pommes.",
-      "vocabulary": [
-        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
-        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" },
-        { "word": "あまい", "reading": "amai", "meaning": "doux" }
-      ]
+      "explanation": "より indique le point de comparaison : les mandarines sont plus douces que les pommes."
     },
     {
       "type": "fill-in-the-blank",
       "question": "いえ___がっこうのほうがくらいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : l'école est plus sombre que la maison.",
-      "vocabulary": [
-        { "word": "いえ", "reading": "ie", "meaning": "maison" },
-        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
-      ]
+      "explanation": "より indique le point de comparaison : l'école est plus sombre que la maison."
     },
     {
       "type": "fill-in-the-blank",
       "question": "なつ___ふゆのほうがすごしやすいです。",
       "correctAnswers": ["より"],
-      "explanation": "より indique le point de comparaison : l'hiver est plus facile à vivre que l'été.",
-      "vocabulary": [
-        { "word": "なつ", "reading": "natsu", "meaning": "été" },
-        { "word": "ふゆ", "reading": "fuyu", "meaning": "hiver" }
-      ]
+      "explanation": "より indique le point de comparaison : l'hiver est plus facile à vivre que l'été."
     },
     {
       "type": "multiple-choice",
       "question": "にほんご___えいごのほうがむずかしいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "や", "で"],
-      "explanation": "より indique le point de comparaison : l'anglais est plus difficile que le japonais.",
-      "vocabulary": [
-        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais" },
-        { "word": "えいご", "reading": "eigo", "meaning": "anglais" }
-      ]
+      "explanation": "より indique le point de comparaison : l'anglais est plus difficile que le japonais."
     },
     {
       "type": "multiple-choice",
       "question": "いぬ___ねこのほうがおおきいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "の", "を"],
-      "explanation": "より indique le point de comparaison : les chats sont plus grands que les chiens.",
-      "vocabulary": [
-        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" }
-      ]
+      "explanation": "より indique le point de comparaison : les chats sont plus grands que les chiens."
     },
     {
       "type": "multiple-choice",
       "question": "パン___ごはんのほうがおいしいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "が", "で"],
-      "explanation": "より indique le point de comparaison : le riz est plus délicieux que le pain.",
-      "vocabulary": [
-        { "word": "パン", "reading": "pan", "meaning": "pain" },
-        { "word": "ごはん", "reading": "gohan", "meaning": "riz/repas" }
-      ]
+      "explanation": "より indique le point de comparaison : le riz est plus délicieux que le pain."
     },
     {
       "type": "multiple-choice",
       "question": "すし___うどんのほうがたかいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "を", "で"],
-      "explanation": "より indique le point de comparaison : les nouilles udon sont plus chères que les sushis.",
-      "vocabulary": [
-        { "word": "すし", "reading": "sushi", "meaning": "sushi" },
-        { "word": "うどん", "reading": "udon", "meaning": "udon" }
-      ]
+      "explanation": "より indique le point de comparaison : les nouilles udon sont plus chères que les sushis."
     },
     {
       "type": "translation",
       "question": "C'est plus facile que l'anglais.",
       "correctAnswers": ["えいごよりやさしいです。", "eigo yori yasashii desu"],
-      "explanation": "えいご + より + やさしい.",
-      "vocabulary": [{ "word": "えいご", "reading": "eigo", "meaning": "anglais" }]
+      "explanation": "えいご + より + やさしい."
     },
     {
       "type": "translation",
@@ -141,21 +95,13 @@
         "きょうよりあしたのほうがあたたかいです。",
         "kyou yori ashita no hou ga atatakai desu"
       ],
-      "explanation": "きょう + より + あした.",
-      "vocabulary": [
-        { "word": "きょう", "reading": "kyou", "meaning": "aujourd'hui" },
-        { "word": "あした", "reading": "ashita", "meaning": "demain" }
-      ]
+      "explanation": "きょう + より + あした."
     },
     {
       "type": "translation",
       "question": "J'aime le thé plus que l'eau.",
       "correctAnswers": ["みずよりおちゃのほうがすきです。", "mizu yori ocha no hou ga suki desu"],
-      "explanation": "みず + より + おちゃ.",
-      "vocabulary": [
-        { "word": "みず", "reading": "mizu", "meaning": "eau" },
-        { "word": "おちゃ", "reading": "ocha", "meaning": "thé" }
-      ]
+      "explanation": "みず + より + おちゃ."
     },
     {
       "type": "translation",
@@ -164,11 +110,7 @@
         "ねこよりいぬのほうがかわいいです。",
         "neko yori inu no hou ga kawaii desu"
       ],
-      "explanation": "ねこ + より + いぬ.",
-      "vocabulary": [
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
-        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
-      ]
+      "explanation": "ねこ + より + いぬ."
     },
     {
       "type": "translation",
@@ -177,11 +119,7 @@
         "りんごよりみかんのほうがあまいです。",
         "ringo yori mikan no hou ga amai desu"
       ],
-      "explanation": "りんご + より + みかん.",
-      "vocabulary": [
-        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
-        { "word": "みかん", "reading": "mikan", "meaning": "mandarine" }
-      ]
+      "explanation": "りんご + より + みかん."
     },
     {
       "type": "translation",
@@ -190,11 +128,7 @@
         "にほんごよりえいごのほうがむずかしいです。",
         "nihongo yori eigo no hou ga muzukashii desu"
       ],
-      "explanation": "にほんご + より + えいご.",
-      "vocabulary": [
-        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais" },
-        { "word": "えいご", "reading": "eigo", "meaning": "anglais" }
-      ]
+      "explanation": "にほんご + より + えいご."
     },
     {
       "type": "translation",
@@ -203,42 +137,28 @@
         "なつよりふゆのほうがすごしやすいです。",
         "natsu yori fuyu no hou ga sugoshi yasui desu"
       ],
-      "explanation": "なつ + より + ふゆ.",
-      "vocabulary": [
-        { "word": "なつ", "reading": "natsu", "meaning": "été" },
-        { "word": "ふゆ", "reading": "fuyu", "meaning": "hiver" }
-      ]
+      "explanation": "なつ + より + ふゆ."
     },
     {
       "type": "multiple-choice",
       "question": "すし___たこやきのほうがおいしいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "が", "で"],
-      "explanation": "より indique le point de comparaison : les boulettes de poulpe sont plus délicieuses que les sushis.",
-      "vocabulary": [{ "word": "すし", "reading": "sushi", "meaning": "sushi" }]
+      "explanation": "より indique le point de comparaison : les boulettes de poulpe sont plus délicieuses que les sushis."
     },
     {
       "type": "multiple-choice",
       "question": "あさ___よるのほうがしずかです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "の", "で"],
-      "explanation": "より indique le point de comparaison : la nuit est plus tranquille que le matin.",
-      "vocabulary": [
-        { "word": "あさ", "reading": "asa", "meaning": "matin" },
-        { "word": "よる", "reading": "yoru", "meaning": "nuit" },
-        { "word": "しずか", "reading": "shizuka", "meaning": "tranquille" }
-      ]
+      "explanation": "より indique le point de comparaison : la nuit est plus tranquille que le matin."
     },
     {
       "type": "multiple-choice",
       "question": "ぺん___えんぴつのほうがつかいやすいです。",
       "correctAnswers": ["より"],
       "options": ["より", "と", "を", "で"],
-      "explanation": "より indique le point de comparaison : le crayon est plus facile à utiliser que le stylo.",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "えんぴつ", "reading": "enpitsu", "meaning": "crayon" }
-      ]
+      "explanation": "より indique le point de comparaison : le crayon est plus facile à utiliser que le stylo."
     },
     {
       "type": "translation",
@@ -247,11 +167,7 @@
         "いえよりがっこうのほうがおおきいです。",
         "ie yori gakkou no hou ga ookii desu"
       ],
-      "explanation": "いえ (maison) + より + がっこう.",
-      "vocabulary": [
-        { "word": "いえ", "reading": "ie", "meaning": "maison" },
-        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
-      ]
+      "explanation": "いえ (maison) + より + がっこう."
     },
     {
       "type": "translation",
@@ -260,11 +176,7 @@
         "パンよりごはんのほうがおいしいです。",
         "pan yori gohan no hou ga oishii desu"
       ],
-      "explanation": "パン + より + ごはん.",
-      "vocabulary": [
-        { "word": "パン", "reading": "pan", "meaning": "pain" },
-        { "word": "ごはん", "reading": "gohan", "meaning": "riz" }
-      ]
+      "explanation": "パン + より + ごはん."
     },
     {
       "type": "translation",
@@ -273,11 +185,7 @@
         "すしよりうどんのほうがたかいです。",
         "sushi yori udon no hou ga takai desu"
       ],
-      "explanation": "すし + より + うどん.",
-      "vocabulary": [
-        { "word": "すし", "reading": "sushi", "meaning": "sushi" },
-        { "word": "うどん", "reading": "udon", "meaning": "udon" }
-      ]
+      "explanation": "すし + より + うどん."
     },
     {
       "type": "translation",
@@ -286,11 +194,7 @@
         "あさよりよるのほうがしずかです。",
         "asa yori yoru no hou ga shizuka desu"
       ],
-      "explanation": "あさ + より + よる.",
-      "vocabulary": [
-        { "word": "あさ", "reading": "asa", "meaning": "matin" },
-        { "word": "よる", "reading": "yoru", "meaning": "nuit" }
-      ]
+      "explanation": "あさ + より + よる."
     },
     {
       "type": "translation",
@@ -299,21 +203,13 @@
         "ぺんよりえんぴつのほうがつかいやすいです。",
         "pen yori enpitsu no hou ga tsukaiyasui desu"
       ],
-      "explanation": "ぺん + より + えんぴつ.",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "えんぴつ", "reading": "enpitsu", "meaning": "crayon" }
-      ]
+      "explanation": "ぺん + より + えんぴつ."
     },
     {
       "type": "translation",
       "question": "Le thé est meilleur que le café.",
       "correctAnswers": ["コーヒーよりちゃのほうがいいです。", "koohii yori cha no hou ga ii desu"],
-      "explanation": "コーヒー + より + ちゃ.",
-      "vocabulary": [
-        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
-        { "word": "ちゃ", "reading": "cha", "meaning": "thé" }
-      ]
+      "explanation": "コーヒー + より + ちゃ."
     },
     {
       "type": "translation",
@@ -322,8 +218,7 @@
         "フランスごよりにほんごのほうがかんたんです。",
         "furansugo yori nihongo no hou ga kantan desu"
       ],
-      "explanation": "フランスご + より + にほんご.",
-      "vocabulary": [{ "word": "にほんご", "reading": "nihongo", "meaning": "japonais" }]
+      "explanation": "フランスご + より + にほんご."
     },
     {
       "type": "translation",
@@ -332,8 +227,7 @@
         "がっこうよりいえのほうがべんりです。",
         "gakkou yori ie no hou ga benri desu"
       ],
-      "explanation": "がっこう (école) + より + いえ (maison).",
-      "vocabulary": [{ "word": "べんり", "reading": "benri", "meaning": "pratique" }]
+      "explanation": "がっこう (école) + より + いえ (maison)."
     }
   ]
 }

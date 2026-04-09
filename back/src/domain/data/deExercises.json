@@ -10,259 +10,176 @@
       "type": "fill-in-the-blank",
       "question": "こうえん___あそびます。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le lieu d'action : on joue AU parc.",
-      "vocabulary": [
-        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
-        { "word": "あそぶ", "reading": "asobu", "meaning": "jouer" }
-      ]
+      "explanation": "で marque le lieu d'action : on joue AU parc."
     },
     {
       "type": "fill-in-the-blank",
       "question": "くるま___がっこうにいきます。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le moyen : on va à l'école EN voiture.",
-      "vocabulary": [
-        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" },
-        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
-      ]
+      "explanation": "で marque le moyen : on va à l'école EN voiture."
     },
     {
       "type": "fill-in-the-blank",
       "question": "にほんご___はなします。",
       "correctAnswers": ["で"],
-      "explanation": "で marque la langue : on parle EN japonais.",
-      "vocabulary": [
-        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais (langue)" },
-        { "word": "はなす", "reading": "hanasu", "meaning": "parler" }
-      ]
+      "explanation": "で marque la langue : on parle EN japonais."
     },
     {
       "type": "fill-in-the-blank",
       "question": "いえ___べんきょうします。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le lieu d'action : on étudie À la maison.",
-      "vocabulary": [
-        { "word": "いえ", "reading": "ie", "meaning": "maison" },
-        { "word": "べんきょう", "reading": "benkyou", "meaning": "étude" }
-      ]
+      "explanation": "で marque le lieu d'action : on étudie À la maison."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ぺん___かきます。",
       "correctAnswers": ["で"],
-      "explanation": "で marque l'outil : on écrit AVEC un stylo.",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "かく", "reading": "kaku", "meaning": "écrire" }
-      ]
+      "explanation": "で marque l'outil : on écrit AVEC un stylo."
     },
     {
       "type": "fill-in-the-blank",
       "question": "がっこう___べんきょうします。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le lieu d'action : on étudie À l'école.",
-      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+      "explanation": "で marque le lieu d'action : on étudie À l'école."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あさ___ごはんをたべます。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le moment/condition : on mange le matin.",
-      "vocabulary": [
-        { "word": "あさ", "reading": "asa", "meaning": "matin" },
-        { "word": "ごはん", "reading": "gohan", "meaning": "riz/repas" },
-        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
-      ]
+      "explanation": "で marque le moment/condition : on mange le matin."
     },
     {
       "type": "fill-in-the-blank",
       "question": "じてんしゃ___いきます。",
       "correctAnswers": ["で"],
-      "explanation": "で marque le moyen de transport : on y va À vélo.",
-      "vocabulary": [
-        { "word": "じてんしゃ", "reading": "jitensha", "meaning": "bicyclette" },
-        { "word": "いく", "reading": "iku", "meaning": "aller" }
-      ]
+      "explanation": "で marque le moyen de transport : on y va À vélo."
     },
     {
       "type": "multiple-choice",
       "question": "でんしゃ___えきについきました。",
       "correctAnswers": ["で"],
       "options": ["で", "に", "から", "を"],
-      "explanation": "で marque le moyen de transport : on est arrivé EN train.",
-      "vocabulary": [
-        { "word": "でんしゃ", "reading": "densha", "meaning": "train" },
-        { "word": "えき", "reading": "eki", "meaning": "gare" }
-      ]
+      "explanation": "で marque le moyen de transport : on est arrivé EN train."
     },
     {
       "type": "multiple-choice",
       "question": "ほん___よみます。",
       "correctAnswers": ["で"],
       "options": ["で", "を", "に", "から"],
-      "explanation": "で marque le sujet/domaine : on étudie EN lisant des livres.",
-      "vocabulary": [
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "よむ", "reading": "yomu", "meaning": "lire" }
-      ]
+      "explanation": "で marque le sujet/domaine : on étudie EN lisant des livres."
     },
     {
       "type": "multiple-choice",
       "question": "えいご___しけんにごうかくしました。",
       "correctAnswers": ["で"],
       "options": ["で", "が", "を", "に"],
-      "explanation": "で marque la matière : on a réussi l'examen D'anglais.",
-      "vocabulary": [
-        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
-        { "word": "しけん", "reading": "shiken", "meaning": "examen" }
-      ]
+      "explanation": "で marque la matière : on a réussi l'examen D'anglais."
     },
     {
       "type": "multiple-choice",
       "question": "よる___いぬをあるかせます。",
       "correctAnswers": ["で"],
       "options": ["で", "に", "から", "へ"],
-      "explanation": "で marque le moment : on promène le chien LA nuit.",
-      "vocabulary": [
-        { "word": "よる", "reading": "yoru", "meaning": "nuit" },
-        { "word": "いぬ", "reading": "inu", "meaning": "chien" }
-      ]
+      "explanation": "で marque le moment : on promène le chien LA nuit."
     },
     {
       "type": "multiple-choice",
       "question": "おかし___せいこうしました。",
       "correctAnswers": ["で"],
       "options": ["で", "が", "を", "に"],
-      "explanation": "で marque le moyen : on a réussi PAR des bonbons/récompenses.",
-      "vocabulary": [
-        { "word": "おかし", "reading": "okashi", "meaning": "confiserie" },
-        { "word": "せいこう", "reading": "seikou", "meaning": "succès" }
-      ]
+      "explanation": "で marque le moyen : on a réussi PAR des bonbons/récompenses."
     },
     {
       "type": "translation",
       "question": "Je joue au parc.",
       "correctAnswers": ["こうえんであそびます。", "kouen de asobimasu"],
-      "explanation": "こうえん (parc) + で (lieu) + あそぶ (jouer).",
-      "vocabulary": [{ "word": "こうえん", "reading": "kouen", "meaning": "parc" }]
+      "explanation": "こうえん (parc) + で (lieu) + あそぶ (jouer)."
     },
     {
       "type": "translation",
       "question": "On va à l'école en voiture.",
       "correctAnswers": ["くるまでがっこうにいきます。", "kuruma de gakkou ni ikimasu"],
-      "explanation": "くるま (voiture) + で + がっこう (école) + に + いく.",
-      "vocabulary": [
-        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" },
-        { "word": "がっこう", "reading": "gakkou", "meaning": "école" }
-      ]
+      "explanation": "くるま (voiture) + で + がっこう (école) + に + いく."
     },
     {
       "type": "translation",
       "question": "Je parle en japonais.",
       "correctAnswers": ["にほんごではなします。", "nihongo de hanashimasu"],
-      "explanation": "にほんご (japonais) + で + はなす (parler).",
-      "vocabulary": [{ "word": "にほんご", "reading": "nihongo", "meaning": "japonais" }]
+      "explanation": "にほんご (japonais) + で + はなす (parler)."
     },
     {
       "type": "translation",
       "question": "J'étudie à la maison.",
       "correctAnswers": ["いえでべんきょうします。", "ie de benkyou shimasu"],
-      "explanation": "いえ (maison) + で + べんきょう (étude).",
-      "vocabulary": [{ "word": "いえ", "reading": "ie", "meaning": "maison" }]
+      "explanation": "いえ (maison) + で + べんきょう (étude)."
     },
     {
       "type": "translation",
       "question": "J'écris avec un stylo.",
       "correctAnswers": ["ぺんでかきます。", "pen de kakimasu"],
-      "explanation": "ぺん (stylo) + で + かく (écrire).",
-      "vocabulary": [{ "word": "ぺん", "reading": "pen", "meaning": "stylo" }]
+      "explanation": "ぺん (stylo) + で + かく (écrire)."
     },
     {
       "type": "translation",
       "question": "On étudie à l'école.",
       "correctAnswers": ["がっこうでべんきょうします。", "gakkou de benkyou shimasu"],
-      "explanation": "がっこう (école) + で + べんきょう.",
-      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+      "explanation": "がっこう (école) + で + べんきょう."
     },
     {
       "type": "translation",
       "question": "Je suis arrivé en train.",
       "correctAnswers": ["でんしゃでつきました。", "densha de tsukimashita"],
-      "explanation": "でんしゃ (train) + で + つく (arriver).",
-      "vocabulary": [{ "word": "でんしゃ", "reading": "densha", "meaning": "train" }]
+      "explanation": "でんしゃ (train) + で + つく (arriver)."
     },
     {
       "type": "multiple-choice",
       "question": "ぺん___えがきます。",
       "correctAnswers": ["で"],
       "options": ["で", "に", "から", "へ"],
-      "explanation": "で marque l'outil : on dessine avec un stylo.",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "え", "reading": "e", "meaning": "dessin" }
-      ]
+      "explanation": "で marque l'outil : on dessine avec un stylo."
     },
     {
       "type": "multiple-choice",
       "question": "りょうりをします。",
       "correctAnswers": ["で"],
       "options": ["で", "に", "を", "から"],
-      "explanation": "で marque le lieu : on cuisine à la maison.",
-      "vocabulary": [{ "word": "りょうり", "reading": "ryouri", "meaning": "cuisine" }]
+      "explanation": "で marque le lieu : on cuisine à la maison."
     },
     {
       "type": "translation",
       "question": "J'écris une lettre avec un stylo.",
       "correctAnswers": ["ぺんでてがみをかきます。", "pen de tegami wo kakimasu"],
-      "explanation": "ぺん + で + てがみ (lettre).",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "てがみ", "reading": "tegami", "meaning": "lettre" }
-      ]
+      "explanation": "ぺん + で + てがみ (lettre)."
     },
     {
       "type": "translation",
       "question": "Je me réveille le matin.",
       "correctAnswers": ["あさでおきます。", "asa de okimasu"],
-      "explanation": "あさ (matin) + で + おきる (se réveiller).",
-      "vocabulary": [{ "word": "あさ", "reading": "asa", "meaning": "matin" }]
+      "explanation": "あさ (matin) + で + おきる (se réveiller)."
     },
     {
       "type": "translation",
       "question": "On voyage en voiture.",
       "correctAnswers": ["くるまでたびします。", "kuruma de tabi shimasu"],
-      "explanation": "くるま (voiture) + で + たび (voyage).",
-      "vocabulary": [
-        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" },
-        { "word": "たび", "reading": "tabi", "meaning": "voyage" }
-      ]
+      "explanation": "くるま (voiture) + で + たび (voyage)."
     },
     {
       "type": "translation",
       "question": "J'utilise un ordinateur pour travailler.",
       "correctAnswers": ["コンピューターではたらきます。", "konpyuuta de hatarakimasu"],
-      "explanation": "コンピューター + で + はたらく.",
-      "vocabulary": [{ "word": "はたらく", "reading": "hataraku", "meaning": "travailler" }]
+      "explanation": "コンピューター + で + はたらく."
     },
     {
       "type": "translation",
       "question": "Je suis occupé avec mon travail.",
       "correctAnswers": ["しごとでいそがしいです。", "shigoto de isogashii desu"],
-      "explanation": "しごと + で + いそがしい (occupé).",
-      "vocabulary": [
-        { "word": "しごと", "reading": "shigoto", "meaning": "travail" },
-        { "word": "いそがしい", "reading": "isogashii", "meaning": "occupé" }
-      ]
+      "explanation": "しごと + で + いそがしい (occupé)."
     },
     {
       "type": "translation",
       "question": "Je parle avec ma mère à la maison.",
       "correctAnswers": ["いえではははとはなします。", "ie de haha to hanashimasu"],
-      "explanation": "いえ (maison) + で + はは (mère) + と + はなす.",
-      "vocabulary": [
-        { "word": "いえ", "reading": "ie", "meaning": "maison" },
-        { "word": "はは", "reading": "haha", "meaning": "mère" }
-      ]
+      "explanation": "いえ (maison) + で + はは (mère) + と + はなす."
     },
     {
       "type": "translation",
@@ -271,21 +188,13 @@
         "べんきょうでしけんにごうかくします。",
         "benkyou de shiken ni gouaku shimasu"
       ],
-      "explanation": "べんきょう + で + しけん.",
-      "vocabulary": [
-        { "word": "べんきょう", "reading": "benkyou", "meaning": "étude" },
-        { "word": "しけん", "reading": "shiken", "meaning": "examen" }
-      ]
+      "explanation": "べんきょう + で + しけん."
     },
     {
       "type": "translation",
       "question": "Les fleurs s'ouvrent au printemps.",
       "correctAnswers": ["はるではなが さきます。", "haru de hana ga sakimasu"],
-      "explanation": "はる (printemps) + で + はな (fleur) + が + さく (fleurir).",
-      "vocabulary": [
-        { "word": "はる", "reading": "haru", "meaning": "printemps" },
-        { "word": "はな", "reading": "hana", "meaning": "fleur" }
-      ]
+      "explanation": "はる (printemps) + で + はな (fleur) + が + さく (fleurir)."
     }
   ]
 }

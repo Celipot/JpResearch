@@ -93,42 +93,4 @@ describe('GET /api/exercises/random', () => {
     // Then
     expect(response.status).toBe(404);
   });
-
-  describe('vocabulary', () => {
-    it('given rule=wa and exercise has vocabulary, then response contains vocabulary array', async () => {
-      // When — retry until we get an exercise with vocabulary
-      let found = false;
-      for (let i = 0; i < 200; i++) {
-        const response = await request(app).get('/api/exercises/random?rule=wa');
-        if (response.body.vocabulary && response.body.vocabulary.length > 0) {
-          expect(Array.isArray(response.body.vocabulary)).toBe(true);
-          expect(response.body.vocabulary.length).toBeGreaterThan(0);
-          found = true;
-          break;
-        }
-      }
-      expect(found).toBe(true);
-    });
-
-    it('given vocabulary entry, then it has word, reading and meaning', async () => {
-      // When — retry until we find vocabulary
-      let found = false;
-      for (let i = 0; i < 200; i++) {
-        const response = await request(app).get('/api/exercises/random?rule=wa');
-        if (response.body.vocabulary && response.body.vocabulary.length > 0) {
-          response.body.vocabulary.forEach((entry: any) => {
-            expect(entry).toHaveProperty('word');
-            expect(entry).toHaveProperty('reading');
-            expect(entry).toHaveProperty('meaning');
-            expect(typeof entry.word).toBe('string');
-            expect(typeof entry.reading).toBe('string');
-            expect(typeof entry.meaning).toBe('string');
-          });
-          found = true;
-          break;
-        }
-      }
-      expect(found).toBe(true);
-    });
-  });
 });

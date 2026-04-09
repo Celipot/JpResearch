@@ -7,12 +7,6 @@ interface GrammarRule {
   description: string;
 }
 
-interface VocabularyEntry {
-  word: string;
-  reading: string;
-  meaning: string;
-}
-
 interface ExerciseResult {
   type: 'fill-in-the-blank' | 'multiple-choice' | 'translation';
   rule: GrammarRule;
@@ -20,7 +14,6 @@ interface ExerciseResult {
   correctAnswers: string[];
   options: string[] | null;
   explanation: string;
-  vocabulary: VocabularyEntry[] | null;
 }
 
 const romajiToHiragana: Record<string, string> = {
@@ -81,7 +74,6 @@ export default function GrammarRevisionPage() {
   const [loading, setLoading] = useState(false);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-  const [showVocabulary, setShowVocabulary] = useState(false);
 
   const toggleRule = (ruleId: string) => {
     const newSelected = new Set(selectedRules);
@@ -98,7 +90,6 @@ export default function GrammarRevisionPage() {
     setLoading(true);
     setFeedback(null);
     setUserAnswer('');
-    setShowVocabulary(false);
     try {
       const rulesArray = Array.from(selectedRules);
       const rule = rulesArray[Math.floor(Math.random() * rulesArray.length)];
@@ -230,40 +221,8 @@ export default function GrammarRevisionPage() {
           )}
 
           {feedback !== null && <div className="explanation">{exercise.explanation}</div>}
-
-          {exercise.vocabulary && exercise.vocabulary.length > 0 && (
-            <>
-              <button className="vocabulary-toggle" onClick={() => setShowVocabulary((v) => !v)}>
-                {showVocabulary ? 'Masquer le vocabulaire' : 'Voir le vocabulaire'}
-              </button>
-              {showVocabulary && <VocabularyList entries={exercise.vocabulary} />}
-            </>
-          )}
         </div>
       )}
-    </div>
-  );
-}
-
-interface VocabularyListProps {
-  entries: VocabularyEntry[];
-}
-
-function VocabularyList({ entries }: VocabularyListProps) {
-  return (
-    <div className="vocabulary-list">
-      <dl>
-        {entries.map((entry) => (
-          <div key={entry.word} className="vocabulary-entry">
-            <dt className="vocabulary-word">{entry.word}</dt>
-            <dd className="vocabulary-detail">
-              <span className="vocabulary-reading">{entry.reading}</span>
-              {' — '}
-              <span className="vocabulary-meaning">{entry.meaning}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
     </div>
   );
 }

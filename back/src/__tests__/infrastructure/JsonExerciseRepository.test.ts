@@ -60,38 +60,5 @@ describe('JsonExerciseRepository', () => {
       // Then
       expect(exercises).toEqual([]);
     });
-
-    it('given rule "wa", then at least one exercise has a non-empty vocabulary', () => {
-      // Given
-      const repository = new JsonExerciseRepository();
-
-      // When
-      const exercises = repository.findByRule('wa');
-
-      // Then
-      const hasVocabulary = exercises.some((e) => e.vocabulary && e.vocabulary.length > 0);
-      expect(hasVocabulary).toBe(true);
-    });
-
-    it('given rule "wa", then vocabulary entries have word, reading and meaning', () => {
-      // Given
-      const repository = new JsonExerciseRepository();
-
-      // When
-      const exercises = repository.findByRule('wa');
-      const exercisesWithVocab = exercises.filter((e) => e.vocabulary && e.vocabulary.length > 0);
-
-      // Then
-      exercisesWithVocab.forEach((exercise) => {
-        exercise.vocabulary?.forEach((entry) => {
-          expect(entry).toHaveProperty('word');
-          expect(entry).toHaveProperty('reading');
-          expect(entry).toHaveProperty('meaning');
-          expect(typeof entry.word).toBe('string');
-          expect(typeof entry.reading).toBe('string');
-          expect(typeof entry.meaning).toBe('string');
-        });
-      });
-    });
   });
 });

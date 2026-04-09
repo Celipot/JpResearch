@@ -10,155 +10,102 @@
       "type": "fill-in-the-blank",
       "question": "5じ___はたらきます。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : on travaille JUSQU'À 5h.",
-      "vocabulary": [
-        { "word": "じ", "reading": "ji", "meaning": "heure" },
-        { "word": "はたらく", "reading": "hataraku", "meaning": "travailler" }
-      ]
+      "explanation": "まで marque la limite : on travaille JUSQU'À 5h."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あした___まってください。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : attendez JUSQU'À demain.",
-      "vocabulary": [
-        { "word": "あした", "reading": "ashita", "meaning": "demain" },
-        { "word": "まつ", "reading": "matsu", "meaning": "attendre" }
-      ]
+      "explanation": "まで marque la limite : attendez JUSQU'À demain."
     },
     {
       "type": "fill-in-the-blank",
       "question": "えき___あるきました。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite spatiale : on a marché JUSQU'À la gare.",
-      "vocabulary": [
-        { "word": "えき", "reading": "eki", "meaning": "gare" },
-        { "word": "あるく", "reading": "aruku", "meaning": "marcher" }
-      ]
+      "explanation": "まで marque la limite spatiale : on a marché JUSQU'À la gare."
     },
     {
       "type": "fill-in-the-blank",
       "question": "にちようび___えいぎょうしています。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : on est ouvert JUSQU'AU dimanche.",
-      "vocabulary": [
-        { "word": "にちようび", "reading": "nichiyobi", "meaning": "dimanche" },
-        { "word": "えいぎょう", "reading": "eigyou", "meaning": "service" }
-      ]
+      "explanation": "まで marque la limite : on est ouvert JUSQU'AU dimanche."
     },
     {
       "type": "fill-in-the-blank",
       "question": "だいがく___べんきょうします。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : on étudie JUSQU'À l'université.",
-      "vocabulary": [
-        { "word": "だいがく", "reading": "daigaku", "meaning": "université" },
-        { "word": "べんきょう", "reading": "benkyou", "meaning": "étude" }
-      ]
+      "explanation": "まで marque la limite : on étudie JUSQU'À l'université."
     },
     {
       "type": "fill-in-the-blank",
       "question": "きょねん___にほんにすんでいました。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : j'habitais au Japon JUSQU'À l'année dernière.",
-      "vocabulary": [
-        { "word": "きょねん", "reading": "kyonen", "meaning": "l'année dernière" },
-        { "word": "にほん", "reading": "nihon", "meaning": "Japon" },
-        { "word": "すむ", "reading": "sumu", "meaning": "habiter" }
-      ]
+      "explanation": "まで marque la limite : j'habitais au Japon JUSQU'À l'année dernière."
     },
     {
       "type": "fill-in-the-blank",
       "question": "4じ___しゅくだいをしてください。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite : faites les devoirs JUSQU'À 4h.",
-      "vocabulary": [
-        { "word": "じ", "reading": "ji", "meaning": "heure" },
-        { "word": "しゅくだい", "reading": "shukudai", "meaning": "devoir" }
-      ]
+      "explanation": "まで marque la limite : faites les devoirs JUSQU'À 4h."
     },
     {
       "type": "fill-in-the-blank",
       "question": "こうえん___あるいていきます。",
       "correctAnswers": ["まで"],
-      "explanation": "まで marque la limite spatiale : on marche jusqu'au parc.",
-      "vocabulary": [
-        { "word": "こうえん", "reading": "kouen", "meaning": "parc" },
-        { "word": "あるく", "reading": "aruku", "meaning": "marcher" }
-      ]
+      "explanation": "まで marque la limite spatiale : on marche jusqu'au parc."
     },
     {
       "type": "multiple-choice",
       "question": "げつようび___まてますか。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : peux-tu attendre JUSQU'AU lundi?",
-      "vocabulary": [
-        { "word": "げつようび", "reading": "getsuyobi", "meaning": "lundi" },
-        { "word": "まつ", "reading": "matsu", "meaning": "attendre" }
-      ]
+      "explanation": "まで marque la limite : peux-tu attendre JUSQU'AU lundi?"
     },
     {
       "type": "multiple-choice",
       "question": "みなみぶ___あるけますか。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite spatiale : peux-tu marcher jusqu'au parc?",
-      "vocabulary": [{ "word": "こうえん", "reading": "kouen", "meaning": "parc" }]
+      "explanation": "まで marque la limite spatiale : peux-tu marcher jusqu'au parc?"
     },
     {
       "type": "multiple-choice",
       "question": "らいしゅう___やすみます。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : on se repose JUSQU'À la semaine prochaine.",
-      "vocabulary": [
-        { "word": "らいしゅう", "reading": "raishuu", "meaning": "semaine prochaine" },
-        { "word": "やすむ", "reading": "yasumu", "meaning": "se reposer" }
-      ]
+      "explanation": "まで marque la limite : on se repose JUSQU'À la semaine prochaine."
     },
     {
       "type": "multiple-choice",
       "question": "ろくがつ___あめがつづきます。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : la pluie dure JUSQU'EN juin.",
-      "vocabulary": [
-        { "word": "ろくがつ", "reading": "rokugatsu", "meaning": "juin" },
-        { "word": "あめ", "reading": "ame", "meaning": "pluie" }
-      ]
+      "explanation": "まで marque la limite : la pluie dure JUSQU'EN juin."
     },
     {
       "type": "multiple-choice",
       "question": "きんようび___はたらきました。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : on a travaillé JUSQU'AU vendredi.",
-      "vocabulary": [
-        { "word": "きんようび", "reading": "kinyobi", "meaning": "vendredi" },
-        { "word": "はたらく", "reading": "hataraku", "meaning": "travailler" }
-      ]
+      "explanation": "まで marque la limite : on a travaillé JUSQU'AU vendredi."
     },
     {
       "type": "translation",
       "question": "Je travaille jusqu'à 5h.",
       "correctAnswers": ["5じまではたらきます。", "goji made hatarakimasu"],
-      "explanation": "5じ (5h) + まで + はたらく.",
-      "vocabulary": [{ "word": "じ", "reading": "ji", "meaning": "heure" }]
+      "explanation": "5じ (5h) + まで + はたらく."
     },
     {
       "type": "translation",
       "question": "Attends jusqu'à demain.",
       "correctAnswers": ["あしたまでまってください。", "ashita made matte kudasai"],
-      "explanation": "あした + まで + まつ.",
-      "vocabulary": [{ "word": "あした", "reading": "ashita", "meaning": "demain" }]
+      "explanation": "あした + まで + まつ."
     },
     {
       "type": "translation",
       "question": "J'ai marché jusqu'à la gare.",
       "correctAnswers": ["えきまであるきました。", "eki made arukimashita"],
-      "explanation": "えき (gare) + まで + あるく.",
-      "vocabulary": [{ "word": "えき", "reading": "eki", "meaning": "gare" }]
+      "explanation": "えき (gare) + まで + あるく."
     },
     {
       "type": "translation",
@@ -167,22 +114,19 @@
         "にちようびまでえいぎょうしています。",
         "nichiyobi made eigyou shite imasu"
       ],
-      "explanation": "にちようび + まで + えいぎょう.",
-      "vocabulary": [{ "word": "にちようび", "reading": "nichiyobi", "meaning": "dimanche" }]
+      "explanation": "にちようび + まで + えいぎょう."
     },
     {
       "type": "translation",
       "question": "On étudie jusqu'à l'université.",
       "correctAnswers": ["だいがくまでべんきょうします。", "daigaku made benkyou shimasu"],
-      "explanation": "だいがく + まで + べんきょう.",
-      "vocabulary": [{ "word": "だいがく", "reading": "daigaku", "meaning": "université" }]
+      "explanation": "だいがく + まで + べんきょう."
     },
     {
       "type": "translation",
       "question": "Je vais jusqu'au parc.",
       "correctAnswers": ["こうえんまであるいていきます。", "kouen made aruite ikimasu"],
-      "explanation": "こうえん + まで + あるく + いく.",
-      "vocabulary": [{ "word": "こうえん", "reading": "kouen", "meaning": "parc" }]
+      "explanation": "こうえん + まで + あるく + いく."
     },
     {
       "type": "translation",
@@ -191,68 +135,51 @@
         "Je travaille de 8h du matin à 5h du soir.",
         "Je travaille du matin jusqu'au soir."
       ],
-      "explanation": "あさ (matin) + 8じ + から + よる (nuit) + 5じ + まで.",
-      "vocabulary": [
-        { "word": "あさ", "reading": "asa", "meaning": "matin" },
-        { "word": "よる", "reading": "yoru", "meaning": "nuit" }
-      ]
+      "explanation": "あさ (matin) + 8じ + から + よる (nuit) + 5じ + まで."
     },
     {
       "type": "multiple-choice",
       "question": "ろくがつ___あめがふります。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : la pluie tombe JUSQU'EN juin.",
-      "vocabulary": [
-        { "word": "ろくがつ", "reading": "rokugatsu", "meaning": "juin" },
-        { "word": "あめ", "reading": "ame", "meaning": "pluie" }
-      ]
+      "explanation": "まで marque la limite : la pluie tombe JUSQU'EN juin."
     },
     {
       "type": "multiple-choice",
       "question": "いまから3じ___まってください。",
       "correctAnswers": ["まで"],
       "options": ["まで", "から", "に", "で"],
-      "explanation": "まで marque la limite : attends JUSQU'À 3h.",
-      "vocabulary": [
-        { "word": "じ", "reading": "ji", "meaning": "heure" },
-        { "word": "まつ", "reading": "matsu", "meaning": "attendre" }
-      ]
+      "explanation": "まで marque la limite : attends JUSQU'À 3h."
     },
     {
       "type": "translation",
       "question": "J'étudie jusqu'à 10h.",
       "correctAnswers": ["10じまでべんきょうします。", "juji made benkyou shimasu"],
-      "explanation": "10じ (10h) + まで + べんきょう.",
-      "vocabulary": [{ "word": "じ", "reading": "ji", "meaning": "heure" }]
+      "explanation": "10じ (10h) + まで + べんきょう."
     },
     {
       "type": "translation",
       "question": "Je suis à l'école jusqu'à 5h.",
       "correctAnswers": ["5じまでがっこうにいます。", "goji made gakkou ni imasu"],
-      "explanation": "5じ + まで + がっこう (école) + に + いる.",
-      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+      "explanation": "5じ + まで + がっこう (école) + に + いる."
     },
     {
       "type": "translation",
       "question": "Je travaille jusqu'à samedi.",
       "correctAnswers": ["どようびまではたらきます。", "doyobi made hatarakimasu"],
-      "explanation": "どようび (samedi) + まで + はたらく.",
-      "vocabulary": [{ "word": "はたらく", "reading": "hataraku", "meaning": "travailler" }]
+      "explanation": "どようび (samedi) + まで + はたらく."
     },
     {
       "type": "translation",
       "question": "Attendez jusqu'à l'automne.",
       "correctAnswers": ["あきまでまってください。", "aki made matte kudasai"],
-      "explanation": "あき (automne) + まで + まつ.",
-      "vocabulary": []
+      "explanation": "あき (automne) + まで + まつ."
     },
     {
       "type": "translation",
       "question": "Le cours dure jusqu'à 3h.",
       "correctAnswers": ["3じまでじゅぎょうがあります。", "kuji made jugyou ga arimasu"],
-      "explanation": "3じ + まで + じゅぎょう (cours) + が + ある.",
-      "vocabulary": [{ "word": "じゅぎょう", "reading": "jugyou", "meaning": "cours" }]
+      "explanation": "3じ + まで + じゅぎょう (cours) + が + ある."
     },
     {
       "type": "translation",
@@ -261,25 +188,19 @@
         "くがつまですいえいじょうがあいています。",
         "kugatsu made suieijou ga aite imasu"
       ],
-      "explanation": "9つき (septembre) + まで + すいえいじょう (piscine) + が + あく (être ouvert).",
-      "vocabulary": []
+      "explanation": "9つき (septembre) + まで + すいえいじょう (piscine) + が + あく (être ouvert)."
     },
     {
       "type": "translation",
       "question": "Je vais attendre jusqu'à ce que tu arrives.",
       "correctAnswers": ["あなたがくるまでまちます。", "anata ga kuru made machimasu"],
-      "explanation": "あなた (toi) + が + くる (venir) + まで + まつ.",
-      "vocabulary": [{ "word": "あなた", "reading": "anata", "meaning": "toi" }]
+      "explanation": "あなた (toi) + が + くる (venir) + まで + まつ."
     },
     {
       "type": "translation",
       "question": "La fleur fleurira jusqu'à l'été.",
       "correctAnswers": ["はなはなつまでさきます。", "hana wa natsu made sakimasu"],
-      "explanation": "はな (fleur) + は + なつ (été) + まで + さく (fleurir).",
-      "vocabulary": [
-        { "word": "はな", "reading": "hana", "meaning": "fleur" },
-        { "word": "なつ", "reading": "natsu", "meaning": "été" }
-      ]
+      "explanation": "はな (fleur) + は + なつ (été) + まで + さく (fleurir)."
     }
   ]
 }

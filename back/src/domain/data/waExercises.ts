@@ -1,4 +1,4 @@
-import { Exercise, ExerciseType, VocabularyEntry } from '../entities/Exercise';
+import { Exercise, ExerciseType } from '../entities/Exercise';
 import { GrammarRule } from '../entities/GrammarRule';
 import data from './waExercises.json';
 
@@ -18,6 +18,5 @@ export const waExercises: Exercise[] = data.exercises.map(
       correctAnswers: e.correctAnswers,
       options: 'options' in e ? (e.options as string[]) : undefined,
       explanation: e.explanation,
-      vocabulary: 'vocabulary' in e ? (e.vocabulary as VocabularyEntry[]) : undefined,
     })
 );

@@ -14,7 +14,6 @@ const mockFillInTheBlankExercise = {
   correctAnswers: ['は'],
   options: null,
   explanation: 'は marque le topic : わたし est ce dont on parle.',
-  vocabulary: null,
 };
 
 const mockMultipleChoiceExercise = {
@@ -24,7 +23,6 @@ const mockMultipleChoiceExercise = {
   correctAnswers: ['は'],
   options: ['は', 'が', 'を', 'に', 'で'],
   explanation: 'は marque le topic.',
-  vocabulary: null,
 };
 
 const mockTranslationExercise = {
@@ -34,7 +32,6 @@ const mockTranslationExercise = {
   correctAnswers: ['わたしはがくせいです', 'watashi wa gakusei desu'],
   options: null,
   explanation: 'わたし + は + がくせいです.',
-  vocabulary: null,
 };
 
 const mockTranslationWithMacronExercise = {
@@ -44,16 +41,6 @@ const mockTranslationWithMacronExercise = {
   correctAnswers: ['おいしいですね', 'oishii desu ne'],
   options: null,
   explanation: "おいしい (délicieux) + ですね (n'est-ce pas ?).",
-  vocabulary: null,
-};
-
-const mockFillInTheBlankWithVocabulary = {
-  ...mockFillInTheBlankExercise,
-  vocabulary: [
-    { word: 'わたし', reading: 'watashi', meaning: 'je / moi' },
-    { word: 'がくせい', reading: 'gakusei', meaning: 'étudiant(e)' },
-    { word: 'です', reading: 'desu', meaning: 'être (forme polie)' },
-  ],
 };
 
 const mockFetch = (response: object) => {
@@ -611,138 +598,6 @@ describe('GrammarRevisionPage', () => {
 
         // Then
         expect(screen.queryByText(/わたし___がくせいです。/)).not.toBeInTheDocument();
-      });
-    });
-  });
-
-  describe('vocabulary', () => {
-    it('given exercise with vocabulary, then vocabulary toggle button is visible', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankWithVocabulary);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-
-      // Then
-      await waitFor(() => {
-        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
-      });
-    });
-
-    it('given vocabulary toggle button not yet clicked, then vocabulary is hidden', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankWithVocabulary);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-
-      // Then
-      await waitFor(() => {
-        expect(screen.queryByText('watashi')).not.toBeInTheDocument();
-      });
-    });
-
-    it('given vocabulary toggle button is clicked, then vocabulary entries are visible', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankWithVocabulary);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-      await waitFor(() => {
-        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
-      });
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
-
-      // Then
-      expect(await screen.findByText('watashi')).toBeInTheDocument();
-      expect(screen.getByText('je / moi')).toBeInTheDocument();
-      expect(screen.getByText('gakusei')).toBeInTheDocument();
-      expect(screen.getByText('étudiant(e)')).toBeInTheDocument();
-    });
-
-    it('given vocabulary is open and toggle is clicked again, then vocabulary is hidden', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankWithVocabulary);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-      await waitFor(() => {
-        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
-      });
-      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
-      await waitFor(() => {
-        expect(screen.getByText('watashi')).toBeInTheDocument();
-      });
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Masquer le vocabulaire/i }));
-
-      // Then
-      expect(screen.queryByText('watashi')).not.toBeInTheDocument();
-    });
-
-    it('given a new exercise is fetched, then vocabulary is hidden again', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankWithVocabulary);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-      await waitFor(() => {
-        expect(screen.getByRole('button', { name: /Voir le vocabulaire/i })).toBeInTheDocument();
-      });
-      fireEvent.click(screen.getByRole('button', { name: /Voir le vocabulaire/i }));
-      await waitFor(() => {
-        expect(screen.getByText('watashi')).toBeInTheDocument();
-      });
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-      await waitFor(() => {
-        fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-      });
-
-      // Then
-      expect(screen.queryByText('watashi')).not.toBeInTheDocument();
-    });
-
-    it('given exercise without vocabulary, then no toggle button is rendered', async () => {
-      // Given
-      mockFetch(mockFillInTheBlankExercise);
-      render(
-        <MemoryRouter>
-          <GrammarRevisionPage />
-        </MemoryRouter>
-      );
-
-      // When
-      fireEvent.click(screen.getByRole('button', { name: /Nouvel exercice/i }));
-
-      // Then
-      await waitFor(() => {
-        expect(
-          screen.queryByRole('button', { name: /Voir le vocabulaire/i })
-        ).not.toBeInTheDocument();
       });
     });
   });

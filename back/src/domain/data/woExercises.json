@@ -10,308 +10,188 @@
       "type": "fill-in-the-blank",
       "question": "みず___のみます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : みず (eau) est ce qu'on boit.",
-      "vocabulary": [
-        { "word": "みず", "reading": "mizu", "meaning": "eau" },
-        { "word": "のむ", "reading": "nomu", "meaning": "boire" }
-      ]
+      "explanation": "を marque l'objet direct : みず (eau) est ce qu'on boit."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ほん___よみます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : ほん (livre) est ce qu'on lit.",
-      "vocabulary": [
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "よむ", "reading": "yomu", "meaning": "lire" }
-      ]
+      "explanation": "を marque l'objet direct : ほん (livre) est ce qu'on lit."
     },
     {
       "type": "fill-in-the-blank",
       "question": "おんがく___ききます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : おんがく (musique) est ce qu'on écoute.",
-      "vocabulary": [
-        { "word": "おんがく", "reading": "ongaku", "meaning": "musique" },
-        { "word": "きく", "reading": "kiku", "meaning": "écouter / entendre" }
-      ]
+      "explanation": "を marque l'objet direct : おんがく (musique) est ce qu'on écoute."
     },
     {
       "type": "fill-in-the-blank",
       "question": "て___あげます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : て (main) est ce qu'on lève.",
-      "vocabulary": [
-        { "word": "て", "reading": "te", "meaning": "main" },
-        { "word": "あげる", "reading": "ageru", "meaning": "lever / donner" }
-      ]
+      "explanation": "を marque l'objet direct : て (main) est ce qu'on lève."
     },
     {
       "type": "fill-in-the-blank",
       "question": "えいが___みます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : えいが (film) est ce qu'on regarde.",
-      "vocabulary": [
-        { "word": "えいが", "reading": "eiga", "meaning": "film" },
-        { "word": "みる", "reading": "miru", "meaning": "regarder / voir" }
-      ]
+      "explanation": "を marque l'objet direct : えいが (film) est ce qu'on regarde."
     },
     {
       "type": "fill-in-the-blank",
       "question": "しゃしん___とります。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : しゃしん (photo) est ce qu'on prend.",
-      "vocabulary": [
-        { "word": "しゃしん", "reading": "shashin", "meaning": "photo" },
-        { "word": "とる", "reading": "toru", "meaning": "prendre" }
-      ]
+      "explanation": "を marque l'objet direct : しゃしん (photo) est ce qu'on prend."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ごはん___たべます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : ごはん (riz/repas) est ce qu'on mange.",
-      "vocabulary": [
-        { "word": "ごはん", "reading": "gohan", "meaning": "riz / repas" },
-        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
-      ]
+      "explanation": "を marque l'objet direct : ごはん (riz/repas) est ce qu'on mange."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ドア___あけます。",
       "correctAnswers": ["を"],
-      "explanation": "を marque l'objet direct : ドア (porte) est ce qu'on ouvre.",
-      "vocabulary": [
-        { "word": "ドア", "reading": "doa", "meaning": "porte" },
-        { "word": "あける", "reading": "akeru", "meaning": "ouvrir" }
-      ]
+      "explanation": "を marque l'objet direct : ドア (porte) est ce qu'on ouvre."
     },
     {
       "type": "multiple-choice",
       "question": "チーズ___かいました。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "は", "で"],
-      "explanation": "を marque l'objet direct : チーズ (fromage) est ce qu'on a acheté.",
-      "vocabulary": [
-        { "word": "チーズ", "reading": "chiizu", "meaning": "fromage" },
-        { "word": "かう", "reading": "kau", "meaning": "acheter" }
-      ]
+      "explanation": "を marque l'objet direct : チーズ (fromage) est ce qu'on a acheté."
     },
     {
       "type": "multiple-choice",
       "question": "かい___さがしています。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "が", "で"],
-      "explanation": "を marque l'objet direct : かい (clé) est ce qu'on cherche.",
-      "vocabulary": [
-        { "word": "かぎ", "reading": "kagi", "meaning": "clé" },
-        { "word": "さがす", "reading": "sagasu", "meaning": "chercher" }
-      ]
+      "explanation": "を marque l'objet direct : かい (clé) est ce qu'on cherche."
     },
     {
       "type": "multiple-choice",
       "question": "もじ___かきました。",
       "correctAnswers": ["を"],
       "options": ["を", "が", "に", "で"],
-      "explanation": "を marque l'objet direct : もじ (caractère) est ce qu'on écrit.",
-      "vocabulary": [
-        { "word": "もじ", "reading": "moji", "meaning": "caractère" },
-        { "word": "かく", "reading": "kaku", "meaning": "écrire" }
-      ]
+      "explanation": "を marque l'objet direct : もじ (caractère) est ce qu'on écrit."
     },
     {
       "type": "multiple-choice",
       "question": "みち___あるきます。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "で", "から"],
-      "explanation": "を marque l'objet direct : みち (chemin/rue) est ce qu'on parcourt en marchant.",
-      "vocabulary": [
-        { "word": "みち", "reading": "michi", "meaning": "chemin / rue" },
-        { "word": "あるく", "reading": "aruku", "meaning": "marcher" }
-      ]
+      "explanation": "を marque l'objet direct : みち (chemin/rue) est ce qu'on parcourt en marchant."
     },
     {
       "type": "multiple-choice",
       "question": "くるま___うんてんします。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "で", "が"],
-      "explanation": "を marque l'objet direct : くるま (voiture) est ce qu'on conduit.",
-      "vocabulary": [
-        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" },
-        { "word": "うんてんする", "reading": "unten suru", "meaning": "conduire" }
-      ]
+      "explanation": "を marque l'objet direct : くるま (voiture) est ce qu'on conduit."
     },
     {
       "type": "translation",
       "question": "Je bois de l'eau.",
       "correctAnswers": ["みずをのみます。", "mizu wo nomimasu"],
-      "explanation": "みず (eau) + を (objet direct) + のむ (boire) + ます (polie).",
-      "vocabulary": [
-        { "word": "みず", "reading": "mizu", "meaning": "eau" },
-        { "word": "のむ", "reading": "nomu", "meaning": "boire" }
-      ]
+      "explanation": "みず (eau) + を (objet direct) + のむ (boire) + ます (polie)."
     },
     {
       "type": "translation",
       "question": "Je lis un livre.",
       "correctAnswers": ["ほんをよみます。", "hon wo yomimasu"],
-      "explanation": "ほん (livre) + を (objet direct) + よむ (lire) + ます.",
-      "vocabulary": [
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "よむ", "reading": "yomu", "meaning": "lire" }
-      ]
+      "explanation": "ほん (livre) + を (objet direct) + よむ (lire) + ます."
     },
     {
       "type": "translation",
       "question": "Je regarde la télévision.",
       "correctAnswers": ["テレビをみます。", "terebi wo mimasu"],
-      "explanation": "テレビ (télévision) + を (objet direct) + みる (regarder) + ます.",
-      "vocabulary": [
-        { "word": "テレビ", "reading": "terebi", "meaning": "télévision" },
-        { "word": "みる", "reading": "miru", "meaning": "regarder" }
-      ]
+      "explanation": "テレビ (télévision) + を (objet direct) + みる (regarder) + ます."
     },
     {
       "type": "translation",
       "question": "Je mange du riz.",
       "correctAnswers": ["ごはんをたべます。", "gohan wo tabemasu"],
-      "explanation": "ごはん (riz/repas) + を (objet direct) + たべる (manger) + ます.",
-      "vocabulary": [
-        { "word": "ごはん", "reading": "gohan", "meaning": "riz / repas" },
-        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
-      ]
+      "explanation": "ごはん (riz/repas) + を (objet direct) + たべる (manger) + ます."
     },
     {
       "type": "translation",
       "question": "Je prends une photo.",
       "correctAnswers": ["しゃしんをとります。", "shashin wo torimasu"],
-      "explanation": "しゃしん (photo) + を (objet direct) + とる (prendre) + ます.",
-      "vocabulary": [
-        { "word": "しゃしん", "reading": "shashin", "meaning": "photo" },
-        { "word": "とる", "reading": "toru", "meaning": "prendre" }
-      ]
+      "explanation": "しゃしん (photo) + を (objet direct) + とる (prendre) + ます."
     },
     {
       "type": "translation",
       "question": "Je marche dans la rue.",
       "correctAnswers": ["みちをあるきます。", "michi wo arukimasu"],
-      "explanation": "みち (rue/chemin) + を (objet direct) + あるく (marcher) + ます.",
-      "vocabulary": [
-        { "word": "みち", "reading": "michi", "meaning": "chemin / rue" },
-        { "word": "あるく", "reading": "aruku", "meaning": "marcher" }
-      ]
+      "explanation": "みち (rue/chemin) + を (objet direct) + あるく (marcher) + ます."
     },
     {
       "type": "translation",
       "question": "J'ouvre la porte.",
       "correctAnswers": ["ドアをあけます。", "doa wo akemasu"],
-      "explanation": "ドア (porte) + を (objet direct) + あける (ouvrir) + ます.",
-      "vocabulary": [
-        { "word": "ドア", "reading": "doa", "meaning": "porte" },
-        { "word": "あける", "reading": "akeru", "meaning": "ouvrir" }
-      ]
+      "explanation": "ドア (porte) + を (objet direct) + あける (ouvrir) + ます."
     },
     {
       "type": "translation",
       "question": "Je ferme la fenêtre.",
       "correctAnswers": ["まどをしめます。", "mado wo shimemasu"],
-      "explanation": "まど (fenêtre) + を (objet direct) + しめる (fermer) + ます.",
-      "vocabulary": [
-        { "word": "まど", "reading": "mado", "meaning": "fenêtre" },
-        { "word": "しめる", "reading": "shimeru", "meaning": "fermer" }
-      ]
+      "explanation": "まど (fenêtre) + を (objet direct) + しめる (fermer) + ます."
     },
     {
       "type": "translation",
       "question": "J'achète du fromage.",
       "correctAnswers": ["チーズをかいます。", "chiizu wo kaimasu"],
-      "explanation": "チーズ (fromage) + を (objet direct) + かう (acheter) + ます.",
-      "vocabulary": [
-        { "word": "チーズ", "reading": "chiizu", "meaning": "fromage" },
-        { "word": "かう", "reading": "kau", "meaning": "acheter" }
-      ]
+      "explanation": "チーズ (fromage) + を (objet direct) + かう (acheter) + ます."
     },
     {
       "type": "translation",
       "question": "Je cherche ma clé.",
       "correctAnswers": ["かぎをさがします。", "kagi wo sagashimasu"],
-      "explanation": "かぎ (clé) + を (objet direct) + さがす (chercher) + ます.",
-      "vocabulary": [
-        { "word": "かぎ", "reading": "kagi", "meaning": "clé" },
-        { "word": "さがす", "reading": "sagasu", "meaning": "chercher" }
-      ]
+      "explanation": "かぎ (clé) + を (objet direct) + さがす (chercher) + ます."
     },
     {
       "type": "translation",
       "question": "Je bois du café.",
       "correctAnswers": ["コーヒーをのみます。", "koohii wo nomimasu"],
-      "explanation": "コーヒー (café) + を (objet direct) + のむ (boire) + ます.",
-      "vocabulary": [
-        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
-        { "word": "のむ", "reading": "nomu", "meaning": "boire" }
-      ]
+      "explanation": "コーヒー (café) + を (objet direct) + のむ (boire) + ます."
     },
     {
       "type": "translation",
       "question": "J'écoute de la musique.",
       "correctAnswers": ["おんがくをききます。", "ongaku wo kikimasu"],
-      "explanation": "おんがく (musique) + を (objet direct) + きく (écouter) + ます.",
-      "vocabulary": [
-        { "word": "おんがく", "reading": "ongaku", "meaning": "musique" },
-        { "word": "きく", "reading": "kiku", "meaning": "écouter" }
-      ]
+      "explanation": "おんがく (musique) + を (objet direct) + きく (écouter) + ます."
     },
     {
       "type": "translation",
       "question": "Je regarde un film.",
       "correctAnswers": ["えいがをみます。", "eiga wo mimasu"],
-      "explanation": "えいが (film) + を (objet direct) + みる (regarder) + ます.",
-      "vocabulary": [
-        { "word": "えいが", "reading": "eiga", "meaning": "film" },
-        { "word": "みる", "reading": "miru", "meaning": "regarder" }
-      ]
+      "explanation": "えいが (film) + を (objet direct) + みる (regarder) + ます."
     },
     {
       "type": "translation",
       "question": "Je conduis une voiture.",
       "correctAnswers": ["くるまをうんてんします。", "kuruma wo unten shimasu"],
-      "explanation": "くるま (voiture) + を (objet direct) + うんてんする (conduire) + ます.",
-      "vocabulary": [
-        { "word": "くるま", "reading": "kuruma", "meaning": "voiture" },
-        { "word": "うんてんする", "reading": "unten suru", "meaning": "conduire" }
-      ]
+      "explanation": "くるま (voiture) + を (objet direct) + うんてんする (conduire) + ます."
     },
     {
       "type": "multiple-choice",
       "question": "ぺん___さがしています。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "が", "で"],
-      "explanation": "を marque l'objet direct : ぺん (stylo) est ce qu'on cherche.",
-      "vocabulary": [
-        { "word": "ぺん", "reading": "pen", "meaning": "stylo" },
-        { "word": "さがす", "reading": "sagasu", "meaning": "chercher" }
-      ]
+      "explanation": "を marque l'objet direct : ぺん (stylo) est ce qu'on cherche."
     },
     {
       "type": "translation",
       "question": "Je joue au football.",
       "correctAnswers": ["サッカーをします。", "sakkaa wo shimasu"],
-      "explanation": "サッカー (football) + を (objet direct) + する (faire) + ます.",
-      "vocabulary": [
-        { "word": "サッカー", "reading": "sakkaa", "meaning": "football" },
-        { "word": "する", "reading": "suru", "meaning": "faire" }
-      ]
+      "explanation": "サッカー (football) + を (objet direct) + する (faire) + ます."
     },
     {
       "type": "multiple-choice",
       "question": "ぼうし___かぶります。",
       "correctAnswers": ["を"],
       "options": ["を", "に", "で", "が"],
-      "explanation": "を marque l'objet direct : ぼうし (chapeau) est ce qu'on porte.",
-      "vocabulary": [
-        { "word": "ぼうし", "reading": "boushi", "meaning": "chapeau" },
-        { "word": "かぶる", "reading": "kaburu", "meaning": "porter (sur la tête)" }
-      ]
+      "explanation": "を marque l'objet direct : ぼうし (chapeau) est ce qu'on porte."
     }
   ]
 }

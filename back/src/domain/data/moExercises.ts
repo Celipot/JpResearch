@@ -17,7 +17,6 @@ export const moExercises = data.exercises.map(
       question: exercise.question,
       correctAnswers: exercise.correctAnswers,
       explanation: exercise.explanation,
-      vocabulary: exercise.vocabulary,
       options: exercise.options,
     })
 );

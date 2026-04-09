@@ -62,49 +62,4 @@ describe('Exercise', () => {
       expect(exercise.options).toBeUndefined();
     });
   });
-
-  describe('vocabulary', () => {
-    it('given an exercise with vocabulary, then stores vocabulary entries with word, reading and meaning', () => {
-      // Given / When
-      const exercise = new Exercise({
-        type: 'fill-in-the-blank',
-        rule: waRule,
-        question: 'わたし___がくせいです。',
-        correctAnswers: ['は'],
-        explanation: 'は marque le topic.',
-        vocabulary: [
-          { word: 'わたし', reading: 'watashi', meaning: 'je / moi' },
-          { word: 'がくせい', reading: 'gakusei', meaning: 'étudiant(e)' },
-        ],
-      });
-
-      // Then
-      expect(exercise.vocabulary).toBeDefined();
-      expect(exercise.vocabulary).toHaveLength(2);
-      expect(exercise.vocabulary?.[0]).toEqual({
-        word: 'わたし',
-        reading: 'watashi',
-        meaning: 'je / moi',
-      });
-      expect(exercise.vocabulary?.[1]).toEqual({
-        word: 'がくせい',
-        reading: 'gakusei',
-        meaning: 'étudiant(e)',
-      });
-    });
-
-    it('given an exercise without vocabulary, then vocabulary is undefined', () => {
-      // Given / When
-      const exercise = new Exercise({
-        type: 'fill-in-the-blank',
-        rule: waRule,
-        question: 'わたし___がくせいです。',
-        correctAnswers: ['は'],
-        explanation: 'は marque le topic.',
-      });
-
-      // Then
-      expect(exercise.vocabulary).toBeUndefined();
-    });
-  });
 });

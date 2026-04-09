@@ -10,342 +10,188 @@
       "type": "fill-in-the-blank",
       "question": "わたし___がくせいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : わたし est ce dont on parle.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je / moi" },
-        { "word": "がくせい", "reading": "gakusei", "meaning": "étudiant(e)" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : わたし est ce dont on parle."
     },
     {
       "type": "fill-in-the-blank",
       "question": "これ___ほんです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : cet objet est un livre.",
-      "vocabulary": [
-        { "word": "これ", "reading": "kore", "meaning": "ceci / cela" },
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : cet objet est un livre."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あした___あめです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : demain la météo est la pluie.",
-      "vocabulary": [
-        { "word": "あした", "reading": "ashita", "meaning": "demain" },
-        { "word": "あめ", "reading": "ame", "meaning": "pluie" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : demain la météo est la pluie."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ねこ___かわいいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : le chat est mignon.",
-      "vocabulary": [
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
-        { "word": "かわいい", "reading": "kawaii", "meaning": "mignon" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : le chat est mignon."
     },
     {
       "type": "fill-in-the-blank",
       "question": "かれの しごと___むずかしいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : son travail est difficile.",
-      "vocabulary": [
-        { "word": "かれ", "reading": "kare", "meaning": "il" },
-        { "word": "しごと", "reading": "shigoto", "meaning": "travail" },
-        { "word": "むずかしい", "reading": "muzukashii", "meaning": "difficile" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : son travail est difficile."
     },
     {
       "type": "fill-in-the-blank",
       "question": "この ドレス___あかいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : cette robe est rouge.",
-      "vocabulary": [
-        { "word": "この", "reading": "kono", "meaning": "ce / cette" },
-        { "word": "ドレス", "reading": "doresu", "meaning": "robe" },
-        { "word": "あかい", "reading": "akai", "meaning": "rouge" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : cette robe est rouge."
     },
     {
       "type": "fill-in-the-blank",
       "question": "さくら___うつくしいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : les fleurs de cerisier sont belles.",
-      "vocabulary": [
-        { "word": "さくら", "reading": "sakura", "meaning": "cerisier / fleur de cerisier" },
-        { "word": "うつくしい", "reading": "utsukushii", "meaning": "beau" }
-      ]
+      "explanation": "は marque le topic : les fleurs de cerisier sont belles."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ゆき___しろいです。",
       "correctAnswers": ["は"],
-      "explanation": "は marque le topic : la neige est blanche.",
-      "vocabulary": [
-        { "word": "ゆき", "reading": "yuki", "meaning": "neige" },
-        { "word": "しろい", "reading": "shiroi", "meaning": "blanc" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : la neige est blanche."
     },
     {
       "type": "multiple-choice",
       "question": "けいこ___せんせいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "に", "が"],
-      "explanation": "は marque le topic : Keiko est professeur (identité).",
-      "vocabulary": [
-        { "word": "けいこ", "reading": "keiko", "meaning": "Keiko (prénom)" },
-        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "は marque le topic : Keiko est professeur (identité)."
     },
     {
       "type": "multiple-choice",
       "question": "コーヒー___あたたかいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "に", "から"],
-      "explanation": "は marque le topic : le café est chaud.",
-      "vocabulary": [
-        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
-        { "word": "あたたかい", "reading": "atatakai", "meaning": "chaud (température)" }
-      ]
+      "explanation": "は marque le topic : le café est chaud."
     },
     {
       "type": "multiple-choice",
       "question": "さかな___おいしいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "で", "まで"],
-      "explanation": "は marque le topic : le poisson est délicieux.",
-      "vocabulary": [
-        { "word": "さかな", "reading": "sakana", "meaning": "poisson" },
-        { "word": "おいしい", "reading": "oishii", "meaning": "délicieux" }
-      ]
+      "explanation": "は marque le topic : le poisson est délicieux."
     },
     {
       "type": "multiple-choice",
       "question": "りんご___あまいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "が", "で"],
-      "explanation": "は marque le topic : la pomme est douce.",
-      "vocabulary": [
-        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
-        { "word": "あまい", "reading": "amai", "meaning": "sucré / doux" }
-      ]
+      "explanation": "は marque le topic : la pomme est douce."
     },
     {
       "type": "multiple-choice",
       "question": "せんせい___しんせつです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "に", "から"],
-      "explanation": "は marque le topic : le professeur est bienveillant.",
-      "vocabulary": [
-        { "word": "せんせい", "reading": "sensei", "meaning": "professeur" },
-        { "word": "しんせつ", "reading": "shinsetsu", "meaning": "gentil / bienveillant" }
-      ]
+      "explanation": "は marque le topic : le professeur est bienveillant."
     },
     {
       "type": "multiple-choice",
       "question": "この へや___ひろいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "が", "で"],
-      "explanation": "は marque le topic : cette chambre est spacieuse.",
-      "vocabulary": [
-        { "word": "この", "reading": "kono", "meaning": "ce / cette" },
-        { "word": "へや", "reading": "heya", "meaning": "chambre" },
-        { "word": "ひろい", "reading": "hiroi", "meaning": "spacieux / large" }
-      ]
+      "explanation": "は marque le topic : cette chambre est spacieuse."
     },
     {
       "type": "multiple-choice",
       "question": "その かばん___あおいです。",
       "correctAnswers": ["は"],
       "options": ["は", "を", "に", "が"],
-      "explanation": "は marque le topic : ce sac est bleu.",
-      "vocabulary": [
-        { "word": "その", "reading": "sono", "meaning": "ce / celle-là" },
-        { "word": "かばん", "reading": "kaban", "meaning": "sac à main" },
-        { "word": "あおい", "reading": "aoi", "meaning": "bleu" }
-      ]
+      "explanation": "は marque le topic : ce sac est bleu."
     },
     {
       "type": "translation",
       "question": "Je suis étudiant.",
       "correctAnswers": ["わたしはがくせいです。", "watashi wa gakusei desu"],
-      "explanation": "わたし (je) + は (topic) + がくせい (étudiant) + です (être polie).",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je / moi" },
-        { "word": "がくせい", "reading": "gakusei", "meaning": "étudiant(e)" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "わたし (je) + は (topic) + がくせい (étudiant) + です (être polie)."
     },
     {
       "type": "translation",
       "question": "Ce livre est intéressant.",
       "correctAnswers": ["このほんはおもしろいです。", "kono hon wa omoshiroi desu"],
-      "explanation": "この (ce) + ほん (livre) + は (topic) + おもしろい (intéressant) + です.",
-      "vocabulary": [
-        { "word": "この", "reading": "kono", "meaning": "ce / cette" },
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "おもしろい", "reading": "omoshiroi", "meaning": "intéressant" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "この (ce) + ほん (livre) + は (topic) + おもしろい (intéressant) + です."
     },
     {
       "type": "translation",
       "question": "Le chat est mignon.",
       "correctAnswers": ["ねこはかわいいです。", "neko wa kawaii desu"],
-      "explanation": "ねこ (chat) + は (topic) + かわいい (mignon) + です.",
-      "vocabulary": [
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
-        { "word": "かわいい", "reading": "kawaii", "meaning": "mignon" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "ねこ (chat) + は (topic) + かわいい (mignon) + です."
     },
     {
       "type": "translation",
       "question": "La neige est blanche.",
       "correctAnswers": ["ゆきはしろいです。", "yuki wa shiroi desu"],
-      "explanation": "ゆき (neige) + は (topic) + しろい (blanc) + です.",
-      "vocabulary": [
-        { "word": "ゆき", "reading": "yuki", "meaning": "neige" },
-        { "word": "しろい", "reading": "shiroi", "meaning": "blanc" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "ゆき (neige) + は (topic) + しろい (blanc) + です."
     },
     {
       "type": "translation",
       "question": "Le café est chaud.",
       "correctAnswers": ["コーヒーはあたたかいです。", "koohii wa atatakai desu"],
-      "explanation": "コーヒー (café) + は (topic) + あたたかい (chaud) + です.",
-      "vocabulary": [
-        { "word": "コーヒー", "reading": "koohii", "meaning": "café" },
-        { "word": "あたたかい", "reading": "atatakai", "meaning": "chaud (température)" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "コーヒー (café) + は (topic) + あたたかい (chaud) + です."
     },
     {
       "type": "translation",
       "question": "La pomme est douce.",
       "correctAnswers": ["りんごはあまいです。", "ringo wa amai desu"],
-      "explanation": "りんご (pomme) + は (topic) + あまい (doux) + です.",
-      "vocabulary": [
-        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
-        { "word": "あまい", "reading": "amai", "meaning": "sucré / doux" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "りんご (pomme) + は (topic) + あまい (doux) + です."
     },
     {
       "type": "translation",
       "question": "Ma maison est grande.",
       "correctAnswers": ["わたしのいえはおおきいです。", "watashi no ie wa ookii desu"],
-      "explanation": "わたしの (mon/ma) + いえ (maison) + は (topic) + おおきい (grand) + です.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je / moi" },
-        { "word": "いえ", "reading": "ie", "meaning": "maison" },
-        { "word": "おおきい", "reading": "ookii", "meaning": "grand" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "わたしの (mon/ma) + いえ (maison) + は (topic) + おおきい (grand) + です."
     },
     {
       "type": "translation",
       "question": "Cette fleur est belle.",
       "correctAnswers": ["このはなはうつくしいです。", "kono hana wa utsukushii desu"],
-      "explanation": "この (ce/cette) + はな (fleur) + は (topic) + うつくしい (beau) + です.",
-      "vocabulary": [
-        { "word": "この", "reading": "kono", "meaning": "ce / cette" },
-        { "word": "はな", "reading": "hana", "meaning": "fleur" },
-        { "word": "うつくしい", "reading": "utsukushii", "meaning": "beau" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "この (ce/cette) + はな (fleur) + は (topic) + うつくしい (beau) + です."
     },
     {
       "type": "translation",
       "question": "Demain c'est lundi.",
       "correctAnswers": ["あしたはげつようびです。", "ashita wa getsuyobi desu"],
-      "explanation": "あした (demain) + は (topic) + げつようび (lundi) + です.",
-      "vocabulary": [
-        { "word": "あした", "reading": "ashita", "meaning": "demain" },
-        { "word": "げつようび", "reading": "getsuyobi", "meaning": "lundi" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "あした (demain) + は (topic) + げつようび (lundi) + です."
     },
     {
       "type": "translation",
       "question": "Ce chien est grand.",
       "correctAnswers": ["そのいぬはおおきいです。", "sono inu wa ookii desu"],
-      "explanation": "その (ce/celui-là) + いぬ (chien) + は (topic) + おおきい (grand) + です.",
-      "vocabulary": [
-        { "word": "その", "reading": "sono", "meaning": "ce / cette" },
-        { "word": "いぬ", "reading": "inu", "meaning": "chien" },
-        { "word": "おおきい", "reading": "ookii", "meaning": "grand" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "その (ce/celui-là) + いぬ (chien) + は (topic) + おおきい (grand) + です."
     },
     {
       "type": "translation",
       "question": "Le pain est délicieux.",
       "correctAnswers": ["パンはおいしいです。", "pan wa oishii desu"],
-      "explanation": "パン (pain) + は (topic) + おいしい (délicieux) + です.",
-      "vocabulary": [
-        { "word": "パン", "reading": "pan", "meaning": "pain" },
-        { "word": "おいしい", "reading": "oishii", "meaning": "délicieux" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "パン (pain) + は (topic) + おいしい (délicieux) + です."
     },
     {
       "type": "translation",
       "question": "L'été est chaud.",
       "correctAnswers": ["なつはあついです。", "natsu wa atsui desu"],
-      "explanation": "なつ (été) + は (topic) + あつい (chaud) + です.",
-      "vocabulary": [
-        { "word": "なつ", "reading": "natsu", "meaning": "été" },
-        { "word": "あつい", "reading": "atsui", "meaning": "chaud / épais" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "なつ (été) + は (topic) + あつい (chaud) + です."
     },
     {
       "type": "translation",
       "question": "Il y a une fleur rouge dans le jardin.",
       "correctAnswers": ["そのあかいはなはきれいです。", "sono akai hana wa kirei desu"],
-      "explanation": "その (ce/cette) + あかい (rouge) + はな (fleur) + は (topic) + きれい (beau) + です.",
-      "vocabulary": [
-        { "word": "その", "reading": "sono", "meaning": "ce / cette" },
-        { "word": "あかい", "reading": "akai", "meaning": "rouge" },
-        { "word": "はな", "reading": "hana", "meaning": "fleur" },
-        { "word": "きれい", "reading": "kirei", "meaning": "beau / propre" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "その (ce/cette) + あかい (rouge) + はな (fleur) + は (topic) + きれい (beau) + です."
     },
     {
       "type": "translation",
       "question": "Le pain est froid.",
       "correctAnswers": ["パンはつめたいです。", "pan wa tsumetai desu"],
-      "explanation": "パン (pain) + は (topic) + つめたい (froid) + です.",
-      "vocabulary": [
-        { "word": "パン", "reading": "pan", "meaning": "pain" },
-        { "word": "つめたい", "reading": "tsumetai", "meaning": "froid" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "パン (pain) + は (topic) + つめたい (froid) + です."
     },
     {
       "type": "translation",
       "question": "Ce livre est difficile.",
       "correctAnswers": ["そのほんはむずかしいです。", "sono hon wa muzukashii desu"],
-      "explanation": "その (ce/celle) + ほん (livre) + は (topic) + むずかしい (difficile) + です.",
-      "vocabulary": [
-        { "word": "その", "reading": "sono", "meaning": "ce / celle-là" },
-        { "word": "ほん", "reading": "hon", "meaning": "livre" },
-        { "word": "むずかしい", "reading": "muzukashii", "meaning": "difficile" },
-        { "word": "です", "reading": "desu", "meaning": "être (forme polie)" }
-      ]
+      "explanation": "その (ce/celle) + ほん (livre) + は (topic) + むずかしい (difficile) + です."
     }
   ]
 }

@@ -10,116 +10,77 @@
       "type": "fill-in-the-blank",
       "question": "わたし___このほんをよみました。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : seul moi ai lu ce livre.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je" },
-        { "word": "ほん", "reading": "hon", "meaning": "livre" }
-      ]
+      "explanation": "だけ marque l'exclusion : seul moi ai lu ce livre."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あに___くることができました。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : seul mon frère pouvait venir.",
-      "vocabulary": [
-        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
-        { "word": "くる", "reading": "kuru", "meaning": "venir" }
-      ]
+      "explanation": "だけ marque l'exclusion : seul mon frère pouvait venir."
     },
     {
       "type": "fill-in-the-blank",
       "question": "にほんご___べんきょうしています。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : j'étudie seulement le japonais.",
-      "vocabulary": [
-        { "word": "にほんご", "reading": "nihongo", "meaning": "japonais" },
-        { "word": "べんきょう", "reading": "benkyou", "meaning": "étude" }
-      ]
+      "explanation": "だけ marque l'exclusion : j'étudie seulement le japonais."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ねこ___すきです。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : j'aime seulement les chats.",
-      "vocabulary": [{ "word": "ねこ", "reading": "neko", "meaning": "chat" }]
+      "explanation": "だけ marque l'exclusion : j'aime seulement les chats."
     },
     {
       "type": "fill-in-the-blank",
       "question": "パン___たべています。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : on ne mange que du pain.",
-      "vocabulary": [
-        { "word": "パン", "reading": "pan", "meaning": "pain" },
-        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
-      ]
+      "explanation": "だけ marque l'exclusion : on ne mange que du pain."
     },
     {
       "type": "fill-in-the-blank",
       "question": "がっこう___いってきます。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : je vais seulement à l'école.",
-      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+      "explanation": "だけ marque l'exclusion : je vais seulement à l'école."
     },
     {
       "type": "fill-in-the-blank",
       "question": "あした___やすみにしましょう。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : ne prenons congé que demain.",
-      "vocabulary": [
-        { "word": "あした", "reading": "ashita", "meaning": "demain" },
-        { "word": "やすむ", "reading": "yasumu", "meaning": "se reposer" }
-      ]
+      "explanation": "だけ marque l'exclusion : ne prenons congé que demain."
     },
     {
       "type": "fill-in-the-blank",
       "question": "ほん___もってきてください。",
       "correctAnswers": ["だけ"],
-      "explanation": "だけ marque l'exclusion : apportez seulement le livre.",
-      "vocabulary": [{ "word": "ほん", "reading": "hon", "meaning": "livre" }]
+      "explanation": "だけ marque l'exclusion : apportez seulement le livre."
     },
     {
       "type": "multiple-choice",
       "question": "わたし___このしごとができます。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "か", "で"],
-      "explanation": "だけ marque l'exclusion : seul moi peux faire ce travail.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je" },
-        { "word": "しごと", "reading": "shigoto", "meaning": "travail" }
-      ]
+      "explanation": "だけ marque l'exclusion : seul moi peux faire ce travail."
     },
     {
       "type": "multiple-choice",
       "question": "えいご___はなせます。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "が", "を"],
-      "explanation": "だけ marque l'exclusion : je ne peux parler que l'anglais.",
-      "vocabulary": [
-        { "word": "えいご", "reading": "eigo", "meaning": "anglais" },
-        { "word": "はなす", "reading": "hanasu", "meaning": "parler" }
-      ]
+      "explanation": "だけ marque l'exclusion : je ne peux parler que l'anglais."
     },
     {
       "type": "multiple-choice",
       "question": "ねこ___かっています。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "と", "の", "で"],
-      "explanation": "だけ marque l'exclusion : j'ai seulement un chat.",
-      "vocabulary": [
-        { "word": "ねこ", "reading": "neko", "meaning": "chat" },
-        { "word": "かう", "reading": "kau", "meaning": "avoir" }
-      ]
+      "explanation": "だけ marque l'exclusion : j'ai seulement un chat."
     },
     {
       "type": "multiple-choice",
       "question": "りんご___たべてください。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "か", "を"],
-      "explanation": "だけ marque l'exclusion : mangez seulement des pommes.",
-      "vocabulary": [
-        { "word": "りんご", "reading": "ringo", "meaning": "pomme" },
-        { "word": "たべる", "reading": "taberu", "meaning": "manger" }
-      ]
+      "explanation": "だけ marque l'exclusion : mangez seulement des pommes."
     },
     {
       "type": "translation",
@@ -128,39 +89,31 @@
         "わたしだけこのほんをよみました。",
         "watashi dake kono hon wo yomimashita"
       ],
-      "explanation": "わたし + だけ + ほん.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je" },
-        { "word": "ほん", "reading": "hon", "meaning": "livre" }
-      ]
+      "explanation": "わたし + だけ + ほん."
     },
     {
       "type": "translation",
       "question": "Seul mon frère pouvait venir.",
       "correctAnswers": ["あにだけくることができました。", "ani dake kuru koto ga dekimashita"],
-      "explanation": "あに + だけ + くる.",
-      "vocabulary": [{ "word": "あに", "reading": "ani", "meaning": "grand frère" }]
+      "explanation": "あに + だけ + くる."
     },
     {
       "type": "translation",
       "question": "J'étudie seulement le japonais.",
       "correctAnswers": ["にほんごだけべんきょうしています。", "nihongo dake benkyou shite imasu"],
-      "explanation": "にほんご + だけ + べんきょう.",
-      "vocabulary": [{ "word": "にほんご", "reading": "nihongo", "meaning": "japonais" }]
+      "explanation": "にほんご + だけ + べんきょう."
     },
     {
       "type": "translation",
       "question": "J'aime seulement les chats.",
       "correctAnswers": ["ねこだけすきです。", "neko dake suki desu"],
-      "explanation": "ねこ + だけ + すき.",
-      "vocabulary": [{ "word": "ねこ", "reading": "neko", "meaning": "chat" }]
+      "explanation": "ねこ + だけ + すき."
     },
     {
       "type": "translation",
       "question": "On ne mange que du pain.",
       "correctAnswers": ["パンだけたべています。", "pan dake tabete imasu"],
-      "explanation": "パン + だけ + たべる.",
-      "vocabulary": [{ "word": "パン", "reading": "pan", "meaning": "pain" }]
+      "explanation": "パン + だけ + たべる."
     },
     {
       "type": "translation",
@@ -169,90 +122,70 @@
         "わたしだけこのしごとができます。",
         "watashi dake kono shigoto ga dekimasu"
       ],
-      "explanation": "わたし + だけ + しごと.",
-      "vocabulary": [
-        { "word": "わたし", "reading": "watashi", "meaning": "je" },
-        { "word": "しごと", "reading": "shigoto", "meaning": "travail" }
-      ]
+      "explanation": "わたし + だけ + しごと."
     },
     {
       "type": "translation",
       "question": "Je ne peux parler que l'anglais.",
       "correctAnswers": ["えいごだけはなせます。", "eigo dake hanasemasu"],
-      "explanation": "えいご + だけ + はなす.",
-      "vocabulary": [{ "word": "えいご", "reading": "eigo", "meaning": "anglais" }]
+      "explanation": "えいご + だけ + はなす."
     },
     {
       "type": "multiple-choice",
       "question": "あね___きました。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "が", "を"],
-      "explanation": "だけ marque l'exclusion : seule ma sœur est venue.",
-      "vocabulary": [
-        { "word": "あね", "reading": "ane", "meaning": "grande sœur" },
-        { "word": "くる", "reading": "kuru", "meaning": "venir" }
-      ]
+      "explanation": "だけ marque l'exclusion : seule ma sœur est venue."
     },
     {
       "type": "multiple-choice",
       "question": "ホテル___のこっています。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "が", "で"],
-      "explanation": "だけ marque l'exclusion : il ne reste que l'hôtel.",
-      "vocabulary": [{ "word": "ホテル", "reading": "hoteru", "meaning": "hôtel" }]
+      "explanation": "だけ marque l'exclusion : il ne reste que l'hôtel."
     },
     {
       "type": "multiple-choice",
       "question": "ちゃ___のんでください。",
       "correctAnswers": ["だけ"],
       "options": ["だけ", "も", "が", "を"],
-      "explanation": "だけ marque l'exclusion : ne buvez que du thé.",
-      "vocabulary": [
-        { "word": "ちゃ", "reading": "cha", "meaning": "thé" },
-        { "word": "のむ", "reading": "nomu", "meaning": "boire" }
-      ]
+      "explanation": "だけ marque l'exclusion : ne buvez que du thé."
     },
     {
       "type": "translation",
       "question": "Je vais seulement à l'école.",
       "correctAnswers": ["がっこうだけいってきます。", "gakkou dake itte kimasu"],
-      "explanation": "がっこう + だけ + いく.",
-      "vocabulary": [{ "word": "がっこう", "reading": "gakkou", "meaning": "école" }]
+      "explanation": "がっこう + だけ + いく."
     },
     {
       "type": "translation",
       "question": "Ne prends congé que demain.",
       "correctAnswers": ["あしただけやすみにしましょう。", "ashita dake yasumi ni shimashou"],
-      "explanation": "あした + だけ + やすむ.",
-      "vocabulary": [{ "word": "あした", "reading": "ashita", "meaning": "demain" }]
+      "explanation": "あした + だけ + やすむ."
     },
     {
       "type": "translation",
       "question": "Apportez seulement le livre.",
       "correctAnswers": ["ほんだけもってきてください。", "hon dake motte kite kudasai"],
-      "explanation": "ほん + だけ + もってくる.",
-      "vocabulary": [{ "word": "ほん", "reading": "hon", "meaning": "livre" }]
+      "explanation": "ほん + だけ + もってくる."
     },
     {
       "type": "translation",
       "question": "Seule ma sœur est venue.",
       "correctAnswers": ["あねだけきました。", "ane dake kimashita"],
-      "explanation": "あね + だけ + くる.",
-      "vocabulary": [{ "word": "あね", "reading": "ane", "meaning": "grande sœur" }]
+      "explanation": "あね + だけ + くる."
     },
     {
       "type": "translation",
       "question": "Il ne reste que l'hôtel.",
       "correctAnswers": ["ホテルだけのこっています。", "hoteru dake nokotte imasu"],
-      "explanation": "ホテル + だけ + のこる.",
-      "vocabulary": [{ "word": "ホテル", "reading": "hoteru", "meaning": "hôtel" }]
+      "explanation": "ホテル + だけ + のこる."
     },
     {
       "type": "translation",
       "question": "Ne buvez que du thé.",
       "correctAnswers": ["ちゃだけのんでください。", "cha dake nonde kudasai"],
-      "explanation": "ちゃ + だけ + のむ.",
-      "vocabulary": [{ "word": "ちゃ", "reading": "cha", "meaning": "thé" }]
+      "explanation": "ちゃ + だけ + のむ."
     },
     {
       "type": "translation",
@@ -261,18 +194,13 @@
         "あにだけこのむずかしいしごとができます。",
         "ani dake kono muzukashii shigoto ga dekimasu"
       ],
-      "explanation": "あに (grand frère) + だけ + しごと (travail).",
-      "vocabulary": [
-        { "word": "あに", "reading": "ani", "meaning": "grand frère" },
-        { "word": "しごと", "reading": "shigoto", "meaning": "travail" }
-      ]
+      "explanation": "あに (grand frère) + だけ + しごと (travail)."
     },
     {
       "type": "translation",
       "question": "Je ne mange que du pain blanc.",
       "correctAnswers": ["しろいパンだけたべています。", "shiroi pan dake tabete imasu"],
-      "explanation": "しろい (blanc) + パン (pain) + だけ + たべる.",
-      "vocabulary": [{ "word": "しろい", "reading": "shiroi", "meaning": "blanc" }]
+      "explanation": "しろい (blanc) + パン (pain) + だけ + たべる."
     }
   ]
 }
