@@ -23,7 +23,6 @@ export const getRandomExercise_ = (req: Request, res: Response): void => {
       correctAnswers: exercise.correctAnswers,
       options: exercise.options ?? null,
       explanation: exercise.explanation,
-      vocabulary: exercise.vocabulary ?? null,
     });
   } catch {
     res.status(404).json({ error: `Règle grammaticale inconnue : ${rule}` });

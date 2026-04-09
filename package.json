@@ -2,6 +2,13 @@
   "name": "japanese-learner",
   "private": true,
   "scripts": {
+    "build": "npm run build:front && npm run build:back",
+    "build:front": "npm --prefix front run build",
+    "build:back": "npm --prefix back run build",
+    "start": "npm --prefix back run start",
+    "dev": "npm run dev:back & npm run dev:front",
+    "dev:back": "npm --prefix back run dev",
+    "dev:front": "npm --prefix front run dev",
     "lint": "npm run lint:back && npm run lint:front",
     "lint:fix": "npm run lint:back:fix && npm run lint:front:fix",
     "lint:back": "npm --prefix back run lint",
