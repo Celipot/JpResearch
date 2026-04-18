@@ -1,5 +1,5 @@
 import { Adjective, AdjectiveType } from '../domain/entities/Adjective';
-import { AdjectiveForm, getRandomAdjectiveForm } from '../domain/entities/AdjectiveForm';
+import { AdjectiveForm, AdjectiveFormUtils } from '../domain/entities/AdjectiveForm';
 import { IAdjectiveRepository } from '../infrastructure/repositories/AdjectiveRepository';
 
 export interface RandomAdjectiveResult {
@@ -19,7 +19,7 @@ export const generateRandomAdjective = (
     adjectiveData.type,
     adjectiveData.translation
   );
-  const form = getRandomAdjectiveForm();
+  const form = AdjectiveFormUtils.getRandomForm();
   const answer = adjective.conjugate(form);
 
   return {

@@ -8,107 +8,6 @@ interface AdjectiveResult {
   answer: string;
 }
 
-const HIRAGANA_MAP: Record<string, string> = {
-  あ: 'a',
-  い: 'i',
-  う: 'u',
-  え: 'e',
-  お: 'o',
-  か: 'ka',
-  き: 'ki',
-  く: 'ku',
-  け: 'ke',
-  こ: 'ko',
-  が: 'ga',
-  ぎ: 'gi',
-  ぐ: 'gu',
-  げ: 'ge',
-  ご: 'go',
-  さ: 'sa',
-  し: 'shi',
-  す: 'su',
-  せ: 'se',
-  そ: 'so',
-  ざ: 'za',
-  じ: 'ji',
-  ず: 'zu',
-  ぜ: 'ze',
-  ぞ: 'zo',
-  た: 'ta',
-  ち: 'chi',
-  つ: 'tsu',
-  て: 'te',
-  と: 'to',
-  だ: 'da',
-  ぢ: 'di',
-  づ: 'du',
-  で: 'de',
-  ど: 'do',
-  な: 'na',
-  に: 'ni',
-  ぬ: 'nu',
-  ね: 'ne',
-  の: 'no',
-  は: 'ha',
-  ひ: 'hi',
-  ふ: 'fu',
-  へ: 'he',
-  ほ: 'ho',
-  ば: 'ba',
-  び: 'bi',
-  ぶ: 'bu',
-  べ: 'be',
-  ぼ: 'bo',
-  ぱ: 'pa',
-  ぴ: 'pi',
-  ぷ: 'pu',
-  ぺ: 'pe',
-  ぽ: 'po',
-  ま: 'ma',
-  み: 'mi',
-  む: 'mu',
-  め: 'me',
-  も: 'mo',
-  や: 'ya',
-  ゆ: 'yu',
-  よ: 'yo',
-  ら: 'ra',
-  り: 'ri',
-  る: 'ru',
-  れ: 're',
-  ろ: 'ro',
-  わ: 'wa',
-  ゐ: 'wi',
-  ゑ: 'we',
-  を: 'wo',
-  ん: 'n',
-  ゃ: 'ya',
-  ゅ: 'yu',
-  ょ: 'yo',
-};
-
-function hiraganaToRomaji(hiragana: string): string {
-  let result = '';
-  for (let i = 0; i < hiragana.length; i++) {
-    const char = hiragana[i];
-    const romaji = HIRAGANA_MAP[char];
-
-    if (isSmallYoSound(char) && i > 0) {
-      result = removeTrailingVowel(result);
-    }
-    result += romaji || char;
-  }
-  return result;
-}
-
-function isSmallYoSound(char: string): boolean {
-  return char === 'ゃ' || char === 'ゅ' || char === 'ょ';
-}
-
-function removeTrailingVowel(text: string): string {
-  return text.endsWith('i') ? text.slice(0, -1) : text;
-}
-
 export default function AdjectiveRevisionPage() {
   const [result, setResult] = useState<AdjectiveResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -130,15 +29,6 @@ export default function AdjectiveRevisionPage() {
     }
   };
 
-  const normalizeRomaji = (str: string): string => {
-    return str
-      .toLowerCase()
-      .replace(/\s+/g, '')
-      .replace(/ou+/g, 'o')
-      .replace(/ū/g, 'uu')
-      .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
-  };
-
   const getFormLabel = (form: string): string => {
     const labels: Record<string, string> = {
       present_affirmative: 'Affirmatif',
@@ -147,19 +37,24 @@ export default function AdjectiveRevisionPage() {
     return labels[form] || form;
   };
 
-  const checkAnswer = () => {
+  const checkAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
 
-    const isCorrect = isAnswerCorrect(userAnswer.trim(), result.answer);
-    setFeedback(isCorrect ? 'correct' : 'incorrect');
-  };
-
-  const isAnswerCorrect = (userAnswer: string, correctAnswer: string): boolean => {
-    const normalizedUserAnswer = normalizeRomaji(userAnswer);
-    const expectedHiragana = correctAnswer.toLowerCase().replace(/\s+/g, '');
-    const expectedRomaji = normalizeRomaji(hiraganaToRomaji(correctAnswer));
-
-    return normalizedUserAnswer === expectedHiragana || normalizedUserAnswer === expectedRomaji;
+    try {
+      const response = await fetch('/api/check-answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userAnswer: userAnswer.trim(),
+          expectedAnswer: result.answer,
+        }),
+      });
+      const data = await response.json();
+      setFeedback(data.correct ? 'correct' : 'incorrect');
+    } catch (err) {
+      console.error('Erreur lors de la vérification:', err);
+      setFeedback('incorrect');
+    }
   };
 
   return (

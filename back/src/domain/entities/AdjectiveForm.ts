@@ -3,9 +3,14 @@ export enum AdjectiveForm {
   PRESENT_NEGATIVE = 'present_negative',
 }
 
-const FORMS = [AdjectiveForm.PRESENT_AFFIRMATIVE, AdjectiveForm.PRESENT_NEGATIVE];
+export class AdjectiveFormUtils {
+  private static readonly FORMS = [
+    AdjectiveForm.PRESENT_AFFIRMATIVE,
+    AdjectiveForm.PRESENT_NEGATIVE,
+  ];
 
-export function getRandomAdjectiveForm(): AdjectiveForm {
-  const randomIndex = Math.floor(Math.random() * FORMS.length);
-  return FORMS[randomIndex];
+  static getRandomForm(): AdjectiveForm {
+    const randomIndex = Math.floor(Math.random() * this.FORMS.length);
+    return this.FORMS[randomIndex];
+  }
 }

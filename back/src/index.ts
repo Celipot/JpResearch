@@ -7,6 +7,7 @@ import { getRandom } from './controllers/randomController';
 import { getRandomHour } from './controllers/hourController';
 import { getRandomDate } from './controllers/dateController';
 import { getRandomAdjective } from './controllers/adjectiveController';
+import { checkAnswer } from './controllers/checkAnswerController';
 
 const app = express();
 export default app;
@@ -23,6 +24,7 @@ app.get('/api/random', getRandom);
 app.get('/api/random-hour', getRandomHour);
 app.get('/api/random-date', getRandomDate);
 app.get('/api/random-adjective', getRandomAdjective);
+app.post('/api/check-answer', checkAnswer);
 
 // Serve static frontend files
 const frontendDistPath = path.join(__dirname, '../../front/dist');

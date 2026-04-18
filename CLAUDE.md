@@ -106,15 +106,25 @@ it('when submitting correct answer, then shows success feedback', async () => {
 ```
 back/src/
 ├── domain/
-│   ├── entities/          (Core business logic)
-│   └── shared/            (Shared types/utilities)
+│   ├── entities/          (Core business logic, domain utilities)
+│   └── shared/            (Shared types)
 ├── infrastructure/
 │   ├── repositories/      (Data access)
 │   └── data/              (Static data)
 ├── services/              (Orchestration)
 ├── controllers/           (HTTP handlers)
 └── __tests__/             (Mirror src structure)
+    ├── domain/entities/
+    ├── infrastructure/
+    ├── services/
+    └── controllers/
 ```
+- **Domain entities**: May contain internal utilities, namespaces, or helper functions for domain logic
+  - Example: `AnswerCheck` namespace in `src/domain/entities/AnswerCheck.ts` provides `isCorrect()`
+- **Test file placement**: Test files MUST be in `__tests__/` mirroring the source structure
+  - Example: `src/domain/entities/AnswerCheck.ts` → `src/__tests__/domain/entities/AnswerCheck.test.ts` or `src/__tests__/utils/AnswerCheck.test.ts` (for integration tests)
+  - Example: `src/controllers/foo.ts` → `src/__tests__/controllers/foo.test.ts`
+  - Tests are NOT placed alongside source files
 
 ## 9. Type Safety
 - Avoid `any` type

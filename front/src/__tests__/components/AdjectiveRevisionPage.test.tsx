@@ -184,10 +184,19 @@ describe('AdjectiveRevisionPage', () => {
 });
 
 function mockFetch(response: object) {
-  global.fetch = vi.fn(() =>
-    Promise.resolve({
+  global.fetch = vi.fn((url: string, options?: Record<string, unknown>) => {
+    if (typeof url === 'string' && url.includes('/api/check-answer')) {
+      const body = options?.body as string;
+      const { userAnswer, expectedAnswer } = JSON.parse(body);
+      const correct = userAnswer === expectedAnswer;
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ correct }),
+      });
+    }
+    return Promise.resolve({
       ok: true,
       json: () => Promise.resolve(response),
-    })
-  ) as unknown as typeof fetch;
+    });
+  }) as unknown as typeof fetch;
 }
