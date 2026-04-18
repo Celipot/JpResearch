@@ -16,6 +16,9 @@ export default function HomePage() {
           <li>
             <Link to="/date">Révision de dates</Link>
           </li>
+          <li>
+            <Link to="/adjective">Révision d&apos;adjectifs</Link>
+          </li>
         </ul>
       </div>
     </div>
