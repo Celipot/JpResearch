@@ -10,6 +10,7 @@ export const getRandomAdjective = (_req: Request, res: Response) => {
     hiragana: adjective.hiragana,
     type: adjective.type,
     translation: adjective.translation,
+    tense: adjective.tense,
     polarity: adjective.polarity,
     register: adjective.register,
     answer: adjective.answer,

@@ -1,17 +1,55 @@
 import { AdjectivePolarity } from './AdjectivePolarity';
 import { AdjectiveRegister } from './AdjectiveRegister';
+import { AdjectiveTense } from './AdjectiveTense';
 
 export interface AdjectiveConjugationForm {
+  tense: AdjectiveTense;
   polarity: AdjectivePolarity;
   register: AdjectiveRegister;
 }
 
 export class AdjectiveConjugationFormUtils {
   private static readonly FORMS: AdjectiveConjugationForm[] = [
-    { polarity: AdjectivePolarity.AFFIRMATIVE, register: AdjectiveRegister.FAMILIAR },
-    { polarity: AdjectivePolarity.NEGATIVE, register: AdjectiveRegister.FAMILIAR },
-    { polarity: AdjectivePolarity.AFFIRMATIVE, register: AdjectiveRegister.POLITE },
-    { polarity: AdjectivePolarity.NEGATIVE, register: AdjectiveRegister.POLITE },
+    {
+      tense: AdjectiveTense.PRESENT,
+      polarity: AdjectivePolarity.AFFIRMATIVE,
+      register: AdjectiveRegister.FAMILIAR,
+    },
+    {
+      tense: AdjectiveTense.PRESENT,
+      polarity: AdjectivePolarity.NEGATIVE,
+      register: AdjectiveRegister.FAMILIAR,
+    },
+    {
+      tense: AdjectiveTense.PRESENT,
+      polarity: AdjectivePolarity.AFFIRMATIVE,
+      register: AdjectiveRegister.POLITE,
+    },
+    {
+      tense: AdjectiveTense.PRESENT,
+      polarity: AdjectivePolarity.NEGATIVE,
+      register: AdjectiveRegister.POLITE,
+    },
+    {
+      tense: AdjectiveTense.PAST,
+      polarity: AdjectivePolarity.AFFIRMATIVE,
+      register: AdjectiveRegister.FAMILIAR,
+    },
+    {
+      tense: AdjectiveTense.PAST,
+      polarity: AdjectivePolarity.NEGATIVE,
+      register: AdjectiveRegister.FAMILIAR,
+    },
+    {
+      tense: AdjectiveTense.PAST,
+      polarity: AdjectivePolarity.AFFIRMATIVE,
+      register: AdjectiveRegister.POLITE,
+    },
+    {
+      tense: AdjectiveTense.PAST,
+      polarity: AdjectivePolarity.NEGATIVE,
+      register: AdjectiveRegister.POLITE,
+    },
   ];
 
   static getRandomForm(): AdjectiveConjugationForm {

@@ -3,6 +3,7 @@ import request from 'supertest';
 import app from '../../index';
 
 const VALID_ADJECTIVE_TYPES = ['i', 'na'];
+const VALID_TENSES = ['present', 'past'];
 const VALID_POLARITIES = ['affirmative', 'negative'];
 const VALID_REGISTERS = ['familiar', 'polite'];
 const HIRAGANA_REGEX = /[\u3040-\u309F]+$/;
@@ -17,6 +18,7 @@ describe('GET /api/random-adjective', () => {
     expect(response.body).toHaveProperty('hiragana');
     expect(response.body).toHaveProperty('type');
     expect(response.body).toHaveProperty('translation');
+    expect(response.body).toHaveProperty('tense');
     expect(response.body).toHaveProperty('polarity');
     expect(response.body).toHaveProperty('register');
     expect(response.body).toHaveProperty('answer');
@@ -28,6 +30,14 @@ describe('GET /api/random-adjective', () => {
 
     // Then
     expect(VALID_ADJECTIVE_TYPES).toContain(response.body.type);
+  });
+
+  it('when sending request to endpoint, then response tense is valid', async () => {
+    // When
+    const response = await request(app).get('/api/random-adjective');
+
+    // Then
+    expect(VALID_TENSES).toContain(response.body.tense);
   });
 
   it('when sending request to endpoint, then response polarity is valid', async () => {
@@ -92,7 +102,7 @@ describe('GET /api/random-adjective', () => {
     for (let i = 0; i < 20; i++) {
       const response = await request(app).get('/api/random-adjective');
       adjectives.add(
-        `${response.body.hiragana}:${response.body.polarity}:${response.body.register}`
+        `${response.body.hiragana}:${response.body.tense}:${response.body.polarity}:${response.body.register}`
       );
     }
 
@@ -104,24 +114,55 @@ describe('GET /api/random-adjective', () => {
 function isValidConjugation(body: {
   hiragana: string;
   type: string;
+  tense: string;
   polarity: string;
   register: string;
   answer: string;
 }): boolean {
-  const { hiragana, type, polarity, register, answer } = body;
-  const stem = hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
+  const { hiragana, type, tense, polarity, register, answer } = body;
+  const negativeStem =
+    hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
+  const pastStem =
+    hiragana === '\u3044\u3044' ? '\u3088\u304b\u3063' : hiragana.slice(0, -1) + '\u304b\u3063';
   const isAffirmative = polarity === 'affirmative';
   const isPolite = register === 'polite';
+  const isPast = tense === 'past';
 
   if (type === 'i') {
-    if (isAffirmative && !isPolite) return answer === hiragana;
-    if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
-    if (isPolite) return answer === stem + '\u3042\u308a\u307e\u305b\u3093';
-    return answer === stem + '\u306a\u3044';
+    if (isAffirmative && !isPast)
+      return answer === (isPolite ? hiragana + '\u3067\u3059' : hiragana);
+    if (isAffirmative && isPast)
+      return answer === (isPolite ? pastStem + '\u305f\u3067\u3059' : pastStem + '\u305f');
+    if (isPast)
+      return (
+        answer ===
+        (isPolite
+          ? negativeStem + '\u3042\u308a\u307e\u305b\u3093\u3067\u3057\u305f'
+          : negativeStem + '\u306a\u304b\u3063\u305f')
+      );
+    return (
+      answer ===
+      (isPolite ? negativeStem + '\u3042\u308a\u307e\u305b\u3093' : negativeStem + '\u306a\u3044')
+    );
   }
 
-  if (isAffirmative && !isPolite) return answer === hiragana + '\u3060';
-  if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
-  if (isPolite) return answer === hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093';
-  return answer === hiragana + '\u3058\u3083\u306a\u3044';
+  if (isAffirmative && !isPast)
+    return answer === (isPolite ? hiragana + '\u3067\u3059' : hiragana + '\u3060');
+  if (isAffirmative && isPast)
+    return (
+      answer === (isPolite ? hiragana + '\u3067\u3057\u305f' : hiragana + '\u3060\u3063\u305f')
+    );
+  if (isPast)
+    return (
+      answer ===
+      (isPolite
+        ? hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3067\u3057\u305f'
+        : hiragana + '\u3058\u3083\u306a\u304b\u3063\u305f')
+    );
+  return (
+    answer ===
+    (isPolite
+      ? hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093'
+      : hiragana + '\u3058\u3083\u306a\u3044')
+  );
 }

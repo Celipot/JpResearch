@@ -1,5 +1,6 @@
 import { Adjective } from '../domain/entities/Adjective';
 import { AdjectiveType } from '../domain/entities/AdjectiveType';
+import { AdjectiveTense } from '../domain/entities/AdjectiveTense';
 import { AdjectivePolarity } from '../domain/entities/AdjectivePolarity';
 import { AdjectiveRegister } from '../domain/entities/AdjectiveRegister';
 import { AdjectiveConjugationFormUtils } from '../domain/entities/AdjectiveConjugationForm';
@@ -9,6 +10,7 @@ export interface RandomAdjectiveResult {
   hiragana: string;
   type: `${AdjectiveType}`;
   translation: string;
+  tense: AdjectiveTense;
   polarity: AdjectivePolarity;
   register: AdjectiveRegister;
   answer: string;
@@ -30,6 +32,7 @@ export const generateRandomAdjective = (
     hiragana: adjectiveData.hiragana,
     type: adjectiveData.type,
     translation: adjectiveData.translation,
+    tense: form.tense,
     polarity: form.polarity,
     register: form.register,
     answer,

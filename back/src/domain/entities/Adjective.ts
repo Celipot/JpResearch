@@ -1,6 +1,7 @@
 import { AdjectiveType } from './AdjectiveType';
 import { AdjectivePolarity } from './AdjectivePolarity';
 import { AdjectiveRegister } from './AdjectiveRegister';
+import { AdjectiveTense } from './AdjectiveTense';
 import { AdjectiveConjugationForm } from './AdjectiveConjugationForm';
 
 export class Adjective {
@@ -22,18 +23,23 @@ export class Adjective {
   }
 
   private conjugateIAdjective(form: AdjectiveConjugationForm): string {
-    if (
-      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
-      form.register === AdjectiveRegister.FAMILIAR
-    )
-      return this.hiragana;
-    if (
-      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
-      form.register === AdjectiveRegister.POLITE
-    )
-      return this.hiragana + 'です';
-    if (form.register === AdjectiveRegister.POLITE) return this.iNegativeStem() + 'ありません';
-    return this.iNegativeStem() + 'ない';
+    const isPast = form.tense === AdjectiveTense.PAST;
+    const isAffirmative = form.polarity === AdjectivePolarity.AFFIRMATIVE;
+    const isPolite = form.register === AdjectiveRegister.POLITE;
+
+    if (isAffirmative && !isPast) return isPolite ? this.hiragana + 'です' : this.hiragana;
+    if (isAffirmative && isPast)
+      return isPolite ? this.iPastStem() + 'たです' : this.iPastStem() + 'た';
+    if (isPast)
+      return isPolite
+        ? this.iNegativeStem() + 'ありませんでした'
+        : this.iNegativeStem() + 'なかった';
+    return isPolite ? this.iNegativeStem() + 'ありません' : this.iNegativeStem() + 'ない';
+  }
+
+  private iPastStem(): string {
+    if (this.hiragana === 'いい') return 'よかっ';
+    return this.hiragana.slice(0, -1) + 'かっ';
   }
 
   private iNegativeStem(): string {
@@ -42,17 +48,15 @@ export class Adjective {
   }
 
   private conjugateNaAdjective(form: AdjectiveConjugationForm): string {
-    if (
-      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
-      form.register === AdjectiveRegister.FAMILIAR
-    )
-      return this.hiragana + 'だ';
-    if (
-      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
-      form.register === AdjectiveRegister.POLITE
-    )
-      return this.hiragana + 'です';
-    if (form.register === AdjectiveRegister.POLITE) return this.hiragana + 'ではありません';
-    return this.hiragana + 'じゃない';
+    const isPast = form.tense === AdjectiveTense.PAST;
+    const isAffirmative = form.polarity === AdjectivePolarity.AFFIRMATIVE;
+    const isPolite = form.register === AdjectiveRegister.POLITE;
+
+    if (isAffirmative && !isPast) return isPolite ? this.hiragana + 'です' : this.hiragana + 'だ';
+    if (isAffirmative && isPast)
+      return isPolite ? this.hiragana + 'でした' : this.hiragana + 'だった';
+    if (isPast)
+      return isPolite ? this.hiragana + 'ではありませんでした' : this.hiragana + 'じゃなかった';
+    return isPolite ? this.hiragana + 'ではありません' : this.hiragana + 'じゃない';
   }
 }

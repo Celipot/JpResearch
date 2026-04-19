@@ -22,6 +22,8 @@ export default function AdjectiveRevisionPage() {
     }
   };
 
+  const getTenseLabel = (tense: string): string => (tense === 'past' ? 'Passé' : 'Présent');
+
   const getPolarityLabel = (polarity: string): string =>
     polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
 
@@ -53,7 +55,8 @@ export default function AdjectiveRevisionPage() {
             <p className="form-label">
               Forme :{' '}
               <strong>
-                Présent {getPolarityLabel(result.polarity)} · {getRegisterLabel(result.register)}
+                {getTenseLabel(result.tense)} {getPolarityLabel(result.polarity)} ·{' '}
+                {getRegisterLabel(result.register)}
               </strong>
             </p>
           </div>

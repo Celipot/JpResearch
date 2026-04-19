@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { Adjective } from '../../../domain/entities/Adjective';
 import { AdjectivePolarity } from '../../../domain/entities/AdjectivePolarity';
 import { AdjectiveRegister } from '../../../domain/entities/AdjectiveRegister';
+import { AdjectiveTense } from '../../../domain/entities/AdjectiveTense';
 
 describe('Adjective', () => {
   describe('conjugate()', () => {
@@ -183,6 +184,158 @@ describe('Adjective', () => {
           register: AdjectiveRegister.FAMILIAR,
         })
       ).toBe('げんきじゃない');
+    });
+  });
+
+  describe('conjugate() past tense', () => {
+    it('when conjugating たかい past familiar affirmative, then returns たかかった', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('たかかった');
+    });
+
+    it('when conjugating たかい past familiar negative, then returns たかくなかった', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('たかくなかった');
+    });
+
+    it('when conjugating たかい past polite affirmative, then returns たかかったです', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('たかかったです');
+    });
+
+    it('when conjugating たかい past polite negative, then returns たかくありませんでした', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('たかくありませんでした');
+    });
+
+    it('when conjugating special いい past familiar affirmative, then returns よかった', () => {
+      // Given
+      const adj = new Adjective('いい', 'i', 'good');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('よかった');
+    });
+
+    it('when conjugating special いい past familiar negative, then returns よくなかった', () => {
+      // Given
+      const adj = new Adjective('いい', 'i', 'good');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('よくなかった');
+    });
+
+    it('when conjugating きれい past familiar affirmative, then returns きれいだった', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('きれいだった');
+    });
+
+    it('when conjugating きれい past familiar negative, then returns きれいじゃなかった', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toBe('きれいじゃなかった');
+    });
+
+    it('when conjugating きれい past polite affirmative, then returns きれいでした', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('きれいでした');
+    });
+
+    it('when conjugating きれい past polite negative, then returns きれいではありませんでした', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.conjugate({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('きれいではありませんでした');
     });
   });
 });
