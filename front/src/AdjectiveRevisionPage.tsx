@@ -26,6 +26,8 @@ export default function AdjectiveRevisionPage() {
     const labels: Record<string, string> = {
       present_affirmative: 'Affirmatif',
       present_negative: 'Négatif',
+      present_affirmative_polite: 'Affirmatif poli',
+      present_negative_polite: 'Négatif poli',
     };
     return labels[form] || form;
   };

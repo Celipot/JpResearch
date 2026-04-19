@@ -25,39 +25,21 @@ export class Adjective {
   }
 
   private conjugateIAdjective(form: `${AdjectiveForm}`): string {
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) {
-      return this.hiragana;
-    }
-
-    return this.conjugateIAdjectiveNegative();
+    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) return this.hiragana;
+    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE_POLITE) return this.hiragana + 'です';
+    if (form === AdjectiveForm.PRESENT_NEGATIVE_POLITE) return this.iNegativeStem() + 'ありません';
+    return this.iNegativeStem() + 'ない';
   }
 
-  private conjugateIAdjectiveNegative(): string {
-    if (this.isIrregularIi()) {
-      return this.irregularIiNegative();
-    }
-
-    return this.regularIAdjectiveNegative();
-  }
-
-  private isIrregularIi(): boolean {
-    return this.hiragana === 'いい';
-  }
-
-  private irregularIiNegative(): string {
-    return 'よくない';
-  }
-
-  private regularIAdjectiveNegative(): string {
-    const stem = this.hiragana.slice(0, -1);
-    return stem + 'くない';
+  private iNegativeStem(): string {
+    if (this.hiragana === 'いい') return 'よく';
+    return this.hiragana.slice(0, -1) + 'く';
   }
 
   private conjugateNaAdjective(form: `${AdjectiveForm}`): string {
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) {
-      return this.hiragana + 'だ';
-    }
-
+    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) return this.hiragana + 'だ';
+    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE_POLITE) return this.hiragana + 'です';
+    if (form === AdjectiveForm.PRESENT_NEGATIVE_POLITE) return this.hiragana + 'ではありません';
     return this.hiragana + 'じゃない';
   }
 }

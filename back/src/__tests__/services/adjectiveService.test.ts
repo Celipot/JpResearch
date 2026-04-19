@@ -34,7 +34,12 @@ describe('generateRandomAdjective', () => {
     const result = generateRandomAdjective(repository);
 
     // Then
-    expect(['present_affirmative', 'present_negative']).toContain(result.form);
+    expect([
+      'present_affirmative',
+      'present_negative',
+      'present_affirmative_polite',
+      'present_negative_polite',
+    ]).toContain(result.form);
   });
 
   it('when calling with repository, then answer matches conjugation', () => {
@@ -86,19 +91,20 @@ describe('generateRandomAdjective', () => {
 });
 
 function isValidConjugation(result: ReturnType<typeof generateRandomAdjective>): boolean {
-  if (result.type === 'i') {
-    if (result.form === 'present_affirmative') {
-      return result.answer === result.hiragana;
-    }
-    if (result.hiragana === 'いい') {
-      return result.answer === 'よくない';
-    }
-    const stem = result.hiragana.slice(0, -1);
-    return result.answer === stem + 'くない';
+  const { hiragana, type, form, answer } = result;
+  const stem = hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
+
+  if (type === 'i') {
+    if (form === 'present_affirmative') return answer === hiragana;
+    if (form === 'present_affirmative_polite') return answer === hiragana + '\u3067\u3059';
+    if (form === 'present_negative_polite')
+      return answer === stem + '\u3042\u308a\u307e\u305b\u3093';
+    return answer === stem + '\u306a\u3044';
   }
 
-  if (result.form === 'present_affirmative') {
-    return result.answer === result.hiragana + 'だ';
-  }
-  return result.answer === result.hiragana + 'じゃない';
+  if (form === 'present_affirmative') return answer === hiragana + '\u3060';
+  if (form === 'present_affirmative_polite') return answer === hiragana + '\u3067\u3059';
+  if (form === 'present_negative_polite')
+    return answer === hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093';
+  return answer === hiragana + '\u3058\u3083\u306a\u3044';
 }

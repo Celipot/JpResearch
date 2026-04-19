@@ -3,7 +3,12 @@ import request from 'supertest';
 import app from '../../index';
 
 const VALID_ADJECTIVE_TYPES = ['i', 'na'];
-const VALID_FORMS = ['present_affirmative', 'present_negative'];
+const VALID_FORMS = [
+  'present_affirmative',
+  'present_negative',
+  'present_affirmative_polite',
+  'present_negative_polite',
+];
 const HIRAGANA_REGEX = /[\u3040-\u309F]+$/;
 
 describe('GET /api/random-adjective', () => {
@@ -96,13 +101,17 @@ function isValidConjugation(body: {
   answer: string;
 }): boolean {
   const { hiragana, type, form, answer } = body;
+  const stem = hiragana === 'いい' ? 'よく' : hiragana.slice(0, -1) + 'く';
 
   if (type === 'i') {
     if (form === 'present_affirmative') return answer === hiragana;
-    if (hiragana === 'いい') return answer === 'よくない';
-    return answer === hiragana.slice(0, -1) + 'くない';
+    if (form === 'present_affirmative_polite') return answer === hiragana + 'です';
+    if (form === 'present_negative_polite') return answer === stem + 'ありません';
+    return answer === stem + 'ない';
   }
 
   if (form === 'present_affirmative') return answer === hiragana + 'だ';
+  if (form === 'present_affirmative_polite') return answer === hiragana + 'です';
+  if (form === 'present_negative_polite') return answer === hiragana + 'ではありません';
   return answer === hiragana + 'じゃない';
 }
