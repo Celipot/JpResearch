@@ -7,16 +7,16 @@ export enum AdjectiveType {
 
 export class Adjective {
   readonly hiragana: string;
-  readonly type: AdjectiveType;
+  readonly type: `${AdjectiveType}`;
   readonly translation: string;
 
-  constructor(hiragana: string, type: AdjectiveType, translation: string) {
+  constructor(hiragana: string, type: `${AdjectiveType}`, translation: string) {
     this.hiragana = hiragana;
     this.type = type;
     this.translation = translation;
   }
 
-  conjugate(form: AdjectiveForm): string {
+  conjugate(form: `${AdjectiveForm}`): string {
     if (this.type === AdjectiveType.I) {
       return this.conjugateIAdjective(form);
     } else {
@@ -24,7 +24,7 @@ export class Adjective {
     }
   }
 
-  private conjugateIAdjective(form: AdjectiveForm): string {
+  private conjugateIAdjective(form: `${AdjectiveForm}`): string {
     if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) {
       return this.hiragana;
     }
@@ -53,7 +53,7 @@ export class Adjective {
     return stem + 'くない';
   }
 
-  private conjugateNaAdjective(form: AdjectiveForm): string {
+  private conjugateNaAdjective(form: `${AdjectiveForm}`): string {
     if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) {
       return this.hiragana + 'だ';
     }
