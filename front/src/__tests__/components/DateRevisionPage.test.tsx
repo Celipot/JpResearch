@@ -39,6 +39,21 @@ const mockSimpleDateResponse = {
   ],
 };
 
+function mockFetch(dateResponse: object, checkAnswerCorrect?: boolean) {
+  global.fetch = vi.fn((url: string | URL | Request) => {
+    if (String(url).includes('check-answer')) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
+      });
+    }
+    return Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(dateResponse),
+    });
+  }) as unknown as typeof fetch;
+}
+
 describe('DateRevisionPage', () => {
   it('given the page, then displays mode selector buttons', () => {
     render(
@@ -52,12 +67,8 @@ describe('DateRevisionPage', () => {
   });
 
   it('given jp-to-fr mode, then shows audio controls by default', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockDateResponse);
 
     render(
       <MemoryRouter>
@@ -65,20 +76,18 @@ describe('DateRevisionPage', () => {
       </MemoryRouter>
     );
 
+    // When
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle date/i }));
 
+    // Then
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /Réécouter/i })).toBeInTheDocument();
     });
   });
 
   it('given switching to fr-to-jp mode, then shows answer input', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockDateResponse);
 
     render(
       <MemoryRouter>
@@ -86,9 +95,11 @@ describe('DateRevisionPage', () => {
       </MemoryRouter>
     );
 
+    // When
     fireEvent.click(screen.getByRole('button', { name: /Français → Japonais/i }));
     fireEvent.click(screen.getByRole('button', { name: /Nouvelle date/i }));
 
+    // Then
     await waitFor(() => {
       expect(screen.getByText('2024年6月20日')).toBeInTheDocument();
     });
@@ -96,12 +107,8 @@ describe('DateRevisionPage', () => {
   });
 
   it('given jp-to-fr mode, then shows correct feedback when answering correctly', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockSimpleDateResponse);
 
     render(
       <MemoryRouter>
@@ -115,20 +122,18 @@ describe('DateRevisionPage', () => {
       expect(screen.getByRole('button', { name: /Réécouter/i })).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Quelle date est-ce/i);
     fireEvent.change(input, { target: { value: '16 février 2024' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
 
+    // Then
     expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
   });
 
   it('given jp-to-fr mode, then shows incorrect feedback when answering incorrectly', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockSimpleDateResponse);
 
     render(
       <MemoryRouter>
@@ -142,20 +147,18 @@ describe('DateRevisionPage', () => {
       expect(screen.getByRole('button', { name: /Réécouter/i })).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Quelle date est-ce/i);
     fireEvent.change(input, { target: { value: '17 février 2024' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
 
+    // Then
     expect(await screen.findByText(/✗ Incorrect/i)).toBeInTheDocument();
   });
 
   it('given fr-to-jp mode, then shows correct feedback when answering in hiragana correctly', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockSimpleDateResponse, true);
 
     render(
       <MemoryRouter>
@@ -170,20 +173,18 @@ describe('DateRevisionPage', () => {
       expect(screen.getByText('2024年2月16日')).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Écrivez en hiragana ou romaji/i);
     fireEvent.change(input, { target: { value: 'にせんにじゅうよんねんにがつつじゅうろくにち' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
 
+    // Then
     expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
   });
 
   it('given fr-to-jp mode, then shows correct feedback when answering in romaji correctly', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockSimpleDateResponse, true);
 
     render(
       <MemoryRouter>
@@ -198,20 +199,18 @@ describe('DateRevisionPage', () => {
       expect(screen.getByText('2024年2月16日')).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Écrivez en hiragana ou romaji/i);
     fireEvent.change(input, { target: { value: 'nisennijūyonennigatsujūrokunichi' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
 
+    // Then
     expect(await screen.findByText(/✓ Correct/i)).toBeInTheDocument();
   });
 
   it('given fr-to-jp mode, then shows incorrect feedback when answering incorrectly', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockSimpleDateResponse, false);
 
     render(
       <MemoryRouter>
@@ -226,20 +225,18 @@ describe('DateRevisionPage', () => {
       expect(screen.getByText('2024年2月16日')).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Écrivez en hiragana ou romaji/i);
     fireEvent.change(input, { target: { value: 'wrong' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
 
+    // Then
     expect(await screen.findByText(/✗ Incorrect/i)).toBeInTheDocument();
   });
 
   it('given fr-to-jp mode, then displays both hiragana and romaji after answering', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockDateResponse),
-      })
-    ) as unknown as typeof fetch;
+    // Given
+    mockFetch(mockDateResponse, false);
 
     render(
       <MemoryRouter>
@@ -254,6 +251,7 @@ describe('DateRevisionPage', () => {
       expect(screen.getByText('2024年6月20日')).toBeInTheDocument();
     });
 
+    // When
     const input = screen.getByLabelText(/Écrivez en hiragana ou romaji/i);
     fireEvent.change(input, { target: { value: 'wrong' } });
     fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
@@ -264,6 +262,7 @@ describe('DateRevisionPage', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /Afficher les prononciations/i }));
 
+    // Then
     await waitFor(() => {
       expect(screen.getAllByText(/にせんにじゅうよんねんろくがつつはつか/i).length).toBeGreaterThan(
         0

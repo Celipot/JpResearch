@@ -30,6 +30,21 @@ const mockSimpleHourResponse = {
   ],
 };
 
+function mockFetch(hourResponse: object, checkAnswerCorrect?: boolean) {
+  global.fetch = vi.fn((url: string | URL | Request) => {
+    if (String(url).includes('check-answer')) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
+      });
+    }
+    return Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(hourResponse),
+    });
+  }) as unknown as typeof fetch;
+}
+
 describe('HourRevisionPage', () => {
   it('displays mode selector buttons', () => {
     // Given
@@ -46,12 +61,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows audio controls by default', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockHourResponse);
 
     render(
       <MemoryRouter>
@@ -70,12 +80,7 @@ describe('HourRevisionPage', () => {
 
   it('switching to fr-to-jp mode shows answer input', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockHourResponse);
 
     render(
       <MemoryRouter>
@@ -96,12 +101,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows correct feedback when answering correctly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse);
 
     render(
       <MemoryRouter>
@@ -126,12 +126,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse);
 
     render(
       <MemoryRouter>
@@ -156,12 +151,7 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in hiragana correctly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse, true);
 
     render(
       <MemoryRouter>
@@ -187,12 +177,7 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in romaji with uu', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse, true);
 
     render(
       <MemoryRouter>
@@ -218,12 +203,7 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with multiple u (juuu)', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse, true);
 
     render(
       <MemoryRouter>
@@ -249,12 +229,7 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleHourResponse, false);
 
     render(
       <MemoryRouter>
@@ -280,12 +255,7 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode displays both hiragana and romaji after answering', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockHourResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockHourResponse, false);
 
     render(
       <MemoryRouter>

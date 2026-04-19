@@ -78,6 +78,10 @@ export class AnswerCheck {
     ょ: 'yo',
   };
 
+  static isAnyCorrect(userAnswer: string, expectedAnswers: string[]): boolean {
+    return expectedAnswers.some((expected) => this.isCorrect(userAnswer, expected));
+  }
+
   static isCorrect(userAnswer: string, expectedAnswer: string): boolean {
     const normalizedUserAnswer = this.normalizeRomaji(userAnswer);
     const expectedHiragana = expectedAnswer.toLowerCase().replace(/\s+/g, '');

@@ -64,25 +64,20 @@ export default function NumberRevisionPage() {
     }
   };
 
-  const normalizeRomaji = (str: string): string => {
-    return str
-      .toLowerCase()
-      .replace(/\s+/g, '')
-      .replace(/ou+/g, 'o')
-      .replace(/ū/g, 'uu')
-      .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
-  };
-
-  const checkAnswer = () => {
+  const checkAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
 
     if (mode === 'fr-to-jp') {
-      const normalizedUserAnswer = normalizeRomaji(userAnswer.trim());
-      const validAnswers = result.allPronunciations.flatMap((p) => [
-        p.hiragana.toLowerCase().replace(/\s+/g, ''),
-        normalizeRomaji(p.romaji),
-      ]);
-      setFeedback(validAnswers.includes(normalizedUserAnswer) ? 'correct' : 'incorrect');
+      const response = await fetch('/api/check-answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userAnswer: userAnswer.trim(),
+          expectedAnswers: result.allPronunciations.map((p) => p.hiragana),
+        }),
+      });
+      const data = await response.json();
+      setFeedback(data.correct ? 'correct' : 'incorrect');
     } else {
       const userNumber = parseInt(userAnswer.trim(), 10);
       setFeedback(userNumber === result.number ? 'correct' : 'incorrect');

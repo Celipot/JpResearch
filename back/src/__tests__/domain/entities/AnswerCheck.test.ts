@@ -87,4 +87,42 @@ describe('AnswerCheck', () => {
       expect(result).toBe(true);
     });
   });
+
+  describe('AnswerCheck.isAnyCorrect', () => {
+    it('when user answer matches one of the expected answers in hiragana, then returns true', () => {
+      // Given
+      const userAnswer = 'じゅう';
+      const expectedAnswers = ['じゅう', 'とお'];
+
+      // When
+      const result = AnswerCheck.isAnyCorrect(userAnswer, expectedAnswers);
+
+      // Then
+      expect(result).toBe(true);
+    });
+
+    it('when user answer is romaji matching one expected hiragana, then returns true', () => {
+      // Given
+      const userAnswer = 'takakunai';
+      const expectedAnswers = ['たかくない', 'とお'];
+
+      // When
+      const result = AnswerCheck.isAnyCorrect(userAnswer, expectedAnswers);
+
+      // Then
+      expect(result).toBe(true);
+    });
+
+    it('when user answer matches none of the expected answers, then returns false', () => {
+      // Given
+      const userAnswer = 'ちがう';
+      const expectedAnswers = ['じゅう', 'とお'];
+
+      // When
+      const result = AnswerCheck.isAnyCorrect(userAnswer, expectedAnswers);
+
+      // Then
+      expect(result).toBe(false);
+    });
+  });
 });

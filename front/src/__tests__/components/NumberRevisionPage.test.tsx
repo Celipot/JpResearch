@@ -26,6 +26,21 @@ const mockSimpleNumberResponse = {
   allPronunciations: [{ hiragana: 'じゅう', romaji: 'jū', isStandard: true }],
 };
 
+function mockFetch(numberResponse: object, checkAnswerCorrect?: boolean) {
+  global.fetch = vi.fn((url: string | URL | Request) => {
+    if (String(url).includes('check-answer')) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
+      });
+    }
+    return Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(numberResponse),
+    });
+  }) as unknown as typeof fetch;
+}
+
 describe('NumberRevisionPage', () => {
   it('displays mode selector buttons', () => {
     // Given
@@ -72,12 +87,7 @@ describe('NumberRevisionPage', () => {
 
   it('jp-to-fr mode shows audio controls by default', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockNumberResponse);
 
     render(
       <MemoryRouter>
@@ -96,12 +106,7 @@ describe('NumberRevisionPage', () => {
 
   it('switching to fr-to-jp mode shows answer input', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockNumberResponse);
 
     render(
       <MemoryRouter>
@@ -122,12 +127,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in hiragana correctly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleNumberResponse, true);
 
     render(
       <MemoryRouter>
@@ -153,12 +153,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in romaji with double u', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleNumberResponse, true);
 
     render(
       <MemoryRouter>
@@ -184,12 +179,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with multiple u (juuu)', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleNumberResponse, true);
 
     render(
       <MemoryRouter>
@@ -215,12 +205,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with macron (jū)', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleNumberResponse, true);
 
     render(
       <MemoryRouter>
@@ -246,12 +231,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockSimpleNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockSimpleNumberResponse, false);
 
     render(
       <MemoryRouter>
@@ -277,12 +257,7 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode displays both hiragana and romaji after answering', async () => {
     // Given
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockNumberResponse),
-      })
-    ) as unknown as typeof fetch;
+    mockFetch(mockNumberResponse, false);
 
     render(
       <MemoryRouter>

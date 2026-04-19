@@ -63,29 +63,24 @@ export default function HourRevisionPage() {
     }
   };
 
-  const normalizeRomaji = (str: string): string => {
-    return str
-      .toLowerCase()
-      .replace(/\s+/g, '')
-      .replace(/ou+/g, 'o')
-      .replace(/ū/g, 'uu')
-      .replace(/u+/g, (m) => (m.length >= 2 ? 'uu' : m));
-  };
-
   const formatTime = (hour: number, minute: number): string => {
     return `${hour}時${minute < 10 ? '0' : ''}${minute}分`;
   };
 
-  const checkAnswer = () => {
+  const checkAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
 
     if (mode === 'fr-to-jp') {
-      const normalizedUserAnswer = normalizeRomaji(userAnswer.trim());
-      const validAnswers = result.allPronunciations.flatMap((p) => [
-        p.hiragana.toLowerCase().replace(/\s+/g, ''),
-        normalizeRomaji(p.romaji),
-      ]);
-      setFeedback(validAnswers.includes(normalizedUserAnswer) ? 'correct' : 'incorrect');
+      const response = await fetch('/api/check-answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userAnswer: userAnswer.trim(),
+          expectedAnswers: result.allPronunciations.map((p) => p.hiragana),
+        }),
+      });
+      const data = await response.json();
+      setFeedback(data.correct ? 'correct' : 'incorrect');
     } else {
       const userTime = userAnswer.trim().toLowerCase().replace(/\s+/g, '');
       const kanjiFormat = formatTime(result.hour, result.minute).toLowerCase();
