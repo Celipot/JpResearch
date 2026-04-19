@@ -19,6 +19,9 @@ export default function HomePage() {
           <li>
             <Link to="/adjective">Révision d&apos;adjectifs</Link>
           </li>
+          <li>
+            <Link to="/verb">Révision de verbes</Link>
+          </li>
         </ul>
       </div>
     </div>

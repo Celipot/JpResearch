@@ -30,6 +30,11 @@ export class Verb {
   }
 
   acceptableAnswers(form: VerbConjugationForm): string[] {
+    const hiraganaVerb = new Verb(this.hiragana, this.hiragana, this.type, this.translation);
+    return [...new Set([...this.allAnswers(form), ...hiraganaVerb.allAnswers(form)])];
+  }
+
+  private allAnswers(form: VerbConjugationForm): string[] {
     const primary = this.conjugate(form);
     const variant = this.politeNegativeVariant(form);
     return variant ? [primary, variant] : [primary];

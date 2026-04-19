@@ -460,7 +460,23 @@ describe('Verb', () => {
   });
 
   describe('acceptableAnswers()', () => {
-    it('when ichidan present negative polite, then returns 食べません and 食べないです', () => {
+    it('when ichidan present polite affirmative, then returns kanji and hiragana variants', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.acceptableAnswers({
+        kind: 'indicative',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['食べます', 'たべます']);
+    });
+
+    it('when ichidan present negative polite, then returns kanji and hiragana variants', () => {
       // Given
       const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
 
@@ -473,10 +489,10 @@ describe('Verb', () => {
       });
 
       // Then
-      expect(result).toEqual(['食べません', '食べないです']);
+      expect(result).toEqual(['食べません', '食べないです', 'たべません', 'たべないです']);
     });
 
-    it('when ichidan past negative polite, then returns 食べませんでした and 食べなかったです', () => {
+    it('when ichidan past negative polite, then returns kanji and hiragana variants', () => {
       // Given
       const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
 
@@ -489,10 +505,31 @@ describe('Verb', () => {
       });
 
       // Then
-      expect(result).toEqual(['食べませんでした', '食べなかったです']);
+      expect(result).toEqual([
+        '食べませんでした',
+        '食べなかったです',
+        'たべませんでした',
+        'たべなかったです',
+      ]);
     });
 
-    it('when godan present negative polite, then returns 飲みません and 飲まないです', () => {
+    it('when godan present polite affirmative, then returns kanji and hiragana variants', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.acceptableAnswers({
+        kind: 'indicative',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['飲みます', 'のみます']);
+    });
+
+    it('when godan present negative polite, then returns kanji and hiragana variants', () => {
       // Given
       const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
 
@@ -505,10 +542,10 @@ describe('Verb', () => {
       });
 
       // Then
-      expect(result).toEqual(['飲みません', '飲まないです']);
+      expect(result).toEqual(['飲みません', '飲まないです', 'のみません', 'のまないです']);
     });
 
-    it('when godan past negative polite, then returns 飲みませんでした and 飲まなかったです', () => {
+    it('when godan past negative polite, then returns kanji and hiragana variants', () => {
       // Given
       const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
 
@@ -521,10 +558,15 @@ describe('Verb', () => {
       });
 
       // Then
-      expect(result).toEqual(['飲みませんでした', '飲まなかったです']);
+      expect(result).toEqual([
+        '飲みませんでした',
+        '飲まなかったです',
+        'のみませんでした',
+        'のまなかったです',
+      ]);
     });
 
-    it('when present plain, then returns single answer', () => {
+    it('when ichidan present plain, then returns kanji and hiragana', () => {
       // Given
       const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
 
@@ -537,7 +579,39 @@ describe('Verb', () => {
       });
 
       // Then
-      expect(result).toEqual(['食べる']);
+      expect(result).toEqual(['食べる', 'たべる']);
+    });
+
+    it('when する present polite, then returns single answer without duplicate', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.acceptableAnswers({
+        kind: 'indicative',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['します']);
+    });
+
+    it('when くる present polite, then returns single answer without duplicate', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.acceptableAnswers({
+        kind: 'indicative',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['きます']);
     });
   });
 
