@@ -1,12 +1,6 @@
 import { useState } from 'react';
-
-interface AdjectiveResult {
-  hiragana: string;
-  type: 'i' | 'na';
-  translation: string;
-  form: 'present_affirmative' | 'present_negative';
-  answer: string;
-}
+import type { AdjectiveResult } from './types/revision';
+import { getRandomAdjective, checkAnswer as checkAnswerService } from './services/revisionService';
 
 export default function AdjectiveRevisionPage() {
   const [result, setResult] = useState<AdjectiveResult | null>(null);
@@ -19,9 +13,7 @@ export default function AdjectiveRevisionPage() {
     setFeedback(null);
     setUserAnswer('');
     try {
-      const res = await fetch('/api/random-adjective');
-      const data = await res.json();
-      setResult(data);
+      setResult(await getRandomAdjective());
     } catch (err) {
       console.error('Erreur:', err);
     } finally {
@@ -39,22 +31,8 @@ export default function AdjectiveRevisionPage() {
 
   const checkAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
-
-    try {
-      const response = await fetch('/api/check-answer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userAnswer: userAnswer.trim(),
-          expectedAnswer: result.answer,
-        }),
-      });
-      const data = await response.json();
-      setFeedback(data.correct ? 'correct' : 'incorrect');
-    } catch (err) {
-      console.error('Erreur lors de la vérification:', err);
-      setFeedback('incorrect');
-    }
+    const correct = await checkAnswerService(userAnswer.trim(), [result.answer]);
+    setFeedback(correct ? 'correct' : 'incorrect');
   };
 
   return (

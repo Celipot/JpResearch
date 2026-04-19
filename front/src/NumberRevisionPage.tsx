@@ -1,23 +1,12 @@
 import { useState, useCallback } from 'react';
-
-interface Pronunciation {
-  hiragana: string;
-  romaji: string;
-  isStandard: boolean;
-}
-
-interface RandomResult {
-  number: number;
-  hiragana: string;
-  romaji: string;
-  allPronunciations: Pronunciation[];
-}
+import type { NumberResult } from './types/revision';
+import { getRandomNumber, checkAnswer as checkAnswerService } from './services/revisionService';
 
 type Mode = 'jp-to-fr' | 'fr-to-jp';
 
 export default function NumberRevisionPage() {
   const [mode, setMode] = useState<Mode>('jp-to-fr');
-  const [result, setResult] = useState<RandomResult | null>(null);
+  const [result, setResult] = useState<NumberResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
@@ -41,8 +30,7 @@ export default function NumberRevisionPage() {
     setSpokenHiragana(null);
     setShowPronunciation(false);
     try {
-      const res = await fetch(`/api/random?min=${minValue}&max=${maxValue}`);
-      const data = await res.json();
+      const data = await getRandomNumber(minValue, maxValue);
       setResult(data);
 
       if (mode === 'jp-to-fr') {
@@ -68,16 +56,11 @@ export default function NumberRevisionPage() {
     if (!result || !userAnswer.trim()) return;
 
     if (mode === 'fr-to-jp') {
-      const response = await fetch('/api/check-answer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userAnswer: userAnswer.trim(),
-          expectedAnswers: result.allPronunciations.map((p) => p.hiragana),
-        }),
-      });
-      const data = await response.json();
-      setFeedback(data.correct ? 'correct' : 'incorrect');
+      const correct = await checkAnswerService(
+        userAnswer.trim(),
+        result.allPronunciations.map((p) => p.hiragana)
+      );
+      setFeedback(correct ? 'correct' : 'incorrect');
     } else {
       const userNumber = parseInt(userAnswer.trim(), 10);
       setFeedback(userNumber === result.number ? 'correct' : 'incorrect');

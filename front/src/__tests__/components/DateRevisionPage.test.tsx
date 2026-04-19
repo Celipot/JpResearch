@@ -2,10 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import DateRevisionPage from '../../DateRevisionPage';
+import * as revisionService from '../../services/revisionService';
 
-beforeEach(() => {
-  vi.restoreAllMocks();
-});
+vi.mock('../../services/revisionService');
 
 const mockDateResponse = {
   year: 2024,
@@ -39,22 +38,11 @@ const mockSimpleDateResponse = {
   ],
 };
 
-function mockFetch(dateResponse: object, checkAnswerCorrect?: boolean) {
-  global.fetch = vi.fn((url: string | URL | Request) => {
-    if (String(url).includes('check-answer')) {
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
-      });
-    }
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(dateResponse),
-    });
-  }) as unknown as typeof fetch;
-}
-
 describe('DateRevisionPage', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('given the page, then displays mode selector buttons', () => {
     render(
       <MemoryRouter>
@@ -68,7 +56,7 @@ describe('DateRevisionPage', () => {
 
   it('given jp-to-fr mode, then shows audio controls by default', async () => {
     // Given
-    mockFetch(mockDateResponse);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockDateResponse);
 
     render(
       <MemoryRouter>
@@ -87,7 +75,7 @@ describe('DateRevisionPage', () => {
 
   it('given switching to fr-to-jp mode, then shows answer input', async () => {
     // Given
-    mockFetch(mockDateResponse);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockDateResponse);
 
     render(
       <MemoryRouter>
@@ -108,7 +96,7 @@ describe('DateRevisionPage', () => {
 
   it('given jp-to-fr mode, then shows correct feedback when answering correctly', async () => {
     // Given
-    mockFetch(mockSimpleDateResponse);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockSimpleDateResponse);
 
     render(
       <MemoryRouter>
@@ -133,7 +121,7 @@ describe('DateRevisionPage', () => {
 
   it('given jp-to-fr mode, then shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    mockFetch(mockSimpleDateResponse);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockSimpleDateResponse);
 
     render(
       <MemoryRouter>
@@ -158,7 +146,8 @@ describe('DateRevisionPage', () => {
 
   it('given fr-to-jp mode, then shows correct feedback when answering in hiragana correctly', async () => {
     // Given
-    mockFetch(mockSimpleDateResponse, true);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockSimpleDateResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -184,7 +173,8 @@ describe('DateRevisionPage', () => {
 
   it('given fr-to-jp mode, then shows correct feedback when answering in romaji correctly', async () => {
     // Given
-    mockFetch(mockSimpleDateResponse, true);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockSimpleDateResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -210,7 +200,8 @@ describe('DateRevisionPage', () => {
 
   it('given fr-to-jp mode, then shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    mockFetch(mockSimpleDateResponse, false);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockSimpleDateResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>
@@ -236,7 +227,8 @@ describe('DateRevisionPage', () => {
 
   it('given fr-to-jp mode, then displays both hiragana and romaji after answering', async () => {
     // Given
-    mockFetch(mockDateResponse, false);
+    vi.mocked(revisionService.getRandomDate).mockResolvedValue(mockDateResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>

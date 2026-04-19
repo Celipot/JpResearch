@@ -2,6 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import AdjectiveRevisionPage from '../../AdjectiveRevisionPage';
+import * as revisionService from '../../services/revisionService';
+
+vi.mock('../../services/revisionService');
 
 const mockIAdjective = {
   hiragana: 'たかい',
@@ -21,7 +24,7 @@ const mockNaAdjective = {
 
 describe('AdjectiveRevisionPage', () => {
   beforeEach(() => {
-    vi.restoreAllMocks();
+    vi.resetAllMocks();
   });
 
   it('when page renders, then displays title', () => {
@@ -50,7 +53,7 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when fetch button clicked, then displays adjective and form', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
 
     // When
     render(
@@ -69,7 +72,7 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when adjective is loaded, then shows input field', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
 
     // When
     render(
@@ -87,7 +90,9 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when correct answer submitted, then shows success feedback', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
+
     render(
       <MemoryRouter>
         <AdjectiveRevisionPage />
@@ -109,7 +114,9 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when incorrect answer submitted, then shows failure feedback with correct answer', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
+
     render(
       <MemoryRouter>
         <AdjectiveRevisionPage />
@@ -132,7 +139,9 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when pressing Enter in answer input, then submits answer', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
+
     render(
       <MemoryRouter>
         <AdjectiveRevisionPage />
@@ -154,7 +163,9 @@ describe('AdjectiveRevisionPage', () => {
 
   it('when fetching new adjective after answer, then resets input and feedback', async () => {
     // Given
-    mockFetch(mockIAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockIAdjective);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
+
     render(
       <MemoryRouter>
         <AdjectiveRevisionPage />
@@ -172,7 +183,7 @@ describe('AdjectiveRevisionPage', () => {
     });
 
     // When
-    mockFetch(mockNaAdjective);
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockNaAdjective);
     fireEvent.click(screen.getByRole('button', { name: /Nouvel adjectif/i }));
 
     // Then
@@ -182,21 +193,3 @@ describe('AdjectiveRevisionPage', () => {
     });
   });
 });
-
-function mockFetch(response: object) {
-  global.fetch = vi.fn((url: string, options?: Record<string, unknown>) => {
-    if (typeof url === 'string' && url.includes('/api/check-answer')) {
-      const body = options?.body as string;
-      const { userAnswer, expectedAnswer } = JSON.parse(body);
-      const correct = userAnswer === expectedAnswer;
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ correct }),
-      });
-    }
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(response),
-    });
-  }) as unknown as typeof fetch;
-}

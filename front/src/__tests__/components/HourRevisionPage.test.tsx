@@ -2,10 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import HourRevisionPage from '../../HourRevisionPage';
+import * as revisionService from '../../services/revisionService';
 
-beforeEach(() => {
-  vi.restoreAllMocks();
-});
+vi.mock('../../services/revisionService');
 
 const mockHourResponse = {
   hour: 4,
@@ -30,22 +29,11 @@ const mockSimpleHourResponse = {
   ],
 };
 
-function mockFetch(hourResponse: object, checkAnswerCorrect?: boolean) {
-  global.fetch = vi.fn((url: string | URL | Request) => {
-    if (String(url).includes('check-answer')) {
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
-      });
-    }
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(hourResponse),
-    });
-  }) as unknown as typeof fetch;
-}
-
 describe('HourRevisionPage', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('displays mode selector buttons', () => {
     // Given
     render(
@@ -61,7 +49,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows audio controls by default', async () => {
     // Given
-    mockFetch(mockHourResponse);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockHourResponse);
 
     render(
       <MemoryRouter>
@@ -80,7 +68,7 @@ describe('HourRevisionPage', () => {
 
   it('switching to fr-to-jp mode shows answer input', async () => {
     // Given
-    mockFetch(mockHourResponse);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockHourResponse);
 
     render(
       <MemoryRouter>
@@ -101,7 +89,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows correct feedback when answering correctly', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
 
     render(
       <MemoryRouter>
@@ -126,7 +114,7 @@ describe('HourRevisionPage', () => {
 
   it('jp-to-fr mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
 
     render(
       <MemoryRouter>
@@ -151,7 +139,8 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in hiragana correctly', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse, true);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -177,7 +166,8 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in romaji with uu', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse, true);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -203,7 +193,8 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with multiple u (juuu)', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse, true);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -229,7 +220,8 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    mockFetch(mockSimpleHourResponse, false);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockSimpleHourResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>
@@ -255,7 +247,8 @@ describe('HourRevisionPage', () => {
 
   it('fr-to-jp mode displays both hiragana and romaji after answering', async () => {
     // Given
-    mockFetch(mockHourResponse, false);
+    vi.mocked(revisionService.getRandomHour).mockResolvedValue(mockHourResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>

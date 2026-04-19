@@ -2,10 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import NumberRevisionPage from '../../NumberRevisionPage';
+import * as revisionService from '../../services/revisionService';
 
-beforeEach(() => {
-  vi.restoreAllMocks();
-});
+vi.mock('../../services/revisionService');
 
 const mockNumberResponse = {
   number: 414,
@@ -26,22 +25,11 @@ const mockSimpleNumberResponse = {
   allPronunciations: [{ hiragana: 'じゅう', romaji: 'jū', isStandard: true }],
 };
 
-function mockFetch(numberResponse: object, checkAnswerCorrect?: boolean) {
-  global.fetch = vi.fn((url: string | URL | Request) => {
-    if (String(url).includes('check-answer')) {
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ correct: checkAnswerCorrect }),
-      });
-    }
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(numberResponse),
-    });
-  }) as unknown as typeof fetch;
-}
-
 describe('NumberRevisionPage', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('displays mode selector buttons', () => {
     // Given
     render(
@@ -87,7 +75,7 @@ describe('NumberRevisionPage', () => {
 
   it('jp-to-fr mode shows audio controls by default', async () => {
     // Given
-    mockFetch(mockNumberResponse);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockNumberResponse);
 
     render(
       <MemoryRouter>
@@ -106,7 +94,7 @@ describe('NumberRevisionPage', () => {
 
   it('switching to fr-to-jp mode shows answer input', async () => {
     // Given
-    mockFetch(mockNumberResponse);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockNumberResponse);
 
     render(
       <MemoryRouter>
@@ -127,7 +115,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in hiragana correctly', async () => {
     // Given
-    mockFetch(mockSimpleNumberResponse, true);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockSimpleNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -153,7 +142,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering in romaji with double u', async () => {
     // Given
-    mockFetch(mockSimpleNumberResponse, true);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockSimpleNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -179,7 +169,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with multiple u (juuu)', async () => {
     // Given
-    mockFetch(mockSimpleNumberResponse, true);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockSimpleNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -205,7 +196,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows correct feedback when answering with macron (jū)', async () => {
     // Given
-    mockFetch(mockSimpleNumberResponse, true);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockSimpleNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(true);
 
     render(
       <MemoryRouter>
@@ -231,7 +223,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode shows incorrect feedback when answering incorrectly', async () => {
     // Given
-    mockFetch(mockSimpleNumberResponse, false);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockSimpleNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>
@@ -257,7 +250,8 @@ describe('NumberRevisionPage', () => {
 
   it('fr-to-jp mode displays both hiragana and romaji after answering', async () => {
     // Given
-    mockFetch(mockNumberResponse, false);
+    vi.mocked(revisionService.getRandomNumber).mockResolvedValue(mockNumberResponse);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
 
     render(
       <MemoryRouter>
