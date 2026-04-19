@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { generateRandomAdjective } from '../../services/adjectiveService';
 import { AdjectiveRepositoryImpl } from '../../infrastructure/repositories/AdjectiveRepositoryImpl';
-import { AdjectivePolarity } from '../../domain/entities/AdjectivePolarity';
-import { AdjectiveRegister } from '../../domain/entities/AdjectiveRegister';
-import { AdjectiveTense } from '../../domain/entities/AdjectiveTense';
+import { AdjectivePolarity } from '../../domain/entities/adjective/AdjectivePolarity';
+import { AdjectiveRegister } from '../../domain/entities/adjective/AdjectiveRegister';
+import { AdjectiveTense } from '../../domain/entities/adjective/AdjectiveTense';
 
 describe('generateRandomAdjective', () => {
   let repository: AdjectiveRepositoryImpl;

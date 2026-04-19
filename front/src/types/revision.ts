@@ -4,6 +4,17 @@ export interface Pronunciation {
   isStandard: boolean;
 }
 
+export interface VerbResult {
+  kanji: string;
+  hiragana: string;
+  type: 'ichidan' | 'godan' | 'irregular';
+  translation: string;
+  tense: 'present' | 'past';
+  polarity: 'affirmative' | 'negative';
+  register: 'plain' | 'polite';
+  answers: string[];
+}
+
 export interface AdjectiveResult {
   hiragana: string;
   type: 'i' | 'na';

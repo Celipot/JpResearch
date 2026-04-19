@@ -1,4 +1,15 @@
-import type { AdjectiveResult, NumberResult, HourResult, DateResult } from '../types/revision';
+import type {
+  AdjectiveResult,
+  VerbResult,
+  NumberResult,
+  HourResult,
+  DateResult,
+} from '../types/revision';
+
+export async function getRandomVerb(): Promise<VerbResult> {
+  const res = await fetch('/api/random-verb');
+  return res.json();
+}
 
 export async function getRandomAdjective(): Promise<AdjectiveResult> {
   const res = await fetch('/api/random-adjective');

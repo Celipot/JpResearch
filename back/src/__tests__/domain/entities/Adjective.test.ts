@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { Adjective } from '../../../domain/entities/Adjective';
-import { AdjectivePolarity } from '../../../domain/entities/AdjectivePolarity';
-import { AdjectiveRegister } from '../../../domain/entities/AdjectiveRegister';
-import { AdjectiveTense } from '../../../domain/entities/AdjectiveTense';
+import { Adjective } from '../../../domain/entities/adjective/Adjective';
+import { AdjectivePolarity } from '../../../domain/entities/adjective/AdjectivePolarity';
+import { AdjectiveRegister } from '../../../domain/entities/adjective/AdjectiveRegister';
+import { AdjectiveTense } from '../../../domain/entities/adjective/AdjectiveTense';
 
 describe('Adjective', () => {
   describe('conjugate()', () => {

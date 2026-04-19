@@ -1,9 +1,9 @@
-import { Adjective } from '../domain/entities/Adjective';
-import { AdjectiveType } from '../domain/entities/AdjectiveType';
-import { AdjectiveTense } from '../domain/entities/AdjectiveTense';
-import { AdjectivePolarity } from '../domain/entities/AdjectivePolarity';
-import { AdjectiveRegister } from '../domain/entities/AdjectiveRegister';
-import { AdjectiveConjugationFormUtils } from '../domain/entities/AdjectiveConjugationForm';
+import { Adjective } from '../domain/entities/adjective/Adjective';
+import { AdjectiveType } from '../domain/entities/adjective/AdjectiveType';
+import { AdjectiveTense } from '../domain/entities/adjective/AdjectiveTense';
+import { AdjectivePolarity } from '../domain/entities/adjective/AdjectivePolarity';
+import { AdjectiveRegister } from '../domain/entities/adjective/AdjectiveRegister';
+import { AdjectiveConjugationFormUtils } from '../domain/entities/adjective/AdjectiveConjugationForm';
 import { IAdjectiveRepository } from '../infrastructure/repositories/AdjectiveRepository';
 
 export interface RandomAdjectiveResult {
