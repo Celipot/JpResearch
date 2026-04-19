@@ -11,7 +11,6 @@ export const ADJECTIVES: AdjectiveData[] = [
   { hiragana: 'あたたかい', type: AdjectiveType.I, translation: 'warm' },
   { hiragana: 'あたらしい', type: AdjectiveType.I, translation: 'new' },
   { hiragana: 'いい', type: AdjectiveType.I, translation: 'good' },
-  { hiragana: 'よい', type: AdjectiveType.I, translation: 'good' },
   { hiragana: 'うつくしい', type: AdjectiveType.I, translation: 'beautiful' },
   { hiragana: 'おいしい', type: AdjectiveType.I, translation: 'delicious' },
   { hiragana: 'おもしろい', type: AdjectiveType.I, translation: 'interesting' },

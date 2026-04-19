@@ -12,7 +12,7 @@ Une application web interactive pour réviser la **grammaire japonaise** avec de
 │   │   ├── controllers/       # Contrôleurs des endpoints
 │   │   ├── services/          # Logique métier
 │   │   ├── domain/
-│   │   │   ├── entities/      # Exercise, GrammarRule
+│   │   │   ├── entities/      # Exercise, GrammarRule, Adjective
 │   │   │   └── data/          # 14 fichiers d'exercices JSON
 │   │   └── infrastructure/    # Repository pattern
 │   ├── dist/                  # Code compilé
@@ -102,6 +102,24 @@ GET /api/exercises/random?rule=wo     # Exercice aléatoire pour を
 ```
 GET /api/random                           # Nombre aléatoire (1-1,000,000,000)
 GET /api/random?min=100&max=1000         # Nombre entre min et max
+```
+
+### Adjectifs
+```
+GET /api/random-adjective    # Adjectif aléatoire avec forme à conjuguer
+```
+
+**Réponse:**
+```json
+{
+  "hiragana": "たかい",
+  "type": "i",
+  "translation": "high/expensive",
+  "tense": "present",
+  "polarity": "negative",
+  "register": "polite",
+  "answers": ["たかくありません", "たかくないです"]
+}
 ```
 
 ### Heures & Dates
@@ -209,6 +227,7 @@ Chaque fichier contient 30 exercices structurés :
 ## 📖 Documentation supplémentaire
 
 - [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) - Guide complet Railway
+- [doc/adjective-conjugation.md](./doc/adjective-conjugation.md) - Cas de conjugaison des adjectifs (réponses acceptées)
 
 ## 🛠️ Scripts utiles
 
