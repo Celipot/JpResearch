@@ -642,6 +642,314 @@ describe('Verb', () => {
     });
   });
 
+  describe('conjugate() forme potentielle', () => {
+    it('when ichidan 食べる potential present plain, then returns 食べられる', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('食べられる');
+    });
+
+    it('when ichidan 食べる potential present polite, then returns 食べられます', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('食べられます');
+    });
+
+    it('when ichidan 食べる potential present negative plain, then returns 食べられない', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.NEGATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('食べられない');
+    });
+
+    it('when ichidan 食べる potential past plain, then returns 食べられた', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('食べられた');
+    });
+
+    it('when godan 飲む potential present plain, then returns 飲める', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('飲める');
+    });
+
+    it('when godan 書く potential present plain, then returns 書ける', () => {
+      // Given
+      const verb = new Verb('書く', 'かく', 'godan', 'écrire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('書ける');
+    });
+
+    it('when godan 飲む potential past negative plain, then returns 飲めなかった', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.NEGATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('飲めなかった');
+    });
+
+    it('when する potential present plain, then returns できる', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('できる');
+    });
+
+    it('when する potential past plain, then returns できた', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('できた');
+    });
+
+    it('when くる potential present plain, then returns こられる', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'potential',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('こられる');
+    });
+  });
+
+  describe('conjugate() forme passive', () => {
+    it('when ichidan 食べる passive present plain, then returns 食べられる', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('食べられる');
+    });
+
+    it('when ichidan 食べる passive present polite, then returns 食べられます', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('食べられます');
+    });
+
+    it('when ichidan 食べる passive past negative plain, then returns 食べられなかった', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.NEGATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('食べられなかった');
+    });
+
+    it('when godan 飲む passive present plain, then returns 飲まれる', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('飲まれる');
+    });
+
+    it('when godan 書く passive present plain, then returns 書かれる', () => {
+      // Given
+      const verb = new Verb('書く', 'かく', 'godan', 'écrire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('書かれる');
+    });
+
+    it('when godan 飲む passive past polite, then returns 飲まれました', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toBe('飲まれました');
+    });
+
+    it('when する passive present plain, then returns される', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('される');
+    });
+
+    it('when する passive past plain, then returns された', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PAST,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('された');
+    });
+
+    it('when くる passive present plain, then returns こられる', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({
+        kind: 'passive',
+        tense: VerbTense.PRESENT,
+        polarity: VerbPolarity.AFFIRMATIVE,
+        register: VerbRegister.PLAIN,
+      });
+
+      // Then
+      expect(result).toBe('こられる');
+    });
+  });
+
   describe('conjugate() forme volitionnelle', () => {
     it('when ichidan volitional plain, then returns 食べよう', () => {
       // Given

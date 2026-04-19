@@ -35,7 +35,7 @@ describe('generateRandomVerb', () => {
     const result = generateRandomVerb(repository);
 
     // Then
-    expect(['indicative', 'te', 'volitional']).toContain(result.form.kind);
+    expect(['indicative', 'potential', 'passive', 'te', 'volitional']).toContain(result.form.kind);
   });
 
   it('when calling with repository, then answers is non-empty array', () => {

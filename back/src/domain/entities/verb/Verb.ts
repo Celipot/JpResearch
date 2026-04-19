@@ -20,6 +20,8 @@ export class Verb {
   conjugate(form: VerbConjugationForm): string {
     if (form.kind === 'te') return this.conjugateTe(form.polarity);
     if (form.kind === 'volitional') return this.conjugateVolitional(form.register);
+    if (form.kind === 'potential') return this.conjugateDerivedIchidan(this.potentialBase(), form);
+    if (form.kind === 'passive') return this.conjugateDerivedIchidan(this.passiveBase(), form);
     return this.conjugateIndicative(form);
   }
 
@@ -142,6 +144,39 @@ export class Verb {
     return this.kanji.slice(-1);
   }
 
+  private potentialBase(): string {
+    if (this.type === VerbType.IRREGULAR) {
+      if (this.kanji === 'する') return 'できる';
+      return 'こられる';
+    }
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'られる';
+    return this.stem() + GODAN_POTENTIAL_SUFFIX[this.ending()];
+  }
+
+  private passiveBase(): string {
+    if (this.type === VerbType.IRREGULAR) {
+      if (this.kanji === 'する') return 'される';
+      return 'こられる';
+    }
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'られる';
+    return this.godanStemNegative() + 'れる';
+  }
+
+  private conjugateDerivedIchidan(
+    base: string,
+    form: { tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
+  ): string {
+    const stem = base.slice(0, -1);
+    const isAffirmative = form.polarity === VerbPolarity.AFFIRMATIVE;
+    const isPolite = form.register === VerbRegister.POLITE;
+    const isPast = form.tense === VerbTense.PAST;
+
+    if (isAffirmative && !isPast) return isPolite ? stem + 'ます' : base;
+    if (isAffirmative && isPast) return isPolite ? stem + 'ました' : stem + 'た';
+    if (isPast) return isPolite ? stem + 'ませんでした' : stem + 'なかった';
+    return isPolite ? stem + 'ません' : stem + 'ない';
+  }
+
   private politeNegativeVariant(form: VerbConjugationForm): string | null {
     if (form.kind !== 'indicative') return null;
     const isPoliteNegative =
@@ -201,6 +236,18 @@ const GODAN_TE_SUFFIX: Record<string, string> = {
   ぬ: 'んで',
   ぶ: 'んで',
   む: 'んで',
+};
+
+const GODAN_POTENTIAL_SUFFIX: Record<string, string> = {
+  う: 'える',
+  つ: 'てる',
+  る: 'れる',
+  く: 'ける',
+  ぐ: 'げる',
+  す: 'せる',
+  ぬ: 'ねる',
+  ぶ: 'べる',
+  む: 'める',
 };
 
 const GODAN_VOLITIONAL_SUFFIX: Record<string, string> = {

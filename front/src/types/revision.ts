@@ -4,15 +4,15 @@ export interface Pronunciation {
   isStandard: boolean;
 }
 
-type VerbIndicativeForm = {
-  kind: 'indicative';
+type VerbFullForm = {
+  kind: 'indicative' | 'potential' | 'passive';
   tense: 'present' | 'past';
   polarity: 'affirmative' | 'negative';
   register: 'plain' | 'polite';
 };
 type VerbTeForm = { kind: 'te'; polarity: 'affirmative' | 'negative' };
 type VerbVolitionalForm = { kind: 'volitional'; register: 'plain' | 'polite' };
-export type VerbForm = VerbIndicativeForm | VerbTeForm | VerbVolitionalForm;
+export type VerbForm = VerbFullForm | VerbTeForm | VerbVolitionalForm;
 
 export interface VerbResult {
   kanji: string;

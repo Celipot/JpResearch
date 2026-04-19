@@ -5,6 +5,12 @@ import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
 
+const KIND_LABEL: Record<string, string> = {
+  indicative: 'Indicatif',
+  potential: 'Potentielle',
+  passive: 'Passive',
+};
+
 const getFormLabel = (form: VerbForm): string => {
   if (form.kind === 'te') {
     const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
@@ -14,10 +20,11 @@ const getFormLabel = (form: VerbForm): string => {
     const register = form.register === 'polite' ? 'Poli' : 'Plain';
     return `Forme volitionnelle · ${register}`;
   }
+  const kindLabel = KIND_LABEL[form.kind];
   const tense = form.tense === 'past' ? 'Passé' : 'Présent';
   const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
   const register = form.register === 'polite' ? 'Poli' : 'Plain';
-  return `${tense} ${polarity} · ${register}`;
+  return `${kindLabel} · ${tense} ${polarity} · ${register}`;
 };
 
 export default function VerbRevisionPage() {

@@ -4,59 +4,22 @@ import { VerbRegister } from './VerbRegister';
 
 export type VerbConjugationForm =
   | { kind: 'indicative'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
+  | { kind: 'potential'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
+  | { kind: 'passive'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'te'; polarity: VerbPolarity }
   | { kind: 'volitional'; register: VerbRegister };
 
+const FULL_KINDS = ['indicative', 'potential', 'passive'] as const;
+
 export class VerbConjugationFormUtils {
   private static readonly FORMS: VerbConjugationForm[] = [
-    {
-      kind: 'indicative',
-      tense: VerbTense.PRESENT,
-      polarity: VerbPolarity.AFFIRMATIVE,
-      register: VerbRegister.PLAIN,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PRESENT,
-      polarity: VerbPolarity.AFFIRMATIVE,
-      register: VerbRegister.POLITE,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PRESENT,
-      polarity: VerbPolarity.NEGATIVE,
-      register: VerbRegister.PLAIN,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PRESENT,
-      polarity: VerbPolarity.NEGATIVE,
-      register: VerbRegister.POLITE,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PAST,
-      polarity: VerbPolarity.AFFIRMATIVE,
-      register: VerbRegister.PLAIN,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PAST,
-      polarity: VerbPolarity.AFFIRMATIVE,
-      register: VerbRegister.POLITE,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PAST,
-      polarity: VerbPolarity.NEGATIVE,
-      register: VerbRegister.PLAIN,
-    },
-    {
-      kind: 'indicative',
-      tense: VerbTense.PAST,
-      polarity: VerbPolarity.NEGATIVE,
-      register: VerbRegister.POLITE,
-    },
+    ...FULL_KINDS.flatMap((kind) =>
+      Object.values(VerbTense).flatMap((tense) =>
+        Object.values(VerbPolarity).flatMap((polarity) =>
+          Object.values(VerbRegister).map((register) => ({ kind, tense, polarity, register }))
+        )
+      )
+    ),
     { kind: 'te', polarity: VerbPolarity.AFFIRMATIVE },
     { kind: 'te', polarity: VerbPolarity.NEGATIVE },
     { kind: 'volitional', register: VerbRegister.PLAIN },
