@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { generateRandomAdjective } from '../../services/adjectiveService';
 import { AdjectiveRepositoryImpl } from '../../infrastructure/repositories/AdjectiveRepositoryImpl';
+import { AdjectivePolarity } from '../../domain/entities/AdjectivePolarity';
+import { AdjectiveRegister } from '../../domain/entities/AdjectiveRegister';
 
 describe('generateRandomAdjective', () => {
   let repository: AdjectiveRepositoryImpl;
@@ -17,7 +19,8 @@ describe('generateRandomAdjective', () => {
     expect(result).toHaveProperty('hiragana');
     expect(result).toHaveProperty('type');
     expect(result).toHaveProperty('translation');
-    expect(result).toHaveProperty('form');
+    expect(result).toHaveProperty('polarity');
+    expect(result).toHaveProperty('register');
     expect(result).toHaveProperty('answer');
   });
 
@@ -29,17 +32,20 @@ describe('generateRandomAdjective', () => {
     expect(['i', 'na']).toContain(result.type);
   });
 
-  it('when calling with repository, then returns valid form', () => {
+  it('when calling with repository, then returns valid polarity', () => {
     // When
     const result = generateRandomAdjective(repository);
 
     // Then
-    expect([
-      'present_affirmative',
-      'present_negative',
-      'present_affirmative_polite',
-      'present_negative_polite',
-    ]).toContain(result.form);
+    expect([AdjectivePolarity.AFFIRMATIVE, AdjectivePolarity.NEGATIVE]).toContain(result.polarity);
+  });
+
+  it('when calling with repository, then returns valid register', () => {
+    // When
+    const result = generateRandomAdjective(repository);
+
+    // Then
+    expect([AdjectiveRegister.FAMILIAR, AdjectiveRegister.POLITE]).toContain(result.register);
   });
 
   it('when calling with repository, then answer matches conjugation', () => {
@@ -55,7 +61,7 @@ describe('generateRandomAdjective', () => {
     const adjectives = new Set<string>();
     for (let i = 0; i < 30; i++) {
       const result = generateRandomAdjective(repository);
-      adjectives.add(`${result.hiragana}:${result.form}`);
+      adjectives.add(`${result.hiragana}:${result.polarity}:${result.register}`);
     }
 
     // Then
@@ -91,20 +97,20 @@ describe('generateRandomAdjective', () => {
 });
 
 function isValidConjugation(result: ReturnType<typeof generateRandomAdjective>): boolean {
-  const { hiragana, type, form, answer } = result;
+  const { hiragana, type, polarity, register, answer } = result;
   const stem = hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
+  const isAffirmative = polarity === AdjectivePolarity.AFFIRMATIVE;
+  const isPolite = register === AdjectiveRegister.POLITE;
 
   if (type === 'i') {
-    if (form === 'present_affirmative') return answer === hiragana;
-    if (form === 'present_affirmative_polite') return answer === hiragana + '\u3067\u3059';
-    if (form === 'present_negative_polite')
-      return answer === stem + '\u3042\u308a\u307e\u305b\u3093';
+    if (isAffirmative && !isPolite) return answer === hiragana;
+    if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
+    if (isPolite) return answer === stem + '\u3042\u308a\u307e\u305b\u3093';
     return answer === stem + '\u306a\u3044';
   }
 
-  if (form === 'present_affirmative') return answer === hiragana + '\u3060';
-  if (form === 'present_affirmative_polite') return answer === hiragana + '\u3067\u3059';
-  if (form === 'present_negative_polite')
-    return answer === hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093';
+  if (isAffirmative && !isPolite) return answer === hiragana + '\u3060';
+  if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
+  if (isPolite) return answer === hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093';
   return answer === hiragana + '\u3058\u3083\u306a\u3044';
 }

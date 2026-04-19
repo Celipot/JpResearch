@@ -8,7 +8,8 @@ export interface AdjectiveResult {
   hiragana: string;
   type: 'i' | 'na';
   translation: string;
-  form: 'present_affirmative' | 'present_negative';
+  polarity: 'affirmative' | 'negative';
+  register: 'familiar' | 'polite';
   answer: string;
 }
 

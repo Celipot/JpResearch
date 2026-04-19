@@ -1,9 +1,7 @@
-import { AdjectiveForm } from './AdjectiveForm';
-
-export enum AdjectiveType {
-  I = 'i',
-  NA = 'na',
-}
+import { AdjectiveType } from './AdjectiveType';
+import { AdjectivePolarity } from './AdjectivePolarity';
+import { AdjectiveRegister } from './AdjectiveRegister';
+import { AdjectiveConjugationForm } from './AdjectiveConjugationForm';
 
 export class Adjective {
   readonly hiragana: string;
@@ -16,18 +14,25 @@ export class Adjective {
     this.translation = translation;
   }
 
-  conjugate(form: `${AdjectiveForm}`): string {
+  conjugate(form: AdjectiveConjugationForm): string {
     if (this.type === AdjectiveType.I) {
       return this.conjugateIAdjective(form);
-    } else {
-      return this.conjugateNaAdjective(form);
     }
+    return this.conjugateNaAdjective(form);
   }
 
-  private conjugateIAdjective(form: `${AdjectiveForm}`): string {
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) return this.hiragana;
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE_POLITE) return this.hiragana + 'です';
-    if (form === AdjectiveForm.PRESENT_NEGATIVE_POLITE) return this.iNegativeStem() + 'ありません';
+  private conjugateIAdjective(form: AdjectiveConjugationForm): string {
+    if (
+      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
+      form.register === AdjectiveRegister.FAMILIAR
+    )
+      return this.hiragana;
+    if (
+      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
+      form.register === AdjectiveRegister.POLITE
+    )
+      return this.hiragana + 'です';
+    if (form.register === AdjectiveRegister.POLITE) return this.iNegativeStem() + 'ありません';
     return this.iNegativeStem() + 'ない';
   }
 
@@ -36,12 +41,18 @@ export class Adjective {
     return this.hiragana.slice(0, -1) + 'く';
   }
 
-  private conjugateNaAdjective(form: `${AdjectiveForm}`): string {
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE) return this.hiragana + 'だ';
-    if (form === AdjectiveForm.PRESENT_AFFIRMATIVE_POLITE) return this.hiragana + 'です';
-    if (form === AdjectiveForm.PRESENT_NEGATIVE_POLITE) return this.hiragana + 'ではありません';
+  private conjugateNaAdjective(form: AdjectiveConjugationForm): string {
+    if (
+      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
+      form.register === AdjectiveRegister.FAMILIAR
+    )
+      return this.hiragana + 'だ';
+    if (
+      form.polarity === AdjectivePolarity.AFFIRMATIVE &&
+      form.register === AdjectiveRegister.POLITE
+    )
+      return this.hiragana + 'です';
+    if (form.register === AdjectiveRegister.POLITE) return this.hiragana + 'ではありません';
     return this.hiragana + 'じゃない';
   }
 }
-
-export { AdjectiveForm };

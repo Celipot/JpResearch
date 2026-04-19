@@ -3,12 +3,8 @@ import request from 'supertest';
 import app from '../../index';
 
 const VALID_ADJECTIVE_TYPES = ['i', 'na'];
-const VALID_FORMS = [
-  'present_affirmative',
-  'present_negative',
-  'present_affirmative_polite',
-  'present_negative_polite',
-];
+const VALID_POLARITIES = ['affirmative', 'negative'];
+const VALID_REGISTERS = ['familiar', 'polite'];
 const HIRAGANA_REGEX = /[\u3040-\u309F]+$/;
 
 describe('GET /api/random-adjective', () => {
@@ -21,7 +17,8 @@ describe('GET /api/random-adjective', () => {
     expect(response.body).toHaveProperty('hiragana');
     expect(response.body).toHaveProperty('type');
     expect(response.body).toHaveProperty('translation');
-    expect(response.body).toHaveProperty('form');
+    expect(response.body).toHaveProperty('polarity');
+    expect(response.body).toHaveProperty('register');
     expect(response.body).toHaveProperty('answer');
   });
 
@@ -33,12 +30,20 @@ describe('GET /api/random-adjective', () => {
     expect(VALID_ADJECTIVE_TYPES).toContain(response.body.type);
   });
 
-  it('when sending request to endpoint, then response form is valid', async () => {
+  it('when sending request to endpoint, then response polarity is valid', async () => {
     // When
     const response = await request(app).get('/api/random-adjective');
 
     // Then
-    expect(VALID_FORMS).toContain(response.body.form);
+    expect(VALID_POLARITIES).toContain(response.body.polarity);
+  });
+
+  it('when sending request to endpoint, then response register is valid', async () => {
+    // When
+    const response = await request(app).get('/api/random-adjective');
+
+    // Then
+    expect(VALID_REGISTERS).toContain(response.body.register);
   });
 
   it('when sending request to endpoint, then hiragana is valid Japanese string', async () => {
@@ -86,7 +91,9 @@ describe('GET /api/random-adjective', () => {
     const adjectives = new Set<string>();
     for (let i = 0; i < 20; i++) {
       const response = await request(app).get('/api/random-adjective');
-      adjectives.add(`${response.body.hiragana}:${response.body.form}`);
+      adjectives.add(
+        `${response.body.hiragana}:${response.body.polarity}:${response.body.register}`
+      );
     }
 
     // Then
@@ -97,21 +104,24 @@ describe('GET /api/random-adjective', () => {
 function isValidConjugation(body: {
   hiragana: string;
   type: string;
-  form: string;
+  polarity: string;
+  register: string;
   answer: string;
 }): boolean {
-  const { hiragana, type, form, answer } = body;
-  const stem = hiragana === 'いい' ? 'よく' : hiragana.slice(0, -1) + 'く';
+  const { hiragana, type, polarity, register, answer } = body;
+  const stem = hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
+  const isAffirmative = polarity === 'affirmative';
+  const isPolite = register === 'polite';
 
   if (type === 'i') {
-    if (form === 'present_affirmative') return answer === hiragana;
-    if (form === 'present_affirmative_polite') return answer === hiragana + 'です';
-    if (form === 'present_negative_polite') return answer === stem + 'ありません';
-    return answer === stem + 'ない';
+    if (isAffirmative && !isPolite) return answer === hiragana;
+    if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
+    if (isPolite) return answer === stem + '\u3042\u308a\u307e\u305b\u3093';
+    return answer === stem + '\u306a\u3044';
   }
 
-  if (form === 'present_affirmative') return answer === hiragana + 'だ';
-  if (form === 'present_affirmative_polite') return answer === hiragana + 'です';
-  if (form === 'present_negative_polite') return answer === hiragana + 'ではありません';
-  return answer === hiragana + 'じゃない';
+  if (isAffirmative && !isPolite) return answer === hiragana + '\u3060';
+  if (isAffirmative && isPolite) return answer === hiragana + '\u3067\u3059';
+  if (isPolite) return answer === hiragana + '\u3067\u306f\u3042\u308a\u307e\u305b\u3093';
+  return answer === hiragana + '\u3058\u3083\u306a\u3044';
 }

@@ -22,15 +22,11 @@ export default function AdjectiveRevisionPage() {
     }
   };
 
-  const getFormLabel = (form: string): string => {
-    const labels: Record<string, string> = {
-      present_affirmative: 'Affirmatif',
-      present_negative: 'Négatif',
-      present_affirmative_polite: 'Affirmatif poli',
-      present_negative_polite: 'Négatif poli',
-    };
-    return labels[form] || form;
-  };
+  const getPolarityLabel = (polarity: string): string =>
+    polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
+
+  const getRegisterLabel = (register: string): string =>
+    register === 'polite' ? 'Poli' : 'Familier';
 
   const submitAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
@@ -55,7 +51,10 @@ export default function AdjectiveRevisionPage() {
 
           <div className="form-display">
             <p className="form-label">
-              Forme : <strong>Présent {getFormLabel(result.form)}</strong>
+              Forme :{' '}
+              <strong>
+                Présent {getPolarityLabel(result.polarity)} · {getRegisterLabel(result.register)}
+              </strong>
             </p>
           </div>
 

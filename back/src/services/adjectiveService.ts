@@ -1,12 +1,16 @@
-import { Adjective, AdjectiveType } from '../domain/entities/Adjective';
-import { AdjectiveForm, AdjectiveFormUtils } from '../domain/entities/AdjectiveForm';
+import { Adjective } from '../domain/entities/Adjective';
+import { AdjectiveType } from '../domain/entities/AdjectiveType';
+import { AdjectivePolarity } from '../domain/entities/AdjectivePolarity';
+import { AdjectiveRegister } from '../domain/entities/AdjectiveRegister';
+import { AdjectiveConjugationFormUtils } from '../domain/entities/AdjectiveConjugationForm';
 import { IAdjectiveRepository } from '../infrastructure/repositories/AdjectiveRepository';
 
 export interface RandomAdjectiveResult {
   hiragana: string;
-  type: AdjectiveType;
+  type: `${AdjectiveType}`;
   translation: string;
-  form: AdjectiveForm;
+  polarity: AdjectivePolarity;
+  register: AdjectiveRegister;
   answer: string;
 }
 
@@ -19,14 +23,15 @@ export const generateRandomAdjective = (
     adjectiveData.type,
     adjectiveData.translation
   );
-  const form = AdjectiveFormUtils.getRandomForm();
+  const form = AdjectiveConjugationFormUtils.getRandomForm();
   const answer = adjective.conjugate(form);
 
   return {
     hiragana: adjectiveData.hiragana,
     type: adjectiveData.type,
     translation: adjectiveData.translation,
-    form,
+    polarity: form.polarity,
+    register: form.register,
     answer,
   };
 };

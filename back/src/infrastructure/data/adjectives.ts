@@ -1,4 +1,4 @@
-import { AdjectiveType } from '../../domain/entities/Adjective';
+import { AdjectiveType } from '../../domain/entities/AdjectiveType';
 
 export interface AdjectiveData {
   hiragana: string;
