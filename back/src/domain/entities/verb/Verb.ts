@@ -20,8 +20,10 @@ export class Verb {
   conjugate(form: VerbConjugationForm): string {
     if (form.kind === 'te') return this.conjugateTe(form.polarity);
     if (form.kind === 'volitional') return this.conjugateVolitional(form.register);
+    if (form.kind === 'imperative') return this.conjugateImperative(form.polarity, form.register);
     if (form.kind === 'potential') return this.conjugateDerivedIchidan(this.potentialBase(), form);
     if (form.kind === 'passive') return this.conjugateDerivedIchidan(this.passiveBase(), form);
+    if (form.kind === 'causative') return this.conjugateDerivedIchidan(this.causativeBase(), form);
     return this.conjugateIndicative(form);
   }
 
@@ -144,6 +146,39 @@ export class Verb {
     return this.kanji.slice(-1);
   }
 
+  private causativeBase(): string {
+    if (this.type === VerbType.IRREGULAR) {
+      if (this.kanji === 'する') return 'させる';
+      return 'こさせる';
+    }
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'させる';
+    return this.godanStemNegative() + 'せる';
+  }
+
+  private conjugateImperative(polarity: VerbPolarity, register: VerbRegister): string {
+    const isPolite = register === VerbRegister.POLITE;
+    if (polarity === VerbPolarity.NEGATIVE) {
+      return isPolite ? this.negativeBase() + 'ないでください' : this.kanji + 'な';
+    }
+    if (isPolite) return this.conjugateTe(VerbPolarity.AFFIRMATIVE) + 'ください';
+    return this.imperativePlainAffirmative();
+  }
+
+  private negativeBase(): string {
+    if (this.type === VerbType.IRREGULAR) return this.kanji === 'する' ? 'し' : 'こ';
+    if (this.type === VerbType.ICHIDAN) return this.stem();
+    return this.godanStemNegative();
+  }
+
+  private imperativePlainAffirmative(): string {
+    if (this.type === VerbType.IRREGULAR) {
+      if (this.kanji === 'する') return 'しろ';
+      return 'こい';
+    }
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'ろ';
+    return this.stem() + GODAN_IMPERATIVE_SUFFIX[this.ending()];
+  }
+
   private potentialBase(): string {
     if (this.type === VerbType.IRREGULAR) {
       if (this.kanji === 'する') return 'できる';
@@ -236,6 +271,18 @@ const GODAN_TE_SUFFIX: Record<string, string> = {
   ぬ: 'んで',
   ぶ: 'んで',
   む: 'んで',
+};
+
+const GODAN_IMPERATIVE_SUFFIX: Record<string, string> = {
+  う: 'え',
+  つ: 'て',
+  る: 'れ',
+  く: 'け',
+  ぐ: 'げ',
+  す: 'せ',
+  ぬ: 'ね',
+  ぶ: 'べ',
+  む: 'め',
 };
 
 const GODAN_POTENTIAL_SUFFIX: Record<string, string> = {

@@ -9,6 +9,7 @@ const KIND_LABEL: Record<string, string> = {
   indicative: 'Indicatif',
   potential: 'Potentielle',
   passive: 'Passive',
+  causative: 'Causative',
 };
 
 const getFormLabel = (form: VerbForm): string => {
@@ -19,6 +20,11 @@ const getFormLabel = (form: VerbForm): string => {
   if (form.kind === 'volitional') {
     const register = form.register === 'polite' ? 'Poli' : 'Plain';
     return `Forme volitionnelle · ${register}`;
+  }
+  if (form.kind === 'imperative') {
+    const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
+    const register = form.register === 'polite' ? 'Poli' : 'Plain';
+    return `Impérative · ${polarity} · ${register}`;
   }
   const kindLabel = KIND_LABEL[form.kind];
   const tense = form.tense === 'past' ? 'Passé' : 'Présent';

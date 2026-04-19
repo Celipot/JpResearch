@@ -6,10 +6,12 @@ export type VerbConjugationForm =
   | { kind: 'indicative'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'potential'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'passive'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
+  | { kind: 'causative'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
+  | { kind: 'imperative'; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'te'; polarity: VerbPolarity }
   | { kind: 'volitional'; register: VerbRegister };
 
-const FULL_KINDS = ['indicative', 'potential', 'passive'] as const;
+const FULL_KINDS = ['indicative', 'potential', 'passive', 'causative'] as const;
 
 export class VerbConjugationFormUtils {
   private static readonly FORMS: VerbConjugationForm[] = [
@@ -20,6 +22,10 @@ export class VerbConjugationFormUtils {
         )
       )
     ),
+    { kind: 'imperative', polarity: VerbPolarity.AFFIRMATIVE, register: VerbRegister.PLAIN },
+    { kind: 'imperative', polarity: VerbPolarity.NEGATIVE, register: VerbRegister.PLAIN },
+    { kind: 'imperative', polarity: VerbPolarity.AFFIRMATIVE, register: VerbRegister.POLITE },
+    { kind: 'imperative', polarity: VerbPolarity.NEGATIVE, register: VerbRegister.POLITE },
     { kind: 'te', polarity: VerbPolarity.AFFIRMATIVE },
     { kind: 'te', polarity: VerbPolarity.NEGATIVE },
     { kind: 'volitional', register: VerbRegister.PLAIN },

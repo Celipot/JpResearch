@@ -5,14 +5,19 @@ export interface Pronunciation {
 }
 
 type VerbFullForm = {
-  kind: 'indicative' | 'potential' | 'passive';
+  kind: 'indicative' | 'potential' | 'passive' | 'causative';
   tense: 'present' | 'past';
+  polarity: 'affirmative' | 'negative';
+  register: 'plain' | 'polite';
+};
+type VerbImperativeForm = {
+  kind: 'imperative';
   polarity: 'affirmative' | 'negative';
   register: 'plain' | 'polite';
 };
 type VerbTeForm = { kind: 'te'; polarity: 'affirmative' | 'negative' };
 type VerbVolitionalForm = { kind: 'volitional'; register: 'plain' | 'polite' };
-export type VerbForm = VerbFullForm | VerbTeForm | VerbVolitionalForm;
+export type VerbForm = VerbFullForm | VerbImperativeForm | VerbTeForm | VerbVolitionalForm;
 
 export interface VerbResult {
   kanji: string;
