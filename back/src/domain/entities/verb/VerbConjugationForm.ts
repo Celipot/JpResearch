@@ -8,6 +8,8 @@ export type VerbConjugationForm =
   | { kind: 'passive'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'causative'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'imperative'; polarity: VerbPolarity; register: VerbRegister }
+  | { kind: 'tara'; polarity: VerbPolarity }
+  | { kind: 'ba'; polarity: VerbPolarity }
   | { kind: 'te'; polarity: VerbPolarity }
   | { kind: 'volitional'; register: VerbRegister };
 
@@ -26,6 +28,10 @@ export class VerbConjugationFormUtils {
     { kind: 'imperative', polarity: VerbPolarity.NEGATIVE, register: VerbRegister.PLAIN },
     { kind: 'imperative', polarity: VerbPolarity.AFFIRMATIVE, register: VerbRegister.POLITE },
     { kind: 'imperative', polarity: VerbPolarity.NEGATIVE, register: VerbRegister.POLITE },
+    { kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE },
+    { kind: 'tara', polarity: VerbPolarity.NEGATIVE },
+    { kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE },
+    { kind: 'ba', polarity: VerbPolarity.NEGATIVE },
     { kind: 'te', polarity: VerbPolarity.AFFIRMATIVE },
     { kind: 'te', polarity: VerbPolarity.NEGATIVE },
     { kind: 'volitional', register: VerbRegister.PLAIN },

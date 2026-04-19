@@ -3,7 +3,17 @@ import request from 'supertest';
 import app from '../../index';
 
 const VALID_TYPES = ['ichidan', 'godan', 'irregular'];
-const VALID_KINDS = ['indicative', 'potential', 'passive', 'te', 'volitional'];
+const VALID_KINDS = [
+  'indicative',
+  'potential',
+  'passive',
+  'causative',
+  'imperative',
+  'tara',
+  'ba',
+  'te',
+  'volitional',
+];
 
 describe('GET /api/random-verb', () => {
   it('when sending request, then returns 200 with all properties', async () => {

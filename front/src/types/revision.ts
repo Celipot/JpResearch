@@ -15,9 +15,13 @@ type VerbImperativeForm = {
   polarity: 'affirmative' | 'negative';
   register: 'plain' | 'polite';
 };
-type VerbTeForm = { kind: 'te'; polarity: 'affirmative' | 'negative' };
+type VerbPolarityOnlyForm = { kind: 'tara' | 'ba' | 'te'; polarity: 'affirmative' | 'negative' };
 type VerbVolitionalForm = { kind: 'volitional'; register: 'plain' | 'polite' };
-export type VerbForm = VerbFullForm | VerbImperativeForm | VerbTeForm | VerbVolitionalForm;
+export type VerbForm =
+  | VerbFullForm
+  | VerbImperativeForm
+  | VerbPolarityOnlyForm
+  | VerbVolitionalForm;
 
 export interface VerbResult {
   kanji: string;

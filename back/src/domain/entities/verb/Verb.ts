@@ -21,6 +21,8 @@ export class Verb {
     if (form.kind === 'te') return this.conjugateTe(form.polarity);
     if (form.kind === 'volitional') return this.conjugateVolitional(form.register);
     if (form.kind === 'imperative') return this.conjugateImperative(form.polarity, form.register);
+    if (form.kind === 'tara') return this.conjugateTara(form.polarity);
+    if (form.kind === 'ba') return this.conjugateBa(form.polarity);
     if (form.kind === 'potential') return this.conjugateDerivedIchidan(this.potentialBase(), form);
     if (form.kind === 'passive') return this.conjugateDerivedIchidan(this.passiveBase(), form);
     if (form.kind === 'causative') return this.conjugateDerivedIchidan(this.causativeBase(), form);
@@ -144,6 +146,23 @@ export class Verb {
 
   private ending(): string {
     return this.kanji.slice(-1);
+  }
+
+  private conjugateTara(polarity: VerbPolarity): string {
+    if (polarity === VerbPolarity.NEGATIVE) return this.negativeBase() + 'なかったら';
+    if (this.type === VerbType.IRREGULAR) {
+      if (this.kanji === 'する') return 'したら';
+      return 'きたら';
+    }
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'たら';
+    return this.godanStemPast() + 'ら';
+  }
+
+  private conjugateBa(polarity: VerbPolarity): string {
+    if (polarity === VerbPolarity.NEGATIVE) return this.negativeBase() + 'なければ';
+    if (this.type === VerbType.IRREGULAR) return this.kanji.slice(0, -1) + 'れば';
+    if (this.type === VerbType.ICHIDAN) return this.stem() + 'れば';
+    return this.stem() + GODAN_IMPERATIVE_SUFFIX[this.ending()] + 'ば';
   }
 
   private causativeBase(): string {

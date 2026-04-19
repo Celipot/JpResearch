@@ -17,6 +17,14 @@ const getFormLabel = (form: VerbForm): string => {
     const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
     return `Forme en て · ${polarity}`;
   }
+  if (form.kind === 'tara') {
+    const polarity = form.polarity === 'affirmative' ? 'Affirmative' : 'Négative';
+    return `Conditionnelle en たら · ${polarity}`;
+  }
+  if (form.kind === 'ba') {
+    const polarity = form.polarity === 'affirmative' ? 'Affirmative' : 'Négative';
+    return `Conditionnelle en ば · ${polarity}`;
+  }
   if (form.kind === 'volitional') {
     const register = form.register === 'polite' ? 'Poli' : 'Plain';
     return `Forme volitionnelle · ${register}`;

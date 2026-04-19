@@ -1339,4 +1339,173 @@ describe('Verb', () => {
       expect(result).toBe('こよう');
     });
   });
+
+  describe('conjugate() conditionnelle en たら', () => {
+    it('when ichidan 食べる tara affirmative, then returns 食べたら', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('食べたら');
+    });
+
+    it('when ichidan 食べる tara negative, then returns 食べなかったら', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('食べなかったら');
+    });
+
+    it('when godan 飲む tara affirmative, then returns 飲んだら', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('飲んだら');
+    });
+
+    it('when godan 飲む tara negative, then returns 飲まなかったら', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('飲まなかったら');
+    });
+
+    it('when godan 書く tara affirmative, then returns 書いたら', () => {
+      // Given
+      const verb = new Verb('書く', 'かく', 'godan', 'écrire');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('書いたら');
+    });
+
+    it('when する tara affirmative, then returns したら', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('したら');
+    });
+
+    it('when くる tara affirmative, then returns きたら', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({ kind: 'tara', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('きたら');
+    });
+  });
+
+  describe('conjugate() conditionnelle en ば', () => {
+    it('when ichidan 食べる ba affirmative, then returns 食べれば', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('食べれば');
+    });
+
+    it('when ichidan 食べる ba negative, then returns 食べなければ', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('食べなければ');
+    });
+
+    it('when godan 飲む ba affirmative, then returns 飲めば', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('飲めば');
+    });
+
+    it('when godan 飲む ba negative, then returns 飲まなければ', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('飲まなければ');
+    });
+
+    it('when godan 書く ba affirmative, then returns 書けば', () => {
+      // Given
+      const verb = new Verb('書く', 'かく', 'godan', 'écrire');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('書けば');
+    });
+
+    it('when する ba affirmative, then returns すれば', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('すれば');
+    });
+
+    it('when する ba negative, then returns しなければ', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('しなければ');
+    });
+
+    it('when くる ba affirmative, then returns くれば', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({ kind: 'ba', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('くれば');
+    });
+  });
 });
