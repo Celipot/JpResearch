@@ -32,7 +32,7 @@ export default function AdjectiveRevisionPage() {
 
   const submitAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
-    const correct = await checkAnswerService(userAnswer.trim(), [result.answer]);
+    const correct = await checkAnswerService(userAnswer.trim(), result.answers);
     setFeedback(correct ? 'correct' : 'incorrect');
   };
 
@@ -74,7 +74,13 @@ export default function AdjectiveRevisionPage() {
             incorrectMessage={
               <>
                 {' '}
-                La réponse était : <strong>{result.answer}</strong>
+                La réponse était :{' '}
+                {result.answers.map((a, i) => (
+                  <span key={a}>
+                    <strong>{a}</strong>
+                    {i < result.answers.length - 1 ? ' ou ' : ''}
+                  </span>
+                ))}
               </>
             }
           />

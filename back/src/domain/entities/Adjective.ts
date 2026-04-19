@@ -15,6 +15,34 @@ export class Adjective {
     this.translation = translation;
   }
 
+  acceptableAnswers(form: AdjectiveConjugationForm): string[] {
+    const primary = this.conjugate(form);
+    const variant =
+      this.politeNegativeVariant(form) ?? this.familiarPresentAffirmativeVariant(form);
+    return variant ? [primary, variant] : [primary];
+  }
+
+  private familiarPresentAffirmativeVariant(form: AdjectiveConjugationForm): string | null {
+    const isFamiliarPresentAffirmative =
+      this.type === AdjectiveType.NA &&
+      form.register === AdjectiveRegister.FAMILIAR &&
+      form.tense === AdjectiveTense.PRESENT &&
+      form.polarity === AdjectivePolarity.AFFIRMATIVE;
+    return isFamiliarPresentAffirmative ? this.hiragana : null;
+  }
+
+  private politeNegativeVariant(form: AdjectiveConjugationForm): string | null {
+    const isPoliteNegative =
+      form.polarity === AdjectivePolarity.NEGATIVE && form.register === AdjectiveRegister.POLITE;
+    if (!isPoliteNegative) return null;
+
+    const isPast = form.tense === AdjectiveTense.PAST;
+    if (this.type === AdjectiveType.I) {
+      return isPast ? this.iNegativeStem() + 'なかったです' : this.iNegativeStem() + 'ないです';
+    }
+    return isPast ? this.hiragana + 'じゃなかったです' : this.hiragana + 'じゃないです';
+  }
+
   conjugate(form: AdjectiveConjugationForm): string {
     if (this.type === AdjectiveType.I) {
       return this.conjugateIAdjective(form);

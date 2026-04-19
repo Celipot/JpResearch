@@ -10,16 +10,20 @@ const mockIAdjective = {
   hiragana: 'たかい',
   type: 'i' as const,
   translation: 'high/expensive',
-  form: 'present_negative' as const,
-  answer: 'たかくない',
+  tense: 'present' as const,
+  polarity: 'negative' as const,
+  register: 'familiar' as const,
+  answers: ['たかくない'],
 };
 
 const mockNaAdjective = {
   hiragana: 'きれい',
   type: 'na' as const,
   translation: 'clean/pretty',
-  form: 'present_affirmative' as const,
-  answer: 'きれいだ',
+  tense: 'present' as const,
+  polarity: 'affirmative' as const,
+  register: 'familiar' as const,
+  answers: ['きれいだ'],
 };
 
 describe('AdjectiveRevisionPage', () => {
@@ -135,6 +139,40 @@ describe('AdjectiveRevisionPage', () => {
     // Then
     expect(await screen.findByText(/✗ Incorrect/i)).toBeInTheDocument();
     expect(await screen.findByText(/たかくない/i)).toBeInTheDocument();
+  });
+
+  it('when incorrect answer submitted and multiple answers exist, then shows all answers in feedback', async () => {
+    // Given
+    const mockPoliteNegative = {
+      hiragana: 'たかい',
+      type: 'i' as const,
+      translation: 'high/expensive',
+      tense: 'present' as const,
+      polarity: 'negative' as const,
+      register: 'polite' as const,
+      answers: ['たかくありません', 'たかくないです'],
+    };
+    vi.mocked(revisionService.getRandomAdjective).mockResolvedValue(mockPoliteNegative);
+    vi.mocked(revisionService.checkAnswer).mockResolvedValue(false);
+
+    render(
+      <MemoryRouter>
+        <AdjectiveRevisionPage />
+      </MemoryRouter>
+    );
+    fireEvent.click(screen.getByRole('button', { name: /Nouvel adjectif/i }));
+    await waitFor(() => {
+      expect(screen.getByLabelText(/Conjugaison/i)).toBeInTheDocument();
+    });
+
+    // When
+    const input = screen.getByLabelText(/Conjugaison/i) as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'wrong' } });
+    fireEvent.click(screen.getByRole('button', { name: /Vérifier/i }));
+
+    // Then
+    expect(await screen.findByText(/たかくありません/i)).toBeInTheDocument();
+    expect(await screen.findByText(/たかくないです/i)).toBeInTheDocument();
   });
 
   it('when pressing Enter in answer input, then submits answer', async () => {

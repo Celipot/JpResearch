@@ -11,7 +11,7 @@ export interface AdjectiveResult {
   tense: 'present' | 'past';
   polarity: 'affirmative' | 'negative';
   register: 'familiar' | 'polite';
-  answer: string;
+  answers: string[];
 }
 
 export interface NumberResult {

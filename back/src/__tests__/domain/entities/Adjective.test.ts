@@ -338,4 +338,141 @@ describe('Adjective', () => {
       expect(result).toBe('きれいではありませんでした');
     });
   });
+
+  describe('acceptableAnswers()', () => {
+    it('when i-adj polite present negative, then returns たかくありません and たかくないです', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['たかくありません', 'たかくないです']);
+    });
+
+    it('when i-adj polite past negative, then returns たかくありませんでした and たかくなかったです', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['たかくありませんでした', 'たかくなかったです']);
+    });
+
+    it('when i-adj polite present affirmative, then returns single answer', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['たかいです']);
+    });
+
+    it('when i-adj familiar present negative, then returns single answer', () => {
+      // Given
+      const adj = new Adjective('たかい', 'i', 'high/expensive');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toEqual(['たかくない']);
+    });
+
+    it('when na-adj polite present negative, then returns きれいではありません and きれいじゃないです', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['きれいではありません', 'きれいじゃないです']);
+    });
+
+    it('when na-adj polite past negative, then returns きれいではありませんでした and きれいじゃなかったです', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PAST,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['きれいではありませんでした', 'きれいじゃなかったです']);
+    });
+
+    it('when na-adj polite present affirmative, then returns single answer', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.POLITE,
+      });
+
+      // Then
+      expect(result).toEqual(['きれいです']);
+    });
+
+    it('when na-adj familiar present negative, then returns single answer', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.NEGATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toEqual(['きれいじゃない']);
+    });
+
+    it('when na-adj familiar present affirmative, then returns きれいだ and きれい', () => {
+      // Given
+      const adj = new Adjective('きれい', 'na', 'clean/pretty');
+
+      // When
+      const result = adj.acceptableAnswers({
+        tense: AdjectiveTense.PRESENT,
+        polarity: AdjectivePolarity.AFFIRMATIVE,
+        register: AdjectiveRegister.FAMILIAR,
+      });
+
+      // Then
+      expect(result).toEqual(['きれいだ', 'きれい']);
+    });
+  });
 });

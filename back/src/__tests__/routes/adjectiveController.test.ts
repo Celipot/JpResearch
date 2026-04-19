@@ -21,7 +21,7 @@ describe('GET /api/random-adjective', () => {
     expect(response.body).toHaveProperty('tense');
     expect(response.body).toHaveProperty('polarity');
     expect(response.body).toHaveProperty('register');
-    expect(response.body).toHaveProperty('answer');
+    expect(response.body).toHaveProperty('answers');
   });
 
   it('when sending request to endpoint, then response type is valid', async () => {
@@ -77,18 +77,18 @@ describe('GET /api/random-adjective', () => {
     expect(translation.length).toBeGreaterThan(0);
   });
 
-  it('when sending request to endpoint, then answer is valid Japanese string', async () => {
+  it('when sending request to endpoint, then answers is non-empty array of Japanese strings', async () => {
     // When
     const response = await request(app).get('/api/random-adjective');
-    const { answer } = response.body;
+    const { answers } = response.body;
 
     // Then
-    expect(typeof answer).toBe('string');
-    expect(answer.length).toBeGreaterThan(0);
-    expect(HIRAGANA_REGEX.test(answer)).toBe(true);
+    expect(Array.isArray(answers)).toBe(true);
+    expect(answers.length).toBeGreaterThan(0);
+    expect(HIRAGANA_REGEX.test(answers[0])).toBe(true);
   });
 
-  it('when sending request to endpoint, then answer matches correct conjugation', async () => {
+  it('when sending request to endpoint, then answers[0] matches correct conjugation', async () => {
     // When
     const response = await request(app).get('/api/random-adjective');
 
@@ -117,9 +117,10 @@ function isValidConjugation(body: {
   tense: string;
   polarity: string;
   register: string;
-  answer: string;
+  answers: string[];
 }): boolean {
-  const { hiragana, type, tense, polarity, register, answer } = body;
+  const { hiragana, type, tense, polarity, register, answers } = body;
+  const answer = answers[0];
   const negativeStem =
     hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
   const pastStem =

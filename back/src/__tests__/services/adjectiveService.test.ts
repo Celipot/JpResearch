@@ -23,7 +23,7 @@ describe('generateRandomAdjective', () => {
     expect(result).toHaveProperty('tense');
     expect(result).toHaveProperty('polarity');
     expect(result).toHaveProperty('register');
-    expect(result).toHaveProperty('answer');
+    expect(result).toHaveProperty('answers');
   });
 
   it('when calling with repository, then returns valid adjective type', () => {
@@ -58,7 +58,7 @@ describe('generateRandomAdjective', () => {
     expect([AdjectiveRegister.FAMILIAR, AdjectiveRegister.POLITE]).toContain(result.register);
   });
 
-  it('when calling with repository, then answer matches conjugation', () => {
+  it('when calling with repository, then answers[0] matches conjugation', () => {
     // When
     const result = generateRandomAdjective(repository);
 
@@ -96,18 +96,19 @@ describe('generateRandomAdjective', () => {
     expect(result.translation.length).toBeGreaterThan(0);
   });
 
-  it('when calling with repository, then answer is non-empty string', () => {
+  it('when calling with repository, then answers is non-empty array', () => {
     // When
     const result = generateRandomAdjective(repository);
 
     // Then
-    expect(typeof result.answer).toBe('string');
-    expect(result.answer.length).toBeGreaterThan(0);
+    expect(Array.isArray(result.answers)).toBe(true);
+    expect(result.answers.length).toBeGreaterThan(0);
   });
 });
 
 function isValidConjugation(result: ReturnType<typeof generateRandomAdjective>): boolean {
-  const { hiragana, type, tense, polarity, register, answer } = result;
+  const { hiragana, type, tense, polarity, register, answers } = result;
+  const answer = answers[0];
   const negativeStem =
     hiragana === '\u3044\u3044' ? '\u3088\u304f' : hiragana.slice(0, -1) + '\u304f';
   const pastStem =

@@ -13,7 +13,7 @@ export interface RandomAdjectiveResult {
   tense: AdjectiveTense;
   polarity: AdjectivePolarity;
   register: AdjectiveRegister;
-  answer: string;
+  answers: string[];
 }
 
 export const generateRandomAdjective = (
@@ -26,7 +26,7 @@ export const generateRandomAdjective = (
     adjectiveData.translation
   );
   const form = AdjectiveConjugationFormUtils.getRandomForm();
-  const answer = adjective.conjugate(form);
+  const answers = adjective.acceptableAnswers(form);
 
   return {
     hiragana: adjectiveData.hiragana,
@@ -35,6 +35,6 @@ export const generateRandomAdjective = (
     tense: form.tense,
     polarity: form.polarity,
     register: form.register,
-    answer,
+    answers,
   };
 };

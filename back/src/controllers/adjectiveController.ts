@@ -13,6 +13,6 @@ export const getRandomAdjective = (_req: Request, res: Response) => {
     tense: adjective.tense,
     polarity: adjective.polarity,
     register: adjective.register,
-    answer: adjective.answer,
+    answers: adjective.answers,
   });
 };
