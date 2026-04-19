@@ -1,14 +1,24 @@
 import { useState } from 'react';
-import type { VerbResult } from './types/revision';
+import type { VerbResult, VerbForm } from './types/revision';
 import { getRandomVerb, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
 
-const getTenseLabel = (tense: string): string => (tense === 'past' ? 'Passé' : 'Présent');
-const getPolarityLabel = (polarity: string): string =>
-  polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
-const getRegisterLabel = (register: string): string => (register === 'polite' ? 'Poli' : 'Plain');
+const getFormLabel = (form: VerbForm): string => {
+  if (form.kind === 'te') {
+    const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
+    return `Forme en て · ${polarity}`;
+  }
+  if (form.kind === 'volitional') {
+    const register = form.register === 'polite' ? 'Poli' : 'Plain';
+    return `Forme volitionnelle · ${register}`;
+  }
+  const tense = form.tense === 'past' ? 'Passé' : 'Présent';
+  const polarity = form.polarity === 'affirmative' ? 'Affirmatif' : 'Négatif';
+  const register = form.register === 'polite' ? 'Poli' : 'Plain';
+  return `${tense} ${polarity} · ${register}`;
+};
 
 export default function VerbRevisionPage() {
   const [result, setResult] = useState<VerbResult | null>(null);
@@ -51,11 +61,7 @@ export default function VerbRevisionPage() {
 
           <div className="form-display">
             <p className="form-label">
-              Forme :{' '}
-              <strong>
-                {getTenseLabel(result.tense)} {getPolarityLabel(result.polarity)} ·{' '}
-                {getRegisterLabel(result.register)}
-              </strong>
+              Forme : <strong>{getFormLabel(result.form)}</strong>
             </p>
           </div>
 

@@ -12,6 +12,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -27,6 +28,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -42,6 +44,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -57,6 +60,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -72,6 +76,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -87,6 +92,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -102,6 +108,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -117,6 +124,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -134,6 +142,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -149,6 +158,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -164,6 +174,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -179,6 +190,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -194,6 +206,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -209,6 +222,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -224,6 +238,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -239,6 +254,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -254,6 +270,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -269,6 +286,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -284,6 +302,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -299,6 +318,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -314,6 +334,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -331,6 +352,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -346,6 +368,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -361,6 +384,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -376,6 +400,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -391,6 +416,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.POLITE,
@@ -406,6 +432,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.PLAIN,
@@ -421,6 +448,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.conjugate({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -438,6 +466,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.acceptableAnswers({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -453,6 +482,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.acceptableAnswers({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -468,6 +498,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.acceptableAnswers({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -483,6 +514,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.acceptableAnswers({
+        kind: 'indicative',
         tense: VerbTense.PAST,
         polarity: VerbPolarity.NEGATIVE,
         register: VerbRegister.POLITE,
@@ -498,6 +530,7 @@ describe('Verb', () => {
 
       // When
       const result = verb.acceptableAnswers({
+        kind: 'indicative',
         tense: VerbTense.PRESENT,
         polarity: VerbPolarity.AFFIRMATIVE,
         register: VerbRegister.PLAIN,
@@ -505,6 +538,186 @@ describe('Verb', () => {
 
       // Then
       expect(result).toEqual(['食べる']);
+    });
+  });
+
+  describe('conjugate() forme en て', () => {
+    it('when ichidan te affirmative, then returns 食べて', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('食べて');
+    });
+
+    it('when ichidan te negative, then returns 食べなくて', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('食べなくて');
+    });
+
+    it('when godan む te affirmative, then returns 飲んで', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('飲んで');
+    });
+
+    it('when godan む te negative, then returns 飲まなくて', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('飲まなくて');
+    });
+
+    it('when godan く te affirmative, then returns 書いて', () => {
+      // Given
+      const verb = new Verb('書く', 'かく', 'godan', 'écrire');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('書いて');
+    });
+
+    it('when godan す te affirmative, then returns 話して', () => {
+      // Given
+      const verb = new Verb('話す', 'はなす', 'godan', 'parler');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('話して');
+    });
+
+    it('when する te affirmative, then returns して', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('して');
+    });
+
+    it('when する te negative, then returns しなくて', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.NEGATIVE });
+
+      // Then
+      expect(result).toBe('しなくて');
+    });
+
+    it('when くる te affirmative, then returns きて', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({ kind: 'te', polarity: VerbPolarity.AFFIRMATIVE });
+
+      // Then
+      expect(result).toBe('きて');
+    });
+  });
+
+  describe('conjugate() forme volitionnelle', () => {
+    it('when ichidan volitional plain, then returns 食べよう', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.PLAIN });
+
+      // Then
+      expect(result).toBe('食べよう');
+    });
+
+    it('when ichidan volitional polite, then returns 食べましょう', () => {
+      // Given
+      const verb = new Verb('食べる', 'たべる', 'ichidan', 'manger');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.POLITE });
+
+      // Then
+      expect(result).toBe('食べましょう');
+    });
+
+    it('when godan む volitional plain, then returns 飲もう', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.PLAIN });
+
+      // Then
+      expect(result).toBe('飲もう');
+    });
+
+    it('when godan む volitional polite, then returns 飲みましょう', () => {
+      // Given
+      const verb = new Verb('飲む', 'のむ', 'godan', 'boire');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.POLITE });
+
+      // Then
+      expect(result).toBe('飲みましょう');
+    });
+
+    it('when する volitional plain, then returns しよう', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.PLAIN });
+
+      // Then
+      expect(result).toBe('しよう');
+    });
+
+    it('when する volitional polite, then returns しましょう', () => {
+      // Given
+      const verb = new Verb('する', 'する', 'irregular', 'faire');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.POLITE });
+
+      // Then
+      expect(result).toBe('しましょう');
+    });
+
+    it('when くる volitional plain, then returns こよう', () => {
+      // Given
+      const verb = new Verb('くる', 'くる', 'irregular', 'venir');
+
+      // When
+      const result = verb.conjugate({ kind: 'volitional', register: VerbRegister.PLAIN });
+
+      // Then
+      expect(result).toBe('こよう');
     });
   });
 });

@@ -4,14 +4,22 @@ export interface Pronunciation {
   isStandard: boolean;
 }
 
+type VerbIndicativeForm = {
+  kind: 'indicative';
+  tense: 'present' | 'past';
+  polarity: 'affirmative' | 'negative';
+  register: 'plain' | 'polite';
+};
+type VerbTeForm = { kind: 'te'; polarity: 'affirmative' | 'negative' };
+type VerbVolitionalForm = { kind: 'volitional'; register: 'plain' | 'polite' };
+export type VerbForm = VerbIndicativeForm | VerbTeForm | VerbVolitionalForm;
+
 export interface VerbResult {
   kanji: string;
   hiragana: string;
   type: 'ichidan' | 'godan' | 'irregular';
   translation: string;
-  tense: 'present' | 'past';
-  polarity: 'affirmative' | 'negative';
-  register: 'plain' | 'polite';
+  form: VerbForm;
   answers: string[];
 }
 

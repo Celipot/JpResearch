@@ -18,9 +18,9 @@ export class Verb {
   }
 
   conjugate(form: VerbConjugationForm): string {
-    if (this.type === VerbType.ICHIDAN) return this.conjugateIchidan(form);
-    if (this.type === VerbType.GODAN) return this.conjugateGodan(form);
-    return this.conjugateIrregular(form);
+    if (form.kind === 'te') return this.conjugateTe(form.polarity);
+    if (form.kind === 'volitional') return this.conjugateVolitional(form.register);
+    return this.conjugateIndicative(form);
   }
 
   acceptableAnswers(form: VerbConjugationForm): string[] {
@@ -29,11 +29,45 @@ export class Verb {
     return variant ? [primary, variant] : [primary];
   }
 
+  private conjugateIndicative(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
+    if (this.type === VerbType.ICHIDAN) return this.conjugateIchidan(form);
+    if (this.type === VerbType.GODAN) return this.conjugateGodan(form);
+    return this.conjugateIrregular(form);
+  }
+
+  private conjugateTe(polarity: VerbPolarity): string {
+    if (this.type === VerbType.IRREGULAR) return this.conjugateTeIrregular(polarity);
+    const negativeStem = this.type === VerbType.ICHIDAN ? this.stem() : this.godanStemNegative();
+    if (polarity === VerbPolarity.NEGATIVE) return negativeStem + 'なくて';
+    return this.type === VerbType.ICHIDAN ? this.stem() + 'て' : this.godanStemTe();
+  }
+
+  private conjugateTeIrregular(polarity: VerbPolarity): string {
+    if (this.kanji === 'する') return polarity === VerbPolarity.NEGATIVE ? 'しなくて' : 'して';
+    return polarity === VerbPolarity.NEGATIVE ? 'こなくて' : 'きて';
+  }
+
+  private conjugateVolitional(register: VerbRegister): string {
+    if (this.type === VerbType.IRREGULAR) return this.conjugateVolitionalIrregular(register);
+    const isPolite = register === VerbRegister.POLITE;
+    if (this.type === VerbType.ICHIDAN)
+      return isPolite ? this.stem() + 'ましょう' : this.stem() + 'よう';
+    return isPolite
+      ? this.godanStemPolite() + 'ましょう'
+      : this.stem() + GODAN_VOLITIONAL_SUFFIX[this.ending()];
+  }
+
+  private conjugateVolitionalIrregular(register: VerbRegister): string {
+    const isPolite = register === VerbRegister.POLITE;
+    if (this.kanji === 'する') return isPolite ? 'しましょう' : 'しよう';
+    return isPolite ? 'きましょう' : 'こよう';
+  }
+
   private stem(): string {
     return this.kanji.slice(0, -1);
   }
 
-  private conjugateIchidan(form: VerbConjugationForm): string {
+  private conjugateIchidan(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
     const stem = this.stem();
     const isAffirmative = form.polarity === VerbPolarity.AFFIRMATIVE;
     const isPolite = form.register === VerbRegister.POLITE;
@@ -45,7 +79,7 @@ export class Verb {
     return isPolite ? stem + 'ません' : stem + 'ない';
   }
 
-  private conjugateGodan(form: VerbConjugationForm): string {
+  private conjugateGodan(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
     const isAffirmative = form.polarity === VerbPolarity.AFFIRMATIVE;
     const isPolite = form.register === VerbRegister.POLITE;
     const isPast = form.tense === VerbTense.PAST;
@@ -60,13 +94,13 @@ export class Verb {
     return isPolite ? this.godanStemPolite() + 'ません' : this.godanStemNegative() + 'ない';
   }
 
-  private conjugateIrregular(form: VerbConjugationForm): string {
+  private conjugateIrregular(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
     if (this.kanji === 'する') return this.conjugateSuru(form);
     if (this.kanji === 'くる' || this.kanji === '来る') return this.conjugateKuru(form);
     return this.conjugateGodan(form);
   }
 
-  private conjugateSuru(form: VerbConjugationForm): string {
+  private conjugateSuru(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
     const isAffirmative = form.polarity === VerbPolarity.AFFIRMATIVE;
     const isPolite = form.register === VerbRegister.POLITE;
     const isPast = form.tense === VerbTense.PAST;
@@ -77,7 +111,7 @@ export class Verb {
     return isPolite ? 'しません' : 'しない';
   }
 
-  private conjugateKuru(form: VerbConjugationForm): string {
+  private conjugateKuru(form: Extract<VerbConjugationForm, { kind: 'indicative' }>): string {
     const isAffirmative = form.polarity === VerbPolarity.AFFIRMATIVE;
     const isPolite = form.register === VerbRegister.POLITE;
     const isPast = form.tense === VerbTense.PAST;
@@ -100,11 +134,16 @@ export class Verb {
     return this.stem() + GODAN_PAST_SUFFIX[this.ending()];
   }
 
+  private godanStemTe(): string {
+    return this.stem() + GODAN_TE_SUFFIX[this.ending()];
+  }
+
   private ending(): string {
     return this.kanji.slice(-1);
   }
 
   private politeNegativeVariant(form: VerbConjugationForm): string | null {
+    if (form.kind !== 'indicative') return null;
     const isPoliteNegative =
       form.polarity === VerbPolarity.NEGATIVE && form.register === VerbRegister.POLITE;
     if (!isPoliteNegative) return null;
@@ -150,4 +189,28 @@ const GODAN_PAST_SUFFIX: Record<string, string> = {
   ぬ: 'んだ',
   ぶ: 'んだ',
   む: 'んだ',
+};
+
+const GODAN_TE_SUFFIX: Record<string, string> = {
+  う: 'って',
+  つ: 'って',
+  る: 'って',
+  く: 'いて',
+  ぐ: 'いで',
+  す: 'して',
+  ぬ: 'んで',
+  ぶ: 'んで',
+  む: 'んで',
+};
+
+const GODAN_VOLITIONAL_SUFFIX: Record<string, string> = {
+  う: 'おう',
+  つ: 'とう',
+  る: 'ろう',
+  く: 'こう',
+  ぐ: 'ごう',
+  す: 'そう',
+  ぬ: 'のう',
+  ぶ: 'ぼう',
+  む: 'もう',
 };

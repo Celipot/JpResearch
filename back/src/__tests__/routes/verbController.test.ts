@@ -3,9 +3,7 @@ import request from 'supertest';
 import app from '../../index';
 
 const VALID_TYPES = ['ichidan', 'godan', 'irregular'];
-const VALID_TENSES = ['present', 'past'];
-const VALID_POLARITIES = ['affirmative', 'negative'];
-const VALID_REGISTERS = ['plain', 'polite'];
+const VALID_KINDS = ['indicative', 'te', 'volitional'];
 
 describe('GET /api/random-verb', () => {
   it('when sending request, then returns 200 with all properties', async () => {
@@ -18,9 +16,7 @@ describe('GET /api/random-verb', () => {
     expect(response.body).toHaveProperty('hiragana');
     expect(response.body).toHaveProperty('type');
     expect(response.body).toHaveProperty('translation');
-    expect(response.body).toHaveProperty('tense');
-    expect(response.body).toHaveProperty('polarity');
-    expect(response.body).toHaveProperty('register');
+    expect(response.body).toHaveProperty('form');
     expect(response.body).toHaveProperty('answers');
   });
 
@@ -32,28 +28,12 @@ describe('GET /api/random-verb', () => {
     expect(VALID_TYPES).toContain(response.body.type);
   });
 
-  it('when sending request, then tense is valid', async () => {
+  it('when sending request, then form has valid kind', async () => {
     // When
     const response = await request(app).get('/api/random-verb');
 
     // Then
-    expect(VALID_TENSES).toContain(response.body.tense);
-  });
-
-  it('when sending request, then polarity is valid', async () => {
-    // When
-    const response = await request(app).get('/api/random-verb');
-
-    // Then
-    expect(VALID_POLARITIES).toContain(response.body.polarity);
-  });
-
-  it('when sending request, then register is valid', async () => {
-    // When
-    const response = await request(app).get('/api/random-verb');
-
-    // Then
-    expect(VALID_REGISTERS).toContain(response.body.register);
+    expect(VALID_KINDS).toContain(response.body.form.kind);
   });
 
   it('when sending request, then answers is non-empty array', async () => {
@@ -67,14 +47,13 @@ describe('GET /api/random-verb', () => {
 
   it('when sending multiple requests, then responses vary', async () => {
     // When
-    const verbs = new Set<string>();
+    const combinations = new Set<string>();
     for (let i = 0; i < 20; i++) {
       const response = await request(app).get('/api/random-verb');
-      const { kanji, tense, polarity, register } = response.body;
-      verbs.add(`${kanji}:${tense}:${polarity}:${register}`);
+      combinations.add(`${response.body.kanji}:${response.body.form.kind}`);
     }
 
     // Then
-    expect(verbs.size).toBeGreaterThan(1);
+    expect(combinations.size).toBeGreaterThan(1);
   });
 });

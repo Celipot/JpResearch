@@ -1,9 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { generateRandomVerb } from '../../services/verbService';
 import { VerbRepositoryImpl } from '../../infrastructure/repositories/VerbRepositoryImpl';
-import { VerbTense } from '../../domain/entities/verb/VerbTense';
-import { VerbPolarity } from '../../domain/entities/verb/VerbPolarity';
-import { VerbRegister } from '../../domain/entities/verb/VerbRegister';
 
 describe('generateRandomVerb', () => {
   let repository: VerbRepositoryImpl;
@@ -21,9 +18,7 @@ describe('generateRandomVerb', () => {
     expect(result).toHaveProperty('hiragana');
     expect(result).toHaveProperty('type');
     expect(result).toHaveProperty('translation');
-    expect(result).toHaveProperty('tense');
-    expect(result).toHaveProperty('polarity');
-    expect(result).toHaveProperty('register');
+    expect(result).toHaveProperty('form');
     expect(result).toHaveProperty('answers');
   });
 
@@ -35,28 +30,12 @@ describe('generateRandomVerb', () => {
     expect(['ichidan', 'godan', 'irregular']).toContain(result.type);
   });
 
-  it('when calling with repository, then tense is valid', () => {
+  it('when calling with repository, then form has valid kind', () => {
     // When
     const result = generateRandomVerb(repository);
 
     // Then
-    expect([VerbTense.PRESENT, VerbTense.PAST]).toContain(result.tense);
-  });
-
-  it('when calling with repository, then polarity is valid', () => {
-    // When
-    const result = generateRandomVerb(repository);
-
-    // Then
-    expect([VerbPolarity.AFFIRMATIVE, VerbPolarity.NEGATIVE]).toContain(result.polarity);
-  });
-
-  it('when calling with repository, then register is valid', () => {
-    // When
-    const result = generateRandomVerb(repository);
-
-    // Then
-    expect([VerbRegister.PLAIN, VerbRegister.POLITE]).toContain(result.register);
+    expect(['indicative', 'te', 'volitional']).toContain(result.form.kind);
   });
 
   it('when calling with repository, then answers is non-empty array', () => {
@@ -68,15 +47,15 @@ describe('generateRandomVerb', () => {
     expect(result.answers.length).toBeGreaterThan(0);
   });
 
-  it('when calling multiple times, then generates different verbs', () => {
+  it('when calling multiple times, then generates different combinations', () => {
     // When
-    const verbs = new Set<string>();
+    const combinations = new Set<string>();
     for (let i = 0; i < 30; i++) {
       const result = generateRandomVerb(repository);
-      verbs.add(`${result.kanji}:${result.tense}:${result.polarity}:${result.register}`);
+      combinations.add(`${result.kanji}:${result.form.kind}`);
     }
 
     // Then
-    expect(verbs.size).toBeGreaterThan(1);
+    expect(combinations.size).toBeGreaterThan(1);
   });
 });

@@ -1,9 +1,9 @@
 import { Verb } from '../domain/entities/verb/Verb';
 import { VerbType } from '../domain/entities/verb/VerbType';
-import { VerbTense } from '../domain/entities/verb/VerbTense';
-import { VerbPolarity } from '../domain/entities/verb/VerbPolarity';
-import { VerbRegister } from '../domain/entities/verb/VerbRegister';
-import { VerbConjugationFormUtils } from '../domain/entities/verb/VerbConjugationForm';
+import {
+  VerbConjugationForm,
+  VerbConjugationFormUtils,
+} from '../domain/entities/verb/VerbConjugationForm';
 import { IVerbRepository } from '../infrastructure/repositories/VerbRepository';
 
 export interface RandomVerbResult {
@@ -11,9 +11,7 @@ export interface RandomVerbResult {
   hiragana: string;
   type: `${VerbType}`;
   translation: string;
-  tense: VerbTense;
-  polarity: VerbPolarity;
-  register: VerbRegister;
+  form: VerbConjugationForm;
   answers: string[];
 }
 
@@ -28,9 +26,7 @@ export const generateRandomVerb = (repository: IVerbRepository): RandomVerbResul
     hiragana: verbData.hiragana,
     type: verbData.type,
     translation: verbData.translation,
-    tense: form.tense,
-    polarity: form.polarity,
-    register: form.register,
+    form,
     answers,
   };
 };
