@@ -1,4 +1,4 @@
-import type { Mode } from '../hooks/useRevisionSession';
+import type { Mode } from '../../hooks/useRevisionSession';
 
 interface ModeSelectorProps {
   mode: Mode;

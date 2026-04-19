@@ -12,6 +12,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.AFFIRMATIVE,
         register: AdjectiveRegister.FAMILIAR,
       });
@@ -26,6 +27,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.FAMILIAR,
       });
@@ -40,6 +42,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.FAMILIAR,
       });
@@ -54,6 +57,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.AFFIRMATIVE,
         register: AdjectiveRegister.FAMILIAR,
       });
@@ -68,6 +72,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.FAMILIAR,
       });
@@ -82,6 +87,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.AFFIRMATIVE,
         register: AdjectiveRegister.POLITE,
       });
@@ -96,6 +102,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.POLITE,
       });
@@ -110,6 +117,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.POLITE,
       });
@@ -124,6 +132,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.AFFIRMATIVE,
         register: AdjectiveRegister.POLITE,
       });
@@ -138,6 +147,7 @@ describe('Adjective', () => {
 
       // When
       const result = adj.conjugate({
+        tense: AdjectiveTense.PRESENT,
         polarity: AdjectivePolarity.NEGATIVE,
         register: AdjectiveRegister.POLITE,
       });
@@ -154,12 +164,14 @@ describe('Adjective', () => {
       // When / Then
       expect(
         delicious.conjugate({
+          tense: AdjectiveTense.PRESENT,
           polarity: AdjectivePolarity.NEGATIVE,
           register: AdjectiveRegister.FAMILIAR,
         })
       ).toBe('おいしくない');
       expect(
         difficult.conjugate({
+          tense: AdjectiveTense.PRESENT,
           polarity: AdjectivePolarity.AFFIRMATIVE,
           register: AdjectiveRegister.FAMILIAR,
         })
@@ -174,12 +186,14 @@ describe('Adjective', () => {
       // When / Then
       expect(
         quiet.conjugate({
+          tense: AdjectiveTense.PRESENT,
           polarity: AdjectivePolarity.AFFIRMATIVE,
           register: AdjectiveRegister.FAMILIAR,
         })
       ).toBe('しずかだ');
       expect(
         energetic.conjugate({
+          tense: AdjectiveTense.PRESENT,
           polarity: AdjectivePolarity.NEGATIVE,
           register: AdjectiveRegister.FAMILIAR,
         })

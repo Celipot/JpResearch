@@ -1,4 +1,4 @@
-import type { Pronunciation } from '../types/revision';
+import type { Pronunciation } from '../../types/revision';
 
 interface PronunciationPanelProps {
   pronunciations: Pronunciation[];

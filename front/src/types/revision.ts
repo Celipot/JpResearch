@@ -15,7 +15,10 @@ type VerbImperativeForm = {
   polarity: 'affirmative' | 'negative';
   register: 'plain' | 'polite';
 };
-type VerbPolarityOnlyForm = { kind: 'tara' | 'ba' | 'te'; polarity: 'affirmative' | 'negative' };
+type VerbPolarityOnlyForm =
+  | { kind: 'tara'; polarity: 'affirmative' | 'negative' }
+  | { kind: 'ba'; polarity: 'affirmative' | 'negative' }
+  | { kind: 'te'; polarity: 'affirmative' | 'negative' };
 type VerbVolitionalForm = { kind: 'volitional'; register: 'plain' | 'polite' };
 export type VerbForm =
   | VerbFullForm

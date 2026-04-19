@@ -1,4 +1,4 @@
-import type { Feedback } from '../hooks/useRevisionSession';
+import type { Feedback } from '../../hooks/useRevisionSession';
 
 interface FeedbackDisplayProps {
   feedback: Feedback | null;
