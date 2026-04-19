@@ -1,6 +1,6 @@
 # 日本語学習 - Révision de Grammaire
 
-Une application web interactive pour réviser la **grammaire japonaise** avec des exercices de remplissage, choix multiples et traduction.
+Une application web interactive pour réviser la **grammaire japonaise**.
 
 ## 📋 Structure du projet
 
@@ -12,9 +12,11 @@ Une application web interactive pour réviser la **grammaire japonaise** avec de
 │   │   ├── controllers/       # Contrôleurs des endpoints
 │   │   ├── services/          # Logique métier
 │   │   ├── domain/
-│   │   │   ├── entities/      # Exercise, GrammarRule, Adjective
-│   │   │   └── data/          # 14 fichiers d'exercices JSON
-│   │   └── infrastructure/    # Repository pattern
+│   │   │   ├── entities/      # Adjective, Verb, AnswerCheck, Date, Hour, Number
+│   │   │   └── shared/        # Types partagés (pronunciation)
+│   │   └── infrastructure/
+│   │       ├── repositories/  # Repository pattern
+│   │       └── data/          # Données statiques (adjectifs, verbes)
 │   ├── dist/                  # Code compilé
 │   └── package.json
 │
@@ -22,7 +24,13 @@ Une application web interactive pour réviser la **grammaire japonaise** avec de
 │   ├── src/
 │   │   ├── main.tsx
 │   │   ├── App.tsx
-│   │   ├── components/        # Pages de révision
+│   │   ├── *RevisionPage.tsx  # Pages de révision
+│   │   ├── components/
+│   │   │   ├── molecules/     # AnswerInput, FeedbackDisplay, ModeSelector, PronunciationPanel
+│   │   │   └── organisms/     # Blocs fonctionnels complexes
+│   │   ├── hooks/             # Logique stateful réutilisable
+│   │   ├── services/          # Appels API
+│   │   ├── types/             # Interfaces TypeScript
 │   │   ├── __tests__/         # Tests Vitest
 │   │   └── index.css
 │   ├── dist/                  # Build statique
@@ -74,30 +82,6 @@ Accédez à : `http://localhost:3001`
 
 ## 📚 API Endpoints
 
-### Exercices grammaticaux
-```
-GET /api/exercises/random?rule=wa     # Exercice aléatoire pour は
-GET /api/exercises/random?rule=wo     # Exercice aléatoire pour を
-... (14 particules: wa, wo, ga, ni, de, kara, made, mo, no, he, to, ya, yori, dake)
-```
-
-**Réponse:**
-```json
-{
-  "type": "fill-in-the-blank|multiple-choice|translation",
-  "rule": {
-    "id": "wa",
-    "particle": "は",
-    "name": "Topic",
-    "description": "Marque le sujet du discours"
-  },
-  "question": "わたし___がくせいです。",
-  "correctAnswers": ["は"],
-  "options": null,
-  "explanation": "は marque le topic : わたし est ce dont on parle."
-}
-```
-
 ### Nombres
 ```
 GET /api/random                           # Nombre aléatoire (1-1,000,000,000)
@@ -114,7 +98,7 @@ GET /api/random-adjective    # Adjectif aléatoire avec forme à conjuguer
 {
   "hiragana": "たかい",
   "type": "i",
-  "translation": "high/expensive",
+  "translation": "haut/cher",
   "tense": "present",
   "polarity": "negative",
   "register": "polite",
@@ -122,10 +106,44 @@ GET /api/random-adjective    # Adjectif aléatoire avec forme à conjuguer
 }
 ```
 
+### Verbes
+```
+GET /api/random-verb    # Verbe aléatoire avec forme à conjuguer
+```
+
+**Réponse:**
+```json
+{
+  "kanji": "食べる",
+  "hiragana": "たべる",
+  "type": "ichidan",
+  "translation": "manger",
+  "form": { "kind": "indicative", "tense": "present", "polarity": "affirmative", "register": "polite" },
+  "answers": ["食べます", "たべます"]
+}
+```
+
+Formes disponibles : `indicative`, `potential`, `passive`, `causative`, `imperative`, `te`, `volitional`, `tara`, `ba`.
+
 ### Heures & Dates
 ```
 GET /api/random-hour    # Heure aléatoire
 GET /api/random-date    # Date aléatoire
+```
+
+### Vérification de réponse
+```
+POST /api/check-answer
+```
+
+**Corps:**
+```json
+{ "userAnswer": "たかくない", "expectedAnswers": ["たかくない", "たかくないです"] }
+```
+
+**Réponse:**
+```json
+{ "correct": true }
 ```
 
 ## 🧪 Tests
@@ -141,7 +159,7 @@ npm run test:back
 npm run test:front
 ```
 
-**État:** ✅ **364/364 backend tests** | ✅ **74/76 frontend tests** (2 tests non-relatifs)
+**État:** ✅ **447/447 backend tests** | ✅ **69/69 frontend tests**
 
 ## 🔧 Stack technologique
 
@@ -152,7 +170,7 @@ npm run test:front
 | **Tests** | Vitest, Supertest, Testing Library |
 | **Linting** | ESLint, TypeScript-ESLint |
 | **Formatting** | Prettier |
-| **Git Hooks** | Husky, lint-staged |
+| **Git Hooks** | Husky, lint-staged (lint + typecheck au commit) |
 | **Déploiement** | Railway |
 
 ## 📦 Dépendances principales
@@ -198,36 +216,17 @@ NODE_ENV=development
 PORT=3001
 ```
 
-## 🎓 Données des exercices
+## 🎓 Données statiques
 
-Tous les exercices sont stockés dans `back/src/domain/data/` :
-- `waExercises.json` / `.ts` - Particule は
-- `woExercises.json` / `.ts` - Particule を
-- `gaExercises.json` / `.ts` - Particule が
-- ... (11 autres particules)
-
-Chaque fichier contient 30 exercices structurés :
-```json
-{
-  "rule": { "id": "wa", "particle": "は", "name": "...", "description": "..." },
-  "exercises": [
-    {
-      "type": "fill-in-the-blank",
-      "question": "わたし___がくせいです。",
-      "correctAnswers": ["は"],
-      "explanation": "は marque le topic...",
-      "options": null
-    },
-    { "type": "multiple-choice", ... },
-    { "type": "translation", ... }
-  ]
-}
-```
+Les données sont dans `back/src/infrastructure/data/` :
+- `adjectives.ts` - Liste des adjectifs i et na avec leurs métadonnées
+- `verbs.ts` - Liste des verbes godan, ichidan et irréguliers
 
 ## 📖 Documentation supplémentaire
 
 - [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) - Guide complet Railway
 - [doc/adjective-conjugation.md](./doc/adjective-conjugation.md) - Cas de conjugaison des adjectifs (réponses acceptées)
+- [doc/verb-conjugation.md](./doc/verb-conjugation.md) - Cas de conjugaison des verbes (toutes les formes)
 
 ## 🛠️ Scripts utiles
 
@@ -251,8 +250,5 @@ npm run lint               # ESLint (back + front)
 npm run lint:fix           # Auto-fix lint issues
 npm run format             # Prettier (back + front)
 npm run format:check       # Vérifier formatting
+npm run typecheck          # TypeScript (back + front via les sous-projets)
 ```
-
-## 📄 Licence
-
-Projet d'apprentissage du japonais
