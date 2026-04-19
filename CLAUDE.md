@@ -59,6 +59,7 @@ it('when submitting correct answer, then shows success feedback', async () => {
 - Implement minimum code to pass (GREEN) — **no more code than necessary to pass tests**
 - Refactor (REFACTOR)
 - No test, no code
+- **During GREEN phase, never modify tests** — if the test needs changing, it's a new RED cycle
 - Test one behavior per test
 - Use `describe` for grouping logically related tests
 - **Strict minimalism**: If code isn't required to pass any test, don't write it

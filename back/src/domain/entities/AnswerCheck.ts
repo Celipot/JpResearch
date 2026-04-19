@@ -90,12 +90,21 @@ export class AnswerCheck {
     return normalizedUserAnswer === expectedHiragana || normalizedUserAnswer === expectedRomaji;
   }
 
+  private static readonly DIGRAPH_MAP: Record<string, string> = {
+    では: 'dewa',
+  };
+
   private static hiraganaToRomaji(hiragana: string): string {
     let result = '';
     for (let i = 0; i < hiragana.length; i++) {
+      const digraph = hiragana.slice(i, i + 2);
+      if (this.DIGRAPH_MAP[digraph]) {
+        result += this.DIGRAPH_MAP[digraph];
+        i += 1;
+        continue;
+      }
       const char = hiragana[i];
       const romaji = this.HIRAGANA_MAP[char];
-
       if (this.isSmallYoSound(char) && i > 0) {
         result = this.removeTrailingVowel(result);
       }

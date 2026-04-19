@@ -86,6 +86,18 @@ describe('AnswerCheck', () => {
       // Then
       expect(result).toBe(true);
     });
+
+    it('when user answer is dewa romaji for polite negative, then returns true', () => {
+      // Given
+      const userAnswer = 'dewaarimasen';
+      const expectedAnswer = 'ではありません';
+
+      // When
+      const result = AnswerCheck.isCorrect(userAnswer, expectedAnswer);
+
+      // Then
+      expect(result).toBe(true);
+    });
   });
 
   describe('AnswerCheck.isAnyCorrect', () => {
