@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import type { AdjectiveResult } from './types/revision';
 import { getRandomAdjective, checkAnswer as checkAnswerService } from './services/revisionService';
+import { useRevisionSession } from './hooks/useRevisionSession';
+import { AnswerInput } from './components/molecules/AnswerInput';
+import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
 
 export default function AdjectiveRevisionPage() {
   const [result, setResult] = useState<AdjectiveResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [userAnswer, setUserAnswer] = useState('');
-  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
+  const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
+    useRevisionSession();
 
   const fetchAdjective = async () => {
     setLoading(true);
-    setFeedback(null);
-    setUserAnswer('');
+    reset();
     try {
       setResult(await getRandomAdjective());
     } catch (err) {
@@ -29,7 +30,7 @@ export default function AdjectiveRevisionPage() {
     return labels[form] || form;
   };
 
-  const checkAnswer = async () => {
+  const submitAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
     const correct = await checkAnswerService(userAnswer.trim(), [result.answer]);
     setFeedback(correct ? 'correct' : 'incorrect');
@@ -56,35 +57,23 @@ export default function AdjectiveRevisionPage() {
             </p>
           </div>
 
-          <div className="answer-section">
-            <label htmlFor="answer">Conjugaison :</label>
-            <input
-              id="answer"
-              type="text"
-              value={userAnswer}
-              onChange={(e) => {
-                setUserAnswer(e.target.value);
-                setFeedback(null);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  checkAnswer();
-                }
-              }}
-              placeholder="Écrivez en hiragana ou romaji"
-            />
-            <button className="check-btn" onClick={checkAnswer} disabled={!userAnswer.trim()}>
-              Vérifier
-            </button>
-          </div>
+          <AnswerInput
+            label="Conjugaison :"
+            value={userAnswer}
+            placeholder="Écrivez en hiragana ou romaji"
+            onChange={onAnswerChange}
+            onSubmit={submitAnswer}
+          />
 
-          {feedback === 'correct' && <div className="feedback correct">✓ Correct !</div>}
-
-          {feedback === 'incorrect' && (
-            <div className="feedback incorrect">
-              ✗ Incorrect. La réponse était : <strong>{result.answer}</strong>
-            </div>
-          )}
+          <FeedbackDisplay
+            feedback={feedback}
+            incorrectMessage={
+              <>
+                {' '}
+                La réponse était : <strong>{result.answer}</strong>
+              </>
+            }
+          />
         </div>
       )}
     </div>

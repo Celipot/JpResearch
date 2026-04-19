@@ -99,8 +99,24 @@ it('when submitting correct answer, then shows success feedback', async () => {
 - **Repositories**: Data access only, not business logic
 - **Services**: Orchestrate domain logic
 - **Entities**: Immutable when possible, encapsulate invariants
-- **Frontend**: Page → Components → Hooks/Utils
+- **Frontend**: Pages → Components → Hooks → Services → Types
 - **Use dependency injection** when possible
+
+### Frontend layer responsibilities
+- **`types/`**: Shared TypeScript interfaces and types — no logic
+- **`services/`**: All backend API calls — no state, no UI
+- **`hooks/`**: Reusable stateful logic shared across pages (e.g. `useRevisionSession`, `useSpeech`) — no JSX
+- **`components/`**: Stateless UI blocks driven by props — no direct API calls, no fetch. Organized following **Atomic Design**:
+  - `atoms/` — indivisible elements (single Button, Badge, Icon)
+  - `molecules/` — combinations of atoms with one clear purpose (AnswerInput, FeedbackDisplay)
+  - `organisms/` — complex functional blocks composed of molecules/atoms (ModeSelector, PronunciationPanel)
+- **`pages/`**: Assemble organisms, molecules and hooks — minimal logic (~50 lines max)
+- **Rules**:
+  - No `fetch` calls outside `services/`
+  - No duplicated state logic across pages — extract to a hook
+  - No duplicated JSX blocks across pages — extract to a component
+  - Components receive data and callbacks via props only
+  - Atoms have no dependencies on other components; molecules depend only on atoms; organisms can depend on molecules and atoms
 
 ## 8. File Organization
 ```
@@ -118,6 +134,23 @@ back/src/
     ├── infrastructure/
     ├── services/
     └── controllers/
+
+front/src/
+├── types/                 (Shared TypeScript interfaces)
+├── services/              (API calls only)
+├── hooks/                 (Reusable stateful logic)
+├── components/
+│   ├── atoms/             (Indivisible UI elements)
+│   ├── molecules/         (Combinations of atoms)
+│   └── organisms/         (Complex functional blocks)
+├── pages/                 (Page assemblies)
+└── __tests__/
+    ├── services/
+    ├── hooks/
+    └── components/
+        ├── atoms/
+        ├── molecules/
+        └── organisms/
 ```
 - **Domain entities**: May contain internal utilities, namespaces, or helper functions for domain logic
   - Example: `AnswerCheck` namespace in `src/domain/entities/AnswerCheck.ts` provides `isCorrect()`

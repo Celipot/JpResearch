@@ -1,8 +1,12 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import type { DateResult } from './types/revision';
 import { getRandomDate, checkAnswer as checkAnswerService } from './services/revisionService';
-
-type Mode = 'jp-to-fr' | 'fr-to-jp';
+import { useRevisionSession, type Mode } from './hooks/useRevisionSession';
+import { useSpeech } from './hooks/useSpeech';
+import { ModeSelector } from './components/organisms/ModeSelector';
+import { AnswerInput } from './components/molecules/AnswerInput';
+import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
+import { PronunciationPanel } from './components/organisms/PronunciationPanel';
 
 const MONTHS = [
   'janvier',
@@ -18,7 +22,6 @@ const MONTHS = [
   'novembre',
   'décembre',
 ];
-
 const MONTHS_SHORT = [
   'jan',
   'fév',
@@ -34,38 +37,42 @@ const MONTHS_SHORT = [
   'déc',
 ];
 
+const validDateFormats = (day: number, month: number, year: number): string[] => [
+  `${day} ${MONTHS[month - 1]} ${year}`,
+  `${day} ${MONTHS_SHORT[month - 1]} ${year}`,
+  `${day}/${month}/${year}`,
+  `${day}-${month}-${year}`,
+  `${day}.${month}.${year}`,
+  `${day} ${MONTHS[month - 1]}`,
+  `${day} ${MONTHS_SHORT[month - 1]}`,
+];
+
 export default function DateRevisionPage() {
   const [mode, setMode] = useState<Mode>('jp-to-fr');
   const [result, setResult] = useState<DateResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [userAnswer, setUserAnswer] = useState('');
-  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-  const [spokenHiragana, setSpokenHiragana] = useState<string | null>(null);
-  const [showPronunciation, setShowPronunciation] = useState(false);
-
-  const speak = useCallback((text: string) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.8;
-    utterance.lang = 'ja-JP';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
-  }, []);
+  const {
+    loading,
+    setLoading,
+    userAnswer,
+    onAnswerChange,
+    feedback,
+    setFeedback,
+    showPronunciation,
+    setShowPronunciation,
+    reset,
+  } = useRevisionSession();
+  const { speak, speakAndRemember, replay } = useSpeech();
 
   const fetchDate = async () => {
     setLoading(true);
-    setFeedback(null);
-    setUserAnswer('');
-    setSpokenHiragana(null);
-    setShowPronunciation(false);
+    reset();
     try {
       const data = await getRandomDate();
       setResult(data);
-
       if (mode === 'jp-to-fr') {
-        const randomIndex = Math.floor(Math.random() * data.allPronunciations.length);
-        const spoken = data.allPronunciations[randomIndex];
-        setSpokenHiragana(spoken.hiragana);
-        speak(spoken.hiragana);
+        const spoken =
+          data.allPronunciations[Math.floor(Math.random() * data.allPronunciations.length)];
+        speakAndRemember(spoken.hiragana);
       }
     } catch (err) {
       console.error('Erreur:', err);
@@ -74,15 +81,14 @@ export default function DateRevisionPage() {
     }
   };
 
-  const handleReplay = () => {
-    if (spokenHiragana) {
-      speak(spokenHiragana);
-    }
+  const handleModeChange = (newMode: Mode) => {
+    setMode(newMode);
+    setResult(null);
+    reset();
   };
 
-  const checkAnswer = async () => {
+  const submitAnswer = async () => {
     if (!result || !userAnswer.trim()) return;
-
     if (mode === 'fr-to-jp') {
       const correct = await checkAnswerService(
         userAnswer.trim(),
@@ -91,53 +97,20 @@ export default function DateRevisionPage() {
       setFeedback(correct ? 'correct' : 'incorrect');
     } else {
       const answer = userAnswer.trim().toLowerCase();
-      const { day, month, year } = result;
-
-      const validFormats = [
-        `${day} ${MONTHS[month - 1]} ${year}`,
-        `${day} ${MONTHS_SHORT[month - 1]} ${year}`,
-        `${day}/${month}/${year}`,
-        `${day}-${month}-${year}`,
-        `${day}.${month}.${year}`,
-        `${day} ${MONTHS[month - 1]}`,
-        `${day} ${MONTHS_SHORT[month - 1]}`,
-      ];
-
-      setFeedback(validFormats.some((f) => answer === f.toLowerCase()) ? 'correct' : 'incorrect');
+      const formats = validDateFormats(result.day, result.month, result.year);
+      setFeedback(formats.some((f) => answer === f.toLowerCase()) ? 'correct' : 'incorrect');
     }
   };
 
-  const getCorrectAnswers = (): string => {
-    if (!result) return '';
-    return result.allPronunciations.map((p) => `${p.hiragana} / ${p.romaji}`).join(' ou ');
-  };
+  const correctAnswers = result
+    ? result.allPronunciations.map((p) => `${p.hiragana} / ${p.romaji}`).join(' ou ')
+    : '';
 
   return (
     <div className="container">
       <h1>Révision de Dates</h1>
 
-      <div className="mode-selector">
-        <button
-          className={mode === 'jp-to-fr' ? 'mode-btn active' : 'mode-btn'}
-          onClick={() => {
-            setMode('jp-to-fr');
-            setResult(null);
-            setFeedback(null);
-          }}
-        >
-          🇯🇵 → 🇫🇷 Japonais → Français
-        </button>
-        <button
-          className={mode === 'fr-to-jp' ? 'mode-btn active' : 'mode-btn'}
-          onClick={() => {
-            setMode('fr-to-jp');
-            setResult(null);
-            setFeedback(null);
-          }}
-        >
-          🇫🇷 → 🇯🇵 Français → Japonais
-        </button>
-      </div>
+      <ModeSelector mode={mode} onModeChange={handleModeChange} />
 
       <button onClick={fetchDate} disabled={loading}>
         {loading ? 'Chargement...' : 'Nouvelle date'}
@@ -148,118 +121,60 @@ export default function DateRevisionPage() {
           {mode === 'jp-to-fr' ? (
             <>
               <div className="audio-section">
-                <button className="speak-btn" onClick={handleReplay}>
+                <button className="speak-btn" onClick={replay}>
                   🔊 Réécouter
                 </button>
               </div>
-              <div className="answer-section">
-                <label htmlFor="answer">Quelle date est-ce ? (ex: 16 février 2024)</label>
-                <input
-                  id="answer"
-                  type="text"
-                  value={userAnswer}
-                  onChange={(e) => {
-                    setUserAnswer(e.target.value);
-                    setFeedback(null);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      checkAnswer();
-                    }
-                  }}
-                  placeholder="Ex: 16 février 2024"
-                />
-                <button className="check-btn" onClick={checkAnswer} disabled={!userAnswer.trim()}>
-                  Vérifier
-                </button>
-              </div>
+              <AnswerInput
+                label="Quelle date est-ce ? (ex: 16 février 2024)"
+                value={userAnswer}
+                placeholder="Ex: 16 février 2024"
+                onChange={onAnswerChange}
+                onSubmit={submitAnswer}
+              />
             </>
           ) : (
             <>
               <p className="number">{result.japaneseFormat}</p>
-              <div className="answer-section">
-                <label htmlFor="answer">Écrivez en hiragana ou romaji :</label>
-                <input
-                  id="answer"
-                  type="text"
-                  value={userAnswer}
-                  onChange={(e) => {
-                    setUserAnswer(e.target.value);
-                    setFeedback(null);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      checkAnswer();
-                    }
-                  }}
-                  placeholder="Ex: にせんにじゅうよんねんろくがつつはつか"
-                />
-                <button className="check-btn" onClick={checkAnswer} disabled={!userAnswer.trim()}>
-                  Vérifier
-                </button>
-              </div>
+              <AnswerInput
+                label="Écrivez en hiragana ou romaji :"
+                value={userAnswer}
+                placeholder="Ex: にせんにじゅうよんねんろくがつつはつか"
+                onChange={onAnswerChange}
+                onSubmit={submitAnswer}
+              />
             </>
           )}
 
-          {feedback === 'correct' && (
-            <div className="feedback correct">
-              ✓ Correct !
-              {mode === 'jp-to-fr' && (
+          <FeedbackDisplay
+            feedback={feedback}
+            correctMessage={
+              mode === 'jp-to-fr' && (
                 <>
                   {' '}
                   C'était bien {result.day} {MONTHS[result.month - 1]} {result.year}.
                 </>
-              )}
-            </div>
-          )}
-
-          {feedback === 'incorrect' && (
-            <div className="feedback incorrect">
-              ✗ Incorrect.
-              {mode === 'jp-to-fr' ? (
+              )
+            }
+            incorrectMessage={
+              mode === 'jp-to-fr' ? (
                 <>
                   {' '}
                   La réponse était {result.day} {MONTHS[result.month - 1]} {result.year}.
                 </>
               ) : (
-                <> La réponse était : {getCorrectAnswers()}.</>
-              )}
-            </div>
-          )}
+                <> La réponse était : {correctAnswers}.</>
+              )
+            }
+          />
 
           {feedback !== null && (
-            <>
-              <button
-                className="toggle-btn"
-                onClick={() => setShowPronunciation(!showPronunciation)}
-              >
-                {showPronunciation ? 'Cacher les prononciations' : 'Afficher les prononciations'}
-              </button>
-
-              {showPronunciation && (
-                <div className="pronunciation">
-                  {result.allPronunciations.map((p, index) => (
-                    <div key={index} className="pronunciation-card">
-                      <span className={p.isStandard ? 'badge-standard' : 'badge-alt'}>
-                        {p.isStandard ? 'Standard' : 'Alternative'}
-                      </span>
-                      <p className="hiragana">{p.hiragana}</p>
-                      <p className="romaji">{p.romaji}</p>
-                      <button className="speak-btn" onClick={() => speak(p.hiragana)}>
-                        Écouter
-                      </button>
-                    </div>
-                  ))}
-                  <span className="tooltip-wrapper">
-                    <span className="tooltip-icon">?</span>
-                    <span className="tooltip-text">
-                      Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres
-                      de votre PC (Paramètres → Heure et langue → Japonais).
-                    </span>
-                  </span>
-                </div>
-              )}
-            </>
+            <PronunciationPanel
+              pronunciations={result.allPronunciations}
+              visible={showPronunciation}
+              onToggle={() => setShowPronunciation(!showPronunciation)}
+              onSpeak={speak}
+            />
           )}
         </div>
       )}
