@@ -100,6 +100,28 @@ describe('AnswerCheck', () => {
     });
   });
 
+  describe('AnswerCheck.isCorrect with っ (geminate consonant)', () => {
+    it('when user types katta for かった, then returns true', () => {
+      // Given / When / Then
+      expect(AnswerCheck.isCorrect('katta', 'かった')).toBe(true);
+    });
+
+    it('when user types nakatta for なかった, then returns true', () => {
+      // Given / When / Then
+      expect(AnswerCheck.isCorrect('nakatta', 'なかった')).toBe(true);
+    });
+
+    it('when user types yokatta for よかった, then returns true', () => {
+      // Given / When / Then
+      expect(AnswerCheck.isCorrect('yokatta', 'よかった')).toBe(true);
+    });
+
+    it('when user types kireijanakatta for きれいじゃなかった, then returns true', () => {
+      // Given / When / Then
+      expect(AnswerCheck.isCorrect('kireijanakatta', 'きれいじゃなかった')).toBe(true);
+    });
+  });
+
   describe('AnswerCheck.isAnyCorrect', () => {
     it('when user answer matches one of the expected answers in hiragana, then returns true', () => {
       // Given

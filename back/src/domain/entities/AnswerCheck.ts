@@ -92,6 +92,9 @@ export class AnswerCheck {
 
   private static readonly DIGRAPH_MAP: Record<string, string> = {
     では: 'dewa',
+    じゃ: 'ja',
+    じゅ: 'ju',
+    じょ: 'jo',
   };
 
   private static hiraganaToRomaji(hiragana: string): string {
@@ -104,6 +107,11 @@ export class AnswerCheck {
         continue;
       }
       const char = hiragana[i];
+      if (char === 'っ') {
+        const nextRomaji = this.HIRAGANA_MAP[hiragana[i + 1]] ?? '';
+        result += nextRomaji[0] ?? '';
+        continue;
+      }
       const romaji = this.HIRAGANA_MAP[char];
       if (this.isSmallYoSound(char) && i > 0) {
         result = this.removeTrailingVowel(result);
