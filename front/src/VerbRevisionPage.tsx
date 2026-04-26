@@ -57,7 +57,6 @@ const getFormLabel = (form: VerbForm): string => {
 export default function VerbRevisionPage() {
   const [result, setResult] = useState<VerbResult | null>(null);
   const [selectedKinds, setSelectedKinds] = useState<VerbFormKind[]>(ALL_KINDS);
-  const [showFormSelector, setShowFormSelector] = useState(false);
   const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
     useRevisionSession();
 
@@ -80,65 +79,61 @@ export default function VerbRevisionPage() {
   };
 
   return (
-    <div className="container">
+    <div className="verb-page">
       <h1>Révision de verbes</h1>
 
-      <div className="form-selector-section">
-        <button
-          className="form-selector-toggle"
-          onClick={() => setShowFormSelector((v) => !v)}
-          type="button"
-        >
-          {showFormSelector ? '▲' : '▼'} Formes à pratiquer
-        </button>
-        {showFormSelector && (
+      <div className="verb-layout">
+        <aside className="verb-sidebar">
+          <p className="sidebar-title">Formes</p>
           <FormKindSelector selectedKinds={selectedKinds} onChange={setSelectedKinds} />
-        )}
-      </div>
+        </aside>
 
-      <button onClick={fetchVerb} disabled={loading || selectedKinds.length === 0}>
-        {loading ? 'Chargement...' : 'Nouveau verbe'}
-      </button>
+        <div className="verb-content">
+          <button onClick={fetchVerb} disabled={loading || selectedKinds.length === 0}>
+            {loading ? 'Chargement...' : 'Nouveau verbe'}
+          </button>
 
-      {result !== null && (
-        <div className="revision-section">
-          <div className="adjective-display">
-            <p className="adjective-hiragana">{result.kanji}</p>
-            <p className="adjective-hiragana">{result.hiragana}</p>
-            <p className="adjective-translation">{result.translation}</p>
-          </div>
+          {result !== null && (
+            <div className="revision-section">
+              <div className="adjective-display">
+                <p className="adjective-hiragana">{result.kanji}</p>
+                <p className="adjective-hiragana">{result.hiragana}</p>
+                <p className="adjective-translation">{result.translation}</p>
+              </div>
 
-          <div className="form-display">
-            <p className="form-label">
-              Forme : <strong>{getFormLabel(result.form)}</strong>
-            </p>
-          </div>
+              <div className="form-display">
+                <p className="form-label">
+                  Forme : <strong>{getFormLabel(result.form)}</strong>
+                </p>
+              </div>
 
-          <AnswerInput
-            label="Conjugaison :"
-            value={userAnswer}
-            placeholder="Écrivez en hiragana ou romaji"
-            onChange={onAnswerChange}
-            onSubmit={submitAnswer}
-          />
+              <AnswerInput
+                label="Conjugaison :"
+                value={userAnswer}
+                placeholder="Écrivez en hiragana ou romaji"
+                onChange={onAnswerChange}
+                onSubmit={submitAnswer}
+              />
 
-          <FeedbackDisplay
-            feedback={feedback}
-            incorrectMessage={
-              <>
-                {' '}
-                La réponse était :{' '}
-                {result.answers.map((a, i) => (
-                  <span key={a}>
-                    <strong>{a}</strong>
-                    {i < result.answers.length - 1 ? ' ou ' : ''}
-                  </span>
-                ))}
-              </>
-            }
-          />
+              <FeedbackDisplay
+                feedback={feedback}
+                incorrectMessage={
+                  <>
+                    {' '}
+                    La réponse était :{' '}
+                    {result.answers.map((a, i) => (
+                      <span key={a}>
+                        <strong>{a}</strong>
+                        {i < result.answers.length - 1 ? ' ou ' : ''}
+                      </span>
+                    ))}
+                  </>
+                }
+              />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

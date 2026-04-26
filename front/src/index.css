@@ -483,6 +483,53 @@ button:disabled {
   background: #218838;
 }
 
+.verb-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.verb-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.verb-sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.sidebar-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.verb-content {
+  flex: 1;
+  text-align: center;
+}
+
+.form-kind-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-kind-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 .revision-section {
   margin-top: 2rem;
 }
