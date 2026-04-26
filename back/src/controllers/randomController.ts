@@ -1,7 +1,8 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { generateRandomNumber } from '../services/numberService';
+import type { NumberReq } from '../routes/contracts';
 
-export const getRandom = (req: Request, res: Response) => {
+export const getRandom = (req: NumberReq, res: Response) => {
   const min = Math.max(1, parseInt(req.query.min as string, 10) || 1);
   const max = Math.min(1000000000, parseInt(req.query.max as string, 10) || 1000000000);
   const numberEntity = generateRandomNumber(min, max);

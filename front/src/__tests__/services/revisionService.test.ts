@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
+  getRandomVerb,
   getRandomAdjective,
   getRandomNumber,
   getRandomHour,
@@ -12,6 +13,34 @@ beforeEach(() => {
 });
 
 describe('revisionService', () => {
+  describe('getRandomVerb', () => {
+    it('when called without kinds, then fetches from /api/random-verb', async () => {
+      // Given
+      global.fetch = vi.fn(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      ) as unknown as typeof fetch;
+
+      // When
+      await getRandomVerb();
+
+      // Then
+      expect(fetch).toHaveBeenCalledWith('/api/random-verb');
+    });
+
+    it('when called with kinds, then fetches with kinds query param', async () => {
+      // Given
+      global.fetch = vi.fn(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      ) as unknown as typeof fetch;
+
+      // When
+      await getRandomVerb(['te', 'tara']);
+
+      // Then
+      expect(fetch).toHaveBeenCalledWith('/api/random-verb?kinds=te%2Ctara');
+    });
+  });
+
   describe('getRandomAdjective', () => {
     it('when called, then fetches from /api/random-adjective', async () => {
       // Given

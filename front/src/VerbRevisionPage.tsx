@@ -1,9 +1,22 @@
 import { useState } from 'react';
-import type { VerbResult, VerbForm } from './types/revision';
+import type { VerbResult, VerbForm, VerbFormKind } from './types/revision';
 import { getRandomVerb, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
+import { FormKindSelector } from './components/organisms/FormKindSelector';
+
+const ALL_KINDS: VerbFormKind[] = [
+  'indicative',
+  'potential',
+  'passive',
+  'causative',
+  'imperative',
+  'tara',
+  'ba',
+  'te',
+  'volitional',
+];
 
 const KIND_LABEL: Record<string, string> = {
   indicative: 'Indicatif',
@@ -43,6 +56,8 @@ const getFormLabel = (form: VerbForm): string => {
 
 export default function VerbRevisionPage() {
   const [result, setResult] = useState<VerbResult | null>(null);
+  const [selectedKinds, setSelectedKinds] = useState<VerbFormKind[]>(ALL_KINDS);
+  const [showFormSelector, setShowFormSelector] = useState(false);
   const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
     useRevisionSession();
 
@@ -50,7 +65,7 @@ export default function VerbRevisionPage() {
     setLoading(true);
     reset();
     try {
-      setResult(await getRandomVerb());
+      setResult(await getRandomVerb(selectedKinds));
     } catch (err) {
       console.error('Erreur:', err);
     } finally {
@@ -68,7 +83,20 @@ export default function VerbRevisionPage() {
     <div className="container">
       <h1>Révision de verbes</h1>
 
-      <button onClick={fetchVerb} disabled={loading}>
+      <div className="form-selector-section">
+        <button
+          className="form-selector-toggle"
+          onClick={() => setShowFormSelector((v) => !v)}
+          type="button"
+        >
+          {showFormSelector ? '▲' : '▼'} Formes à pratiquer
+        </button>
+        {showFormSelector && (
+          <FormKindSelector selectedKinds={selectedKinds} onChange={setSelectedKinds} />
+        )}
+      </div>
+
+      <button onClick={fetchVerb} disabled={loading || selectedKinds.length === 0}>
         {loading ? 'Chargement...' : 'Nouveau verbe'}
       </button>
 

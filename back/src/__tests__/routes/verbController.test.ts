@@ -66,4 +66,35 @@ describe('GET /api/random-verb', () => {
     // Then
     expect(combinations.size).toBeGreaterThan(1);
   });
+
+  it('when sending request with kinds=te, then form kind is te', async () => {
+    // When
+    const response = await request(app).get('/api/random-verb?kinds=te');
+
+    // Then
+    expect(response.status).toBe(200);
+    expect(response.body.form.kind).toBe('te');
+  });
+
+  it('when sending request with kinds=tara,ba, then form kind is tara or ba', async () => {
+    // Given
+    const allowed = ['tara', 'ba'];
+
+    // When
+    const results = await Promise.all(
+      Array.from({ length: 10 }, () => request(app).get('/api/random-verb?kinds=tara,ba'))
+    );
+
+    // Then
+    results.forEach((response) => expect(allowed).toContain(response.body.form.kind));
+  });
+
+  it('when sending request with invalid kinds, then ignores them and returns any valid kind', async () => {
+    // When
+    const response = await request(app).get('/api/random-verb?kinds=invalid,garbage');
+
+    // Then
+    expect(response.status).toBe(200);
+    expect(VALID_KINDS).toContain(response.body.form.kind);
+  });
 });

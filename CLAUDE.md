@@ -1,3 +1,76 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+### Root (runs both back and front)
+```bash
+npm run dev          # start back (port 3001) + front (Vite, port 5173) concurrently
+npm test             # run all tests
+npm run lint         # lint both
+npm run format       # format both
+```
+
+### Backend (`cd back` or use `--prefix back`)
+```bash
+npm run dev          # tsx watch — hot-reload dev server
+npm test             # vitest run
+npm run typecheck    # tsc --noEmit
+# Run a single test file:
+npx vitest run src/__tests__/domain/entities/verb/Verb.test.ts
+```
+
+### Frontend (`cd front` or use `--prefix front`)
+```bash
+npm run dev          # Vite dev server (proxies /api → localhost:3001)
+npm test             # vitest run
+npm run typecheck    # tsc --noEmit
+# Run a single test file:
+npx vitest run src/__tests__/hooks/useRevisionSession.test.ts
+```
+
+## Architecture
+
+This is a Japanese language revision app — a monorepo with an Express backend (`back/`) and a React frontend (`front/`). In production the backend serves the built frontend as static files.
+
+### Backend domain model
+
+Each Japanese concept (verb, adjective, number, hour, date) follows the same flow:
+
+```
+Controller → Service → Domain Entity + Repository
+```
+
+- **Domain entities** (`back/src/domain/entities/`) encapsulate conjugation logic. `Verb` and `Adjective` are the core classes. Each has a `conjugate(form)` method and an `acceptableAnswers(form)` method that returns all valid answers (including kana/kanji variants and polite-negative variants).
+- **Form types** (`VerbConjugationForm`, `AdjectiveConjugationForm`) are discriminated unions — each `kind` determines which fields are present (e.g. `kind: 'indicative'` has tense + polarity + register; `kind: 'te'` has only polarity).
+- `VerbConjugationFormUtils.getRandomForm()` selects a random form from all combinations — this is called by the service on every request.
+- **Repositories** (`back/src/infrastructure/repositories/`) load static word lists from `back/src/infrastructure/data/` (TypeScript arrays, not a database).
+- **Services** (`back/src/services/`) pick a random word, instantiate the entity, call `acceptableAnswers`, and return a plain result object to the controller.
+- `/api/check-answer` (POST) normalises the user's answer server-side (romaji → hiragana, trim) and compares against the expected answers array.
+- **`back/src/routes/contracts.ts`** — typed request interfaces per route (`VerbReq`, `NumberReq`, `CheckAnswerReq`). Controllers import these instead of the generic Express `Request`.
+- **`back/src/routes/apiRouter.ts`** — registers all API routes from a typed `RouteDefinition[]` array iterated in a loop.
+
+### Frontend pages and routing
+
+Six pages, each following the same pattern: fetch a random item → display it → accept typed answer → POST to `/api/check-answer`.
+
+| Route | Page |
+|---|---|
+| `/` | `HomePage` |
+| `/revision` | `NumberRevisionPage` |
+| `/hour` | `HourRevisionPage` |
+| `/date` | `DateRevisionPage` |
+| `/adjective` | `AdjectiveRevisionPage` |
+| `/verb` | `VerbRevisionPage` |
+
+- **`useRevisionSession`** hook holds all shared session state: `loading`, `userAnswer`, `feedback`, `showPronunciation`, and `reset()`. Every revision page uses it.
+- **`revisionService`** owns all `fetch` calls to the API.
+- Components follow Atomic Design: `atoms/` → `molecules/` (e.g. `AnswerInput`, `FeedbackDisplay`) → `organisms/` (e.g. `ModeSelector`, `PronunciationPanel`).
+- `VerbForm` and `AdjectiveResult` types in `front/src/types/revision.ts` mirror the backend's domain types as plain string-literal unions (no enums on the frontend).
+
+---
+
 # Code Quality Standards
 
 ## 1. Minimal Comments

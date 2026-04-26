@@ -2,6 +2,17 @@ import { VerbTense } from './VerbTense';
 import { VerbPolarity } from './VerbPolarity';
 import { VerbRegister } from './VerbRegister';
 
+export type VerbFormKind =
+  | 'indicative'
+  | 'potential'
+  | 'passive'
+  | 'causative'
+  | 'imperative'
+  | 'tara'
+  | 'ba'
+  | 'te'
+  | 'volitional';
+
 export type VerbConjugationForm =
   | { kind: 'indicative'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
   | { kind: 'potential'; tense: VerbTense; polarity: VerbPolarity; register: VerbRegister }
@@ -40,5 +51,10 @@ export class VerbConjugationFormUtils {
 
   static getRandomForm(): VerbConjugationForm {
     return this.FORMS[Math.floor(Math.random() * this.FORMS.length)];
+  }
+
+  static getRandomFormFromKinds(kinds: VerbFormKind[]): VerbConjugationForm {
+    const filtered = this.FORMS.filter((f) => kinds.includes(f.kind as VerbFormKind));
+    return filtered[Math.floor(Math.random() * filtered.length)];
   }
 }

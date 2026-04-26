@@ -1,3 +1,14 @@
+export type VerbFormKind =
+  | 'indicative'
+  | 'potential'
+  | 'passive'
+  | 'causative'
+  | 'imperative'
+  | 'tara'
+  | 'ba'
+  | 'te'
+  | 'volitional';
+
 export interface Pronunciation {
   hiragana: string;
   romaji: string;

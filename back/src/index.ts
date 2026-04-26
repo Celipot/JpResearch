@@ -3,12 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { getRandom } from './controllers/randomController';
-import { getRandomHour } from './controllers/hourController';
-import { getRandomDate } from './controllers/dateController';
-import { getRandomAdjective } from './controllers/adjectiveController';
-import { getRandomVerb } from './controllers/verbController';
-import { checkAnswer } from './controllers/checkAnswerController';
+import apiRouter from './routes/apiRouter';
 
 const app = express();
 export default app;
@@ -19,14 +14,7 @@ const __dirname = dirname(__filename);
 
 app.use(cors());
 app.use(express.json());
-
-// API routes
-app.get('/api/random', getRandom);
-app.get('/api/random-hour', getRandomHour);
-app.get('/api/random-date', getRandomDate);
-app.get('/api/random-adjective', getRandomAdjective);
-app.get('/api/random-verb', getRandomVerb);
-app.post('/api/check-answer', checkAnswer);
+app.use('/api', apiRouter);
 
 // Serve static frontend files
 const frontendDistPath = path.join(__dirname, '../../front/dist');

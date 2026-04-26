@@ -3,6 +3,7 @@ import { VerbType } from '../domain/entities/verb/VerbType';
 import {
   VerbConjugationForm,
   VerbConjugationFormUtils,
+  VerbFormKind,
 } from '../domain/entities/verb/VerbConjugationForm';
 import { IVerbRepository } from '../infrastructure/repositories/VerbRepository';
 
@@ -15,10 +16,16 @@ export interface RandomVerbResult {
   answers: string[];
 }
 
-export const generateRandomVerb = (repository: IVerbRepository): RandomVerbResult => {
+export const generateRandomVerb = (
+  repository: IVerbRepository,
+  kinds?: VerbFormKind[]
+): RandomVerbResult => {
   const verbData = repository.getRandomVerb();
   const verb = new Verb(verbData.kanji, verbData.hiragana, verbData.type, verbData.translation);
-  const form = VerbConjugationFormUtils.getRandomForm();
+  const form =
+    kinds && kinds.length > 0
+      ? VerbConjugationFormUtils.getRandomFormFromKinds(kinds)
+      : VerbConjugationFormUtils.getRandomForm();
   const answers = verb.acceptableAnswers(form);
 
   return {

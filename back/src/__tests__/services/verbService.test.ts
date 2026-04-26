@@ -68,4 +68,15 @@ describe('generateRandomVerb', () => {
     // Then
     expect(combinations.size).toBeGreaterThan(1);
   });
+
+  it('when calling with a kinds filter, then form kind matches one of the selected kinds', () => {
+    // Given
+    const kinds = ['te', 'volitional'] as const;
+
+    // When
+    const results = Array.from({ length: 20 }, () => generateRandomVerb(repository, [...kinds]));
+
+    // Then
+    results.forEach((result) => expect(kinds).toContain(result.form.kind));
+  });
 });

@@ -4,10 +4,15 @@ import type {
   NumberResult,
   HourResult,
   DateResult,
+  VerbFormKind,
 } from '../types/revision';
 
-export async function getRandomVerb(): Promise<VerbResult> {
-  const res = await fetch('/api/random-verb');
+export async function getRandomVerb(kinds?: VerbFormKind[]): Promise<VerbResult> {
+  const url =
+    kinds && kinds.length > 0
+      ? `/api/random-verb?${new URLSearchParams({ kinds: kinds.join(',') })}`
+      : '/api/random-verb';
+  const res = await fetch(url);
   return res.json();
 }
 
