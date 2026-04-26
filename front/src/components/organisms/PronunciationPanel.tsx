@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Pronunciation } from '../../types/revision';
 
 interface PronunciationPanelProps {
@@ -28,18 +29,16 @@ export function PronunciationPanel({
               </span>
               <p className="hiragana">{p.hiragana}</p>
               <p className="romaji">{p.romaji}</p>
-              <button className="speak-btn" onClick={() => onSpeak(p.hiragana)}>
-                Écouter
-              </button>
+              <div className="speak-row">
+                <button className="speak-btn" onClick={() => onSpeak(p.hiragana)}>
+                  Écouter
+                </button>
+                <Link to="/aide" className="help-link">
+                  Le son ne fonctionne pas ?
+                </Link>
+              </div>
             </div>
           ))}
-          <span className="tooltip-wrapper">
-            <span className="tooltip-icon">?</span>
-            <span className="tooltip-text">
-              Si le son ne fonctionne pas, ajoutez la langue japonaise dans les paramètres de votre
-              PC (Paramètres → Heure et langue → Japonais).
-            </span>
-          </span>
         </div>
       )}
     </>

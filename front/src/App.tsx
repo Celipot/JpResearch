@@ -5,6 +5,7 @@ import HourRevisionPage from './HourRevisionPage';
 import DateRevisionPage from './DateRevisionPage';
 import AdjectiveRevisionPage from './AdjectiveRevisionPage';
 import VerbRevisionPage from './VerbRevisionPage';
+import HelpPage from './HelpPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Link to="/date">Révision de dates</Link>
         <Link to="/adjective">Révision d&apos;adjectifs</Link>
         <Link to="/verb">Révision de verbes</Link>
+        <Link to="/aide">Aide</Link>
       </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -24,6 +26,7 @@ export default function App() {
         <Route path="/date" element={<DateRevisionPage />} />
         <Route path="/adjective" element={<AdjectiveRevisionPage />} />
         <Route path="/verb" element={<VerbRevisionPage />} />
+        <Route path="/aide" element={<HelpPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { NumberResult } from './types/revision';
 import { getRandomNumber, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession, type Mode } from './hooks/useRevisionSession';
@@ -116,9 +117,14 @@ export default function NumberRevisionPage() {
           {mode === 'jp-to-fr' ? (
             <>
               <div className="audio-section">
-                <button className="speak-btn" onClick={replay}>
-                  🔊 Réécouter
-                </button>
+                <div className="speak-row">
+                  <button className="speak-btn" onClick={replay}>
+                    🔊 Réécouter
+                  </button>
+                  <Link to="/aide" className="help-link">
+                    Le son ne fonctionne pas ?
+                  </Link>
+                </div>
               </div>
               <AnswerInput
                 label="Quel nombre est-ce ? (en chiffres)"
