@@ -1,5 +1,5 @@
 export interface VerbReq {
-  query: { kinds?: string };
+  query: { kinds?: string; tenses?: string };
 }
 
 export interface NumberReq {

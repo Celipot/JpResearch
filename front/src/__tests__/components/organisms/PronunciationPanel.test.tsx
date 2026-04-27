@@ -1,6 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { PronunciationPanel } from '../../../components/organisms/PronunciationPanel';
+
+const renderWithRouter = (ui: React.ReactElement) => render(<MemoryRouter>{ui}</MemoryRouter>);
 
 const mockPronunciations = [
   { hiragana: 'じゅう', romaji: 'juu', isStandard: true },
@@ -10,7 +13,7 @@ const mockPronunciations = [
 describe('PronunciationPanel', () => {
   it('when not visible, then shows toggle button but no pronunciations', () => {
     // Given
-    render(
+    renderWithRouter(
       <PronunciationPanel
         pronunciations={mockPronunciations}
         visible={false}
@@ -28,7 +31,7 @@ describe('PronunciationPanel', () => {
 
   it('when visible, then shows all pronunciations', () => {
     // Given
-    render(
+    renderWithRouter(
       <PronunciationPanel
         pronunciations={mockPronunciations}
         visible={true}
@@ -46,7 +49,7 @@ describe('PronunciationPanel', () => {
   it('when toggle button clicked, then calls onToggle', () => {
     // Given
     const onToggle = vi.fn();
-    render(
+    renderWithRouter(
       <PronunciationPanel
         pronunciations={mockPronunciations}
         visible={false}
@@ -65,7 +68,7 @@ describe('PronunciationPanel', () => {
   it('when Écouter clicked, then calls onSpeak with hiragana', () => {
     // Given
     const onSpeak = vi.fn();
-    render(
+    renderWithRouter(
       <PronunciationPanel
         pronunciations={mockPronunciations}
         visible={true}

@@ -466,7 +466,12 @@ button:disabled {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #888;
+  margin-top: 1rem;
   margin-bottom: 0.75rem;
+}
+
+.sidebar-title:first-child {
+  margin-top: 0;
 }
 
 .verb-content {

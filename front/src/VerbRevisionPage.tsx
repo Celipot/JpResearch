@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import type { VerbResult, VerbForm, VerbFormKind } from './types/revision';
+import type { VerbResult, VerbForm, VerbFormKind, VerbTense } from './types/revision';
 import { getRandomVerb, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
 import { FormKindSelector } from './components/organisms/FormKindSelector';
+import { TenseSelector } from './components/organisms/TenseSelector';
 
 const ALL_KINDS: VerbFormKind[] = [
   'indicative',
@@ -17,6 +18,8 @@ const ALL_KINDS: VerbFormKind[] = [
   'te',
   'volitional',
 ];
+
+const TENSE_BEARING_KINDS: VerbFormKind[] = ['indicative', 'potential', 'passive', 'causative'];
 
 const KIND_LABEL: Record<string, string> = {
   indicative: 'Indicatif',
@@ -57,6 +60,7 @@ const getFormLabel = (form: VerbForm): string => {
 export default function VerbRevisionPage() {
   const [result, setResult] = useState<VerbResult | null>(null);
   const [selectedKinds, setSelectedKinds] = useState<VerbFormKind[]>(ALL_KINDS);
+  const [selectedTenses, setSelectedTenses] = useState<VerbTense[]>(['present', 'past']);
   const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
     useRevisionSession();
 
@@ -64,7 +68,7 @@ export default function VerbRevisionPage() {
     setLoading(true);
     reset();
     try {
-      setResult(await getRandomVerb(selectedKinds));
+      setResult(await getRandomVerb(selectedKinds, selectedTenses));
     } catch (err) {
       console.error('Erreur:', err);
     } finally {
@@ -86,10 +90,20 @@ export default function VerbRevisionPage() {
         <aside className="verb-sidebar">
           <p className="sidebar-title">Formes</p>
           <FormKindSelector selectedKinds={selectedKinds} onChange={setSelectedKinds} />
+          <p className="sidebar-title">Temps</p>
+          <TenseSelector selectedTenses={selectedTenses} onChange={setSelectedTenses} />
         </aside>
 
         <div className="verb-content">
-          <button onClick={fetchVerb} disabled={loading || selectedKinds.length === 0}>
+          <button
+            onClick={fetchVerb}
+            disabled={
+              loading ||
+              selectedKinds.length === 0 ||
+              (selectedTenses.length === 0 &&
+                selectedKinds.some((k) => TENSE_BEARING_KINDS.includes(k)))
+            }
+          >
             {loading ? 'Chargement...' : 'Nouveau verbe'}
           </button>
 

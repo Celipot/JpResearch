@@ -5,14 +5,18 @@ import type {
   HourResult,
   DateResult,
   VerbFormKind,
+  VerbTense,
 } from '../types/revision';
 
-export async function getRandomVerb(kinds?: VerbFormKind[]): Promise<VerbResult> {
-  const url =
-    kinds && kinds.length > 0
-      ? `/api/random-verb?${new URLSearchParams({ kinds: kinds.join(',') })}`
-      : '/api/random-verb';
-  const res = await fetch(url);
+export async function getRandomVerb(
+  kinds?: VerbFormKind[],
+  tenses?: VerbTense[]
+): Promise<VerbResult> {
+  const params = new URLSearchParams();
+  if (kinds && kinds.length > 0) params.set('kinds', kinds.join(','));
+  if (tenses && tenses.length > 0) params.set('tenses', tenses.join(','));
+  const query = params.toString();
+  const res = await fetch(query ? `/api/random-verb?${query}` : '/api/random-verb');
   return res.json();
 }
 

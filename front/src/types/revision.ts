@@ -1,3 +1,5 @@
+export type VerbTense = 'present' | 'past';
+
 export type VerbFormKind =
   | 'indicative'
   | 'potential'
