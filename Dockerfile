@@ -1,47 +1,34 @@
-# Build stage
-FROM node:20-alpine as builder
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
-# Copy configuration files
-COPY package.json package-lock.json ./
-COPY back/package.json back/package-lock.json ./back/
-COPY front/package.json front/package-lock.json ./front/
-COPY back/tsconfig.json ./back/
-COPY back/fix-esm-imports.mjs ./back/
-COPY front/tsconfig.json ./front/
-COPY front/vite.config.ts ./front/
-
-# Copy source code
-COPY back/src ./back/src
-COPY front/src ./front/src
+COPY package*.json ./
+COPY back/package*.json back/tsconfig.json back/fix-esm-imports.mjs ./back/
+COPY front/package*.json front/tsconfig.json front/vite.config.ts ./front/
 COPY front/index.html ./front/
 
-# Install dependencies
-RUN npm ci
-RUN npm --prefix back ci --legacy-peer-deps 2>/dev/null || npm --prefix back ci
-RUN npm --prefix front ci --legacy-peer-deps 2>/dev/null || npm --prefix front ci
+RUN npm ci --ignore-scripts
+RUN npm --prefix back ci --ignore-scripts
+RUN npm --prefix front ci --ignore-scripts
 
-# Build
+COPY back/src ./back/src
+COPY front/src ./front/src
+
 RUN npm run build
 
-# Runtime stage
-FROM node:20-alpine
+
+FROM node:22-alpine AS production
 
 WORKDIR /app
 
-# Copy only runtime dependencies and built files
-COPY --from=builder /app/back/node_modules ./back/node_modules
-COPY --from=builder /app/back/dist ./back/dist
-COPY --from=builder /app/back/package.json ./back/
-COPY --from=builder /app/front/dist ./front/dist
+COPY --from=build /app/back/package*.json ./back/
+RUN npm --prefix back ci --omit=dev --ignore-scripts
 
-# Expose port
-EXPOSE 3001
+COPY --from=build /app/back/dist ./back/dist
+COPY --from=build /app/front/dist ./front/dist
 
-# Set environment
 ENV NODE_ENV=production
 ENV PORT=3001
+EXPOSE 3001
 
-# Start server
 CMD ["node", "back/dist/index.js"]

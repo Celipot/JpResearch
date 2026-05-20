@@ -187,9 +187,18 @@ npm run test:front
 
 ## 🌐 Déploiement
 
+### Sans Docker
+
 ```bash
 npm run build
 npm start
+```
+
+### Avec Docker
+
+```bash
+docker build -t japanese-learner .
+docker run -p 3001:3001 japanese-learner
 ```
 
 Le serveur Express sert l'API et les fichiers statiques du frontend sur le même port.
