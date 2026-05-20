@@ -36,10 +36,7 @@ Une application web interactive pour réviser la **grammaire japonaise**.
 │   ├── dist/                  # Build statique
 │   └── package.json
 │
-├── package.json               # Scripts root (build/start/test)
-├── railway.json               # Configuration Railway
-├── Procfile                    # Process web pour Railway
-└── RAILWAY_DEPLOYMENT.md      # Guide de déploiement
+└── package.json               # Scripts root (build/start/test)
 ```
 
 ## 🚀 Démarrage local
@@ -171,7 +168,7 @@ npm run test:front
 | **Linting** | ESLint, TypeScript-ESLint |
 | **Formatting** | Prettier |
 | **Git Hooks** | Husky, lint-staged (lint + typecheck au commit) |
-| **Déploiement** | Railway |
+| **Déploiement** | Node.js (self-hosted) |
 
 ## 📦 Dépendances principales
 
@@ -188,31 +185,19 @@ npm run test:front
 - `vitest` - Test runner
 - `vite` - Bundler frontend
 
-## 🌐 Déployer sur Railway
-
-Le projet est **prêt pour Railway** ! Voir [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md)
-
-### Déploiement rapide
+## 🌐 Déploiement
 
 ```bash
-# 1. Committer et pusher sur GitLab
-git add .
-git commit -m "chore: prepare for Railway"
-git push
-
-# 2. Sur https://railway.app
-# - Créer un compte
-# - Connecter repo GitLab
-# - Railway détecte et déploie automatiquement !
+npm run build
+npm start
 ```
+
+Le serveur Express sert l'API et les fichiers statiques du frontend sur le même port.
 
 ## 📝 Variables d'environnement
 
-Aucune variable requise. `PORT` est définie automatiquement par Railway.
-
-Optionnel pour développement local :
 ```
-NODE_ENV=development
+NODE_ENV=production
 PORT=3001
 ```
 
@@ -224,7 +209,6 @@ Les données sont dans `back/src/infrastructure/data/` :
 
 ## 📖 Documentation supplémentaire
 
-- [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) - Guide complet Railway
 - [doc/adjective-conjugation.md](./doc/adjective-conjugation.md) - Cas de conjugaison des adjectifs (réponses acceptées)
 - [doc/verb-conjugation.md](./doc/verb-conjugation.md) - Cas de conjugaison des verbes (toutes les formes)
 
