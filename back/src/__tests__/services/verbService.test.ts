@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { generateRandomVerb } from '../../services/verbService';
 import { VerbRepositoryImpl } from '../../infrastructure/repositories/VerbRepositoryImpl';
 import { VerbTense, VerbRegister } from '../../domain/entities/verb/VerbConjugationForm';
+import { VerbPolarity } from '../../domain/entities/verb/VerbPolarity';
 
 describe('generateRandomVerb', () => {
   let repository: VerbRepositoryImpl;
@@ -108,6 +109,21 @@ describe('generateRandomVerb', () => {
     // Then
     results.forEach((result) => {
       if ('register' in result.form) expect(result.form.register).toBe(VerbRegister.PLAIN);
+    });
+  });
+
+  it('when calling with polarities filter only, then form polarity matches one of the selected polarities', () => {
+    // Given
+    const polarities = [VerbPolarity.AFFIRMATIVE];
+
+    // When
+    const results = Array.from({ length: 50 }, () =>
+      generateRandomVerb(repository, undefined, undefined, undefined, polarities)
+    );
+
+    // Then
+    results.forEach((result) => {
+      if ('polarity' in result.form) expect(result.form.polarity).toBe(VerbPolarity.AFFIRMATIVE);
     });
   });
 });

@@ -97,4 +97,28 @@ describe('GET /api/random-verb', () => {
     expect(response.status).toBe(200);
     expect(VALID_KINDS).toContain(response.body.form.kind);
   });
+
+  it('when sending request with polarities=affirmative, then form polarity is affirmative', async () => {
+    // Given
+    const results = await Promise.all(
+      Array.from({ length: 10 }, () =>
+        request(app).get('/api/random-verb?kinds=indicative&polarities=affirmative')
+      )
+    );
+
+    // Then
+    results.forEach((response) => {
+      expect(response.status).toBe(200);
+      expect(response.body.form.polarity).toBe('affirmative');
+    });
+  });
+
+  it('when sending request with invalid polarities, then ignores them and returns any valid polarity', async () => {
+    // When
+    const response = await request(app).get('/api/random-verb?kinds=indicative&polarities=invalid');
+
+    // Then
+    expect(response.status).toBe(200);
+    expect(['affirmative', 'negative']).toContain(response.body.form.polarity);
+  });
 });

@@ -54,14 +54,15 @@ export class VerbConjugationFormUtils {
   static getRandomFormFor(
     kinds?: VerbFormKind[],
     tenses?: VerbTense[],
-    registers?: VerbRegister[]
+    registers?: VerbRegister[],
+    polarities?: VerbPolarity[]
   ): VerbConjugationForm {
     const filtered = this.FORMS.filter((f) => {
       if (kinds && !kinds.includes(f.kind as VerbFormKind)) return false;
       if (tenses && 'tense' in f && !tenses.includes(f.tense as VerbTense)) return false;
       if (registers && 'register' in f && !registers.includes(f.register as VerbRegister))
         return false;
-      return true;
+      return !(polarities && 'polarity' in f && !polarities.includes(f.polarity as VerbPolarity));
     });
     return filtered[Math.floor(Math.random() * filtered.length)];
   }

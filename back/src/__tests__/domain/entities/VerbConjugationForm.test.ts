@@ -5,6 +5,7 @@ import {
   VerbTense,
   VerbRegister,
 } from '../../../domain/entities/verb/VerbConjugationForm';
+import { VerbPolarity } from '../../../domain/entities/verb/VerbPolarity';
 
 describe('VerbConjugationFormUtils.getRandomFormFor', () => {
   it('when given a single kind, then returns a form of that kind', () => {
@@ -205,6 +206,98 @@ describe('VerbConjugationFormUtils.getRandomFormFor', () => {
       // Then
       expect(returnedRegisters).toContain(VerbRegister.PLAIN);
       expect(returnedRegisters).toContain(VerbRegister.POLITE);
+    });
+  });
+
+  describe('with polarities filter', () => {
+    it('when given affirmative only, then never returns a negative form', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'te'];
+      const polarities: VerbPolarity[] = [VerbPolarity.AFFIRMATIVE];
+
+      // When
+      const forms = Array.from({ length: 50 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, undefined, polarities)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('polarity' in form) expect(form.polarity).toBe(VerbPolarity.AFFIRMATIVE);
+      });
+    });
+
+    it('when given negative only, then never returns an affirmative form', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'ba'];
+      const polarities: VerbPolarity[] = [VerbPolarity.NEGATIVE];
+
+      // When
+      const forms = Array.from({ length: 50 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, undefined, polarities)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('polarity' in form) expect(form.polarity).toBe(VerbPolarity.NEGATIVE);
+      });
+    });
+
+    it('when polarity-less kind (volitional) with polarity filter, then still returns forms', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['volitional'];
+      const polarities: VerbPolarity[] = [VerbPolarity.AFFIRMATIVE];
+
+      // When
+      const form = VerbConjugationFormUtils.getRandomFormFor(
+        kinds,
+        undefined,
+        undefined,
+        polarities
+      );
+
+      // Then
+      expect(form.kind).toBe('volitional');
+    });
+
+    it('when mixed kinds with polarity filter, then polarity-bearing forms respect filter and volitional still appears', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'volitional'];
+      const polarities: VerbPolarity[] = [VerbPolarity.AFFIRMATIVE];
+
+      // When
+      const forms = Array.from({ length: 100 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, undefined, polarities)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('polarity' in form) expect(form.polarity).toBe(VerbPolarity.AFFIRMATIVE);
+      });
+      expect(forms.some((f) => f.kind === 'volitional')).toBe(true);
+      expect(forms.some((f) => f.kind === 'indicative')).toBe(true);
+    });
+
+    it('when both polarities given, then affirmative and negative forms are both returned', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative'];
+      const polarities: VerbPolarity[] = [VerbPolarity.AFFIRMATIVE, VerbPolarity.NEGATIVE];
+
+      // When
+      const returnedPolarities = new Set(
+        Array.from({ length: 100 }, () => {
+          const form = VerbConjugationFormUtils.getRandomFormFor(
+            kinds,
+            undefined,
+            undefined,
+            polarities
+          );
+          return 'polarity' in form ? form.polarity : null;
+        })
+      );
+
+      // Then
+      expect(returnedPolarities).toContain(VerbPolarity.AFFIRMATIVE);
+      expect(returnedPolarities).toContain(VerbPolarity.NEGATIVE);
     });
   });
 

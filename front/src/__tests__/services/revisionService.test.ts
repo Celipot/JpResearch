@@ -39,6 +39,19 @@ describe('revisionService', () => {
       // Then
       expect(fetch).toHaveBeenCalledWith('/api/random-verb?kinds=te%2Ctara');
     });
+
+    it('when called with polarities, then fetches with polarities query param', async () => {
+      // Given
+      global.fetch = vi.fn(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      ) as unknown as typeof fetch;
+
+      // When
+      await getRandomVerb(undefined, undefined, undefined, ['affirmative']);
+
+      // Then
+      expect(fetch).toHaveBeenCalledWith('/api/random-verb?polarities=affirmative');
+    });
   });
 
   describe('getRandomAdjective', () => {
