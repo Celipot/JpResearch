@@ -55,7 +55,7 @@ describe('revisionService', () => {
   });
 
   describe('getRandomAdjective', () => {
-    it('when called, then fetches from /api/random-adjective', async () => {
+    it('when called without params, then fetches from /api/random-adjective', async () => {
       // Given
       const mockResponse = {
         hiragana: 'たかい',
@@ -74,6 +74,32 @@ describe('revisionService', () => {
       // Then
       expect(fetch).toHaveBeenCalledWith('/api/random-adjective');
       expect(result).toEqual(mockResponse);
+    });
+
+    it('when called with polarities, then fetches with polarities query param', async () => {
+      // Given
+      global.fetch = vi.fn(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      ) as unknown as typeof fetch;
+
+      // When
+      await getRandomAdjective(['affirmative']);
+
+      // Then
+      expect(fetch).toHaveBeenCalledWith('/api/random-adjective?polarities=affirmative');
+    });
+
+    it('when called with registers, then fetches with registers query param', async () => {
+      // Given
+      global.fetch = vi.fn(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve({}) })
+      ) as unknown as typeof fetch;
+
+      // When
+      await getRandomAdjective(undefined, ['polite']);
+
+      // Then
+      expect(fetch).toHaveBeenCalledWith('/api/random-adjective?registers=polite');
     });
   });
 

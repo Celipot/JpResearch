@@ -8,6 +8,8 @@ import type {
   VerbTense,
   VerbRegister,
   VerbPolarity,
+  AdjectivePolarity,
+  AdjectiveRegister,
 } from '../types/revision';
 
 export async function getRandomVerb(
@@ -26,8 +28,15 @@ export async function getRandomVerb(
   return res.json();
 }
 
-export async function getRandomAdjective(): Promise<AdjectiveResult> {
-  const res = await fetch('/api/random-adjective');
+export async function getRandomAdjective(
+  polarities?: AdjectivePolarity[],
+  registers?: AdjectiveRegister[]
+): Promise<AdjectiveResult> {
+  const params = new URLSearchParams();
+  if (polarities && polarities.length > 0) params.set('polarities', polarities.join(','));
+  if (registers && registers.length > 0) params.set('registers', registers.join(','));
+  const query = params.toString();
+  const res = await fetch(query ? `/api/random-adjective?${query}` : '/api/random-adjective');
   return res.json();
 }
 

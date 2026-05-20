@@ -104,6 +104,32 @@ describe('generateRandomAdjective', () => {
     expect(Array.isArray(result.answers)).toBe(true);
     expect(result.answers.length).toBeGreaterThan(0);
   });
+
+  it('when calling with polarities filter, then polarity matches one of the selected polarities', () => {
+    // Given
+    const polarities = [AdjectivePolarity.AFFIRMATIVE];
+
+    // When
+    const results = Array.from({ length: 50 }, () =>
+      generateRandomAdjective(repository, polarities)
+    );
+
+    // Then
+    results.forEach((result) => expect(result.polarity).toBe(AdjectivePolarity.AFFIRMATIVE));
+  });
+
+  it('when calling with registers filter, then register matches one of the selected registers', () => {
+    // Given
+    const registers = [AdjectiveRegister.POLITE];
+
+    // When
+    const results = Array.from({ length: 50 }, () =>
+      generateRandomAdjective(repository, undefined, registers)
+    );
+
+    // Then
+    results.forEach((result) => expect(result.register).toBe(AdjectiveRegister.POLITE));
+  });
 });
 
 function isValidConjugation(result: ReturnType<typeof generateRandomAdjective>): boolean {

@@ -17,7 +17,9 @@ export interface RandomAdjectiveResult {
 }
 
 export const generateRandomAdjective = (
-  repository: IAdjectiveRepository
+  repository: IAdjectiveRepository,
+  polarities?: AdjectivePolarity[],
+  registers?: AdjectiveRegister[]
 ): RandomAdjectiveResult => {
   const adjectiveData = repository.getRandomAdjective();
   const adjective = new Adjective(
@@ -25,7 +27,7 @@ export const generateRandomAdjective = (
     adjectiveData.type,
     adjectiveData.translation
   );
-  const form = AdjectiveConjugationFormUtils.getRandomForm();
+  const form = AdjectiveConjugationFormUtils.getRandomFormFor(polarities, registers);
   const answers = adjective.acceptableAnswers(form);
 
   return {

@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import type { AdjectiveResult } from './types/revision';
+import type { AdjectiveResult, AdjectivePolarity, AdjectiveRegister } from './types/revision';
 import { getRandomAdjective, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
+import { PolaritySelector } from './components/organisms/PolaritySelector';
+import { AdjectiveRegisterSelector } from './components/organisms/AdjectiveRegisterSelector';
 
 export default function AdjectiveRevisionPage() {
   const [result, setResult] = useState<AdjectiveResult | null>(null);
+  const [selectedPolarities, setSelectedPolarities] = useState<AdjectivePolarity[]>([
+    'affirmative',
+    'negative',
+  ]);
+  const [selectedRegisters, setSelectedRegisters] = useState<AdjectiveRegister[]>([
+    'familiar',
+    'polite',
+  ]);
   const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
     useRevisionSession();
 
@@ -14,7 +24,7 @@ export default function AdjectiveRevisionPage() {
     setLoading(true);
     reset();
     try {
-      setResult(await getRandomAdjective());
+      setResult(await getRandomAdjective(selectedPolarities, selectedRegisters));
     } catch (err) {
       console.error('Erreur:', err);
     } finally {
@@ -37,55 +47,75 @@ export default function AdjectiveRevisionPage() {
   };
 
   return (
-    <div className="container">
+    <div className="verb-page">
       <h1>Révision d&apos;adjectifs</h1>
 
-      <button onClick={fetchAdjective} disabled={loading}>
-        {loading ? 'Chargement...' : 'Nouvel adjectif'}
-      </button>
-
-      {result !== null && (
-        <div className="revision-section">
-          <div className="adjective-display">
-            <p className="adjective-hiragana">{result.hiragana}</p>
-            <p className="adjective-translation">{result.translation}</p>
-          </div>
-
-          <div className="form-display">
-            <p className="form-label">
-              Forme :{' '}
-              <strong>
-                {getTenseLabel(result.tense)} {getPolarityLabel(result.polarity)} ·{' '}
-                {getRegisterLabel(result.register)}
-              </strong>
-            </p>
-          </div>
-
-          <AnswerInput
-            label="Conjugaison :"
-            value={userAnswer}
-            placeholder="Écrivez en hiragana ou romaji"
-            onChange={onAnswerChange}
-            onSubmit={submitAnswer}
+      <div className="verb-layout">
+        <aside className="verb-sidebar">
+          <p className="sidebar-title">Polarité</p>
+          <PolaritySelector
+            selectedPolarities={selectedPolarities}
+            onChange={setSelectedPolarities}
           />
-
-          <FeedbackDisplay
-            feedback={feedback}
-            incorrectMessage={
-              <>
-                {' '}
-                La réponse était :{' '}
-                {result.answers.map((a, i) => (
-                  <span key={a}>
-                    <strong>{a}</strong>
-                    {i < result.answers.length - 1 ? ' ou ' : ''}
-                  </span>
-                ))}
-              </>
-            }
+          <p className="sidebar-title">Registre</p>
+          <AdjectiveRegisterSelector
+            selectedRegisters={selectedRegisters}
+            onChange={setSelectedRegisters}
           />
+        </aside>
+
+        <div className="verb-content">
+          <button
+            onClick={fetchAdjective}
+            disabled={loading || selectedPolarities.length === 0 || selectedRegisters.length === 0}
+          >
+            {loading ? 'Chargement...' : 'Nouvel adjectif'}
+          </button>
+
+          {result !== null && (
+            <div className="revision-section">
+              <div className="adjective-display">
+                <p className="adjective-hiragana">{result.hiragana}</p>
+                <p className="adjective-translation">{result.translation}</p>
+              </div>
+
+              <div className="form-display">
+                <p className="form-label">
+                  Forme :{' '}
+                  <strong>
+                    {getTenseLabel(result.tense)} {getPolarityLabel(result.polarity)} ·{' '}
+                    {getRegisterLabel(result.register)}
+                  </strong>
+                </p>
+              </div>
+
+              <AnswerInput
+                label="Conjugaison :"
+                value={userAnswer}
+                placeholder="Écrivez en hiragana ou romaji"
+                onChange={onAnswerChange}
+                onSubmit={submitAnswer}
+              />
+
+              <FeedbackDisplay
+                feedback={feedback}
+                incorrectMessage={
+                  <>
+                    {' '}
+                    La réponse était :{' '}
+                    {result.answers.map((a, i) => (
+                      <span key={a}>
+                        <strong>{a}</strong>
+                        {i < result.answers.length - 1 ? ' ou ' : ''}
+                      </span>
+                    ))}
+                  </>
+                }
+              />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Adjective } from '../../../domain/entities/adjective/Adjective';
 import { AdjectivePolarity } from '../../../domain/entities/adjective/AdjectivePolarity';
 import { AdjectiveRegister } from '../../../domain/entities/adjective/AdjectiveRegister';
 import { AdjectiveTense } from '../../../domain/entities/adjective/AdjectiveTense';
+import { AdjectiveConjugationFormUtils } from '../../../domain/entities/adjective/AdjectiveConjugationForm';
 
 describe('Adjective', () => {
   describe('conjugate()', () => {
@@ -488,5 +489,76 @@ describe('Adjective', () => {
       // Then
       expect(result).toEqual(['きれいだ', 'きれい']);
     });
+  });
+});
+
+describe('AdjectiveConjugationFormUtils.getRandomFormFor', () => {
+  it('when given affirmative only, then never returns a negative form', () => {
+    // Given
+    const polarities = [AdjectivePolarity.AFFIRMATIVE];
+
+    // When
+    const forms = Array.from({ length: 50 }, () =>
+      AdjectiveConjugationFormUtils.getRandomFormFor(polarities)
+    );
+
+    // Then
+    forms.forEach((form) => expect(form.polarity).toBe(AdjectivePolarity.AFFIRMATIVE));
+  });
+
+  it('when given negative only, then never returns an affirmative form', () => {
+    // Given
+    const polarities = [AdjectivePolarity.NEGATIVE];
+
+    // When
+    const forms = Array.from({ length: 50 }, () =>
+      AdjectiveConjugationFormUtils.getRandomFormFor(polarities)
+    );
+
+    // Then
+    forms.forEach((form) => expect(form.polarity).toBe(AdjectivePolarity.NEGATIVE));
+  });
+
+  it('when given familiar only, then never returns a polite form', () => {
+    // Given
+    const registers = [AdjectiveRegister.FAMILIAR];
+
+    // When
+    const forms = Array.from({ length: 50 }, () =>
+      AdjectiveConjugationFormUtils.getRandomFormFor(undefined, registers)
+    );
+
+    // Then
+    forms.forEach((form) => expect(form.register).toBe(AdjectiveRegister.FAMILIAR));
+  });
+
+  it('when given polite only, then never returns a familiar form', () => {
+    // Given
+    const registers = [AdjectiveRegister.POLITE];
+
+    // When
+    const forms = Array.from({ length: 50 }, () =>
+      AdjectiveConjugationFormUtils.getRandomFormFor(undefined, registers)
+    );
+
+    // Then
+    forms.forEach((form) => expect(form.register).toBe(AdjectiveRegister.POLITE));
+  });
+
+  it('when both polarities and both registers given, then all combinations can be returned', () => {
+    // Given
+    const polarities = [AdjectivePolarity.AFFIRMATIVE, AdjectivePolarity.NEGATIVE];
+    const registers = [AdjectiveRegister.FAMILIAR, AdjectiveRegister.POLITE];
+
+    // When
+    const returnedCombinations = new Set(
+      Array.from({ length: 100 }, () => {
+        const form = AdjectiveConjugationFormUtils.getRandomFormFor(polarities, registers);
+        return `${form.polarity}:${form.register}`;
+      })
+    );
+
+    // Then
+    expect(returnedCombinations.size).toBeGreaterThan(1);
   });
 });

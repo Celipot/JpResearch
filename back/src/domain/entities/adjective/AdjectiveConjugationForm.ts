@@ -52,7 +52,15 @@ export class AdjectiveConjugationFormUtils {
     },
   ];
 
-  static getRandomForm(): AdjectiveConjugationForm {
-    return this.FORMS[Math.floor(Math.random() * this.FORMS.length)];
+  static getRandomFormFor(
+    polarities?: AdjectivePolarity[],
+    registers?: AdjectiveRegister[]
+  ): AdjectiveConjugationForm {
+    const filtered = this.FORMS.filter((f) => {
+      if (polarities && !polarities.includes(f.polarity)) return false;
+      if (registers && !registers.includes(f.register)) return false;
+      return true;
+    });
+    return filtered[Math.floor(Math.random() * filtered.length)];
   }
 }

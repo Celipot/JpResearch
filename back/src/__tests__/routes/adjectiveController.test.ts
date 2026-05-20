@@ -109,6 +109,43 @@ describe('GET /api/random-adjective', () => {
     // Then
     expect(adjectives.size).toBeGreaterThan(1);
   });
+
+  it('when sending request with polarities=affirmative, then polarity is affirmative', async () => {
+    // Given
+    const results = await Promise.all(
+      Array.from({ length: 10 }, () =>
+        request(app).get('/api/random-adjective?polarities=affirmative')
+      )
+    );
+
+    // Then
+    results.forEach((response) => {
+      expect(response.status).toBe(200);
+      expect(response.body.polarity).toBe('affirmative');
+    });
+  });
+
+  it('when sending request with registers=polite, then register is polite', async () => {
+    // Given
+    const results = await Promise.all(
+      Array.from({ length: 10 }, () => request(app).get('/api/random-adjective?registers=polite'))
+    );
+
+    // Then
+    results.forEach((response) => {
+      expect(response.status).toBe(200);
+      expect(response.body.register).toBe('polite');
+    });
+  });
+
+  it('when sending request with invalid polarities, then ignores them and returns any valid polarity', async () => {
+    // When
+    const response = await request(app).get('/api/random-adjective?polarities=invalid');
+
+    // Then
+    expect(response.status).toBe(200);
+    expect(VALID_POLARITIES).toContain(response.body.polarity);
+  });
 });
 
 function isValidConjugation(body: {

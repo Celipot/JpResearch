@@ -1,6 +1,8 @@
 export type VerbTense = 'present' | 'past';
 export type VerbRegister = 'plain' | 'polite';
 export type VerbPolarity = 'affirmative' | 'negative';
+export type AdjectivePolarity = 'affirmative' | 'negative';
+export type AdjectiveRegister = 'familiar' | 'polite';
 
 export type VerbFormKind =
   | 'indicative'
