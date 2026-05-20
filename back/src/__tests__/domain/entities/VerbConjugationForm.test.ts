@@ -3,6 +3,7 @@ import {
   VerbConjugationFormUtils,
   VerbFormKind,
   VerbTense,
+  VerbRegister,
 } from '../../../domain/entities/verb/VerbConjugationForm';
 
 describe('VerbConjugationFormUtils.getRandomFormFor', () => {
@@ -122,6 +123,108 @@ describe('VerbConjugationFormUtils.getRandomFormFor', () => {
       // Then
       expect(returnedTenses).toContain(VerbTense.PRESENT);
       expect(returnedTenses).toContain(VerbTense.PAST);
+    });
+  });
+
+  describe('with registers filter', () => {
+    it('when given plain register only, then never returns a polite form', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'volitional'];
+      const registers: VerbRegister[] = [VerbRegister.PLAIN];
+
+      // When
+      const forms = Array.from({ length: 50 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, registers)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('register' in form) expect(form.register).toBe(VerbRegister.PLAIN);
+      });
+    });
+
+    it('when given polite register only, then never returns a plain form', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'imperative'];
+      const registers: VerbRegister[] = [VerbRegister.POLITE];
+
+      // When
+      const forms = Array.from({ length: 50 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, registers)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('register' in form) expect(form.register).toBe(VerbRegister.POLITE);
+      });
+    });
+
+    it('when register-less kind selected with register filter, then still returns forms', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['te'];
+      const registers: VerbRegister[] = [VerbRegister.PLAIN];
+
+      // When
+      const form = VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, registers);
+
+      // Then
+      expect(form.kind).toBe('te');
+    });
+
+    it('when mixed kinds with register filter, then register-bearing forms respect filter and register-less forms still appear', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative', 'te'];
+      const registers: VerbRegister[] = [VerbRegister.PLAIN];
+
+      // When
+      const forms = Array.from({ length: 100 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, registers)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('register' in form) expect(form.register).toBe(VerbRegister.PLAIN);
+      });
+      expect(forms.some((f) => f.kind === 'te')).toBe(true);
+      expect(forms.some((f) => f.kind === 'indicative')).toBe(true);
+    });
+
+    it('when both registers given, then plain and polite forms are both returned', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative'];
+      const registers: VerbRegister[] = [VerbRegister.PLAIN, VerbRegister.POLITE];
+
+      // When
+      const returnedRegisters = new Set(
+        Array.from({ length: 100 }, () => {
+          const form = VerbConjugationFormUtils.getRandomFormFor(kinds, undefined, registers);
+          return 'register' in form ? form.register : null;
+        })
+      );
+
+      // Then
+      expect(returnedRegisters).toContain(VerbRegister.PLAIN);
+      expect(returnedRegisters).toContain(VerbRegister.POLITE);
+    });
+  });
+
+  describe('with tenses and registers filters combined', () => {
+    it('when plain register and present tense, then never returns polite or past forms', () => {
+      // Given
+      const kinds: VerbFormKind[] = ['indicative'];
+      const tenses: VerbTense[] = [VerbTense.PRESENT];
+      const registers: VerbRegister[] = [VerbRegister.PLAIN];
+
+      // When
+      const forms = Array.from({ length: 50 }, () =>
+        VerbConjugationFormUtils.getRandomFormFor(kinds, tenses, registers)
+      );
+
+      // Then
+      forms.forEach((form) => {
+        if ('tense' in form) expect(form.tense).toBe(VerbTense.PRESENT);
+        if ('register' in form) expect(form.register).toBe(VerbRegister.PLAIN);
+      });
     });
   });
 });

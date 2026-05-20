@@ -6,15 +6,18 @@ import type {
   DateResult,
   VerbFormKind,
   VerbTense,
+  VerbRegister,
 } from '../types/revision';
 
 export async function getRandomVerb(
   kinds?: VerbFormKind[],
-  tenses?: VerbTense[]
+  tenses?: VerbTense[],
+  registers?: VerbRegister[]
 ): Promise<VerbResult> {
   const params = new URLSearchParams();
   if (kinds && kinds.length > 0) params.set('kinds', kinds.join(','));
   if (tenses && tenses.length > 0) params.set('tenses', tenses.join(','));
+  if (registers && registers.length > 0) params.set('registers', registers.join(','));
   const query = params.toString();
   const res = await fetch(query ? `/api/random-verb?${query}` : '/api/random-verb');
   return res.json();

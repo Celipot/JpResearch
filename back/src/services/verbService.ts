@@ -5,6 +5,7 @@ import {
   VerbConjugationFormUtils,
   VerbFormKind,
   VerbTense,
+  VerbRegister,
 } from '../domain/entities/verb/VerbConjugationForm';
 import { IVerbRepository } from '../infrastructure/repositories/VerbRepository';
 
@@ -20,11 +21,12 @@ export interface RandomVerbResult {
 export const generateRandomVerb = (
   repository: IVerbRepository,
   kinds?: VerbFormKind[],
-  tenses?: VerbTense[]
+  tenses?: VerbTense[],
+  registers?: VerbRegister[]
 ): RandomVerbResult => {
   const verbData = repository.getRandomVerb();
   const verb = new Verb(verbData.kanji, verbData.hiragana, verbData.type, verbData.translation);
-  const form = VerbConjugationFormUtils.getRandomFormFor(kinds, tenses);
+  const form = VerbConjugationFormUtils.getRandomFormFor(kinds, tenses, registers);
   const answers = verb.acceptableAnswers(form);
 
   return {

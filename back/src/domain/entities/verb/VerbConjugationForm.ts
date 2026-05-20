@@ -1,4 +1,5 @@
 export { VerbTense } from './VerbTense';
+export { VerbRegister } from './VerbRegister';
 import { VerbTense } from './VerbTense';
 import { VerbPolarity } from './VerbPolarity';
 import { VerbRegister } from './VerbRegister';
@@ -50,10 +51,16 @@ export class VerbConjugationFormUtils {
     { kind: 'volitional', register: VerbRegister.POLITE },
   ];
 
-  static getRandomFormFor(kinds?: VerbFormKind[], tenses?: VerbTense[]): VerbConjugationForm {
+  static getRandomFormFor(
+    kinds?: VerbFormKind[],
+    tenses?: VerbTense[],
+    registers?: VerbRegister[]
+  ): VerbConjugationForm {
     const filtered = this.FORMS.filter((f) => {
       if (kinds && !kinds.includes(f.kind as VerbFormKind)) return false;
-      if (tenses && 'tense' in f) return tenses.includes(f.tense as VerbTense);
+      if (tenses && 'tense' in f && !tenses.includes(f.tense as VerbTense)) return false;
+      if (registers && 'register' in f && !registers.includes(f.register as VerbRegister))
+        return false;
       return true;
     });
     return filtered[Math.floor(Math.random() * filtered.length)];

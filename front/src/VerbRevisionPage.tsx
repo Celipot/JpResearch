@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import type { VerbResult, VerbForm, VerbFormKind, VerbTense } from './types/revision';
+import type { VerbResult, VerbForm, VerbFormKind, VerbTense, VerbRegister } from './types/revision';
 import { getRandomVerb, checkAnswer as checkAnswerService } from './services/revisionService';
 import { useRevisionSession } from './hooks/useRevisionSession';
 import { AnswerInput } from './components/molecules/AnswerInput';
 import { FeedbackDisplay } from './components/molecules/FeedbackDisplay';
 import { FormKindSelector } from './components/organisms/FormKindSelector';
 import { TenseSelector } from './components/organisms/TenseSelector';
+import { RegisterSelector } from './components/organisms/RegisterSelector';
 
 const ALL_KINDS: VerbFormKind[] = [
   'indicative',
@@ -20,6 +21,14 @@ const ALL_KINDS: VerbFormKind[] = [
 ];
 
 const TENSE_BEARING_KINDS: VerbFormKind[] = ['indicative', 'potential', 'passive', 'causative'];
+const REGISTER_BEARING_KINDS: VerbFormKind[] = [
+  'indicative',
+  'potential',
+  'passive',
+  'causative',
+  'imperative',
+  'volitional',
+];
 
 const KIND_LABEL: Record<string, string> = {
   indicative: 'Indicatif',
@@ -61,6 +70,7 @@ export default function VerbRevisionPage() {
   const [result, setResult] = useState<VerbResult | null>(null);
   const [selectedKinds, setSelectedKinds] = useState<VerbFormKind[]>(ALL_KINDS);
   const [selectedTenses, setSelectedTenses] = useState<VerbTense[]>(['present', 'past']);
+  const [selectedRegisters, setSelectedRegisters] = useState<VerbRegister[]>(['plain', 'polite']);
   const { loading, setLoading, userAnswer, onAnswerChange, feedback, setFeedback, reset } =
     useRevisionSession();
 
@@ -68,7 +78,7 @@ export default function VerbRevisionPage() {
     setLoading(true);
     reset();
     try {
-      setResult(await getRandomVerb(selectedKinds, selectedTenses));
+      setResult(await getRandomVerb(selectedKinds, selectedTenses, selectedRegisters));
     } catch (err) {
       console.error('Erreur:', err);
     } finally {
@@ -92,6 +102,8 @@ export default function VerbRevisionPage() {
           <FormKindSelector selectedKinds={selectedKinds} onChange={setSelectedKinds} />
           <p className="sidebar-title">Temps</p>
           <TenseSelector selectedTenses={selectedTenses} onChange={setSelectedTenses} />
+          <p className="sidebar-title">Registre</p>
+          <RegisterSelector selectedRegisters={selectedRegisters} onChange={setSelectedRegisters} />
         </aside>
 
         <div className="verb-content">
@@ -101,7 +113,9 @@ export default function VerbRevisionPage() {
               loading ||
               selectedKinds.length === 0 ||
               (selectedTenses.length === 0 &&
-                selectedKinds.some((k) => TENSE_BEARING_KINDS.includes(k)))
+                selectedKinds.some((k) => TENSE_BEARING_KINDS.includes(k))) ||
+              (selectedRegisters.length === 0 &&
+                selectedKinds.some((k) => REGISTER_BEARING_KINDS.includes(k)))
             }
           >
             {loading ? 'Chargement...' : 'Nouveau verbe'}

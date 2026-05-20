@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { generateRandomVerb } from '../../services/verbService';
 import { VerbRepositoryImpl } from '../../infrastructure/repositories/VerbRepositoryImpl';
-import { VerbTense } from '../../domain/entities/verb/VerbConjugationForm';
+import { VerbTense, VerbRegister } from '../../domain/entities/verb/VerbConjugationForm';
 
 describe('generateRandomVerb', () => {
   let repository: VerbRepositoryImpl;
@@ -93,6 +93,21 @@ describe('generateRandomVerb', () => {
     // Then
     results.forEach((result) => {
       if ('tense' in result.form) expect(result.form.tense).toBe(VerbTense.PRESENT);
+    });
+  });
+
+  it('when calling with registers filter only, then form register matches one of the selected registers', () => {
+    // Given
+    const registers = [VerbRegister.PLAIN];
+
+    // When
+    const results = Array.from({ length: 50 }, () =>
+      generateRandomVerb(repository, undefined, undefined, registers)
+    );
+
+    // Then
+    results.forEach((result) => {
+      if ('register' in result.form) expect(result.form.register).toBe(VerbRegister.PLAIN);
     });
   });
 });
